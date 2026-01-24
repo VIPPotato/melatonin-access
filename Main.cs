@@ -80,6 +80,22 @@ namespace MelatoninAccess
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(RhythmHandler.Dream_QueueLeftRightHitWindow_Patch));
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(RhythmHandler.Dream_QueueHoldReleaseWindow_Patch));
 
+            // Level Editor
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.Daw_IncreaseBeat_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.Daw_DecreaseBeat_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.Daw_IncreaseBar_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.Daw_DecreaseBar_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.Daw_SetCodeOnBeat_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.Daw_RemoveCodeOnBeat_Patch));
+            
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.CustomizeMenu_Activate_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.CustomizeMenu_Nav1_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.CustomizeMenu_Nav2_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.CustomizeMenu_Nav3_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.CustomizeMenu_Nav4_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.CustomizeMenu_Nav5_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.CustomizeMenu_Nav6_Patch));
+
             MelonLogger.Msg("Melatonin Access Initialized");
         }
 
