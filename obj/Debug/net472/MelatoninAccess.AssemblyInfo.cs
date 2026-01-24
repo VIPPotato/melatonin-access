@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Accessibility Mod for Melatonin")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5d276d0656a7f17f9ab3fbc0b3a168492ded99af")]
 [assembly: System.Reflection.AssemblyProductAttribute("MelatoninAccess")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MelatoninAccess")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

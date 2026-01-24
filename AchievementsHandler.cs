@@ -48,14 +48,10 @@ namespace MelatoninAccess
                     string title = GetText(row.title);
                     string desc = GetText(row.description);
                     
-                    // Check if completed (tickBox state)
-                    bool isUnlocked = false;
-                    if (row.tickBox != null)
+                    // Check if completed (checkmark state)
+                    if (row.checkmark != null)
                     {
-                        // Assuming state 0 is empty, 1 is checked. 
-                        // Need to verify standard wrapper behavior, usually SetState(1) means active/checked.
-                        // Or check if 'check' fragment is visible.
-                        // For now, let's assume if title is "?????" it's locked.
+                        // Check logic here if needed, but title "?????" seems sufficient for now.
                     }
 
                     if (title == "?????")
