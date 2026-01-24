@@ -95,6 +95,7 @@ namespace MelatoninAccess
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.CustomizeMenu_Nav4_Patch));
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.CustomizeMenu_Nav5_Patch));
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.CustomizeMenu_Nav6_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.LvlEditor_Start_Patch));
 
             MelonLogger.Msg("Melatonin Access Initialized");
         }

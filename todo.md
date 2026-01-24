@@ -53,14 +53,12 @@ The current map allows free movement (`McMap.cs`), which is inaccessible.
     - [ ] Announce "Shop" or other points of interest.
 
 ## 5. Level Editor (DAW)
-This is the most complex area.
-
-- [ ] **Grid Navigation**
-    - [ ] Announce cursor position ("Bar 1, Beat 2").
-    - [ ] Announce placed notes under cursor ("Left Arrow", "Hold Start").
-- [ ] **Tools**
-    - [ ] Announce currently selected tool (Placement, Deletion, Selection).
-    - [ ] Announce playback state (Playing/Stopped).
+- [x] **Grid Navigation**
+    - [x] Announce cursor position ("Bar 1, Beat 2").
+    - [x] Announce placed notes under cursor ("Left Arrow", "Hold Start").
+- [x] **Tools**
+    - [x] Announce currently selected tool (Placement, Deletion, Selection).
+    - [x] Announce playback state (Playing/Stopped) (Handled via "Level Editor Ready" on return and Game Start announcements).
 
 ## 6. Specific Level Support
 Some levels might have unique mechanics requiring specific cues.
