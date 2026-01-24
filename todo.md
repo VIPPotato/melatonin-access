@@ -27,9 +27,9 @@ This document outlines the roadmap for making Melatonin 100% accessible to total
     - [x] Read `ExtraMessage.cs` warnings (Implemented in `PopupHandler`).
 - [x] **Achievements (`AchievementsMenu.cs`)**
     - [x] Announce list navigation and details (Implemented in `AchievementsHandler`).
-- [ ] **Results Screen (`Results.cs`)**
-    - [ ] Announce Rank, Score, and Accuracy on screen load.
-    - [ ] Allow navigating details (Early/Late/Perfect counts) using arrow keys if they aren't automatically read.
+- [x] **Results Screen (`Results.cs`)**
+    - [x] Announce Rank, Score, and Accuracy on screen load (Implemented in `ResultsHandler`).
+    - [x] Allow navigating details (Early/Late/Perfect counts) (Reads automatically on load).
 
 ## 3. Gameplay (The "Dreams")
 - [x] **General Rhythm Mechanics (`Dream.cs`)**
