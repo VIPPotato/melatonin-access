@@ -11,10 +11,9 @@ This document outlines the roadmap for making Melatonin 100% accessible to total
     - **Suggestion**: Create a `InputAnnouncer` that (optionally) voices pressed keys for debugging or learning controls.
 
 ## 2. User Interface (UI)
-- [ ] **Main Menus & Submenus (`Menu.cs`, `Option.cs`)**
-    - [ ] Announce currently selected option name and state (On/Off).
-    - [ ] Announce menu transitions (entering/exiting submenus).
-    - **Suggestion**: Hook into `Menu.Update()` or `Option.Select()` to detect changes. Maintain `lastSelectedOption` to avoid repeating text.
+- [x] **Main Menus & Submenus (`Menu.cs`, `Option.cs`)**
+    - [x] Announce currently selected option name and state (On/Off).
+    - [x] Announce menu transitions (entering/exiting submenus) (Implemented in `MenuHandler.cs`).
 - [ ] **Dialogue System (`DialogBox.cs`)**
     - [ ] Announce dialogue text when it appears or changes.
     - [ ] Announce speaker names if available.

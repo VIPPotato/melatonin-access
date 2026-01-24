@@ -17,9 +17,10 @@ namespace MelatoninAccess
             ScreenReader.Initialize();
 
             // Menu & Options
-            HarmonyLib.Harmony.CreateAndPatchAll(typeof(Option_Enable_Patch));
-            HarmonyLib.Harmony.CreateAndPatchAll(typeof(Option_Select_Patch));
-            HarmonyLib.Harmony.CreateAndPatchAll(typeof(Option_Reverse_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(MenuHandler.MenuTitle_Activate_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(MenuHandler.Option_Enable_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(MenuHandler.Option_Select_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(MenuHandler.Option_Reverse_Patch));
             
             // Start Screen
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(TitleScreen_Awake_Patch)); 
@@ -55,7 +56,7 @@ namespace MelatoninAccess
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(AchievementsHandler.AchievementsMenu_Activate_Patch));
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(AchievementsHandler.AchievementsMenu_Descend_Patch));
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(AchievementsHandler.AchievementsMenu_Ascend_Patch));
-
+            
             // Dialogue & Tutorial
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(DialogBox_SetText_Patch));
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(DialogBox_ChangeDialogState_Patch));
