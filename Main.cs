@@ -63,11 +63,10 @@ namespace MelatoninAccess
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(DialogBox_SetDialogState_Patch));
             
             // Results & Stage End
-            HarmonyLib.Harmony.CreateAndPatchAll(typeof(Results_Activate_Patch));
-            HarmonyLib.Harmony.CreateAndPatchAll(typeof(ScoreMessage_Show_Patch));
-            HarmonyLib.Harmony.CreateAndPatchAll(typeof(StageEndMenu_Show_Patch));
-            HarmonyLib.Harmony.CreateAndPatchAll(typeof(StageEndMenu_Next_Patch));
-            HarmonyLib.Harmony.CreateAndPatchAll(typeof(StageEndMenu_Prev_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(ResultsHandler.Results_Activate_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(ResultsHandler.StageEndMenu_Show_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(ResultsHandler.StageEndMenu_Next_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(ResultsHandler.StageEndMenu_Prev_Patch));
             
             // Side Labels
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(SideLabel_ShowAsPractice_Patch));
