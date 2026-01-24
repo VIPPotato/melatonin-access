@@ -111,6 +111,15 @@ namespace MelatoninAccess
             } 
         }
 
+        [HarmonyPatch(typeof(LvlEditor), "Start")]
+        public static class LvlEditor_Start_Patch
+        {
+            public static void Postfix()
+            {
+                ScreenReader.Say("Level Editor Ready", true);
+            }
+        }
+
         private static void AnnounceTool(CustomizeMenu menu)
         {
             var item = menu.GetHighlightedCustomzieItem();
