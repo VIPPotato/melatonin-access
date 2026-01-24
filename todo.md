@@ -23,9 +23,11 @@ This document outlines the roadmap for making Melatonin 100% accessible to total
     - [ ] **Title Screen**: Read "Press Space to Start" (`Instruction.cs`).
     - [ ] **Language Hint**: Read language change prompts (`LangHint.cs`).
     - [ ] **Side Label**: Read "Practice Mode" and "Press Tab to Skip" prompts (`SideLabel.cs`).
-- [ ] **Popups & Confirmations**
-    - [ ] Read `ConfirmModal.cs` (Quit game, etc.).
-    - [ ] Read `ExtraMessage.cs` warnings.
+- [x] **Popups & Confirmations**
+    - [x] Read `ConfirmModal.cs` (Quit game, etc.) (Implemented in `PopupHandler`).
+    - [x] Read `ExtraMessage.cs` warnings (Implemented in `PopupHandler`).
+- [x] **Achievements (`AchievementsMenu.cs`)**
+    - [x] Announce list navigation and details (Implemented in `AchievementsHandler`).
 - [ ] **Results Screen (`Results.cs`)**
     - [ ] Announce Rank, Score, and Accuracy on screen load.
     - [ ] Allow navigating details (Early/Late/Perfect counts) using arrow keys if they aren't automatically read.

@@ -51,6 +51,11 @@ namespace MelatoninAccess
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(ConfirmModal_Activate_Patch));
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(RebindModal_Show_Patch));
             
+            // Achievements
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(AchievementsHandler.AchievementsMenu_Activate_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(AchievementsHandler.AchievementsMenu_Descend_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(AchievementsHandler.AchievementsMenu_Ascend_Patch));
+
             // Dialogue & Tutorial
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(DialogBox_SetText_Patch));
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(DialogBox_ChangeDialogState_Patch));
