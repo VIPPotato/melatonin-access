@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "VGmOgQsveh0=",
+  "success": true,
+  "projectFilePath": "D:\\Documents\\projects\\games\\melatonin access\\MelatoninAccess.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\hacke\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.3\\microsoft.netframework.referenceassemblies.1.0.3.nupkg.sha512",
+    "C:\\Users\\hacke\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net472\\1.0.3\\microsoft.netframework.referenceassemblies.net472.1.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
