@@ -24,31 +24,7 @@ namespace MelatoninAccess
     {
         public static void Postfix(DialogBox __instance)
         {
-            // If it's delayed, this might read old text. 
-            // But usually ChangeDialogState updates text via SetState internally immediately?
-            // Checking the code: ChangeDialogState IS a coroutine if isDelayed=true.
-            // But we can't easily detect the delay here without traversing.
-            // Safe bet: Read it. If it changes later, SetText or SetDialogState might catch it?
-            // Actually, ChangeDialogState calls SetDialogState internally.
-            // So we might get double reads if we patch both.
-            // But SetDialogState is the primitive.
-            // Let's stick to SetDialogState for the state change.
-            // But if ChangeDialogState is used, it eventually calls SetDialogState.
-            // So we don't need to patch ChangeDialogState if SetDialogState covers it?
-            // Wait, SetDialogState is void. ChangeDialogState is void (starts coroutine).
-            // The coroutine calls dialog.SetState().
-            // Does dialog.SetState() trigger our SetText patch? No, SetState sets textMeshPro.text directly.
-            // So we DO need to hook SetState or the methods calling it.
-            // Or better: DialogBox.SetDialogState calls dialog.SetState().
-            // We patched DialogBox.SetDialogState.
-            // But ChangeDialogState calls dialog.SetState DIRECTLY inside its coroutine (it's a private IEnumerator).
-            // We can't patch private enumerators easily.
-            // We should rely on Activate/ActivateDelayed for the "Initial" read (Food/Followers issue).
-            // And for state changes, maybe polling or hooking textboxFragment.SetState is cleaner?
-            // No, hooking textboxFragment.SetState is global and noisy.
-            
-            // Let's keep the hook, but maybe delay it?
-            MelonCoroutines.Start(ReadDialogDelayed(__instance, 0.2f));
+            MelonCoroutines.Start(DialogHelper.ReadDialogDelayed(__instance, 0.2f));
         }
     }
 
@@ -80,7 +56,7 @@ namespace MelatoninAccess
             // Wait for the delay (approx) then read.
             // The game waits (0.11667f - delta).
             float waitTime = Mathf.Max(0.11667f - delta, 0f) + 0.05f; 
-            MelonCoroutines.Start(ReadDialogDelayed(__instance, waitTime));
+            MelonCoroutines.Start(DialogHelper.ReadDialogDelayed(__instance, waitTime));
         }
     }
 
@@ -97,11 +73,11 @@ namespace MelatoninAccess
                 }
             }
         }
-    }
 
-    public static IEnumerator ReadDialogDelayed(DialogBox box, float delay)
-    {
-        yield return new WaitForSecondsRealtime(delay);
-        DialogHelper.ReadDialog(box);
+        public static IEnumerator ReadDialogDelayed(DialogBox box, float delay)
+        {
+            yield return new WaitForSecondsRealtime(delay);
+            ReadDialog(box);
+        }
     }
 }
