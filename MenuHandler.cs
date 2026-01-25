@@ -8,6 +8,8 @@ namespace MelatoninAccess
 {
     public static class MenuHandler
     {
+        private static float lastTitleTime = 0f;
+
         // --- Menu Title ---
         [HarmonyPatch(typeof(MenuTitle), "Activate")]
         public static class MenuTitle_Activate_Patch
@@ -19,7 +21,7 @@ namespace MelatoninAccess
                     var tmp = __instance.title.GetComponent<TextMeshPro>();
                     if (tmp != null)
                     {
-                        // "settings", "audio" etc might be lowercase in code but TMP might be uppercase
+                        lastTitleTime = Time.time;
                         ScreenReader.Say(tmp.text + " Menu", true);
                     }
                 }
@@ -57,7 +59,6 @@ namespace MelatoninAccess
                             var numTmp = __instance.num.GetComponent<TextMeshPro>();
                             if (numTmp != null && !string.IsNullOrEmpty(numTmp.text))
                             {
-                                // Filter out the '9' bug if it persists (usually 9 is a placeholder)
                                 if (numTmp.text.Trim() != "9")
                                 {
                                     text += " slider " + numTmp.text;
@@ -82,9 +83,9 @@ namespace MelatoninAccess
                             bool known = true;
                             switch (functionNum)
                             {
-                                case 12: // Fullscreen - Use explicit status
+                                case 12: // Fullscreen
                                     text += ": " + (Screen.fullScreen ? "Fullscreen" : "Windowed");
-                                    known = false; // Already handled
+                                    known = false;
                                     break;
                                 case 18: // Visual Assist
                                     state = SaveManager.mgr.CheckIsVisualAssisting();
@@ -143,7 +144,10 @@ namespace MelatoninAccess
                             }
                         }
 
-                        ScreenReader.Say(text, true);
+                        // If menu title was just announced (< 0.5s ago), queue this announcement.
+                        // Otherwise (navigation), interrupt.
+                        bool interrupt = (Time.time - lastTitleTime > 0.5f);
+                        ScreenReader.Say(text, interrupt);
                     }
                 }
             }
@@ -174,7 +178,6 @@ namespace MelatoninAccess
             {
                 int functionNum = Traverse.Create(option).Field("functionNum").GetValue<int>();
 
-                // Sliders (Volume, Metronome, etc.)
                 if (option.num != null && option.num.CheckIsMeshRendered())
                 {
                     var numTmp = option.num.GetComponent<TextMeshPro>();
@@ -185,48 +188,47 @@ namespace MelatoninAccess
                     }
                 }
 
-                // Toggles
                 bool state = false;
                 bool isToggle = false;
 
                 switch (functionNum)
                 {
-                    case 12: // Fullscreen
+                    case 12: 
                         ScreenReader.Say(Screen.fullScreen ? "Fullscreen" : "Windowed", true);
                         return;
-                    case 18: // Visual Assist
+                    case 18: 
                         isToggle = true;
                         state = SaveManager.mgr.CheckIsVisualAssisting();
                         break;
-                    case 19: // Audio Assist
+                    case 19: 
                         isToggle = true;
                         state = SaveManager.mgr.CheckIsAudioAssisting();
                         break;
-                    case 37: // WASD
+                    case 37: 
                         isToggle = true;
                         state = SaveManager.mgr.CheckIsDirectionKeysAlt();
                         break;
-                    case 41: // Vibration
+                    case 41: 
                         isToggle = true;
                         state = !SaveManager.mgr.CheckIsVibrationDisabled();
                         break;
-                    case 42: // Wiggle Room
+                    case 42: 
                         isToggle = true;
                         state = SaveManager.mgr.CheckIsBiggerHitWindows();
                         break;
-                    case 44: // Warmth
+                    case 44: 
                         isToggle = true;
                         state = SaveManager.mgr.CheckIsWarmth();
                         break;
-                    case 45: // Easy Scoring
+                    case 45: 
                         isToggle = true;
                         state = SaveManager.mgr.CheckIsEasyScoring();
                         break;
-                    case 47: // Perfects Only
+                    case 47: 
                         isToggle = true;
                         state = SaveManager.mgr.CheckIsPerfectsOnly();
                         break;
-                    case 50: // V-Sync
+                    case 50: 
                         isToggle = true;
                         state = SaveManager.mgr.CheckIsVsynced();
                         break;
