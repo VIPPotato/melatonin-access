@@ -14,8 +14,10 @@ namespace MelatoninAccess
         {
             public static void Postfix(int numBeatsTilHit, bool isHalfBeatAdded)
             {
-                // Standard Action (Space/A)
-                ScreenReader.Say("Space", true);
+                if (Dream.dir != null && Dream.dir.GetGameMode() == 0)
+                {
+                    ScreenReader.Say("Space", true);
+                }
             }
         }
 
@@ -24,7 +26,10 @@ namespace MelatoninAccess
         {
             public static void Postfix(int numBeatsTilHit, bool isHalfBeatAdded)
             {
-                ScreenReader.Say("Left", true);
+                if (Dream.dir != null && Dream.dir.GetGameMode() == 0)
+                {
+                    ScreenReader.Say("Left", true);
+                }
             }
         }
 
@@ -33,7 +38,10 @@ namespace MelatoninAccess
         {
             public static void Postfix(int numBeatsTilHit, bool isHalfBeatAdded)
             {
-                ScreenReader.Say("Right", true);
+                if (Dream.dir != null && Dream.dir.GetGameMode() == 0)
+                {
+                    ScreenReader.Say("Right", true);
+                }
             }
         }
 
@@ -42,7 +50,10 @@ namespace MelatoninAccess
         {
             public static void Postfix(int numBeatsTilHit, bool isHalfBeatAdded)
             {
-                ScreenReader.Say("Both", true);
+                if (Dream.dir != null && Dream.dir.GetGameMode() == 0)
+                {
+                    ScreenReader.Say("Both", true);
+                }
             }
         }
 
@@ -51,35 +62,11 @@ namespace MelatoninAccess
         {
             public static void Postfix(int numBeatsTilHold, int numBeatsTilRelease)
             {
-                ScreenReader.Say("Hold", true);
+                if (Dream.dir != null && Dream.dir.GetGameMode() == 0)
+                {
+                    ScreenReader.Say("Hold", true);
+                }
             }
         }
-
-        // --- Feedback (Optional - Game has sounds, but maybe we need verbal confirmation) ---
-        // Uncomment if distinct feedback is needed beyond game SFX.
-
-        /*
-        [HarmonyPatch(typeof(Dream), "OnHit")]
-        public static class Dream_OnHit_Patch
-        {
-            public static void Postfix(Dream __instance)
-            {
-                // Access protected field 'accuracy' via Reflection or Traverse if needed.
-                // For now, let's rely on game SFX.
-            }
-        }
-        */
-
-        // --- Beat / Metronome (Optional) ---
-        /*
-        [HarmonyPatch(typeof(Dream), "TriggerBeat")]
-        public static class Dream_TriggerBeat_Patch
-        {
-            public static void Postfix(bool toggle)
-            {
-                 // Could play a click sound here if accessibility metronome is needed
-            }
-        }
-        */
     }
 }
