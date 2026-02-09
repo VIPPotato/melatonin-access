@@ -10,8 +10,11 @@ namespace MelatoninAccess
     {
         private static float lastTitleTime = 0f;
         private const float PendingTitleCombineWindowSeconds = 0.8f;
+        private const float FirstOptionSuppressSeconds = 1.0f;
         private static string _pendingMenuTitle = "";
         private static float _pendingMenuTitleTime = -10f;
+        private static string _suppressedFirstOptionText = "";
+        private static float _suppressedFirstOptionUntilTime = -10f;
 
         // --- Menu Title ---
         [HarmonyPatch(typeof(MenuTitle), "Activate")]
@@ -154,6 +157,21 @@ namespace MelatoninAccess
                             }
                         }
 
+                        // Suppress immediate repeated first-item announcement right after a combined
+                        // "Menu title + first option" utterance.
+                        if (!string.IsNullOrWhiteSpace(_suppressedFirstOptionText))
+                        {
+                            if (Time.unscaledTime > _suppressedFirstOptionUntilTime)
+                            {
+                                _suppressedFirstOptionText = "";
+                                _suppressedFirstOptionUntilTime = -10f;
+                            }
+                            else if (text == _suppressedFirstOptionText)
+                            {
+                                return;
+                            }
+                        }
+
                         // Combine first option with pending menu title when a menu just opened.
                         // Otherwise (normal navigation), interrupt as usual.
                         bool shouldCombineWithMenuTitle =
@@ -162,9 +180,12 @@ namespace MelatoninAccess
 
                         if (shouldCombineWithMenuTitle)
                         {
-                            text = $"{_pendingMenuTitle}. {text}";
+                            string firstOptionText = text;
+                            text = $"{_pendingMenuTitle}. {firstOptionText}";
                             _pendingMenuTitle = "";
                             _pendingMenuTitleTime = -10f;
+                            _suppressedFirstOptionText = firstOptionText;
+                            _suppressedFirstOptionUntilTime = Time.unscaledTime + FirstOptionSuppressSeconds;
                             ScreenReader.Say(text, true);
                             return;
                         }
