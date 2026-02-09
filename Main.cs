@@ -10,7 +10,7 @@ namespace MelatoninAccess
 {
     public class MelatoninAccessMod : MelonMod
     {
-        public static bool DebugMode = true;
+        public static bool DebugMode = false;
 
         public override void OnInitializeMelon()
         {
@@ -117,7 +117,16 @@ namespace MelatoninAccess
 
         public override void OnUpdate()
         {
-            if (Keyboard.current != null && Keyboard.current.f1Key.wasPressedThisFrame)
+            if (Keyboard.current == null) return;
+
+            if (Keyboard.current.f12Key.wasPressedThisFrame)
+            {
+                DebugMode = !DebugMode;
+                ScreenReader.Say(DebugMode ? Loc.Get("debug_enabled") : Loc.Get("debug_disabled"), true);
+                MelonLogger.Msg($"Debug mode {(DebugMode ? "enabled" : "disabled")}.");
+            }
+
+            if (Keyboard.current.f1Key.wasPressedThisFrame)
             {
                 ScreenReader.Say(Loc.Get("mod_active_help"), true);
             }
