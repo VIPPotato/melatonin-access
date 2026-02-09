@@ -212,7 +212,8 @@ namespace MelatoninAccess
 
                 string name = FormatDreamName(target.dreamName);
                 int stars = SaveManager.mgr.GetScore("Dream_" + target.dreamName);
-                ScreenReader.Say(Loc.Get("teleport_arrived_stars", name, stars), true); // Removed "Jump to"
+                string starKey = stars == 1 ? "teleport_arrived_one_star" : "teleport_arrived_stars";
+                ScreenReader.Say(Loc.Get(starKey, name, stars), true);
 
                 MelonCoroutines.Start(ResetTeleportFlag());
             }
