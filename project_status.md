@@ -26,8 +26,14 @@
 - [x] **Playtest Follow-up Fixes (2026-02-09)**: Removed `F1` behavior, added position announcements for language/mode menus, merged results + initial stage-end choice into one utterance, improved tutorial dialog capture in followers, changed tutorial start label to a localized skip prompt, and added gamepad snap-to-hotspot input (`Action Left/Right`, e.g. LB/RB).
 - [x] **Followers Tutorial Graphic Text Fix (2026-02-09)**: Added `DialogBox.ChangeToGraphic` narration path for left/right graphic tutorial text blocks and reinforced practice-start wording as localized tutorial skip prompt.
 - [x] **Graphic Dialog Punctuation Cleanup (2026-02-10)**: Adjusted dialog part joining to avoid duplicate punctuation when graphic tutorial lines already end with sentence punctuation.
+- [x] **Map Hotspot Chatter Reduction (2026-02-10)**: Added same-landmark debounce in `MapHandler` so rapid collider re-entries no longer spam repeated hotspot arrival lines.
+- [x] **Teleport Star Grammar Fix (2026-02-10)**: Added singular star localization key and switched teleport arrival speech to use singular/plural variants correctly.
+- [x] **Optional Announcement Toggles (2026-02-10)**: Added `ModConfig.cs` using `MelonPreferences` with toggles for map hotspot speech, rhythm cues, tutorial/dialog narration, and credits narration.
+- [x] **Speech Regression Checker Script (2026-02-10)**: Added `scripts/Test-SpeechRegression.ps1` to scan MelonLoader logs for consecutive duplicate SR lines and known forbidden patterns.
+- [x] **Localization Consistency Pass (2026-02-10)**: Improved non-English coverage for startup loaded message, results summary wording, and Vietnamese space cue label.
 
 ## Next Steps
 - **Focused Playtest**: Validate end-to-end flow for map mode locks, stage-end locks, advanced menu/timeline narration, and credits scrolling narration.
-- **Language Spot Check**: Switch each in-game language and verify key mod-only lines (F1/F12/help, map lock reasons, teleport conflict hint) are spoken correctly.
+- **Language Spot Check**: Switch each in-game language and verify key mod-only lines (debug toggles, map lock reasons, teleport conflict hint, results summary) are spoken correctly.
+- **Config Spot Check**: Toggle each new `MelonPreferences` setting and verify the targeted announcement group turns on/off without side effects.
 - **Release Prep**: If playtest passes, package current DLL and tag a release build.
