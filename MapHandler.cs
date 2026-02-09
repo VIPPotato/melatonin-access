@@ -25,7 +25,7 @@ namespace MelatoninAccess
                 if (MapTeleporter.IsTeleporting) return;
 
                 string name = FormatDreamName(__instance.dreamName);
-                ScreenReader.Say($"Arrived at {name}", true);
+                ScreenReader.Say(Loc.Get("arrived_at", name), true);
             }
         }
 
@@ -38,7 +38,7 @@ namespace MelatoninAccess
                 if (now - _lastModeMenuTitleTime < ModeAnnouncementCooldown) return;
 
                 _lastModeMenuTitleTime = now;
-                ScreenReader.Say("Mode Menu", true);
+                ScreenReader.Say(Loc.Get("mode_menu"), true);
                 AnnounceMode(__instance);
             }
         }
@@ -146,7 +146,7 @@ namespace MelatoninAccess
 
                 string name = FormatDreamName(target.dreamName);
                 int stars = SaveManager.mgr.GetScore("Dream_" + target.dreamName);
-                ScreenReader.Say($"{name}. {stars} stars.", true); // Removed "Jump to"
+                ScreenReader.Say(Loc.Get("teleport_arrived_stars", name, stars), true); // Removed "Jump to"
 
                 MelonCoroutines.Start(ResetTeleportFlag());
             }
@@ -176,7 +176,7 @@ namespace MelatoninAccess
 
         private static string FormatDreamName(string rawName)
         {
-            if (string.IsNullOrEmpty(rawName)) return "Unknown Level";
+            if (string.IsNullOrEmpty(rawName)) return Loc.Get("unknown_level");
             if (rawName.Length == 1) return rawName.ToUpper();
             return char.ToUpper(rawName[0]) + rawName.Substring(1);
         }

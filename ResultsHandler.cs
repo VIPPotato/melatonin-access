@@ -48,7 +48,7 @@ namespace MelatoninAccess
                 int early = Dream.dir.GetCounter(2);
                 int miss = Dream.dir.GetCounter(3);
 
-                sb.Append($"Perfect: {perfect}, Late: {late}, Early: {early}, Miss: {miss}.");
+                sb.Append(Loc.Get("results_stats", perfect, late, early, miss));
             }
 
             ScreenReader.Say(sb.ToString(), true);
@@ -104,7 +104,7 @@ namespace MelatoninAccess
                         string text = tmp.text;
                         if (activeOptionsCount > 0)
                         {
-                            text += $", {highlightPosition + 1} of {activeOptionsCount}";
+                            text = Loc.Get("stage_end_position", text, highlightPosition + 1, activeOptionsCount);
                         }
                         ScreenReader.Say(text, true);
                     }

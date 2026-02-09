@@ -33,7 +33,7 @@ public static class ScreenReader
         if (Tolk_IsLoaded())
         {
             MelonLogger.Msg("Tolk loaded successfully.");
-            Say("Melatonin Access Mod Loaded", true);
+            Say(Loc.Get("mod_loaded"), true);
         }
         else
         {

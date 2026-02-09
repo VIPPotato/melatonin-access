@@ -22,7 +22,7 @@ namespace MelatoninAccess
                 if (now - _lastMenuAnnouncementTime < AchievementAnnouncementCooldown) return;
 
                 _lastMenuAnnouncementTime = now;
-                ScreenReader.Say("Achievements Menu", true);
+                ScreenReader.Say(Loc.Get("achievements_menu"), true);
                 AnnounceHighlight(__instance);
             }
         }
@@ -70,8 +70,8 @@ namespace MelatoninAccess
                     }
 
                     string announcement = title == "?????"
-                        ? $"Locked Achievement. {highlightNum + 1} of {rows.Length}"
-                        : $"{title}: {desc}. {highlightNum + 1} of {rows.Length}";
+                        ? Loc.Get("locked_achievement", highlightNum + 1, rows.Length)
+                        : Loc.Get("achievement_with_desc", title, desc, highlightNum + 1, rows.Length);
 
                     if (announcement == _lastAnnouncement && now - _lastAnnouncementTime < AchievementAnnouncementCooldown) return;
 

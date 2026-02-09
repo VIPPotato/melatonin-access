@@ -15,6 +15,7 @@ namespace MelatoninAccess
         public override void OnInitializeMelon()
         {
             ScreenReader.Initialize();
+            Loc.Initialize();
 
             // Menu & Options
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(MenuHandler.MenuTitle_Activate_Patch));
@@ -106,7 +107,7 @@ namespace MelatoninAccess
         {
             if (Keyboard.current != null && Keyboard.current.f1Key.wasPressedThisFrame)
             {
-                ScreenReader.Say("Melatonin Access is active. Use arrow keys to navigate menus.", true);
+                ScreenReader.Say(Loc.Get("mod_active_help"), true);
             }
         }
     }
