@@ -35,14 +35,6 @@ namespace MelatoninAccess
 
         public static void Postfix(TitleScreen __instance)
         {
-            // F1 Force Read
-            if (Keyboard.current != null && Keyboard.current.f1Key.wasPressedThisFrame)
-            {
-                DebugLogger.Log(LogCategory.Input, "F1 pressed - Force reading intro");
-                MelonCoroutines.Start(AnnounceDelayed(true));
-                return;
-            }
-
             bool isLangUiAvailable = Traverse.Create(__instance).Field("isLangUiAvailable").GetValue<bool>();
             
             if (isLangUiAvailable && !announced)
@@ -145,8 +137,8 @@ namespace MelatoninAccess
         }
     }
 
-    public static class LangMenuHelper
-    {
+        public static class LangMenuHelper
+        {
         private const float LanguageRepeatBlockSeconds = 0.5f;
         private static string _lastAnnouncedLanguage = "";
         private static float _lastAnnouncedLanguageTime = -10f;
@@ -159,10 +151,12 @@ namespace MelatoninAccess
                  var tmp = menu.langs[highlightNum].GetComponent<TextMeshPro>();
                  if (tmp != null && !string.IsNullOrWhiteSpace(tmp.text))
                  {
-                     string language = tmp.text.Trim();
+                      string language = tmp.text.Trim();
+                     string position = Loc.Get("order_of", highlightNum + 1, menu.langs.Length);
+                     string languageWithPosition = $"{language}, {position}";
                      string announcement = includeMenuTitle
-                         ? $"{Loc.Get("language_menu")}. {language}"
-                         : language;
+                         ? $"{Loc.Get("language_menu")}. {languageWithPosition}"
+                         : languageWithPosition;
 
                       float now = Time.unscaledTime;
                       if (announcement == _lastAnnouncedLanguage && now - _lastAnnouncedLanguageTime < LanguageRepeatBlockSeconds) return;

@@ -8,10 +8,13 @@ namespace MelatoninAccess
     public static class AchievementsHandler
     {
         private const float AchievementAnnouncementCooldown = 0.5f;
+        private const float InitialHighlightSuppressSeconds = 1.2f;
         private static float _lastMenuAnnouncementTime = -10f;
         private static int _lastHighlightNum = -1;
         private static string _lastAnnouncement = "";
         private static float _lastAnnouncementTime = -10f;
+        private static int _suppressedInitialHighlight = -1;
+        private static float _suppressedInitialHighlightUntil = -10f;
 
         [HarmonyPatch(typeof(AchievementsMenu), "Activate")]
         public static class AchievementsMenu_Activate_Patch
@@ -27,6 +30,8 @@ namespace MelatoninAccess
                     _lastHighlightNum = highlightNum;
                     _lastAnnouncement = highlightAnnouncement;
                     _lastAnnouncementTime = now;
+                    _suppressedInitialHighlight = highlightNum;
+                    _suppressedInitialHighlightUntil = now + InitialHighlightSuppressSeconds;
                     ScreenReader.Say($"{Loc.Get("achievements_menu")}. {highlightAnnouncement}", true);
                     return;
                 }
@@ -60,6 +65,14 @@ namespace MelatoninAccess
             if (TryBuildHighlightAnnouncement(menu, out string announcement, out int highlightNum))
             {
                 float now = Time.unscaledTime;
+                if (highlightNum == _suppressedInitialHighlight && now <= _suppressedInitialHighlightUntil) return;
+
+                if (now > _suppressedInitialHighlightUntil)
+                {
+                    _suppressedInitialHighlight = -1;
+                    _suppressedInitialHighlightUntil = -10f;
+                }
+
                 if (highlightNum == _lastHighlightNum && now - _lastAnnouncementTime < AchievementAnnouncementCooldown) return;
                 if (announcement == _lastAnnouncement && now - _lastAnnouncementTime < AchievementAnnouncementCooldown) return;
 

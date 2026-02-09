@@ -664,6 +664,19 @@ namespace MelatoninAccess
                 "Pagina {0}");
 
             Add(
+                "tutorial_skip_prompt",
+                "Tutorial. Press {0} to skip.",
+                "教程。按 {0} 可跳过。",
+                "教學。按 {0} 可跳過。",
+                "チュートリアル。{0} でスキップします。",
+                "튜토리얼. {0} 키로 건너뛸 수 있습니다.",
+                "Huong dan. Nhan {0} de bo qua.",
+                "Tutoriel. Appuyez sur {0} pour passer.",
+                "Tutorial. Drucke {0}, um zu ueberspringen.",
+                "Tutorial. Pulsa {0} para omitir.",
+                "Tutorial. Pressione {0} para pular.");
+
+            Add(
                 "cue_space",
                 "Space",
                 "空格",

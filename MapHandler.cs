@@ -74,7 +74,7 @@ namespace MelatoninAccess
         {
             public static void Postfix(ModeMenu __instance)
             {
-                AnnounceMode(__instance);
+                AnnounceMode(__instance, includeMenuTitle: false);
             }
         }
 
@@ -83,7 +83,7 @@ namespace MelatoninAccess
         {
             public static void Postfix(ModeMenu __instance)
             {
-                AnnounceMode(__instance);
+                AnnounceMode(__instance, includeMenuTitle: false);
             }
         }
 
@@ -103,6 +103,13 @@ namespace MelatoninAccess
                     if (!string.IsNullOrWhiteSpace(lockReason))
                     {
                         modeText = $"{modeText}. {lockReason}";
+                    }
+
+                    int position = GetModePosition(menu, activeItemNum);
+                    int total = GetModeOptionsCount(menu);
+                    if (position > 0 && total > 0)
+                    {
+                        modeText = $"{modeText}, {Loc.Get("order_of", position, total)}";
                     }
 
                     if (includeMenuTitle)
@@ -128,11 +135,14 @@ namespace MelatoninAccess
             public static void Postfix(McMap __instance)
             {
                 if (Keyboard.current == null) return;
+                if (__instance != null && __instance.ModeMenu != null && __instance.ModeMenu.CheckIsTranstioned()) return;
 
                 bool leftBracketPressed = Keyboard.current.leftBracketKey.wasPressedThisFrame;
                 bool rightBracketPressed = Keyboard.current.rightBracketKey.wasPressedThisFrame;
                 bool f9Pressed = Keyboard.current.f9Key.wasPressedThisFrame;
                 bool f10Pressed = Keyboard.current.f10Key.wasPressedThisFrame;
+                bool gamepadPrevPressed = ControlHandler.mgr != null && ControlHandler.mgr.GetCtrlType() > 0 && ControlHandler.mgr.CheckIsActionLeftPressed();
+                bool gamepadNextPressed = ControlHandler.mgr != null && ControlHandler.mgr.GetCtrlType() > 0 && ControlHandler.mgr.CheckIsActionRightPressed();
 
                 string actionKey = SaveManager.mgr != null ? SaveManager.mgr.GetActionKey() : "";
                 bool actionUsesLeftBracket = actionKey == "[";
@@ -143,11 +153,11 @@ namespace MelatoninAccess
                     AnnounceTeleportConflictHint();
                 }
 
-                if ((leftBracketPressed && !actionUsesLeftBracket) || f9Pressed)
+                if ((leftBracketPressed && !actionUsesLeftBracket) || f9Pressed || gamepadPrevPressed)
                 {
                     MapTeleporter.TeleportToPrev(__instance);
                 }
-                else if ((rightBracketPressed && !actionUsesRightBracket) || f10Pressed)
+                else if ((rightBracketPressed && !actionUsesRightBracket) || f10Pressed || gamepadNextPressed)
                 {
                     MapTeleporter.TeleportToNext(__instance);
                 }
@@ -257,6 +267,19 @@ namespace MelatoninAccess
                 3 when !isFullGame => Loc.Get("locked_requires_full_game"),
                 _ => ""
             };
+        }
+
+        private static int GetModePosition(ModeMenu menu, int activeItemNum)
+        {
+            bool isRemix = Traverse.Create(menu).Field("isRemix").GetValue<bool>();
+            if (!isRemix) return activeItemNum + 1;
+            return activeItemNum;
+        }
+
+        private static int GetModeOptionsCount(ModeMenu menu)
+        {
+            bool isRemix = Traverse.Create(menu).Field("isRemix").GetValue<bool>();
+            return isRemix ? 3 : 4;
         }
     }
 }
