@@ -12,7 +12,10 @@ namespace MelatoninAccess
     {
         public static void Postfix(DialogBox __instance, string newText)
         {
+            DialogHelper.ReadDialogText(newText);
             DialogHelper.ReadDialog(__instance);
+            MelonCoroutines.Start(DialogHelper.ReadDialogDelayed(__instance, 0.18f));
+            MelonCoroutines.Start(DialogHelper.ReadDialogDelayed(__instance, 0.42f));
         }
     }
 
@@ -22,6 +25,7 @@ namespace MelatoninAccess
         public static void Postfix(DialogBox __instance)
         {
             MelonCoroutines.Start(DialogHelper.ReadDialogDelayed(__instance, 0.2f));
+            MelonCoroutines.Start(DialogHelper.ReadDialogDelayed(__instance, 0.45f));
         }
     }
 
@@ -67,7 +71,7 @@ namespace MelatoninAccess
         {
             if (string.IsNullOrWhiteSpace(text)) return;
 
-            text = text.Replace("\n", " ").Trim();
+            text = text.Replace("\r", " ").Replace("\n", " ").Trim();
             if (string.IsNullOrEmpty(text)) return;
 
             float now = Time.unscaledTime;
@@ -76,6 +80,11 @@ namespace MelatoninAccess
             _lastDialogText = text;
             _lastDialogTime = now;
             ScreenReader.Say(text, interrupt);
+        }
+
+        public static void ReadDialogText(string text)
+        {
+            SpeakDialog(text, true);
         }
 
         public static void ReadDialog(DialogBox box)

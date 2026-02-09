@@ -130,11 +130,6 @@ namespace MelatoninAccess
                 ScreenReader.Say(DebugMode ? Loc.Get("debug_enabled") : Loc.Get("debug_disabled"), true);
                 MelonLogger.Msg($"Debug mode {(DebugMode ? "enabled" : "disabled")}.");
             }
-
-            if (Keyboard.current.f1Key.wasPressedThisFrame)
-            {
-                ScreenReader.Say(Loc.Get("mod_active_help"), true);
-            }
         }
     }
 }

@@ -35,7 +35,6 @@ Example flow:
 
 ## Hotkeys
 
-- `F1`: Re-read mod status/help announcement.
 - `F12`: Toggle debug logging on/off.
 
 ## Localization

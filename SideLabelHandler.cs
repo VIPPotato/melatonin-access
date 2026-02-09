@@ -37,6 +37,12 @@ namespace MelatoninAccess
     {
         public static void AnnounceLabel(textboxFragment fragment)
         {
+            if (SceneMonitor.mgr != null && SceneMonitor.mgr.GetActiveSceneName() == "Dream_tutorial")
+            {
+                ScreenReader.Say(Loc.Get("tutorial_skip_prompt", GetSkipPrompt()), true);
+                return;
+            }
+
             if (fragment != null)
             {
                 var tmp = fragment.GetComponent<TextMeshPro>();
@@ -45,6 +51,16 @@ namespace MelatoninAccess
                     ScreenReader.Say(tmp.text, true);
                 }
             }
+        }
+
+        private static string GetSkipPrompt()
+        {
+            if (ControlHandler.mgr == null) return "Tab";
+
+            int ctrlType = ControlHandler.mgr.GetCtrlType();
+            if (ctrlType == 1) return "Y";
+            if (ctrlType == 2) return "Triangle";
+            return "Tab";
         }
     }
 }

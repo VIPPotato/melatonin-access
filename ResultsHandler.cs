@@ -51,6 +51,13 @@ namespace MelatoninAccess
                 sb.Append(Loc.Get("results_stats", perfect, late, early, miss));
             }
 
+            if (results.StageEndMenu != null &&
+                StageEndMenuHelper.TryBuildSelectionAnnouncement(results.StageEndMenu, out string firstOptionAnnouncement))
+            {
+                if (sb.Length > 0) sb.Append(" ");
+                sb.Append(firstOptionAnnouncement);
+            }
+
             ScreenReader.Say(sb.ToString(), true);
         }
 
@@ -61,7 +68,7 @@ namespace MelatoninAccess
         {
             public static void Postfix(StageEndMenu __instance)
             {
-                MelonCoroutines.Start(StageEndMenuHelper.AnnounceSelectionDelayed(__instance));
+                // Initial option is announced together with the results summary.
             }
         }
 
@@ -89,43 +96,45 @@ namespace MelatoninAccess
             private static string _lastStageEndAnnouncement = "";
             private static float _lastStageEndAnnouncementTime = -10f;
 
-            public static IEnumerator AnnounceSelectionDelayed(StageEndMenu menu)
-            {
-                yield return new WaitForSecondsRealtime(1.05f);
-                AnnounceSelection(menu);
-            }
-
             public static void AnnounceSelection(StageEndMenu menu)
             {
+                if (!TryBuildSelectionAnnouncement(menu, out string text)) return;
+
+                float now = Time.unscaledTime;
+                if (text == _lastStageEndAnnouncement && now - _lastStageEndAnnouncementTime < StageEndRepeatBlockSeconds) return;
+
+                _lastStageEndAnnouncement = text;
+                _lastStageEndAnnouncementTime = now;
+                ScreenReader.Say(text, true);
+            }
+
+            public static bool TryBuildSelectionAnnouncement(StageEndMenu menu, out string announcement)
+            {
+                announcement = "";
+                if (menu == null) return false;
+
                 int highlightPosition = Traverse.Create(menu).Field("highlightPosition").GetValue<int>();
                 int activeOptionsCount = GetVisibleOptionsCount(menu);
-                
-                if (menu.labels != null && highlightPosition >= 0 && highlightPosition < menu.labels.Length)
+                if (menu.labels == null || highlightPosition < 0 || highlightPosition >= menu.labels.Length) return false;
+
+                var label = menu.labels[highlightPosition];
+                var tmp = label != null ? label.GetComponent<TextMeshPro>() : null;
+                if (tmp == null || string.IsNullOrWhiteSpace(tmp.text)) return false;
+
+                string text = tmp.text.Trim();
+                if (activeOptionsCount > 0)
                 {
-                    var label = menu.labels[highlightPosition];
-                    var tmp = label.GetComponent<TextMeshPro>();
-                    if (tmp != null)
-                    {
-                        string text = tmp.text;
-                        if (activeOptionsCount > 0)
-                        {
-                            text = Loc.Get("stage_end_position", text, highlightPosition + 1, activeOptionsCount);
-                        }
-
-                        string lockReason = GetLockReason(menu, highlightPosition);
-                        if (!string.IsNullOrWhiteSpace(lockReason))
-                        {
-                            text = $"{text}. {lockReason}";
-                        }
-
-                        float now = Time.unscaledTime;
-                        if (text == _lastStageEndAnnouncement && now - _lastStageEndAnnouncementTime < StageEndRepeatBlockSeconds) return;
-
-                        _lastStageEndAnnouncement = text;
-                        _lastStageEndAnnouncementTime = now;
-                        ScreenReader.Say(text, true);
-                    }
+                    text = Loc.Get("stage_end_position", text, highlightPosition + 1, activeOptionsCount);
                 }
+
+                string lockReason = GetLockReason(menu, highlightPosition);
+                if (!string.IsNullOrWhiteSpace(lockReason))
+                {
+                    text = $"{text}. {lockReason}";
+                }
+
+                announcement = text;
+                return true;
             }
 
             private static int GetVisibleOptionsCount(StageEndMenu menu)
