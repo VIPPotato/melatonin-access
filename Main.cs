@@ -43,6 +43,7 @@ namespace MelatoninAccess
 
             // Map
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(MapHandler.Landmark_Trigger_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(MapHandler.Landmark_Update_Patch));
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(MapHandler.ModeMenu_Transition_Patch));
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(MapHandler.ModeMenu_NavigateUp_Patch));
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(MapHandler.ModeMenu_NavigateDown_Patch));

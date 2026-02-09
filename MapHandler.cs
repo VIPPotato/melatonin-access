@@ -12,8 +12,10 @@ namespace MelatoninAccess
     {
         private const float ModeAnnouncementCooldown = 0.4f;
         private static float _lastModeMenuTitleTime = -10f;
-        private static int _lastModeIndex = -1;
+        private static string _lastModeAnnouncement = "";
         private static float _lastModeAnnounceTime = -10f;
+        private static string _lastLockReasonAnnouncement = "";
+        private static float _lastLockReasonTime = -10f;
 
         // --- Landmark & Mode Menu ---
 
@@ -26,6 +28,29 @@ namespace MelatoninAccess
 
                 string name = FormatDreamName(__instance.dreamName);
                 ScreenReader.Say(Loc.Get("arrived_at", name), true);
+            }
+        }
+
+        [HarmonyPatch(typeof(Landmark), "Update")]
+        public static class Landmark_Update_Patch
+        {
+            public static void Postfix()
+            {
+                if (ControlHandler.mgr == null || !ControlHandler.mgr.CheckIsActionPressed()) return;
+                if (Map.env == null || Map.env.Neighbourhood == null || Map.env.Neighbourhood.McMap == null) return;
+
+                ModeMenu menu = Map.env.Neighbourhood.McMap.ModeMenu;
+                if (menu == null || !menu.CheckIsActivated() || !menu.CheckIsTranstioned()) return;
+
+                string lockReason = GetModeLockReason(menu, menu.GetActiveItemNum());
+                if (string.IsNullOrWhiteSpace(lockReason)) return;
+
+                float now = Time.unscaledTime;
+                if (lockReason == _lastLockReasonAnnouncement && now - _lastLockReasonTime < ModeAnnouncementCooldown) return;
+
+                _lastLockReasonAnnouncement = lockReason;
+                _lastLockReasonTime = now;
+                ScreenReader.Say(lockReason, true);
             }
         }
 
@@ -72,12 +97,19 @@ namespace MelatoninAccess
                 var tmp = label.GetComponent<TextMeshPro>();
                 if (tmp != null && !string.IsNullOrWhiteSpace(tmp.text))
                 {
-                    float now = Time.unscaledTime;
-                    if (activeItemNum == _lastModeIndex && now - _lastModeAnnounceTime < ModeAnnouncementCooldown) return;
+                    string modeText = tmp.text.Trim();
+                    string lockReason = GetModeLockReason(menu, activeItemNum);
+                    if (!string.IsNullOrWhiteSpace(lockReason))
+                    {
+                        modeText = $"{modeText}. {lockReason}";
+                    }
 
-                    _lastModeIndex = activeItemNum;
+                    float now = Time.unscaledTime;
+                    if (modeText == _lastModeAnnouncement && now - _lastModeAnnounceTime < ModeAnnouncementCooldown) return;
+
+                    _lastModeAnnouncement = modeText;
                     _lastModeAnnounceTime = now;
-                    ScreenReader.Say(tmp.text.Trim(), true);
+                    ScreenReader.Say(modeText, true);
                 }
             }
         }
@@ -179,6 +211,23 @@ namespace MelatoninAccess
             if (string.IsNullOrEmpty(rawName)) return Loc.Get("unknown_level");
             if (rawName.Length == 1) return rawName.ToUpper();
             return char.ToUpper(rawName[0]) + rawName.Substring(1);
+        }
+
+        private static string GetModeLockReason(ModeMenu menu, int activeItemNum)
+        {
+            int starScore = Traverse.Create(menu).Field("starScore").GetValue<int>();
+            bool isRemix = Traverse.Create(menu).Field("isRemix").GetValue<bool>();
+            bool isFullGame = Builder.mgr != null && Builder.mgr.CheckIsFullGame();
+
+            return activeItemNum switch
+            {
+                1 when !(starScore > 0 || isRemix) => Loc.Get("locked_requires_one_star"),
+                2 when starScore < 2 => Loc.Get("locked_requires_two_stars"),
+                3 when starScore < 2 && !isFullGame => Loc.Get("locked_requires_two_stars_full_game"),
+                3 when starScore < 2 => Loc.Get("locked_requires_two_stars"),
+                3 when !isFullGame => Loc.Get("locked_requires_full_game"),
+                _ => ""
+            };
         }
     }
 }
