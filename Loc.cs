@@ -157,6 +157,32 @@ namespace MelatoninAccess
                 "Melatonin Access esta ativo. Use as setas para navegar nos menus.");
 
             Add(
+                "debug_enabled",
+                "Debug mode enabled.",
+                "调试模式已启用。",
+                "偵錯模式已啟用。",
+                "デバッグモードを有効にしました。",
+                "디버그 모드가 켜졌습니다.",
+                "Da bat che do giai loi.",
+                "Mode debug active.",
+                "Debug-Modus aktiviert.",
+                "Modo depuracion activado.",
+                "Modo de depuracao ativado.");
+
+            Add(
+                "debug_disabled",
+                "Debug mode disabled.",
+                "调试模式已禁用。",
+                "偵錯模式已停用。",
+                "デバッグモードを無効にしました。",
+                "디버그 모드가 꺼졌습니다.",
+                "Da tat che do giai loi.",
+                "Mode debug desactive.",
+                "Debug-Modus deaktiviert.",
+                "Modo depuracion desactivado.",
+                "Modo de depuracao desativado.");
+
+            Add(
                 "intro_fallback",
                 "Melatonin Access ready. Press {0} to start. Press Tab or Triangle/Y for language.",
                 "Melatonin Access 已就绪。按 {0} 开始。按 Tab 或 Triangle/Y 选择语言。",
