@@ -495,6 +495,19 @@ namespace MelatoninAccess
                 "{0}. {1} estrelas.");
 
             Add(
+                "teleport_conflict_hint",
+                "Bracket teleport is disabled because Action is bound to brackets. Use F9 and F10 for teleport.",
+                "由于操作键绑定到方括号，方括号传送已禁用。请使用 F9 和 F10 传送。",
+                "由於操作鍵綁定到中括號，中括號傳送已停用。請使用 F9 與 F10 傳送。",
+                "アクションキーが角かっこに割り当てられているため、角かっこテレポートは無効です。F9 と F10 を使ってください。",
+                "액션 키가 대괄호로 바인딩되어 대괄호 순간이동이 비활성화되었습니다. 순간이동은 F9/F10을 사용하세요.",
+                "Dich chuyen bang ngoac vuong da bi tat vi phim Hanh dong dang gan vao ngoac vuong. Hay dung F9 va F10 de dich chuyen.",
+                "La teleportation avec crochets est desactivee car l'action est assignee aux crochets. Utilisez F9 et F10.",
+                "Klammer-Teleport ist deaktiviert, weil Aktion auf Klammern gebunden ist. Nutze F9 und F10.",
+                "La teletransportacion con corchetes esta desactivada porque Accion usa corchetes. Usa F9 y F10.",
+                "O teleporte com colchetes foi desativado porque a Acao esta vinculada a colchetes. Use F9 e F10.");
+
+            Add(
                 "unknown_level",
                 "Unknown level",
                 "未知关卡",
