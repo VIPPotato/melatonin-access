@@ -183,17 +183,17 @@ namespace MelatoninAccess
                 "Modo de depuracao desativado.");
 
             Add(
-                "intro_fallback",
-                "Melatonin Access ready. Press {0} to start. Press Tab or Triangle/Y for language.",
-                "Melatonin Access 已就绪。按 {0} 开始。按 Tab 或 Triangle/Y 选择语言。",
-                "Melatonin Access 已就緒。按 {0} 開始。按 Tab 或 Triangle/Y 選擇語言。",
-                "Melatonin Access の準備ができました。{0} で開始。Tab または Triangle/Y で言語を変更します。",
-                "Melatonin Access 준비 완료. {0} 키로 시작하고 Tab 또는 Triangle/Y로 언어를 변경하세요.",
-                "Melatonin Access san sang. Nhan {0} de bat dau. Nhan Tab hoac Triangle/Y de doi ngon ngu.",
-                "Melatonin Access est pret. Appuyez sur {0} pour commencer. Appuyez sur Tab ou Triangle/Y pour la langue.",
-                "Melatonin Access ist bereit. Drucke {0} zum Starten. Tab oder Triangle/Y fur Sprache.",
-                "Melatonin Access listo. Pulsa {0} para comenzar. Pulsa Tab o Triangle/Y para idioma.",
-                "Melatonin Access pronto. Pressione {0} para iniciar. Pressione Tab ou Triangle/Y para idioma.");
+                "intro_welcome",
+                "Press {0} to begin. Press {1} to change language.",
+                "按 {0} 开始。按 {1} 更改语言。",
+                "按 {0} 開始。按 {1} 更改語言。",
+                "{0} で開始。{1} で言語を変更します。",
+                "{0} 키로 시작하고 {1} 키로 언어를 변경하세요.",
+                "Nhan {0} de bat dau. Nhan {1} de doi ngon ngu.",
+                "Appuyez sur {0} pour commencer. Appuyez sur {1} pour changer la langue.",
+                "Drucke {0} zum Starten. Drucke {1}, um die Sprache zu aendern.",
+                "Pulsa {0} para comenzar. Pulsa {1} para cambiar el idioma.",
+                "Pressione {0} para iniciar. Pressione {1} para alterar o idioma.");
 
             Add(
                 "language_selected",

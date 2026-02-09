@@ -136,8 +136,7 @@ namespace MelatoninAccess
         {
             public static void Postfix(AdvancedMenu __instance)
             {
-                ScreenReader.Say(Loc.Get("advanced_menu"), true);
-                AnnounceAdvancedSelection(__instance, includeTabTitle: true, interrupt: false);
+                AnnounceAdvancedSelection(__instance, includeTabTitle: true, includeMenuTitle: true, interrupt: true);
             }
         }
 
@@ -146,7 +145,7 @@ namespace MelatoninAccess
         {
             public static void Postfix(AdvancedMenu __instance)
             {
-                AnnounceAdvancedSelection(__instance, includeTabTitle: true, interrupt: true);
+                AnnounceAdvancedSelection(__instance, includeTabTitle: true, includeMenuTitle: false, interrupt: true);
             }
         }
 
@@ -155,7 +154,7 @@ namespace MelatoninAccess
         {
             public static void Postfix(AdvancedMenu __instance)
             {
-                AnnounceAdvancedSelection(__instance, includeTabTitle: false, interrupt: true);
+                AnnounceAdvancedSelection(__instance, includeTabTitle: false, includeMenuTitle: false, interrupt: true);
             }
         }
 
@@ -164,7 +163,7 @@ namespace MelatoninAccess
         {
             public static void Postfix(AdvancedMenu __instance)
             {
-                AnnounceAdvancedSelection(__instance, includeTabTitle: false, interrupt: true);
+                AnnounceAdvancedSelection(__instance, includeTabTitle: false, includeMenuTitle: false, interrupt: true);
             }
         }
 
@@ -173,7 +172,7 @@ namespace MelatoninAccess
         {
             public static void Postfix(AdvancedMenu __instance)
             {
-                AnnounceAdvancedSelection(__instance, includeTabTitle: false, interrupt: true);
+                AnnounceAdvancedSelection(__instance, includeTabTitle: false, includeMenuTitle: false, interrupt: true);
             }
         }
 
@@ -182,7 +181,7 @@ namespace MelatoninAccess
         {
             public static void Postfix(AdvancedMenu __instance)
             {
-                AnnounceAdvancedSelection(__instance, includeTabTitle: false, interrupt: true);
+                AnnounceAdvancedSelection(__instance, includeTabTitle: false, includeMenuTitle: false, interrupt: true);
             }
         }
 
@@ -191,7 +190,7 @@ namespace MelatoninAccess
         {
             public static void Postfix(AdvancedMenu __instance)
             {
-                AnnounceAdvancedSelection(__instance, includeTabTitle: false, interrupt: true);
+                AnnounceAdvancedSelection(__instance, includeTabTitle: false, includeMenuTitle: false, interrupt: true);
             }
         }
 
@@ -200,7 +199,7 @@ namespace MelatoninAccess
         {
             public static void Postfix(AdvancedMenu __instance)
             {
-                AnnounceAdvancedSelection(__instance, includeTabTitle: false, interrupt: true);
+                AnnounceAdvancedSelection(__instance, includeTabTitle: false, includeMenuTitle: false, interrupt: true);
             }
         }
 
@@ -258,7 +257,7 @@ namespace MelatoninAccess
             }
         }
 
-        private static void AnnounceAdvancedSelection(AdvancedMenu menu, bool includeTabTitle, bool interrupt)
+        private static void AnnounceAdvancedSelection(AdvancedMenu menu, bool includeTabTitle, bool includeMenuTitle, bool interrupt)
         {
             if (menu == null) return;
 
@@ -292,6 +291,13 @@ namespace MelatoninAccess
                         ? title
                         : $"{title}. {announcement}";
                 }
+            }
+
+            if (includeMenuTitle)
+            {
+                announcement = string.IsNullOrWhiteSpace(announcement)
+                    ? Loc.Get("advanced_menu")
+                    : $"{Loc.Get("advanced_menu")}. {announcement}";
             }
 
             if (string.IsNullOrWhiteSpace(announcement)) return;

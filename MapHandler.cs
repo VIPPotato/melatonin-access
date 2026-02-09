@@ -65,8 +65,7 @@ namespace MelatoninAccess
                 if (now - _lastModeMenuTitleTime < ModeAnnouncementCooldown) return;
 
                 _lastModeMenuTitleTime = now;
-                ScreenReader.Say(Loc.Get("mode_menu"), true);
-                AnnounceMode(__instance);
+                AnnounceMode(__instance, includeMenuTitle: true);
             }
         }
 
@@ -88,7 +87,7 @@ namespace MelatoninAccess
             }
         }
 
-        private static void AnnounceMode(ModeMenu menu)
+        private static void AnnounceMode(ModeMenu menu, bool includeMenuTitle = false)
         {
             int activeItemNum = Traverse.Create(menu).Field("activeItemNum").GetValue<int>();
             var modeLabels = Traverse.Create(menu).Field("modeLabels").GetValue<textboxFragment[]>();
@@ -104,6 +103,11 @@ namespace MelatoninAccess
                     if (!string.IsNullOrWhiteSpace(lockReason))
                     {
                         modeText = $"{modeText}. {lockReason}";
+                    }
+
+                    if (includeMenuTitle)
+                    {
+                        modeText = $"{Loc.Get("mode_menu")}. {modeText}";
                     }
 
                     float now = Time.unscaledTime;

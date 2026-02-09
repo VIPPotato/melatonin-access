@@ -65,28 +65,9 @@ namespace MelatoninAccess
         private static IEnumerator AnnounceDelayed(bool force = false)
         {
             if (!force) yield return new WaitForSecondsRealtime(0.5f);
-            
-            string message = "";
-            if (TitleWorld.env != null)
-            {
-                if (TitleWorld.env.Instruction != null && TitleWorld.env.Instruction.label != null)
-                {
-                    var startTmp = TitleWorld.env.Instruction.label.GetComponent<TextMeshPro>();
-                    if (startTmp != null && !string.IsNullOrEmpty(startTmp.text)) message += startTmp.text + ". ";
-                }
-                
-                if (TitleWorld.env.LangHint != null && TitleWorld.env.LangHint.label != null)
-                {
-                    var langTmp = TitleWorld.env.LangHint.label.GetComponent<TextMeshPro>();
-                    if (langTmp != null && !string.IsNullOrEmpty(langTmp.text)) message += langTmp.text;
-                }
-            }
-
-            if (string.IsNullOrEmpty(message))
-            {
-                string action = GetActionPrompt();
-                message = Loc.Get("intro_fallback", action);
-            }
+            string action = GetActionPrompt();
+            string language = GetLanguagePrompt();
+            string message = Loc.Get("intro_welcome", action, language);
 
             float now = Time.unscaledTime;
             if (message == _lastIntroMessage && now - _lastIntroTime < IntroRepeatBlockSeconds) yield break;
@@ -109,6 +90,14 @@ namespace MelatoninAccess
             if (ctrlType == 1) return "A";
             if (ctrlType == 2) return "Cross";
             return "Space";
+        }
+
+        private static string GetLanguagePrompt()
+        {
+            int ctrlType = ControlHandler.mgr.GetCtrlType();
+            if (ctrlType == 1) return "Y";
+            if (ctrlType == 2) return "Triangle";
+            return "Tab";
         }
     }
 
@@ -134,8 +123,7 @@ namespace MelatoninAccess
             if (now - _lastActivationTime < 0.5f) return;
 
             _lastActivationTime = now;
-            ScreenReader.Say(Loc.Get("language_menu"), true);
-            LangMenuHelper.AnnounceSelectedLang(__instance);
+            LangMenuHelper.AnnounceSelectedLang(__instance, includeMenuTitle: true);
         }
     }
 
@@ -163,7 +151,7 @@ namespace MelatoninAccess
         private static string _lastAnnouncedLanguage = "";
         private static float _lastAnnouncedLanguageTime = -10f;
 
-        public static void AnnounceSelectedLang(LangMenu menu)
+        public static void AnnounceSelectedLang(LangMenu menu, bool includeMenuTitle = false)
         {
              int highlightNum = Traverse.Create(menu).Field("highlightNum").GetValue<int>();
              if (menu.langs != null && highlightNum >= 0 && highlightNum < menu.langs.Length)
@@ -172,13 +160,17 @@ namespace MelatoninAccess
                  if (tmp != null && !string.IsNullOrWhiteSpace(tmp.text))
                  {
                      string language = tmp.text.Trim();
-                     float now = Time.unscaledTime;
-                     if (language == _lastAnnouncedLanguage && now - _lastAnnouncedLanguageTime < LanguageRepeatBlockSeconds) return;
+                     string announcement = includeMenuTitle
+                         ? $"{Loc.Get("language_menu")}. {language}"
+                         : language;
 
-                     _lastAnnouncedLanguage = language;
-                     _lastAnnouncedLanguageTime = now;
-                     ScreenReader.Say(language, true);
-                 }
+                      float now = Time.unscaledTime;
+                      if (announcement == _lastAnnouncedLanguage && now - _lastAnnouncedLanguageTime < LanguageRepeatBlockSeconds) return;
+
+                      _lastAnnouncedLanguage = announcement;
+                      _lastAnnouncedLanguageTime = now;
+                      ScreenReader.Say(announcement, true);
+                  }
              }
         }
     }

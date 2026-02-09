@@ -9,6 +9,9 @@ namespace MelatoninAccess
     public static class MenuHandler
     {
         private static float lastTitleTime = 0f;
+        private const float PendingTitleCombineWindowSeconds = 0.8f;
+        private static string _pendingMenuTitle = "";
+        private static float _pendingMenuTitleTime = -10f;
 
         // --- Menu Title ---
         [HarmonyPatch(typeof(MenuTitle), "Activate")]
@@ -22,7 +25,8 @@ namespace MelatoninAccess
                     if (tmp != null)
                     {
                         lastTitleTime = Time.time;
-                        ScreenReader.Say(Loc.Get("menu_suffix", tmp.text), true);
+                        _pendingMenuTitle = Loc.Get("menu_suffix", tmp.text);
+                        _pendingMenuTitleTime = Time.unscaledTime;
                     }
                 }
             }
@@ -34,6 +38,12 @@ namespace MelatoninAccess
         {
             public static void Postfix(Option __instance)
             {
+                if (!string.IsNullOrWhiteSpace(_pendingMenuTitle) &&
+                    Time.unscaledTime - _pendingMenuTitleTime > PendingTitleCombineWindowSeconds)
+                {
+                    _pendingMenuTitle = "";
+                }
+
                 if (__instance.label != null)
                 {
                     var tmp = __instance.label.GetComponent<TextMeshPro>();
@@ -144,8 +154,21 @@ namespace MelatoninAccess
                             }
                         }
 
-                        // If menu title was just announced (< 0.5s ago), queue this announcement.
-                        // Otherwise (navigation), interrupt.
+                        // Combine first option with pending menu title when a menu just opened.
+                        // Otherwise (normal navigation), interrupt as usual.
+                        bool shouldCombineWithMenuTitle =
+                            !string.IsNullOrWhiteSpace(_pendingMenuTitle) &&
+                            Time.unscaledTime - _pendingMenuTitleTime <= PendingTitleCombineWindowSeconds;
+
+                        if (shouldCombineWithMenuTitle)
+                        {
+                            text = $"{_pendingMenuTitle}. {text}";
+                            _pendingMenuTitle = "";
+                            _pendingMenuTitleTime = -10f;
+                            ScreenReader.Say(text, true);
+                            return;
+                        }
+
                         bool interrupt = (Time.time - lastTitleTime > 0.5f);
                         ScreenReader.Say(text, interrupt);
                     }
