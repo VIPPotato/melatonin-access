@@ -120,7 +120,7 @@ namespace MelatoninAccess
                 ? right
                 : string.IsNullOrWhiteSpace(right)
                     ? left
-                    : $"{left}. {right}";
+                    : JoinDialogParts(left, right);
 
             SpeakDialog(text, true);
         }
@@ -145,6 +145,18 @@ namespace MelatoninAccess
             if (tmp == null || string.IsNullOrWhiteSpace(tmp.text)) return "";
 
             return tmp.text.Trim();
+        }
+
+        private static string JoinDialogParts(string left, string right)
+        {
+            if (string.IsNullOrWhiteSpace(left)) return right;
+            if (string.IsNullOrWhiteSpace(right)) return left;
+
+            char last = left[left.Length - 1];
+            bool hasSentencePunctuation = last == '.' || last == '!' || last == '?' || last == '…';
+            return hasSentencePunctuation
+                ? $"{left} {right}"
+                : $"{left}. {right}";
         }
     }
 }
