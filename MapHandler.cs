@@ -29,6 +29,7 @@ namespace MelatoninAccess
         {
             public static void Postfix(Landmark __instance)
             {
+                if (!ModConfig.AnnounceMapHotspots) return;
                 if (MapTeleporter.IsTeleporting) return;
 
                 string name = FormatDreamName(__instance.dreamName);
@@ -212,8 +213,11 @@ namespace MelatoninAccess
 
                 string name = FormatDreamName(target.dreamName);
                 int stars = SaveManager.mgr.GetScore("Dream_" + target.dreamName);
-                string starKey = stars == 1 ? "teleport_arrived_one_star" : "teleport_arrived_stars";
-                ScreenReader.Say(Loc.Get(starKey, name, stars), true);
+                if (ModConfig.AnnounceMapHotspots)
+                {
+                    string starKey = stars == 1 ? "teleport_arrived_one_star" : "teleport_arrived_stars";
+                    ScreenReader.Say(Loc.Get(starKey, name, stars), true);
+                }
 
                 MelonCoroutines.Start(ResetTeleportFlag());
             }
@@ -250,6 +254,7 @@ namespace MelatoninAccess
 
         private static void AnnounceTeleportConflictHint()
         {
+            if (!ModConfig.AnnounceMapHotspots) return;
             float now = Time.unscaledTime;
             if (now - _lastTeleportConflictHintTime < TeleportConflictHintCooldown) return;
 

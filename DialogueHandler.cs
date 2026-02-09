@@ -79,6 +79,7 @@ namespace MelatoninAccess
 
         private static void SpeakDialog(string text, bool interrupt)
         {
+            if (!ModConfig.AnnounceTutorialDialog) return;
             if (string.IsNullOrWhiteSpace(text)) return;
 
             text = text.Replace("\r", " ").Replace("\n", " ").Trim();
