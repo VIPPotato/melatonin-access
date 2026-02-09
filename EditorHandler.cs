@@ -8,6 +8,12 @@ namespace MelatoninAccess
 {
     public static class EditorHandler
     {
+        private const float RepeatBlockSeconds = 0.2f;
+        private static string _lastAdvancedAnnouncement = "";
+        private static float _lastAdvancedAnnouncementTime = -10f;
+        private static string _lastTimelineAnnouncement = "";
+        private static float _lastTimelineAnnouncementTime = -10f;
+
         // --- DAW Cursor Movement ---
 
         [HarmonyPatch(typeof(Daw), "IncreaseBeat")]
@@ -123,6 +129,110 @@ namespace MelatoninAccess
             }
         }
 
+        // --- Advanced Menu ---
+
+        [HarmonyPatch(typeof(AdvancedMenu), "Activate")]
+        public static class AdvancedMenu_Activate_Patch
+        {
+            public static void Postfix(AdvancedMenu __instance)
+            {
+                ScreenReader.Say(Loc.Get("advanced_menu"), true);
+                AnnounceAdvancedSelection(__instance, includeTabTitle: true, interrupt: false);
+            }
+        }
+
+        [HarmonyPatch(typeof(AdvancedMenu), "SwapTab")]
+        public static class AdvancedMenu_SwapTab_Patch
+        {
+            public static void Postfix(AdvancedMenu __instance)
+            {
+                AnnounceAdvancedSelection(__instance, includeTabTitle: true, interrupt: true);
+            }
+        }
+
+        [HarmonyPatch(typeof(AdvancedMenu), "NextRow")]
+        public static class AdvancedMenu_NextRow_Patch
+        {
+            public static void Postfix(AdvancedMenu __instance)
+            {
+                AnnounceAdvancedSelection(__instance, includeTabTitle: false, interrupt: true);
+            }
+        }
+
+        [HarmonyPatch(typeof(AdvancedMenu), "PrevRow")]
+        public static class AdvancedMenu_PrevRow_Patch
+        {
+            public static void Postfix(AdvancedMenu __instance)
+            {
+                AnnounceAdvancedSelection(__instance, includeTabTitle: false, interrupt: true);
+            }
+        }
+
+        [HarmonyPatch(typeof(AdvancedMenu), "Increase")]
+        public static class AdvancedMenu_Increase_Patch
+        {
+            public static void Postfix(AdvancedMenu __instance)
+            {
+                AnnounceAdvancedSelection(__instance, includeTabTitle: false, interrupt: true);
+            }
+        }
+
+        [HarmonyPatch(typeof(AdvancedMenu), "Decrease")]
+        public static class AdvancedMenu_Decrease_Patch
+        {
+            public static void Postfix(AdvancedMenu __instance)
+            {
+                AnnounceAdvancedSelection(__instance, includeTabTitle: false, interrupt: true);
+            }
+        }
+
+        [HarmonyPatch(typeof(AdvancedMenu), "Increment")]
+        public static class AdvancedMenu_Increment_Patch
+        {
+            public static void Postfix(AdvancedMenu __instance)
+            {
+                AnnounceAdvancedSelection(__instance, includeTabTitle: false, interrupt: true);
+            }
+        }
+
+        [HarmonyPatch(typeof(AdvancedMenu), "Diminish")]
+        public static class AdvancedMenu_Diminish_Patch
+        {
+            public static void Postfix(AdvancedMenu __instance)
+            {
+                AnnounceAdvancedSelection(__instance, includeTabTitle: false, interrupt: true);
+            }
+        }
+
+        // --- Timeline Tabs ---
+
+        [HarmonyPatch(typeof(TimelineTabs), "Show")]
+        public static class TimelineTabs_Show_Patch
+        {
+            public static void Postfix(TimelineTabs __instance)
+            {
+                AnnounceTimelineTab(__instance);
+            }
+        }
+
+        [HarmonyPatch(typeof(TimelineTabs), "NextTab")]
+        public static class TimelineTabs_NextTab_Patch
+        {
+            public static void Postfix(TimelineTabs __instance)
+            {
+                AnnounceTimelineTab(__instance);
+            }
+        }
+
+        [HarmonyPatch(typeof(TimelineTabs), "PrevTab")]
+        public static class TimelineTabs_PrevTab_Patch
+        {
+            public static void Postfix(TimelineTabs __instance)
+            {
+                AnnounceTimelineTab(__instance);
+            }
+        }
+
         private static void AnnounceTool(CustomizeMenu menu)
         {
             var item = menu.GetHighlightedCustomzieItem();
@@ -146,6 +256,92 @@ namespace MelatoninAccess
                     ScreenReader.Say(Loc.Get("editor_page", tmp.text), true);
                 }
             }
+        }
+
+        private static void AnnounceAdvancedSelection(AdvancedMenu menu, bool includeTabTitle, bool interrupt)
+        {
+            if (menu == null) return;
+
+            int tab = menu.GetTabNum();
+            int row = menu.GetRowNum();
+
+            string rowText = tab == 0
+                ? GetFragmentText(menu.labels_music, row)
+                : GetFragmentText(menu.labels_share, row);
+
+            string valueText = "";
+            if (tab == 0 && row >= 1 && row <= 3)
+            {
+                valueText = GetFragmentText(menu.numbers, row - 1);
+            }
+
+            string announcement = rowText;
+            if (!string.IsNullOrWhiteSpace(valueText))
+            {
+                announcement = string.IsNullOrWhiteSpace(announcement)
+                    ? valueText
+                    : $"{announcement}. {valueText}";
+            }
+
+            if (includeTabTitle)
+            {
+                string title = GetFragmentText(menu.titles, tab);
+                if (!string.IsNullOrWhiteSpace(title))
+                {
+                    announcement = string.IsNullOrWhiteSpace(announcement)
+                        ? title
+                        : $"{title}. {announcement}";
+                }
+            }
+
+            if (string.IsNullOrWhiteSpace(announcement)) return;
+
+            float now = Time.unscaledTime;
+            if (announcement == _lastAdvancedAnnouncement && now - _lastAdvancedAnnouncementTime < RepeatBlockSeconds) return;
+
+            _lastAdvancedAnnouncement = announcement;
+            _lastAdvancedAnnouncementTime = now;
+            ScreenReader.Say(announcement, interrupt);
+        }
+
+        private static void AnnounceTimelineTab(TimelineTabs tabs)
+        {
+            if (tabs == null) return;
+
+            int index = tabs.GetCharType() switch
+            {
+                'd' => 0,
+                'u' => 1,
+                'e' => 2,
+                't' => 3,
+                _ => 0
+            };
+
+            string announcement = GetFragmentText(tabs.labels, index);
+            if (string.IsNullOrWhiteSpace(announcement)) return;
+
+            float now = Time.unscaledTime;
+            if (announcement == _lastTimelineAnnouncement && now - _lastTimelineAnnouncementTime < RepeatBlockSeconds) return;
+
+            _lastTimelineAnnouncement = announcement;
+            _lastTimelineAnnouncementTime = now;
+            ScreenReader.Say(announcement, true);
+        }
+
+        private static string GetFragmentText(textboxFragment[] fragments, int index)
+        {
+            if (fragments == null || index < 0 || index >= fragments.Length) return "";
+            return GetFragmentText(fragments[index]);
+        }
+
+        private static string GetFragmentText(textboxFragment fragment)
+        {
+            if (fragment == null) return "";
+
+            var tmp = fragment.GetComponent<TextMeshPro>();
+            return tmp != null && !string.IsNullOrWhiteSpace(tmp.text)
+                ? tmp.text.Trim()
+                : "";
         }
     }
 }
