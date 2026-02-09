@@ -12,12 +12,15 @@ namespace MelatoninAccess
     {
         private const float ModeAnnouncementCooldown = 0.4f;
         private const float TeleportConflictHintCooldown = 2.0f;
+        private const float LandmarkRepeatCooldown = 0.75f;
         private static float _lastModeMenuTitleTime = -10f;
         private static string _lastModeAnnouncement = "";
         private static float _lastModeAnnounceTime = -10f;
         private static string _lastLockReasonAnnouncement = "";
         private static float _lastLockReasonTime = -10f;
         private static float _lastTeleportConflictHintTime = -10f;
+        private static string _lastLandmarkAnnouncement = "";
+        private static float _lastLandmarkAnnouncementTime = -10f;
 
         // --- Landmark & Mode Menu ---
 
@@ -29,6 +32,7 @@ namespace MelatoninAccess
                 if (MapTeleporter.IsTeleporting) return;
 
                 string name = FormatDreamName(__instance.dreamName);
+                if (ShouldSkipLandmarkAnnouncement(name)) return;
                 ScreenReader.Say(Loc.Get("arrived_at", name), true);
             }
         }
@@ -250,6 +254,19 @@ namespace MelatoninAccess
 
             _lastTeleportConflictHintTime = now;
             ScreenReader.Say(Loc.Get("teleport_conflict_hint"), true);
+        }
+
+        private static bool ShouldSkipLandmarkAnnouncement(string name)
+        {
+            float now = Time.unscaledTime;
+            if (name == _lastLandmarkAnnouncement && now - _lastLandmarkAnnouncementTime < LandmarkRepeatCooldown)
+            {
+                return true;
+            }
+
+            _lastLandmarkAnnouncement = name;
+            _lastLandmarkAnnouncementTime = now;
+            return false;
         }
 
         private static string GetModeLockReason(ModeMenu menu, int activeItemNum)
