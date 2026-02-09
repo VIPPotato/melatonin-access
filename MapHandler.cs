@@ -11,11 +11,13 @@ namespace MelatoninAccess
     public static class MapHandler
     {
         private const float ModeAnnouncementCooldown = 0.4f;
+        private const float TeleportConflictHintCooldown = 2.0f;
         private static float _lastModeMenuTitleTime = -10f;
         private static string _lastModeAnnouncement = "";
         private static float _lastModeAnnounceTime = -10f;
         private static string _lastLockReasonAnnouncement = "";
         private static float _lastLockReasonTime = -10f;
+        private static float _lastTeleportConflictHintTime = -10f;
 
         // --- Landmark & Mode Menu ---
 
@@ -123,11 +125,25 @@ namespace MelatoninAccess
             {
                 if (Keyboard.current == null) return;
 
-                if (Keyboard.current.leftBracketKey.wasPressedThisFrame)
+                bool leftBracketPressed = Keyboard.current.leftBracketKey.wasPressedThisFrame;
+                bool rightBracketPressed = Keyboard.current.rightBracketKey.wasPressedThisFrame;
+                bool f9Pressed = Keyboard.current.f9Key.wasPressedThisFrame;
+                bool f10Pressed = Keyboard.current.f10Key.wasPressedThisFrame;
+
+                string actionKey = SaveManager.mgr != null ? SaveManager.mgr.GetActionKey() : "";
+                bool actionUsesLeftBracket = actionKey == "[";
+                bool actionUsesRightBracket = actionKey == "]";
+
+                if ((leftBracketPressed && actionUsesLeftBracket) || (rightBracketPressed && actionUsesRightBracket))
+                {
+                    AnnounceTeleportConflictHint();
+                }
+
+                if ((leftBracketPressed && !actionUsesLeftBracket) || f9Pressed)
                 {
                     MapTeleporter.TeleportToPrev(__instance);
                 }
-                else if (Keyboard.current.rightBracketKey.wasPressedThisFrame)
+                else if ((rightBracketPressed && !actionUsesRightBracket) || f10Pressed)
                 {
                     MapTeleporter.TeleportToNext(__instance);
                 }
@@ -211,6 +227,15 @@ namespace MelatoninAccess
             if (string.IsNullOrEmpty(rawName)) return Loc.Get("unknown_level");
             if (rawName.Length == 1) return rawName.ToUpper();
             return char.ToUpper(rawName[0]) + rawName.Substring(1);
+        }
+
+        private static void AnnounceTeleportConflictHint()
+        {
+            float now = Time.unscaledTime;
+            if (now - _lastTeleportConflictHintTime < TeleportConflictHintCooldown) return;
+
+            _lastTeleportConflictHintTime = now;
+            ScreenReader.Say(Loc.Get("teleport_conflict_hint"), true);
         }
 
         private static string GetModeLockReason(ModeMenu menu, int activeItemNum)
