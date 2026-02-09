@@ -701,6 +701,58 @@ namespace MelatoninAccess
                 "{0}, {1} von {2}",
                 "{0}, {1} de {2}",
                 "{0}, {1} de {2}");
+
+            Add(
+                "locked_requires_one_star",
+                "Locked. Requires at least 1 star.",
+                "已锁定。至少需要 1 星。",
+                "已鎖定。至少需要 1 星。",
+                "ロック中。少なくとも1つ星が必要です。",
+                "잠김. 최소 별 1개가 필요합니다.",
+                "Bi khoa. Can it nhat 1 sao.",
+                "Verrouille. Necessite au moins 1 etoile.",
+                "Gesperrt. Mindestens 1 Stern erforderlich.",
+                "Bloqueado. Requiere al menos 1 estrella.",
+                "Bloqueado. Requer pelo menos 1 estrela.");
+
+            Add(
+                "locked_requires_two_stars",
+                "Locked. Requires 2 stars.",
+                "已锁定。需要 2 星。",
+                "已鎖定。需要 2 星。",
+                "ロック中。2つ星が必要です。",
+                "잠김. 별 2개가 필요합니다.",
+                "Bi khoa. Can 2 sao.",
+                "Verrouille. Necessite 2 etoiles.",
+                "Gesperrt. 2 Sterne erforderlich.",
+                "Bloqueado. Requiere 2 estrellas.",
+                "Bloqueado. Requer 2 estrelas.");
+
+            Add(
+                "locked_requires_full_game",
+                "Locked. Requires full game.",
+                "已锁定。需要完整版游戏。",
+                "已鎖定。需要完整版遊戲。",
+                "ロック中。製品版が必要です。",
+                "잠김. 정식 버전이 필요합니다.",
+                "Bi khoa. Can ban day du cua tro choi.",
+                "Verrouille. Necessite le jeu complet.",
+                "Gesperrt. Vollversion erforderlich.",
+                "Bloqueado. Requiere el juego completo.",
+                "Bloqueado. Requer o jogo completo.");
+
+            Add(
+                "locked_requires_two_stars_full_game",
+                "Locked. Requires 2 stars and full game.",
+                "已锁定。需要 2 星和完整版游戏。",
+                "已鎖定。需要 2 星與完整版遊戲。",
+                "ロック中。2つ星と製品版が必要です。",
+                "잠김. 별 2개와 정식 버전이 필요합니다.",
+                "Bi khoa. Can 2 sao va ban day du cua tro choi.",
+                "Verrouille. Necessite 2 etoiles et le jeu complet.",
+                "Gesperrt. 2 Sterne und Vollversion erforderlich.",
+                "Bloqueado. Requiere 2 estrellas y juego completo.",
+                "Bloqueado. Requer 2 estrelas e o jogo completo.");
         }
     }
 }

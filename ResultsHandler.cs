@@ -61,12 +61,7 @@ namespace MelatoninAccess
         {
             public static void Postfix(StageEndMenu __instance)
             {
-                // Delay slightly to let Results read first, or just read options
-                // Usually Results read is long, so we might not want to interrupt it immediately.
-                // But StageEndMenu shows up at the same time.
-                // Let's NOT read Stage Menu immediately if Results is reading. 
-                // But the user might want to navigate immediately.
-                // We'll let Results read. User can press Up/Down to hear options.
+                MelonCoroutines.Start(StageEndMenuHelper.AnnounceSelectionDelayed(__instance));
             }
         }
 
@@ -90,10 +85,20 @@ namespace MelatoninAccess
 
         public static class StageEndMenuHelper
         {
+            private const float StageEndRepeatBlockSeconds = 0.35f;
+            private static string _lastStageEndAnnouncement = "";
+            private static float _lastStageEndAnnouncementTime = -10f;
+
+            public static IEnumerator AnnounceSelectionDelayed(StageEndMenu menu)
+            {
+                yield return new WaitForSecondsRealtime(1.05f);
+                AnnounceSelection(menu);
+            }
+
             public static void AnnounceSelection(StageEndMenu menu)
             {
                 int highlightPosition = Traverse.Create(menu).Field("highlightPosition").GetValue<int>();
-                int activeOptionsCount = Traverse.Create(menu).Field("activeOptionsCount").GetValue<int>();
+                int activeOptionsCount = GetVisibleOptionsCount(menu);
                 
                 if (menu.labels != null && highlightPosition >= 0 && highlightPosition < menu.labels.Length)
                 {
@@ -106,9 +111,51 @@ namespace MelatoninAccess
                         {
                             text = Loc.Get("stage_end_position", text, highlightPosition + 1, activeOptionsCount);
                         }
+
+                        string lockReason = GetLockReason(menu, highlightPosition);
+                        if (!string.IsNullOrWhiteSpace(lockReason))
+                        {
+                            text = $"{text}. {lockReason}";
+                        }
+
+                        float now = Time.unscaledTime;
+                        if (text == _lastStageEndAnnouncement && now - _lastStageEndAnnouncementTime < StageEndRepeatBlockSeconds) return;
+
+                        _lastStageEndAnnouncement = text;
+                        _lastStageEndAnnouncementTime = now;
                         ScreenReader.Say(text, true);
                     }
                 }
+            }
+
+            private static int GetVisibleOptionsCount(StageEndMenu menu)
+            {
+                if (menu.labels == null) return 0;
+
+                int count = 0;
+                foreach (var label in menu.labels)
+                {
+                    if (label != null && label.CheckIsMeshRendered())
+                    {
+                        count++;
+                    }
+                }
+                return count;
+            }
+
+            private static string GetLockReason(StageEndMenu menu, int highlightPosition)
+            {
+                if (highlightPosition != 0) return "";
+
+                int gameMode = Traverse.Create(menu).Field("gameMode").GetValue<int>();
+                if (gameMode != 1 && gameMode != 3) return "";
+
+                string sceneName = SceneMonitor.mgr != null ? SceneMonitor.mgr.GetActiveSceneName() : "";
+                if (string.IsNullOrEmpty(sceneName) || SaveManager.mgr == null) return "";
+
+                return SaveManager.mgr.GetScore(sceneName) >= 2
+                    ? ""
+                    : Loc.Get("locked_requires_two_stars");
             }
         }
     }
