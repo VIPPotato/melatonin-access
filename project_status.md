@@ -16,8 +16,14 @@
 - [x] **Tutorial Extraction (2026-02-09)**: Extracted tutorial/help text and flow context into `docs/tutorial-texts.md`; updated `docs/game-api.md` with tutorial start path, skip behavior, and text-source notes. Deep asset pass recovered additional gameplay instruction lines from `Melatonin_Data\level0` (metronome, timing circle, score mode readiness, and auto-restart behavior).
 - [x] **Duplicate Announcement Reduction (2026-02-09)**: Added targeted debounce for dialog text (`DialogueHandler`), language/start screen (`StartScreenHandler`), and map mode menu (`MapHandler`), plus stronger whitespace/time normalization in `ScreenReader`. Build succeeded and DLL auto-copied to game `Mods` folder.
 - [x] **Duplicate Announcement Reduction Pass 2 (2026-02-09)**: Removed additional duplicate bursts in `AchievementsHandler` and `ExtraMenusHandler` (community next/prev page and calibration activation/description) with short cooldown-based dedupe. Build succeeded and deployed.
+- [x] **Localization Framework (2026-02-09)**: Added `Loc.cs`, language auto-refresh via `SaveManager.GetLang()`, and routed mod-originated announcements through localization keys for all game-supported languages.
+- [x] **Editor Completeness Pass (2026-02-09)**: Added narration for `AdvancedMenu` (activate, tab swap, row changes, value changes) and `TimelineTabs` (`Show`, `NextTab`, `PrevTab`).
+- [x] **Lock-State & Map Input Completeness (2026-02-09)**: Added explicit spoken lock reasons for map mode and stage-end options, plus bracket-action conflict handling with `F9/F10` teleport fallback.
+- [x] **Debug Toggle Fix (2026-02-09)**: `DebugMode` now defaults OFF and is toggled at runtime with `F12`, with spoken on/off confirmation.
+- [x] **Credits Accessibility (2026-02-09)**: Added credits sequence narration, including scrolling credit entries.
+- [x] **README Added (2026-02-09)**: Wrote `README.md` with controls, navigation flow (including bracket/up-arrow usage), localization coverage, and install/build instructions.
 
 ## Next Steps
-- **User Feedback**: Validate duplicate-announcement fixes in achievements and extra menus (community pages/calibration), plus prior title/language, tutorial dialog, and map mode menu fixes.
-- **Bug Fixes**: Address remaining latency or missing-cue issues after this test pass.
-- **Refinement**: Improve verbalization of complex editor states if needed.
+- **Focused Playtest**: Validate end-to-end flow for map mode locks, stage-end locks, advanced menu/timeline narration, and credits scrolling narration.
+- **Language Spot Check**: Switch each in-game language and verify key mod-only lines (F1/F12/help, map lock reasons, teleport conflict hint) are spoken correctly.
+- **Release Prep**: If playtest passes, package current DLL and tag a release build.

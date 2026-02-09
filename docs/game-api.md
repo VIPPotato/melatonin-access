@@ -61,3 +61,51 @@
 - `Menu.Next()` / `Menu.Prev()`: Good for announcing menu navigation.
 - `Option.Enable()`: Called when an option is highlighted.
 - `Submenu.Activate()`: Called when a menu opens.
+
+## Language API Notes
+- `SaveManager.GetLang()` returns current language index (`playerData.lang`).
+- `SaveManager.mgr.SetLang(int)` updates language from `LangMenu.Select()`.
+- Current project assumes index mapping:
+  - `0` English
+  - `1` Simplified Chinese
+  - `2` Traditional Chinese
+  - `3` Japanese
+  - `4` Korean
+  - `5` Vietnamese
+  - `6` French
+  - `7` German
+  - `8` Spanish
+  - `9` Portuguese
+- References: `decompiled/SaveManager.cs:978-986`, `decompiled/LangMenu.cs:137-144`, `decompiled/LangMenu.cs:255-317`.
+
+## Editor-Specific Hooks
+- `AdvancedMenu`:
+  - Open/close: `Activate()`, `Deactivate()`.
+  - Navigation: `NextRow()`, `PrevRow()`, `SwapTab()`.
+  - Value changes: `Increase()`, `Decrease()`, `Increment()`, `Diminish()`.
+  - Useful state getters: `GetTabNum()`, `GetRowNum()`, `CheckIsCustomized()`.
+- `TimelineTabs`:
+  - `Show()`, `NextTab()`, `PrevTab()`, `GetCharType()`.
+- `LvlEditor.Update()` routes all editor input through these methods, so patching them is safer than patching raw input.
+- References: `decompiled/AdvancedMenu.cs`, `decompiled/TimelineTabs.cs`, `decompiled/LvlEditor.cs:182-337`.
+
+## Lock-State Logic
+- **Map mode locks** (in `Landmark.Update()`):
+  - Option index `1`: requires `starScore > 0` or remix landmark.
+  - Option index `2`: requires `starScore >= 2`.
+  - Option index `3`: requires `starScore >= 2` and full game (`Builder.mgr.CheckIsFullGame()`).
+  - Failed action plays only blocked SFX by default.
+- **Stage end locks**:
+  - In `StageEndMenu.Show(gameMode)`, icon/label for index `0` is locked in modes `1` and `3` when chapter score `< 2`.
+  - In `Results.Update()`, selecting locked paths only plays blocked SFX.
+- References: `decompiled/Landmark.cs:64-87`, `decompiled/ModeMenu.cs:179-220`, `decompiled/StageEndMenu.cs:78-177`, `decompiled/Results.cs:182-214`.
+
+## Credits Flow
+- Credits sequence is driven by `Creditor.Starting()`:
+  - `Credits.Show()` -> logo transitions -> `Credits.ScrollList()` -> exit to title.
+- Scroll duration is exposed by `Credits.GetScrollDuration()` and the actual list animation is `lister.TriggerAnim("scroll")`.
+- References: `decompiled/Creditor.cs:18-39`, `decompiled/Credits.cs:102-126`.
+
+## Key-Rebind Collision Note
+- The game allows rebinding Action to `[` and `]` (`ControlHandler.GetStringFromKey` / rebind checks), which can conflict with mod map teleport if teleport also uses brackets.
+- References: `decompiled/ControlHandler.cs:157-163`, `decompiled/ControlHandler.cs:357-358`, `decompiled/ControlHandler.cs:458-464`.
