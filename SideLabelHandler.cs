@@ -11,7 +11,7 @@ namespace MelatoninAccess
     {
         public static void Postfix(SideLabel __instance)
         {
-            SideLabelHelper.AnnounceLabel(__instance.practiceText);
+            SideLabelHelper.AnnounceTutorialStart();
         }
     }
 
@@ -20,7 +20,7 @@ namespace MelatoninAccess
     {
         public static void Postfix(SideLabel __instance)
         {
-            SideLabelHelper.AnnounceLabel(__instance.practiceText);
+            SideLabelHelper.AnnounceTutorialStart();
         }
     }
 
@@ -35,14 +35,13 @@ namespace MelatoninAccess
 
     public static class SideLabelHelper
     {
+        public static void AnnounceTutorialStart()
+        {
+            ScreenReader.Say(Loc.Get("tutorial_skip_prompt", GetSkipPrompt()), true);
+        }
+
         public static void AnnounceLabel(textboxFragment fragment)
         {
-            if (SceneMonitor.mgr != null && SceneMonitor.mgr.GetActiveSceneName() == "Dream_tutorial")
-            {
-                ScreenReader.Say(Loc.Get("tutorial_skip_prompt", GetSkipPrompt()), true);
-                return;
-            }
-
             if (fragment != null)
             {
                 var tmp = fragment.GetComponent<TextMeshPro>();
