@@ -22,8 +22,16 @@ namespace MelatoninAccess
                 if (now - _lastMenuAnnouncementTime < AchievementAnnouncementCooldown) return;
 
                 _lastMenuAnnouncementTime = now;
+                if (TryBuildHighlightAnnouncement(__instance, out string highlightAnnouncement, out int highlightNum))
+                {
+                    _lastHighlightNum = highlightNum;
+                    _lastAnnouncement = highlightAnnouncement;
+                    _lastAnnouncementTime = now;
+                    ScreenReader.Say($"{Loc.Get("achievements_menu")}. {highlightAnnouncement}", true);
+                    return;
+                }
+
                 ScreenReader.Say(Loc.Get("achievements_menu"), true);
-                AnnounceHighlight(__instance);
             }
         }
 
@@ -49,38 +57,40 @@ namespace MelatoninAccess
         {
             if (menu == null) return;
 
-            int highlightNum = Traverse.Create(menu).Field("highlightNum").GetValue<int>();
-            CheevoRow[] rows = menu.CheevoRows;
-
-            if (rows != null && highlightNum >= 0 && highlightNum < rows.Length)
+            if (TryBuildHighlightAnnouncement(menu, out string announcement, out int highlightNum))
             {
                 float now = Time.unscaledTime;
                 if (highlightNum == _lastHighlightNum && now - _lastAnnouncementTime < AchievementAnnouncementCooldown) return;
+                if (announcement == _lastAnnouncement && now - _lastAnnouncementTime < AchievementAnnouncementCooldown) return;
 
-                var row = rows[highlightNum];
-                if (row != null)
-                {
-                    string title = GetText(row.title);
-                    string desc = GetText(row.description);
-                    
-                    // Check if completed (checkmark state)
-                    if (row.checkmark != null)
-                    {
-                        // Check logic here if needed, but title "?????" seems sufficient for now.
-                    }
-
-                    string announcement = title == "?????"
-                        ? Loc.Get("locked_achievement", highlightNum + 1, rows.Length)
-                        : Loc.Get("achievement_with_desc", title, desc, highlightNum + 1, rows.Length);
-
-                    if (announcement == _lastAnnouncement && now - _lastAnnouncementTime < AchievementAnnouncementCooldown) return;
-
-                    _lastHighlightNum = highlightNum;
-                    _lastAnnouncement = announcement;
-                    _lastAnnouncementTime = now;
-                    ScreenReader.Say(announcement, true);
-                }
+                _lastHighlightNum = highlightNum;
+                _lastAnnouncement = announcement;
+                _lastAnnouncementTime = now;
+                ScreenReader.Say(announcement, true);
             }
+        }
+
+        private static bool TryBuildHighlightAnnouncement(AchievementsMenu menu, out string announcement, out int highlightNum)
+        {
+            announcement = "";
+            highlightNum = -1;
+            if (menu == null) return false;
+
+            highlightNum = Traverse.Create(menu).Field("highlightNum").GetValue<int>();
+            CheevoRow[] rows = menu.CheevoRows;
+            if (rows == null || highlightNum < 0 || highlightNum >= rows.Length) return false;
+
+            var row = rows[highlightNum];
+            if (row == null) return false;
+
+            string title = GetText(row.title);
+            string desc = GetText(row.description);
+
+            announcement = title == "?????"
+                ? Loc.Get("locked_achievement", highlightNum + 1, rows.Length)
+                : Loc.Get("achievement_with_desc", title, desc, highlightNum + 1, rows.Length);
+
+            return !string.IsNullOrWhiteSpace(announcement);
         }
 
         private static string GetText(textboxFragment fragment)
