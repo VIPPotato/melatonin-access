@@ -6,12 +6,25 @@ using System.Collections;
 
 namespace MelatoninAccess
 {
+    public static class ExtraMenuDebounce
+    {
+        public const float ActivationCooldown = 0.5f;
+        public const float PageActionCooldown = 0.35f;
+        public const float SelectionCooldown = 0.35f;
+
+        public static float LastCalibrationActivationTime = -10f;
+    }
+
     // --- Calibration Tool ---
     [HarmonyPatch(typeof(CalibrationTool), "Activate")]
     public static class CalibrationTool_Activate_Patch
     {
         public static void Postfix(CalibrationTool __instance)
         {
+            float now = Time.unscaledTime;
+            if (now - ExtraMenuDebounce.LastCalibrationActivationTime < ExtraMenuDebounce.ActivationCooldown) return;
+
+            ExtraMenuDebounce.LastCalibrationActivationTime = now;
             ScreenReader.Say("Calibration Tool. Adjust offset to match the beat.", true);
             CalibrationHelper.AnnounceCalibration(__instance);
         }
@@ -41,13 +54,25 @@ namespace MelatoninAccess
 
     public static class CalibrationHelper
     {
+        private static string _lastDescription = "";
+        private static float _lastDescriptionTime = -10f;
+
         public static void AnnounceCalibration(CalibrationTool tool)
         {
-             if (tool.description != null)
-             {
-                 var tmp = tool.description.GetComponent<TextMeshPro>();
-                 if (tmp != null) ScreenReader.Say(tmp.text);
-             }
+              if (tool.description != null)
+              {
+                  var tmp = tool.description.GetComponent<TextMeshPro>();
+                 if (tmp != null && !string.IsNullOrWhiteSpace(tmp.text))
+                 {
+                     string text = tmp.text.Trim();
+                     float now = Time.unscaledTime;
+                     if (text == _lastDescription && now - _lastDescriptionTime < ExtraMenuDebounce.ActivationCooldown) return;
+
+                     _lastDescription = text;
+                     _lastDescriptionTime = now;
+                     ScreenReader.Say(text);
+                 }
+              }
         }
     }
 
@@ -117,6 +142,8 @@ namespace MelatoninAccess
     {
         public static void Postfix(CommunityMenu __instance)
         {
+             if (!CommunityMenuHelper.ShouldAnnouncePageAction("Next Page")) return;
+
              ScreenReader.Say("Next Page", true);
              CommunityMenuHelper.AnnouncePage(__instance);
         }
@@ -127,6 +154,8 @@ namespace MelatoninAccess
     {
         public static void Postfix(CommunityMenu __instance)
         {
+             if (!CommunityMenuHelper.ShouldAnnouncePageAction("Previous Page")) return;
+
              ScreenReader.Say("Previous Page", true);
              CommunityMenuHelper.AnnouncePage(__instance);
         }
@@ -134,11 +163,29 @@ namespace MelatoninAccess
 
     public static class CommunityMenuHelper
     {
+        private static string _lastPageAction = "";
+        private static float _lastPageActionTime = -10f;
+        private static string _lastSelectionText = "";
+        private static float _lastSelectionTime = -10f;
+        private static int _lastPageNum = -1;
+        private static int _lastPageTotal = -1;
+        private static float _lastPageAnnounceTime = -10f;
+
+        public static bool ShouldAnnouncePageAction(string action)
+        {
+            float now = Time.unscaledTime;
+            if (action == _lastPageAction && now - _lastPageActionTime < ExtraMenuDebounce.PageActionCooldown) return false;
+
+            _lastPageAction = action;
+            _lastPageActionTime = now;
+            return true;
+        }
+
         public static void AnnounceSelection(CommunityMenu menu)
         {
-             int highlightNum = Traverse.Create(menu).Field("highlightNum").GetValue<int>();
-             if (menu.LevelRows != null && highlightNum >= 0 && highlightNum < menu.LevelRows.Length)
-             {
+              int highlightNum = Traverse.Create(menu).Field("highlightNum").GetValue<int>();
+              if (menu.LevelRows != null && highlightNum >= 0 && highlightNum < menu.LevelRows.Length)
+              {
                  var row = menu.LevelRows[highlightNum];
                  if (row != null)
                  {
@@ -148,16 +195,28 @@ namespace MelatoninAccess
                         int visibleRows = 0;
                         foreach(var r in menu.LevelRows) if(r.gameObject.activeSelf) visibleRows++;
 
-                        ScreenReader.Say($"{tmp.text}, item {highlightNum + 1} of {visibleRows}", true);
-                    }
-                 }
-             }
+                        string selection = $"{tmp.text}, item {highlightNum + 1} of {visibleRows}";
+                        float now = Time.unscaledTime;
+                        if (selection == _lastSelectionText && now - _lastSelectionTime < ExtraMenuDebounce.SelectionCooldown) return;
+
+                        _lastSelectionText = selection;
+                        _lastSelectionTime = now;
+                        ScreenReader.Say(selection, true);
+                     }
+                  }
+              }
         }
 
         public static void AnnouncePage(CommunityMenu menu)
         {
             int pageNum = Traverse.Create(menu).Field("pageNum").GetValue<int>();
             int pageTotal = Traverse.Create(menu).Field("pageTotal").GetValue<int>();
+            float now = Time.unscaledTime;
+            if (pageNum == _lastPageNum && pageTotal == _lastPageTotal && now - _lastPageAnnounceTime < ExtraMenuDebounce.PageActionCooldown) return;
+
+            _lastPageNum = pageNum;
+            _lastPageTotal = pageTotal;
+            _lastPageAnnounceTime = now;
             ScreenReader.Say($"Page {pageNum} of {pageTotal}", false);
         }
     }

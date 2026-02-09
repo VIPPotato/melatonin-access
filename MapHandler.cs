@@ -10,6 +10,11 @@ namespace MelatoninAccess
 {
     public static class MapHandler
     {
+        private const float ModeAnnouncementCooldown = 0.4f;
+        private static float _lastModeMenuTitleTime = -10f;
+        private static int _lastModeIndex = -1;
+        private static float _lastModeAnnounceTime = -10f;
+
         // --- Landmark & Mode Menu ---
 
         [HarmonyPatch(typeof(Landmark), "OnTriggerEnter2D")]
@@ -29,6 +34,10 @@ namespace MelatoninAccess
         {
             public static void Postfix(ModeMenu __instance)
             {
+                float now = Time.unscaledTime;
+                if (now - _lastModeMenuTitleTime < ModeAnnouncementCooldown) return;
+
+                _lastModeMenuTitleTime = now;
                 ScreenReader.Say("Mode Menu", true);
                 AnnounceMode(__instance);
             }
@@ -61,9 +70,14 @@ namespace MelatoninAccess
             {
                 var label = modeLabels[activeItemNum];
                 var tmp = label.GetComponent<TextMeshPro>();
-                if (tmp != null)
+                if (tmp != null && !string.IsNullOrWhiteSpace(tmp.text))
                 {
-                    ScreenReader.Say(tmp.text, true);
+                    float now = Time.unscaledTime;
+                    if (activeItemNum == _lastModeIndex && now - _lastModeAnnounceTime < ModeAnnouncementCooldown) return;
+
+                    _lastModeIndex = activeItemNum;
+                    _lastModeAnnounceTime = now;
+                    ScreenReader.Say(tmp.text.Trim(), true);
                 }
             }
         }

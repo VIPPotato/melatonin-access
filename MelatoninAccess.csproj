@@ -8,6 +8,7 @@
     <LangVersion>latest</LangVersion>
     <MelonLoaderPath>D:\games\steam\steamapps\common\Melatonin\MelonLoader</MelonLoaderPath>
     <GameManagedPath>D:\games\steam\steamapps\common\Melatonin\Melatonin_Data\Managed</GameManagedPath>
+    <ModsPath>D:\games\steam\steamapps\common\Melatonin\Mods</ModsPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -44,4 +45,8 @@
     <Compile Remove="decompiled\**" />
     <Compile Remove="templates\**" />
   </ItemGroup>
+
+  <Target Name="CopyToMods" AfterTargets="Build" Condition="Exists('$(ModsPath)')">
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ModsPath)" SkipUnchangedFiles="true" />
+  </Target>
 </Project>
