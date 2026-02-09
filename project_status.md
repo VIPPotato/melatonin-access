@@ -1,7 +1,7 @@
 # Project Status
 
 **Current Phase**: Testing & Polish
-**Last Update**: 2026-02-09
+**Last Update**: 2026-02-10
 
 ## Completed
 - [x] **Core System**: `ScreenReader` (Tolk), `MelatoninAccess` (MelonLoader Mod).
@@ -31,6 +31,7 @@
 - [x] **Optional Announcement Toggles (2026-02-10)**: Added `ModConfig.cs` using `MelonPreferences` with toggles for map hotspot speech, rhythm cues, tutorial/dialog narration, and credits narration.
 - [x] **Speech Regression Checker Script (2026-02-10)**: Added `scripts/Test-SpeechRegression.ps1` to scan MelonLoader logs for consecutive duplicate SR lines and known forbidden patterns.
 - [x] **Localization Consistency Pass (2026-02-10)**: Improved non-English coverage for startup loaded message, results summary wording, and Vietnamese space cue label.
+- [x] **README Release/Testing Update (2026-02-10)**: Expanded `README.md` with controller-aware navigation guidance, MelonPreferences toggle documentation, and speech regression script usage examples for post-playtest validation.
 
 ## Next Steps
 - **Focused Playtest**: Validate end-to-end flow for map mode locks, stage-end locks, advanced menu/timeline narration, and credits scrolling narration.
