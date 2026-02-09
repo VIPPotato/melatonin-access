@@ -50,14 +50,16 @@ public static class ScreenReader
     {
         if (string.IsNullOrEmpty(text)) return;
 
-        // Clean newlines
-        text = text.Replace("\n", " ").Trim();
+        text = string.Join(" ", text.Split((char[])null, StringSplitOptions.RemoveEmptyEntries));
+        if (string.IsNullOrEmpty(text)) return;
 
         // Debounce exact repetitions within 0.5s
-        if (text == lastText && Time.time - lastTime < 0.5f) return;
+        float now = Time.unscaledTime;
+        if (now <= 0f) now = Time.time;
+        if (text == lastText && now - lastTime < 0.5f) return;
 
         lastText = text;
-        lastTime = Time.time;
+        lastTime = now;
 
         DebugLogger.LogScreenReader(text);
         Tolk_Output(text, interrupt);

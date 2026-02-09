@@ -12,10 +12,7 @@ namespace MelatoninAccess
     {
         public static void Postfix(DialogBox __instance, string newText)
         {
-            if (!string.IsNullOrEmpty(newText))
-            {
-                ScreenReader.Say(newText, true);
-            }
+            DialogHelper.ReadDialog(__instance);
         }
     }
 
@@ -62,15 +59,33 @@ namespace MelatoninAccess
 
     public static class DialogHelper
     {
+        private const float DialogRepeatBlockSeconds = 0.8f;
+        private static string _lastDialogText = "";
+        private static float _lastDialogTime = -10f;
+
+        private static void SpeakDialog(string text, bool interrupt)
+        {
+            if (string.IsNullOrWhiteSpace(text)) return;
+
+            text = text.Replace("\n", " ").Trim();
+            if (string.IsNullOrEmpty(text)) return;
+
+            float now = Time.unscaledTime;
+            if (text == _lastDialogText && now - _lastDialogTime < DialogRepeatBlockSeconds) return;
+
+            _lastDialogText = text;
+            _lastDialogTime = now;
+            ScreenReader.Say(text, interrupt);
+        }
+
         public static void ReadDialog(DialogBox box)
         {
-            if (box.dialog != null)
+            if (box == null || box.dialog == null) return;
+
+            var tmp = box.dialog.GetComponent<TextMeshPro>();
+            if (tmp != null)
             {
-                var tmp = box.dialog.GetComponent<TextMeshPro>();
-                if (tmp != null && !string.IsNullOrEmpty(tmp.text))
-                {
-                    ScreenReader.Say(tmp.text, true);
-                }
+                SpeakDialog(tmp.text, true);
             }
         }
 

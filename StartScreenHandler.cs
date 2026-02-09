@@ -12,8 +12,14 @@ namespace MelatoninAccess
     [HarmonyPatch(typeof(TitleScreen), "Awake")]
     public static class TitleScreen_Awake_Patch
     {
+        private static float _lastResetTime = -10f;
+
         public static void Postfix()
         {
+            float now = Time.unscaledTime;
+            if (now - _lastResetTime < 0.5f) return;
+
+            _lastResetTime = now;
             DebugLogger.Log(LogCategory.State, "TitleScreen Awake - Resetting Announcement");
             TitleScreen_Update_Patch.ResetAnnouncement();
         }
@@ -22,7 +28,10 @@ namespace MelatoninAccess
     [HarmonyPatch(typeof(TitleScreen), "Update")]
     public static class TitleScreen_Update_Patch
     {
+        private const float IntroRepeatBlockSeconds = 1.0f;
         private static bool announced = false;
+        private static string _lastIntroMessage = "";
+        private static float _lastIntroTime = -10f;
 
         public static void Postfix(TitleScreen __instance)
         {
@@ -79,6 +88,12 @@ namespace MelatoninAccess
                 message = $"Melatonin Access Ready. Press {action} to Start. Press Tab or Triangle/Y for Language.";
             }
 
+            float now = Time.unscaledTime;
+            if (message == _lastIntroMessage && now - _lastIntroTime < IntroRepeatBlockSeconds) yield break;
+
+            _lastIntroMessage = message;
+            _lastIntroTime = now;
+
             DebugLogger.Log(LogCategory.ScreenReader, $"Announcing Intro: {message}");
             ScreenReader.Say(message, true);
         }
@@ -110,8 +125,14 @@ namespace MelatoninAccess
     [HarmonyPatch(typeof(LangMenu), "Activate")]
     public static class LangMenu_Activate_Patch
     {
+        private static float _lastActivationTime = -10f;
+
         public static void Postfix(LangMenu __instance)
         {
+            float now = Time.unscaledTime;
+            if (now - _lastActivationTime < 0.5f) return;
+
+            _lastActivationTime = now;
             ScreenReader.Say("Language Menu", true);
             LangMenuHelper.AnnounceSelectedLang(__instance);
         }
@@ -137,15 +158,25 @@ namespace MelatoninAccess
 
     public static class LangMenuHelper
     {
+        private const float LanguageRepeatBlockSeconds = 0.5f;
+        private static string _lastAnnouncedLanguage = "";
+        private static float _lastAnnouncedLanguageTime = -10f;
+
         public static void AnnounceSelectedLang(LangMenu menu)
         {
              int highlightNum = Traverse.Create(menu).Field("highlightNum").GetValue<int>();
              if (menu.langs != null && highlightNum >= 0 && highlightNum < menu.langs.Length)
              {
                  var tmp = menu.langs[highlightNum].GetComponent<TextMeshPro>();
-                 if (tmp != null)
+                 if (tmp != null && !string.IsNullOrWhiteSpace(tmp.text))
                  {
-                     ScreenReader.Say(tmp.text, true);
+                     string language = tmp.text.Trim();
+                     float now = Time.unscaledTime;
+                     if (language == _lastAnnouncedLanguage && now - _lastAnnouncedLanguageTime < LanguageRepeatBlockSeconds) return;
+
+                     _lastAnnouncedLanguage = language;
+                     _lastAnnouncedLanguageTime = now;
+                     ScreenReader.Say(language, true);
                  }
              }
         }
