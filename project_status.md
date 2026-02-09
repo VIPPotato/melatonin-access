@@ -24,6 +24,7 @@
 - [x] **README Added (2026-02-09)**: Wrote `README.md` with controls, navigation flow (including bracket/up-arrow usage), localization coverage, and install/build instructions.
 - [x] **Menu Speech Unification + Welcome Prompt Update (2026-02-09)**: Combined predictable opening announcements into single utterances (menu title + first item where applicable), and replaced the title-screen welcome line with a localized controller-aware prompt (`Press [Action] to begin, Press [Language Key] to change language`).
 - [x] **Playtest Follow-up Fixes (2026-02-09)**: Removed `F1` behavior, added position announcements for language/mode menus, merged results + initial stage-end choice into one utterance, improved tutorial dialog capture in followers, changed tutorial start label to a localized skip prompt, and added gamepad snap-to-hotspot input (`Action Left/Right`, e.g. LB/RB).
+- [x] **Followers Tutorial Graphic Text Fix (2026-02-09)**: Added `DialogBox.ChangeToGraphic` narration path for left/right graphic tutorial text blocks and reinforced practice-start wording as localized tutorial skip prompt.
 
 ## Next Steps
 - **Focused Playtest**: Validate end-to-end flow for map mode locks, stage-end locks, advanced menu/timeline narration, and credits scrolling narration.
