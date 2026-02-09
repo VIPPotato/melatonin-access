@@ -534,6 +534,19 @@ namespace MelatoninAccess
                 "{0}. {1} estrelas.");
 
             Add(
+                "teleport_arrived_one_star",
+                "{0}. {1} star.",
+                "{0}。{1} 星。",
+                "{0}。{1} 星。",
+                "{0}。{1} スター。",
+                "{0}. 별 {1}개.",
+                "{0}. {1} sao.",
+                "{0}. {1} etoile.",
+                "{0}. {1} Stern.",
+                "{0}. {1} estrella.",
+                "{0}. {1} estrela.");
+
+            Add(
                 "teleport_conflict_hint",
                 "Bracket teleport is disabled because Action is bound to brackets. Use F9 and F10 for teleport.",
                 "由于操作键绑定到方括号，方括号传送已禁用。请使用 F9 和 F10 传送。",
