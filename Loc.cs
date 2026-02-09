@@ -222,6 +222,19 @@ namespace MelatoninAccess
                 "Menu de idioma");
 
             Add(
+                "credits_title",
+                "Credits",
+                "制作人员",
+                "製作人員",
+                "クレジット",
+                "크레딧",
+                "Danh de",
+                "Generique",
+                "Credits",
+                "Creditos",
+                "Creditos");
+
+            Add(
                 "menu_suffix",
                 "{0} menu",
                 "{0} 菜单",
