@@ -99,6 +99,17 @@ namespace MelatoninAccess
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.CustomizeMenu_Nav5_Patch));
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.CustomizeMenu_Nav6_Patch));
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.LvlEditor_Start_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.AdvancedMenu_Activate_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.AdvancedMenu_SwapTab_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.AdvancedMenu_NextRow_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.AdvancedMenu_PrevRow_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.AdvancedMenu_Increase_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.AdvancedMenu_Decrease_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.AdvancedMenu_Increment_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.AdvancedMenu_Diminish_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.TimelineTabs_Show_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.TimelineTabs_NextTab_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.TimelineTabs_PrevTab_Patch));
 
             MelonLogger.Msg("Melatonin Access Initialized");
         }

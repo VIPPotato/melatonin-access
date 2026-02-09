@@ -573,6 +573,19 @@ namespace MelatoninAccess
                 "Selecao de ferramenta");
 
             Add(
+                "advanced_menu",
+                "Advanced menu",
+                "高级菜单",
+                "進階選單",
+                "高度なメニュー",
+                "고급 메뉴",
+                "Menu nang cao",
+                "Menu avance",
+                "Erweitertes Menue",
+                "Menu avanzado",
+                "Menu avancado");
+
+            Add(
                 "editor_ready",
                 "Level editor ready",
                 "关卡编辑器已就绪",
