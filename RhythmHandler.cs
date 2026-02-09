@@ -16,7 +16,7 @@ namespace MelatoninAccess
             {
                 if (Dream.dir != null && Dream.dir.GetGameMode() == 0)
                 {
-                    ScreenReader.Say("Space", true);
+                    ScreenReader.Say(Loc.Get("cue_space"), true);
                 }
             }
         }
@@ -28,7 +28,7 @@ namespace MelatoninAccess
             {
                 if (Dream.dir != null && Dream.dir.GetGameMode() == 0)
                 {
-                    ScreenReader.Say("Left", true);
+                    ScreenReader.Say(Loc.Get("cue_left"), true);
                 }
             }
         }
@@ -40,7 +40,7 @@ namespace MelatoninAccess
             {
                 if (Dream.dir != null && Dream.dir.GetGameMode() == 0)
                 {
-                    ScreenReader.Say("Right", true);
+                    ScreenReader.Say(Loc.Get("cue_right"), true);
                 }
             }
         }
@@ -52,7 +52,7 @@ namespace MelatoninAccess
             {
                 if (Dream.dir != null && Dream.dir.GetGameMode() == 0)
                 {
-                    ScreenReader.Say("Both", true);
+                    ScreenReader.Say(Loc.Get("cue_both"), true);
                 }
             }
         }
@@ -64,7 +64,7 @@ namespace MelatoninAccess
             {
                 if (Dream.dir != null && Dream.dir.GetGameMode() == 0)
                 {
-                    ScreenReader.Say("Hold", true);
+                    ScreenReader.Say(Loc.Get("cue_hold"), true);
                 }
             }
         }

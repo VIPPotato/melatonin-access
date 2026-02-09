@@ -40,11 +40,14 @@ namespace MelatoninAccess
             int bar = daw.GetBarNum();
             int beat = daw.GetBeatNum();
             string code = daw.GetCodeOnBeat();
-            
-            string content = string.IsNullOrEmpty(code) ? "Empty" : code;
-            
-            // Format: "Phrase 1, Bar 1, Beat 1. Empty."
-            ScreenReader.Say($"Phrase {phrase}, Bar {bar}, Beat {beat}. {content}.", true);
+
+            if (string.IsNullOrEmpty(code))
+            {
+                ScreenReader.Say(Loc.Get("editor_cursor_empty", phrase, bar, beat), true);
+                return;
+            }
+
+            ScreenReader.Say(Loc.Get("editor_cursor_content", phrase, bar, beat, code), true);
         }
 
         // --- Editing ---
@@ -54,7 +57,7 @@ namespace MelatoninAccess
         {
             public static void Postfix(string codeAdded, char dataType)
             {
-                ScreenReader.Say($"Placed {codeAdded}", true);
+                ScreenReader.Say(Loc.Get("editor_placed", codeAdded), true);
             }
         }
 
@@ -63,7 +66,7 @@ namespace MelatoninAccess
         {
             public static void Postfix()
             {
-                ScreenReader.Say("Removed", true);
+                ScreenReader.Say(Loc.Get("editor_removed"), true);
             }
         }
 
@@ -74,7 +77,7 @@ namespace MelatoninAccess
         {
             public static void Postfix(CustomizeMenu __instance)
             {
-                ScreenReader.Say("Tool Select", true);
+                ScreenReader.Say(Loc.Get("editor_tool_select"), true);
                 AnnounceTool(__instance);
             }
         }
@@ -116,7 +119,7 @@ namespace MelatoninAccess
         {
             public static void Postfix()
             {
-                ScreenReader.Say("Level Editor Ready", true);
+                ScreenReader.Say(Loc.Get("editor_ready"), true);
             }
         }
 
@@ -140,7 +143,7 @@ namespace MelatoninAccess
                 var tmp = menu.title.GetComponent<TextMeshPro>();
                 if (tmp != null)
                 {
-                    ScreenReader.Say($"Page {tmp.text}", true);
+                    ScreenReader.Say(Loc.Get("editor_page", tmp.text), true);
                 }
             }
         }

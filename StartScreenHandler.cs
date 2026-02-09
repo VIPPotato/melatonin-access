@@ -85,7 +85,7 @@ namespace MelatoninAccess
             if (string.IsNullOrEmpty(message))
             {
                 string action = GetActionPrompt();
-                message = $"Melatonin Access Ready. Press {action} to Start. Press Tab or Triangle/Y for Language.";
+                message = Loc.Get("intro_fallback", action);
             }
 
             float now = Time.unscaledTime;
@@ -118,7 +118,8 @@ namespace MelatoninAccess
         public static void Postfix()
         {
             TitleScreen_Update_Patch.ResetAnnouncement();
-            ScreenReader.Say("Language Selected.", true);
+            Loc.RefreshLanguage();
+            ScreenReader.Say(Loc.Get("language_selected"), true);
         }
     }
 
@@ -133,7 +134,7 @@ namespace MelatoninAccess
             if (now - _lastActivationTime < 0.5f) return;
 
             _lastActivationTime = now;
-            ScreenReader.Say("Language Menu", true);
+            ScreenReader.Say(Loc.Get("language_menu"), true);
             LangMenuHelper.AnnounceSelectedLang(__instance);
         }
     }

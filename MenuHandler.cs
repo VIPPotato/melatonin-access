@@ -22,7 +22,7 @@ namespace MelatoninAccess
                     if (tmp != null)
                     {
                         lastTitleTime = Time.time;
-                        ScreenReader.Say(tmp.text + " Menu", true);
+                        ScreenReader.Say(Loc.Get("menu_suffix", tmp.text), true);
                     }
                 }
             }
@@ -48,7 +48,7 @@ namespace MelatoninAccess
                         {
                             if (SaveManager.mgr.GetChapterNum() < chapterNum)
                             {
-                                text = $"Chapter {chapterNum} Locked";
+                                text = Loc.Get("chapter_locked", chapterNum);
                             }
                         }
 
@@ -61,7 +61,7 @@ namespace MelatoninAccess
                             {
                                 if (numTmp.text.Trim() != "9")
                                 {
-                                    text += " slider " + numTmp.text;
+                                    text = Loc.Get("option_with_slider", text, numTmp.text);
                                     isSlider = true;
                                 }
                             }
@@ -84,7 +84,7 @@ namespace MelatoninAccess
                             switch (functionNum)
                             {
                                 case 12: // Fullscreen
-                                    text += ": " + (Screen.fullScreen ? "Fullscreen" : "Windowed");
+                                    text += ": " + GetWindowModeText();
                                     known = false;
                                     break;
                                 case 18: // Visual Assist
@@ -121,7 +121,7 @@ namespace MelatoninAccess
                             
                             if (known)
                             {
-                                text += ": " + (state ? "On" : "Off");
+                                text += ": " + GetToggleStateText(state);
                             }
                         }
 
@@ -138,7 +138,7 @@ namespace MelatoninAccess
                                     int count = functioningOptions.Count;
                                     if (index >= 0)
                                     {
-                                        text += $", {index + 1} of {count}";
+                                        text += ", " + Loc.Get("order_of", index + 1, count);
                                     }
                                 }
                             }
@@ -183,7 +183,7 @@ namespace MelatoninAccess
                     var numTmp = option.num.GetComponent<TextMeshPro>();
                     if (numTmp != null && numTmp.text.Trim() != "9")
                     {
-                        ScreenReader.Say("Slider " + numTmp.text, true);
+                        ScreenReader.Say(Loc.Get("slider_value", numTmp.text), true);
                         return;
                     }
                 }
@@ -194,7 +194,7 @@ namespace MelatoninAccess
                 switch (functionNum)
                 {
                     case 12: 
-                        ScreenReader.Say(Screen.fullScreen ? "Fullscreen" : "Windowed", true);
+                        ScreenReader.Say(GetWindowModeText(), true);
                         return;
                     case 18: 
                         isToggle = true;
@@ -236,9 +236,19 @@ namespace MelatoninAccess
 
                 if (isToggle)
                 {
-                     ScreenReader.Say(state ? "On" : "Off", true);
+                     ScreenReader.Say(GetToggleStateText(state), true);
                 }
             }
+        }
+
+        private static string GetWindowModeText()
+        {
+            return Screen.fullScreen ? Loc.Get("fullscreen") : Loc.Get("windowed");
+        }
+
+        private static string GetToggleStateText(bool state)
+        {
+            return state ? Loc.Get("state_on") : Loc.Get("state_off");
         }
     }
 }

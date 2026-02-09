@@ -25,7 +25,7 @@ namespace MelatoninAccess
             if (now - ExtraMenuDebounce.LastCalibrationActivationTime < ExtraMenuDebounce.ActivationCooldown) return;
 
             ExtraMenuDebounce.LastCalibrationActivationTime = now;
-            ScreenReader.Say("Calibration Tool. Adjust offset to match the beat.", true);
+            ScreenReader.Say(Loc.Get("calibration_tool_intro"), true);
             CalibrationHelper.AnnounceCalibration(__instance);
         }
     }
@@ -46,7 +46,7 @@ namespace MelatoninAccess
                 if (tmp != null && tmp.text != lastText)
                 {
                     lastText = tmp.text;
-                    ScreenReader.Say($"Offset {lastText}", true);
+                    ScreenReader.Say(Loc.Get("calibration_offset", lastText), true);
                 }
             }
         }
@@ -87,7 +87,7 @@ namespace MelatoninAccess
             if (isAnnouncing) return;
             isAnnouncing = true;
 
-            ScreenReader.Say("Downloaded Levels. Loading...", true);
+            ScreenReader.Say(Loc.Get("downloaded_levels_loading"), true);
             MelonCoroutines.Start(AnnounceWhenLoaded(__instance));
         }
 
@@ -103,7 +103,7 @@ namespace MelatoninAccess
                 int pageNum = Traverse.Create(menu).Field("pageNum").GetValue<int>();
                 int pageTotal = Traverse.Create(menu).Field("pageTotal").GetValue<int>();
                 
-                ScreenReader.Say($"{totalLevels} levels total. Page {pageNum} of {pageTotal}", false);
+                ScreenReader.Say(Loc.Get("downloaded_levels_page_total", totalLevels, pageNum, pageTotal), false);
             }
             
             isAnnouncing = false;
@@ -142,9 +142,9 @@ namespace MelatoninAccess
     {
         public static void Postfix(CommunityMenu __instance)
         {
-             if (!CommunityMenuHelper.ShouldAnnouncePageAction("Next Page")) return;
+             if (!CommunityMenuHelper.ShouldAnnouncePageAction(Loc.Get("next_page"))) return;
 
-             ScreenReader.Say("Next Page", true);
+             ScreenReader.Say(Loc.Get("next_page"), true);
              CommunityMenuHelper.AnnouncePage(__instance);
         }
     }
@@ -154,9 +154,9 @@ namespace MelatoninAccess
     {
         public static void Postfix(CommunityMenu __instance)
         {
-             if (!CommunityMenuHelper.ShouldAnnouncePageAction("Previous Page")) return;
+             if (!CommunityMenuHelper.ShouldAnnouncePageAction(Loc.Get("previous_page"))) return;
 
-             ScreenReader.Say("Previous Page", true);
+             ScreenReader.Say(Loc.Get("previous_page"), true);
              CommunityMenuHelper.AnnouncePage(__instance);
         }
     }
@@ -195,7 +195,7 @@ namespace MelatoninAccess
                         int visibleRows = 0;
                         foreach(var r in menu.LevelRows) if(r.gameObject.activeSelf) visibleRows++;
 
-                        string selection = $"{tmp.text}, item {highlightNum + 1} of {visibleRows}";
+                        string selection = Loc.Get("item_of", tmp.text, highlightNum + 1, visibleRows);
                         float now = Time.unscaledTime;
                         if (selection == _lastSelectionText && now - _lastSelectionTime < ExtraMenuDebounce.SelectionCooldown) return;
 
@@ -217,7 +217,7 @@ namespace MelatoninAccess
             _lastPageNum = pageNum;
             _lastPageTotal = pageTotal;
             _lastPageAnnounceTime = now;
-            ScreenReader.Say($"Page {pageNum} of {pageTotal}", false);
+            ScreenReader.Say(Loc.Get("page_of", pageNum, pageTotal), false);
         }
     }
 }
