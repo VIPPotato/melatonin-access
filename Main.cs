@@ -71,7 +71,12 @@ namespace MelatoninAccess
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(ResultsHandler.StageEndMenu_Show_Patch));
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(ResultsHandler.StageEndMenu_Next_Patch));
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(ResultsHandler.StageEndMenu_Prev_Patch));
-            
+
+            // Credits
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(CreditsHandler.Credits_Show_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(CreditsHandler.Credits_TransitionLogoCompanyToCreator_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(CreditsHandler.Credits_ScrollList_Patch));
+             
             // Side Labels
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(SideLabel_ShowAsPractice_Patch));
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(SideLabel_ActivateAsTutorial_Patch));
