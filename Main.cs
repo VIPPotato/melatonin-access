@@ -63,6 +63,7 @@ namespace MelatoninAccess
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(DialogBox_SetText_Patch));
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(DialogBox_ChangeDialogState_Patch));
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(DialogBox_SetDialogState_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(DialogBox_ChangeToGraphic_Patch));
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(DialogBox_Activate_Patch));
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(DialogBox_ActivateDelayed_Patch));
             

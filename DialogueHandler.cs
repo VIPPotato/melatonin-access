@@ -38,6 +38,16 @@ namespace MelatoninAccess
         }
     }
 
+    [HarmonyPatch(typeof(DialogBox), "ChangeToGraphic")]
+    public static class DialogBox_ChangeToGraphic_Patch
+    {
+        public static void Postfix(DialogBox __instance, int graphicNum, int newStateLeft, int newStateRight)
+        {
+            DialogHelper.ReadGraphicDialog(__instance);
+            MelonCoroutines.Start(DialogHelper.ReadGraphicDialogDelayed(__instance, 0.12f));
+        }
+    }
+
     // --- New Patches for Activation (Fixes Food/Followers) ---
 
     [HarmonyPatch(typeof(DialogBox), "Activate")]
@@ -98,10 +108,43 @@ namespace MelatoninAccess
             }
         }
 
+        public static void ReadGraphicDialog(DialogBox box)
+        {
+            if (box == null) return;
+
+            string left = GetFragmentText(box.leftGraphicText);
+            string right = GetFragmentText(box.rightGraphicText);
+            if (string.IsNullOrWhiteSpace(left) && string.IsNullOrWhiteSpace(right)) return;
+
+            string text = string.IsNullOrWhiteSpace(left)
+                ? right
+                : string.IsNullOrWhiteSpace(right)
+                    ? left
+                    : $"{left}. {right}";
+
+            SpeakDialog(text, true);
+        }
+
         public static IEnumerator ReadDialogDelayed(DialogBox box, float delay)
         {
             yield return new WaitForSecondsRealtime(delay);
             ReadDialog(box);
+        }
+
+        public static IEnumerator ReadGraphicDialogDelayed(DialogBox box, float delay)
+        {
+            yield return new WaitForSecondsRealtime(delay);
+            ReadGraphicDialog(box);
+        }
+
+        private static string GetFragmentText(textboxFragment fragment)
+        {
+            if (fragment == null) return "";
+
+            var tmp = fragment.GetComponent<TextMeshPro>();
+            if (tmp == null || string.IsNullOrWhiteSpace(tmp.text)) return "";
+
+            return tmp.text.Trim();
         }
     }
 }
