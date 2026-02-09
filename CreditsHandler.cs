@@ -18,6 +18,7 @@ namespace MelatoninAccess
             public static void Postfix(Credits __instance)
             {
                 CreditsNarrationHelper.Reset();
+                if (!ModConfig.AnnounceCreditsRoll) return;
                 ScreenReader.Say(Loc.Get("credits_title"), true);
             }
         }
@@ -27,6 +28,7 @@ namespace MelatoninAccess
         {
             public static void Postfix(Credits __instance)
             {
+                if (!ModConfig.AnnounceCreditsRoll) return;
                 MelonCoroutines.Start(CreditsNarrationHelper.AnnounceCreatorDelayed(__instance));
             }
         }
@@ -36,6 +38,7 @@ namespace MelatoninAccess
         {
             public static void Postfix(Credits __instance)
             {
+                if (!ModConfig.AnnounceCreditsRoll) return;
                 MelonCoroutines.Start(CreditsNarrationHelper.NarrateScrollingEntries(__instance));
             }
         }

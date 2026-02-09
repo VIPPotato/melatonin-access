@@ -14,7 +14,7 @@ namespace MelatoninAccess
         {
             public static void Postfix(int numBeatsTilHit, bool isHalfBeatAdded)
             {
-                if (Dream.dir != null && Dream.dir.GetGameMode() == 0)
+                if (ShouldAnnounceCues())
                 {
                     ScreenReader.Say(Loc.Get("cue_space"), true);
                 }
@@ -26,7 +26,7 @@ namespace MelatoninAccess
         {
             public static void Postfix(int numBeatsTilHit, bool isHalfBeatAdded)
             {
-                if (Dream.dir != null && Dream.dir.GetGameMode() == 0)
+                if (ShouldAnnounceCues())
                 {
                     ScreenReader.Say(Loc.Get("cue_left"), true);
                 }
@@ -38,7 +38,7 @@ namespace MelatoninAccess
         {
             public static void Postfix(int numBeatsTilHit, bool isHalfBeatAdded)
             {
-                if (Dream.dir != null && Dream.dir.GetGameMode() == 0)
+                if (ShouldAnnounceCues())
                 {
                     ScreenReader.Say(Loc.Get("cue_right"), true);
                 }
@@ -50,7 +50,7 @@ namespace MelatoninAccess
         {
             public static void Postfix(int numBeatsTilHit, bool isHalfBeatAdded)
             {
-                if (Dream.dir != null && Dream.dir.GetGameMode() == 0)
+                if (ShouldAnnounceCues())
                 {
                     ScreenReader.Say(Loc.Get("cue_both"), true);
                 }
@@ -62,11 +62,16 @@ namespace MelatoninAccess
         {
             public static void Postfix(int numBeatsTilHold, int numBeatsTilRelease)
             {
-                if (Dream.dir != null && Dream.dir.GetGameMode() == 0)
+                if (ShouldAnnounceCues())
                 {
                     ScreenReader.Say(Loc.Get("cue_hold"), true);
                 }
             }
+        }
+
+        private static bool ShouldAnnounceCues()
+        {
+            return ModConfig.AnnounceRhythmCues && Dream.dir != null && Dream.dir.GetGameMode() == 0;
         }
     }
 }

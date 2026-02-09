@@ -16,6 +16,7 @@ namespace MelatoninAccess
         {
             ScreenReader.Initialize();
             Loc.Initialize();
+            ModConfig.Initialize();
 
             // Menu & Options
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(MenuHandler.MenuTitle_Activate_Patch));
