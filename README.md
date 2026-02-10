@@ -95,6 +95,7 @@ Package contents:
 - `Mods/MelatoninAccess.dll`
 - `Tolk.dll`
 - `nvdaControllerClient32.dll`
+- `UserData/Loader.cfg` (bundled from maintainer install; includes hidden-console setting)
 
 The release ZIP intentionally excludes development docs/tools (for example changelog files and regression test scripts).
 
@@ -105,9 +106,10 @@ The release ZIP intentionally excludes development docs/tools (for example chang
 2. Download `MelatoninAccess-v1.0.2.zip`.
 3. Extract/copy all files from the ZIP into your Melatonin game folder (the folder with `Melatonin.exe`).
 4. Confirm these files exist:
-   - `<Melatonin folder>/Mods/MelatoninAccess.dll`
-   - `<Melatonin folder>/Tolk.dll`
-   - `<Melatonin folder>/nvdaControllerClient32.dll`
+    - `<Melatonin folder>/Mods/MelatoninAccess.dll`
+    - `<Melatonin folder>/Tolk.dll`
+    - `<Melatonin folder>/nvdaControllerClient32.dll`
+    - `<Melatonin folder>/UserData/Loader.cfg`
 5. Start the game and confirm you hear the mod loaded announcement.
 
 Important:

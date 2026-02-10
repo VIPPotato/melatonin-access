@@ -46,6 +46,7 @@
 - [x] **Settings/Calibration/Localization Polish (2026-02-10)**: Added resolution-specific post-refresh value announcement logic to avoid stale reads, combined calibration hint with calibration menu opening into one utterance, and localized map dream/level names through `Loc.GetDreamName()` keys across all supported game languages.
 - [x] **Bugfix Release Published (2026-02-10)**: Released `v1.0.2` on GitHub as latest with resolution value-timing fix, calibration menu utterance merge, and localized map level-name announcements; attached minimal package (`Mods\MelatoninAccess.dll`, `Tolk.dll`, `nvdaControllerClient32.dll`).
 - [x] **Global Menu Position Toggle (2026-02-10)**: Added persistent `F3` runtime toggle (`AnnounceMenuPositions`) that enables/disables position context (`X of Y`) across option menus, language/mode menus, achievements, stage-end options, and downloaded-level row/page narration; added localized toggle confirmations for all supported languages.
+- [x] **Release Bundle Loader Config (2026-02-10)**: Added tracked `UserData\Loader.cfg` (copied unchanged from maintainer install) and updated `scripts\Build-ReleasePackage.ps1` to always include it in release ZIPs under `UserData\Loader.cfg`.
 
 ## Next Steps
 - **Focused Playtest**: Validate end-to-end flow for map mode locks, stage-end locks, advanced menu/timeline narration, and credits scrolling narration.
