@@ -13,6 +13,7 @@ namespace MelatoninAccess
         private static MelonPreferences_Entry<bool> _announceRhythmCues;
         private static MelonPreferences_Entry<bool> _announceTutorialDialog;
         private static MelonPreferences_Entry<bool> _announceCreditsRoll;
+        private static MelonPreferences_Entry<bool> _debugModeEnabled;
 
         /// <summary>
         /// Whether map hotspot arrival and teleport destination lines are spoken.
@@ -33,6 +34,11 @@ namespace MelatoninAccess
         /// Whether credits title and scrolling names are spoken.
         /// </summary>
         public static bool AnnounceCreditsRoll => _announceCreditsRoll == null || _announceCreditsRoll.Value;
+
+        /// <summary>
+        /// Whether debug logging is enabled.
+        /// </summary>
+        public static bool DebugModeEnabled => _debugModeEnabled != null && _debugModeEnabled.Value;
 
         /// <summary>
         /// Initializes configuration entries. Call once at startup.
@@ -63,7 +69,36 @@ namespace MelatoninAccess
                 true,
                 description: "Speak credits title and scrolling credits entries.");
 
+            _debugModeEnabled = _category.CreateEntry(
+                "DebugModeEnabled",
+                false,
+                description: "Enable [SR]/[INPUT]/[STATE]/[HANDLER]/[GAME] debug logging.");
+
             MelonPreferences.Save();
+        }
+
+        /// <summary>
+        /// Toggles rhythm cue announcements and saves immediately.
+        /// </summary>
+        public static bool ToggleRhythmCues()
+        {
+            if (_announceRhythmCues == null) return true;
+
+            _announceRhythmCues.Value = !_announceRhythmCues.Value;
+            MelonPreferences.Save();
+            return _announceRhythmCues.Value;
+        }
+
+        /// <summary>
+        /// Toggles debug mode and saves immediately.
+        /// </summary>
+        public static bool ToggleDebugMode()
+        {
+            if (_debugModeEnabled == null) return false;
+
+            _debugModeEnabled.Value = !_debugModeEnabled.Value;
+            MelonPreferences.Save();
+            return _debugModeEnabled.Value;
         }
     }
 }

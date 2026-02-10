@@ -17,6 +17,7 @@ namespace MelatoninAccess
             ScreenReader.Initialize();
             Loc.Initialize();
             ModConfig.Initialize();
+            DebugMode = ModConfig.DebugModeEnabled;
 
             // Menu & Options
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(MenuHandler.MenuTitle_Activate_Patch));
@@ -126,9 +127,16 @@ namespace MelatoninAccess
         {
             if (Keyboard.current == null) return;
 
+            if (Keyboard.current.f2Key.wasPressedThisFrame)
+            {
+                bool enabled = ModConfig.ToggleRhythmCues();
+                ScreenReader.Say(enabled ? Loc.Get("rhythm_cues_enabled") : Loc.Get("rhythm_cues_disabled"), true);
+                MelonLogger.Msg($"Rhythm cue announcements {(enabled ? "enabled" : "disabled")}.");
+            }
+
             if (Keyboard.current.f12Key.wasPressedThisFrame)
             {
-                DebugMode = !DebugMode;
+                DebugMode = ModConfig.ToggleDebugMode();
                 ScreenReader.Say(DebugMode ? Loc.Get("debug_enabled") : Loc.Get("debug_disabled"), true);
                 MelonLogger.Msg($"Debug mode {(DebugMode ? "enabled" : "disabled")}.");
             }
