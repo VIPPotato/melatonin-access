@@ -97,7 +97,8 @@ The release ZIP intentionally excludes development docs/tools (for example chang
 
 ## Install (Release ZIP - Recommended)
 
-1. Install MelonLoader for Melatonin.
+1. Install MelonLoader for Melatonin:
+   - https://github.com/LavaGang/MelonLoader.Installer/releases
 2. Download `MelatoninAccess-v1.0.zip`.
 3. Extract/copy all files from the ZIP into your Melatonin game folder (the folder with `Melatonin.exe`).
 4. Confirm these files exist:
@@ -122,6 +123,11 @@ dotnet build MelatoninAccess.csproj
    - `bin/Debug/net472/MelatoninAccess.dll` to `<Melatonin folder>/Mods/`
    - `libs/x86/Tolk.dll` to `<Melatonin folder>/`
    - `libs/x86/nvdaControllerClient32.dll` to `<Melatonin folder>/`
+
+## Support
+
+If you like what I do, I would appreciate a coffee:
+https://buymeacoffee.com/potatophones
 
 ## Speech Regression Check (After Playtest)
 

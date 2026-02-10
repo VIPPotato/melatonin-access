@@ -39,6 +39,7 @@
 - [x] **Release Tag Prepared (2026-02-10)**: Created local annotated tag `v1.0` at commit `49d1505` per release naming request.
 - [x] **Release Dependency Bundling (2026-02-10)**: Added tracked `libs\x86\Tolk.dll` and `libs\x86\nvdaControllerClient32.dll`, updated ignore rules to keep these DLLs in repo, and added `scripts\Build-ReleasePackage.ps1` to generate `v1.0` release ZIP with only `Mods\MelatoninAccess.dll` + required Tolk/NVDA client DLLs.
 - [x] **README Install Instructions Expanded (2026-02-10)**: Added explicit step-by-step install guidance for release ZIP and source-build workflows, including exact destination paths for mod and dependency DLLs.
+- [x] **README Support + Installer Link Update (2026-02-10)**: Added Buy Me a Coffee support message and direct MelonLoader installer link in release installation steps.
 
 ## Next Steps
 - **Focused Playtest**: Validate end-to-end flow for map mode locks, stage-end locks, advanced menu/timeline narration, and credits scrolling narration.
