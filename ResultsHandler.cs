@@ -143,7 +143,7 @@ namespace MelatoninAccess
                 if (tmp == null || string.IsNullOrWhiteSpace(tmp.text)) return false;
 
                 string text = tmp.text.Trim();
-                if (activeOptionsCount > 0)
+                if (ModConfig.AnnounceMenuPositions && activeOptionsCount > 0)
                 {
                     text = Loc.Get("stage_end_position", text, highlightPosition + 1, activeOptionsCount);
                 }

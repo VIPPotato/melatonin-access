@@ -117,7 +117,7 @@ namespace MelatoninAccess
 
                     int position = GetModePosition(menu, activeItemNum);
                     int total = GetModeOptionsCount(menu);
-                    if (position > 0 && total > 0)
+                    if (ModConfig.AnnounceMenuPositions && position > 0 && total > 0)
                     {
                         modeText = $"{modeText}, {Loc.Get("order_of", position, total)}";
                     }

@@ -11,6 +11,7 @@ namespace MelatoninAccess
         private static MelonPreferences_Category _category;
         private static MelonPreferences_Entry<bool> _announceMapHotspots;
         private static MelonPreferences_Entry<bool> _announceRhythmCues;
+        private static MelonPreferences_Entry<bool> _announceMenuPositions;
         private static MelonPreferences_Entry<bool> _announceTutorialDialog;
         private static MelonPreferences_Entry<bool> _announceCreditsRoll;
         private static MelonPreferences_Entry<bool> _debugModeEnabled;
@@ -24,6 +25,11 @@ namespace MelatoninAccess
         /// Whether gameplay rhythm cue prompts are spoken.
         /// </summary>
         public static bool AnnounceRhythmCues => _announceRhythmCues == null || _announceRhythmCues.Value;
+
+        /// <summary>
+        /// Whether menu position context (e.g., "1 of 4") is spoken.
+        /// </summary>
+        public static bool AnnounceMenuPositions => _announceMenuPositions == null || _announceMenuPositions.Value;
 
         /// <summary>
         /// Whether tutorial and dialog text is spoken.
@@ -59,6 +65,11 @@ namespace MelatoninAccess
                 true,
                 description: "Speak gameplay rhythm cues (Space/Left/Right/Both/Hold).");
 
+            _announceMenuPositions = _category.CreateEntry(
+                "AnnounceMenuPositions",
+                true,
+                description: "Speak menu positions such as '1 of 4'.");
+
             _announceTutorialDialog = _category.CreateEntry(
                 "AnnounceTutorialDialog",
                 true,
@@ -87,6 +98,18 @@ namespace MelatoninAccess
             _announceRhythmCues.Value = !_announceRhythmCues.Value;
             MelonPreferences.Save();
             return _announceRhythmCues.Value;
+        }
+
+        /// <summary>
+        /// Toggles menu position announcements and saves immediately.
+        /// </summary>
+        public static bool ToggleMenuPositions()
+        {
+            if (_announceMenuPositions == null) return true;
+
+            _announceMenuPositions.Value = !_announceMenuPositions.Value;
+            MelonPreferences.Save();
+            return _announceMenuPositions.Value;
         }
 
         /// <summary>

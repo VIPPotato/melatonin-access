@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem; 
 using MelatoninAccess;
 
-[assembly: MelonInfo(typeof(MelatoninAccess.MelatoninAccessMod), "Melatonin Access", "1.0.2", "Gemini")]
+[assembly: MelonInfo(typeof(MelatoninAccess.MelatoninAccessMod), "Melatonin Access", "1.0.3", "Gemini")]
 [assembly: MelonGame("Half Asleep", "Melatonin")]
 
 namespace MelatoninAccess
@@ -132,6 +132,13 @@ namespace MelatoninAccess
                 bool enabled = ModConfig.ToggleRhythmCues();
                 ScreenReader.Say(enabled ? Loc.Get("rhythm_cues_enabled") : Loc.Get("rhythm_cues_disabled"), true);
                 MelonLogger.Msg($"Rhythm cue announcements {(enabled ? "enabled" : "disabled")}.");
+            }
+
+            if (Keyboard.current.f3Key.wasPressedThisFrame)
+            {
+                bool enabled = ModConfig.ToggleMenuPositions();
+                ScreenReader.Say(enabled ? Loc.Get("menu_positions_enabled") : Loc.Get("menu_positions_disabled"), true);
+                MelonLogger.Msg($"Menu position announcements {(enabled ? "enabled" : "disabled")}.");
             }
 
             if (Keyboard.current.f12Key.wasPressedThisFrame)

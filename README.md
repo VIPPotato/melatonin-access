@@ -41,6 +41,7 @@ Example flow:
 ## Hotkeys
 
 - `F2`: Toggle rhythm cue announcements on/off (saved immediately to MelonPreferences).
+- `F3`: Toggle menu position announcements on/off (for example `1 of 4`, saved immediately to MelonPreferences).
 - `F12`: Toggle debug logging on/off.
   - State is persisted in MelonPreferences and restored on next launch.
 
@@ -67,6 +68,8 @@ Settings are stored in `UserData/MelonPreferences.cfg` under category `Melatonin
 - `AnnounceMapHotspots` (default `true`): map arrival and teleport destination/star lines.
 - `AnnounceRhythmCues` (default `true`): gameplay rhythm cues (`Space`, `Left`, `Right`, `Both`, `Hold`).
   - Can be toggled in-game with `F2`.
+- `AnnounceMenuPositions` (default `true`): menu position context (`1 of N`) across supported menus.
+  - Can be toggled in-game with `F3`.
 - `AnnounceTutorialDialog` (default `true`): tutorial and dialog narration.
 - `AnnounceCreditsRoll` (default `true`): credits title and scrolling names.
 - `DebugModeEnabled` (default `false`): debug logging state used by `F12`.
