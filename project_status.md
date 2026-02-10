@@ -42,6 +42,7 @@
 - [x] **README Support + Installer Link Update (2026-02-10)**: Added Buy Me a Coffee support message and direct MelonLoader installer link in release installation steps.
 - [x] **Map Teleport Double-Trigger Fix (2026-02-10)**: Added teleport dispatch guard (same-frame + short cooldown) and edge-based gamepad action detection so one key/button press maps to one teleport step.
 - [x] **Bugfix Release Published (2026-02-10)**: Released `v1.0.1` on GitHub as latest with map teleport double-jump fix and updated install/readme notes; attached minimal package (`Mods\MelatoninAccess.dll`, `Tolk.dll`, `nvdaControllerClient32.dll`).
+- [x] **Settings Value Timing + Results Comment Fix (2026-02-10)**: Adjusted option value-change speech to read after a short post-input delay (prevents stale pre-change value reads in display/calibration-style settings), and extended results narration to include `WavesBox` comment text in addition to score/stats/menu option.
 
 ## Next Steps
 - **Focused Playtest**: Validate end-to-end flow for map mode locks, stage-end locks, advanced menu/timeline narration, and credits scrolling narration.

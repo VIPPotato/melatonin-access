@@ -51,6 +51,17 @@ namespace MelatoninAccess
                 sb.Append(Loc.Get("results_stats", perfect, late, early, miss));
             }
 
+            string comment = GetWavesComment(results);
+            if (!string.IsNullOrWhiteSpace(comment))
+            {
+                if (sb.Length > 0) sb.Append(" ");
+                sb.Append(comment);
+                if (!comment.EndsWith(".") && !comment.EndsWith("!") && !comment.EndsWith("?"))
+                {
+                    sb.Append(".");
+                }
+            }
+
             if (results.StageEndMenu != null &&
                 StageEndMenuHelper.TryBuildSelectionAnnouncement(results.StageEndMenu, out string firstOptionAnnouncement))
             {
@@ -59,6 +70,16 @@ namespace MelatoninAccess
             }
 
             ScreenReader.Say(sb.ToString(), true);
+        }
+
+        private static string GetWavesComment(Results results)
+        {
+            if (results == null || results.WavesBox == null || results.WavesBox.message == null) return "";
+
+            var tmp = results.WavesBox.message.GetComponent<TextMeshPro>();
+            if (tmp == null || string.IsNullOrWhiteSpace(tmp.text)) return "";
+
+            return tmp.text.Trim();
         }
 
         // --- Stage End Menu (Replay/Next) ---
