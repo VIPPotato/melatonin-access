@@ -47,10 +47,11 @@
 - [x] **Bugfix Release Published (2026-02-10)**: Released `v1.0.2` on GitHub as latest with resolution value-timing fix, calibration menu utterance merge, and localized map level-name announcements; attached minimal package (`Mods\MelatoninAccess.dll`, `Tolk.dll`, `nvdaControllerClient32.dll`).
 - [x] **Global Menu Position Toggle (2026-02-10)**: Added persistent `F3` runtime toggle (`AnnounceMenuPositions`) that enables/disables position context (`X of Y`) across option menus, language/mode menus, achievements, stage-end options, and downloaded-level row/page narration; added localized toggle confirmations for all supported languages.
 - [x] **Release Bundle Loader Config (2026-02-10)**: Added tracked `UserData\Loader.cfg` (copied unchanged from maintainer install) and updated `scripts\Build-ReleasePackage.ps1` to always include it in release ZIPs under `UserData\Loader.cfg`.
+- [x] **Release Published (2026-02-10)**: Released `v1.0.3` on GitHub as latest with global `F3` menu-position toggle and bundled `UserData\Loader.cfg` in the release package.
 
 ## Next Steps
 - **Focused Playtest**: Validate end-to-end flow for map mode locks, stage-end locks, advanced menu/timeline narration, and credits scrolling narration.
 - **Language Spot Check**: Switch each in-game language and verify key mod-only lines (debug toggles, map lock reasons, teleport conflict hint, results summary) are spoken correctly.
 - **Config Spot Check**: Toggle each new `MelonPreferences` setting and verify the targeted announcement group turns on/off without side effects.
 - **Hotkey Spot Check**: Verify `F2`, `F3`, and `F12` update behavior immediately and remain in the same state after restarting the game.
-- **Post-Release Validation**: Monitor issues/feedback from `v1.0.2` and collect any remaining edge cases from real-world play sessions.
+- **Post-Release Validation**: Monitor issues/feedback from `v1.0.3` and collect any remaining edge cases from real-world play sessions.
