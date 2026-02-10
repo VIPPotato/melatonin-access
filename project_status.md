@@ -48,6 +48,7 @@
 - [x] **Global Menu Position Toggle (2026-02-10)**: Added persistent `F3` runtime toggle (`AnnounceMenuPositions`) that enables/disables position context (`X of Y`) across option menus, language/mode menus, achievements, stage-end options, and downloaded-level row/page narration; added localized toggle confirmations for all supported languages.
 - [x] **Release Bundle Loader Config (2026-02-10)**: Added tracked `UserData\Loader.cfg` (copied unchanged from maintainer install) and updated `scripts\Build-ReleasePackage.ps1` to always include it in release ZIPs under `UserData\Loader.cfg`.
 - [x] **Release Published (2026-02-10)**: Released `v1.0.3` on GitHub as latest with global `F3` menu-position toggle and bundled `UserData\Loader.cfg` in the release package.
+- [x] **Release Notes Formatting Fix (2026-02-10)**: Rewrote GitHub release bodies for `v1.0`, `v1.0.1`, `v1.0.2`, and `v1.0.3` using proper multiline markdown so headings/lists render correctly (removed literal `\n` text artifacts).
 
 ## Next Steps
 - **Focused Playtest**: Validate end-to-end flow for map mode locks, stage-end locks, advanced menu/timeline narration, and credits scrolling narration.
