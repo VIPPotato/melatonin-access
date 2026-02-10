@@ -183,6 +183,32 @@ namespace MelatoninAccess
                 "Modo de depuracao desativado.");
 
             Add(
+                "rhythm_cues_enabled",
+                "Rhythm cue announcements enabled.",
+                "节奏提示播报已启用。",
+                "節奏提示播報已啟用。",
+                "リズムキューの読み上げを有効にしました。",
+                "리듬 큐 안내를 켰습니다.",
+                "Da bat thong bao nhac nhip.",
+                "Annonces des reperes rythmiques activees.",
+                "Rhythmus-Hinweise aktiviert.",
+                "Anuncios de ritmos activados.",
+                "Anuncios de ritmo ativados.");
+
+            Add(
+                "rhythm_cues_disabled",
+                "Rhythm cue announcements disabled.",
+                "节奏提示播报已禁用。",
+                "節奏提示播報已停用。",
+                "リズムキューの読み上げを無効にしました。",
+                "리듬 큐 안내를 껐습니다.",
+                "Da tat thong bao nhac nhip.",
+                "Annonces des reperes rythmiques desactivees.",
+                "Rhythmus-Hinweise deaktiviert.",
+                "Anuncios de ritmos desactivados.",
+                "Anuncios de ritmo desativados.");
+
+            Add(
                 "intro_welcome",
                 "Press {0} to begin. Press {1} to change language.",
                 "按 {0} 开始。按 {1} 更改语言。",
