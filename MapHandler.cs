@@ -12,6 +12,7 @@ namespace MelatoninAccess
     {
         private const float ModeAnnouncementCooldown = 0.4f;
         private const float TeleportConflictHintCooldown = 2.0f;
+        private const float TeleportDispatchCooldown = 0.08f;
         private const float LandmarkRepeatCooldown = 0.75f;
         private static float _lastModeMenuTitleTime = -10f;
         private static string _lastModeAnnouncement = "";
@@ -19,6 +20,10 @@ namespace MelatoninAccess
         private static string _lastLockReasonAnnouncement = "";
         private static float _lastLockReasonTime = -10f;
         private static float _lastTeleportConflictHintTime = -10f;
+        private static int _lastTeleportDispatchFrame = -1;
+        private static float _lastTeleportDispatchTime = -10f;
+        private static bool _wasGamepadPrevDown;
+        private static bool _wasGamepadNextDown;
         private static string _lastLandmarkAnnouncement = "";
         private static float _lastLandmarkAnnouncementTime = -10f;
 
@@ -146,8 +151,12 @@ namespace MelatoninAccess
                 bool rightBracketPressed = Keyboard.current.rightBracketKey.wasPressedThisFrame;
                 bool f9Pressed = Keyboard.current.f9Key.wasPressedThisFrame;
                 bool f10Pressed = Keyboard.current.f10Key.wasPressedThisFrame;
-                bool gamepadPrevPressed = ControlHandler.mgr != null && ControlHandler.mgr.GetCtrlType() > 0 && ControlHandler.mgr.CheckIsActionLeftPressed();
-                bool gamepadNextPressed = ControlHandler.mgr != null && ControlHandler.mgr.GetCtrlType() > 0 && ControlHandler.mgr.CheckIsActionRightPressed();
+                bool gamepadPrevDown = ControlHandler.mgr != null && ControlHandler.mgr.GetCtrlType() > 0 && ControlHandler.mgr.CheckIsActionLeftPressed();
+                bool gamepadNextDown = ControlHandler.mgr != null && ControlHandler.mgr.GetCtrlType() > 0 && ControlHandler.mgr.CheckIsActionRightPressed();
+                bool gamepadPrevPressed = gamepadPrevDown && !_wasGamepadPrevDown;
+                bool gamepadNextPressed = gamepadNextDown && !_wasGamepadNextDown;
+                _wasGamepadPrevDown = gamepadPrevDown;
+                _wasGamepadNextDown = gamepadNextDown;
 
                 string actionKey = SaveManager.mgr != null ? SaveManager.mgr.GetActionKey() : "";
                 bool actionUsesLeftBracket = actionKey == "[";
@@ -160,10 +169,12 @@ namespace MelatoninAccess
 
                 if ((leftBracketPressed && !actionUsesLeftBracket) || f9Pressed || gamepadPrevPressed)
                 {
+                    if (!TryConsumeTeleportDispatch()) return;
                     MapTeleporter.TeleportToPrev(__instance);
                 }
                 else if ((rightBracketPressed && !actionUsesRightBracket) || f10Pressed || gamepadNextPressed)
                 {
+                    if (!TryConsumeTeleportDispatch()) return;
                     MapTeleporter.TeleportToNext(__instance);
                 }
             }
@@ -273,6 +284,18 @@ namespace MelatoninAccess
             _lastLandmarkAnnouncement = name;
             _lastLandmarkAnnouncementTime = now;
             return false;
+        }
+
+        private static bool TryConsumeTeleportDispatch()
+        {
+            int frame = Time.frameCount;
+            float now = Time.unscaledTime;
+            if (frame == _lastTeleportDispatchFrame) return false;
+            if (now - _lastTeleportDispatchTime < TeleportDispatchCooldown) return false;
+
+            _lastTeleportDispatchFrame = frame;
+            _lastTeleportDispatchTime = now;
+            return true;
         }
 
         private static string GetModeLockReason(ModeMenu menu, int activeItemNum)
