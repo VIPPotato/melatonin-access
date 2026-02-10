@@ -152,11 +152,16 @@ namespace MelatoninAccess
                  if (tmp != null && !string.IsNullOrWhiteSpace(tmp.text))
                  {
                       string language = tmp.text.Trim();
-                     string position = Loc.Get("order_of", highlightNum + 1, menu.langs.Length);
-                     string languageWithPosition = $"{language}, {position}";
-                     string announcement = includeMenuTitle
-                         ? $"{Loc.Get("language_menu")}. {languageWithPosition}"
-                         : languageWithPosition;
+                      string languageWithContext = language;
+                      if (ModConfig.AnnounceMenuPositions)
+                      {
+                          string position = Loc.Get("order_of", highlightNum + 1, menu.langs.Length);
+                          languageWithContext = $"{language}, {position}";
+                      }
+
+                      string announcement = includeMenuTitle
+                          ? $"{Loc.Get("language_menu")}. {languageWithContext}"
+                          : languageWithContext;
 
                       float now = Time.unscaledTime;
                       if (announcement == _lastAnnouncedLanguage && now - _lastAnnouncedLanguageTime < LanguageRepeatBlockSeconds) return;

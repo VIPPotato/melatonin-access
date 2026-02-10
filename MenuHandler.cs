@@ -143,7 +143,7 @@ namespace MelatoninAccess
                         }
 
                         // Position in Menu (X of Y)
-                        if (__instance.transform.parent != null)
+                        if (ModConfig.AnnounceMenuPositions && __instance.transform.parent != null)
                         {
                             var menu = __instance.transform.parent.GetComponent<Menu>();
                             if (menu != null)

@@ -225,6 +225,32 @@ namespace MelatoninAccess
                 "Anuncios de ritmo desativados.");
 
             Add(
+                "menu_positions_enabled",
+                "Menu position announcements enabled.",
+                "菜单位置播报已启用。",
+                "選單位置播報已啟用。",
+                "メニュー位置の読み上げを有効にしました。",
+                "메뉴 위치 안내를 켰습니다.",
+                "Da bat thong bao vi tri menu.",
+                "Annonces de position de menu activees.",
+                "Menuepositionsansagen aktiviert.",
+                "Anuncios de posicion de menu activados.",
+                "Anuncios de posicao de menu ativados.");
+
+            Add(
+                "menu_positions_disabled",
+                "Menu position announcements disabled.",
+                "菜单位置播报已禁用。",
+                "選單位置播報已停用。",
+                "メニュー位置の読み上げを無効にしました。",
+                "메뉴 위치 안내를 껐습니다.",
+                "Da tat thong bao vi tri menu.",
+                "Annonces de position de menu desactivees.",
+                "Menuepositionsansagen deaktiviert.",
+                "Anuncios de posicion de menu desactivados.",
+                "Anuncios de posicao de menu desativados.");
+
+            Add(
                 "intro_welcome",
                 "Press {0} to begin. Press {1} to change language.",
                 "按 {0} 开始。按 {1} 更改语言。",
@@ -446,6 +472,19 @@ namespace MelatoninAccess
                 "{0} niveis no total. Pagina {1} de {2}");
 
             Add(
+                "downloaded_levels_total",
+                "{0} levels total.",
+                "共 {0} 个关卡。",
+                "共 {0} 個關卡。",
+                "合計 {0} レベル。",
+                "총 {0}개 레벨.",
+                "Tong cong {0} cap.",
+                "{0} niveaux au total.",
+                "{0} Level insgesamt.",
+                "{0} niveles en total.",
+                "{0} niveis no total.");
+
+            Add(
                 "next_page",
                 "Next page",
                 "下一页",
@@ -524,6 +563,19 @@ namespace MelatoninAccess
                 "Conquista bloqueada. {0} de {1}");
 
             Add(
+                "locked_achievement_plain",
+                "Locked achievement.",
+                "未解锁成就。",
+                "未解鎖成就。",
+                "未解除の実績。",
+                "잠긴 도전과제.",
+                "Thanh tich bi khoa.",
+                "Succes verrouille.",
+                "Gesperrter Erfolg.",
+                "Logro bloqueado.",
+                "Conquista bloqueada.");
+
+            Add(
                 "achievement_with_desc",
                 "{0}: {1}. {2} of {3}",
                 "{0}：{1}。第 {2}/{3} 项",
@@ -535,6 +587,19 @@ namespace MelatoninAccess
                 "{0}: {1}. {2} von {3}",
                 "{0}: {1}. {2} de {3}",
                 "{0}: {1}. {2} de {3}");
+
+            Add(
+                "achievement_with_desc_plain",
+                "{0}: {1}.",
+                "{0}：{1}。",
+                "{0}：{1}。",
+                "{0}: {1}。",
+                "{0}: {1}.",
+                "{0}: {1}.",
+                "{0} : {1}.",
+                "{0}: {1}.",
+                "{0}: {1}.",
+                "{0}: {1}.");
 
             Add(
                 "arrived_at",

@@ -102,8 +102,11 @@ namespace MelatoninAccess
                 int totalLevels = Traverse.Create(menu).Field("totalLevels").GetValue<int>();
                 int pageNum = Traverse.Create(menu).Field("pageNum").GetValue<int>();
                 int pageTotal = Traverse.Create(menu).Field("pageTotal").GetValue<int>();
-                
-                ScreenReader.Say(Loc.Get("downloaded_levels_page_total", totalLevels, pageNum, pageTotal), false);
+
+                string summary = ModConfig.AnnounceMenuPositions
+                    ? Loc.Get("downloaded_levels_page_total", totalLevels, pageNum, pageTotal)
+                    : Loc.Get("downloaded_levels_total", totalLevels);
+                ScreenReader.Say(summary, false);
             }
             
             isAnnouncing = false;
@@ -195,7 +198,10 @@ namespace MelatoninAccess
                         int visibleRows = 0;
                         foreach(var r in menu.LevelRows) if(r.gameObject.activeSelf) visibleRows++;
 
-                        string selection = Loc.Get("item_of", tmp.text, highlightNum + 1, visibleRows);
+                        string rowText = tmp.text != null ? tmp.text.Trim() : "";
+                        string selection = ModConfig.AnnounceMenuPositions
+                            ? Loc.Get("item_of", rowText, highlightNum + 1, visibleRows)
+                            : rowText;
                         float now = Time.unscaledTime;
                         if (selection == _lastSelectionText && now - _lastSelectionTime < ExtraMenuDebounce.SelectionCooldown) return;
 
@@ -209,6 +215,8 @@ namespace MelatoninAccess
 
         public static void AnnouncePage(CommunityMenu menu)
         {
+            if (!ModConfig.AnnounceMenuPositions) return;
+
             int pageNum = Traverse.Create(menu).Field("pageNum").GetValue<int>();
             int pageTotal = Traverse.Create(menu).Field("pageTotal").GetValue<int>();
             float now = Time.unscaledTime;

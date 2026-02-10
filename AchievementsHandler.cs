@@ -99,9 +99,10 @@ namespace MelatoninAccess
             string title = GetText(row.title);
             string desc = GetText(row.description);
 
+            bool includePosition = ModConfig.AnnounceMenuPositions;
             announcement = title == "?????"
-                ? Loc.Get("locked_achievement", highlightNum + 1, rows.Length)
-                : Loc.Get("achievement_with_desc", title, desc, highlightNum + 1, rows.Length);
+                ? (includePosition ? Loc.Get("locked_achievement", highlightNum + 1, rows.Length) : Loc.Get("locked_achievement_plain"))
+                : (includePosition ? Loc.Get("achievement_with_desc", title, desc, highlightNum + 1, rows.Length) : Loc.Get("achievement_with_desc_plain", title, desc));
 
             return !string.IsNullOrWhiteSpace(announcement);
         }
