@@ -258,9 +258,7 @@ namespace MelatoninAccess
 
         private static string FormatDreamName(string rawName)
         {
-            if (string.IsNullOrEmpty(rawName)) return Loc.Get("unknown_level");
-            if (rawName.Length == 1) return rawName.ToUpper();
-            return char.ToUpper(rawName[0]) + rawName.Substring(1);
+            return Loc.GetDreamName(rawName);
         }
 
         private static void AnnounceTeleportConflictHint()

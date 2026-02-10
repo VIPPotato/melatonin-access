@@ -86,6 +86,22 @@ namespace MelatoninAccess
             }
         }
 
+        /// <summary>
+        /// Gets a localized level/dream name from the internal dream key.
+        /// </summary>
+        public static string GetDreamName(string rawName)
+        {
+            if (string.IsNullOrWhiteSpace(rawName)) return Get("unknown_level");
+
+            string normalized = rawName.Trim().ToLowerInvariant();
+            string key = "dream_name_" + normalized;
+            string localized = Get(key);
+            if (localized != key) return localized;
+
+            if (normalized.Length == 1) return normalized.ToUpperInvariant();
+            return char.ToUpperInvariant(normalized[0]) + normalized.Substring(1);
+        }
+
         private static int GetGameLanguageIndex()
         {
             try
@@ -597,6 +613,292 @@ namespace MelatoninAccess
                 "Unbekanntes Level",
                 "Nivel desconocido",
                 "Nivel desconhecido");
+
+            Add(
+                "dream_name_career",
+                "Career",
+                "事业",
+                "事業",
+                "キャリア",
+                "커리어",
+                "Su nghiep",
+                "Carriere",
+                "Karriere",
+                "Carrera",
+                "Carreira");
+
+            Add(
+                "dream_name_dating",
+                "Dating",
+                "约会",
+                "約會",
+                "デート",
+                "데이트",
+                "Hen ho",
+                "Rendez-vous",
+                "Dating",
+                "Citas",
+                "Encontros");
+
+            Add(
+                "dream_name_desires",
+                "Desires",
+                "欲望",
+                "慾望",
+                "欲望",
+                "욕망",
+                "Ham muon",
+                "Desirs",
+                "Wuensche",
+                "Deseos",
+                "Desejos");
+
+            Add(
+                "dream_name_exercise",
+                "Exercise",
+                "运动",
+                "運動",
+                "エクササイズ",
+                "운동",
+                "Tap luyen",
+                "Exercice",
+                "Training",
+                "Ejercicio",
+                "Exercicio");
+
+            Add(
+                "dream_name_final",
+                "Final",
+                "最终",
+                "最終",
+                "ファイナル",
+                "파이널",
+                "Cuoi cung",
+                "Final",
+                "Finale",
+                "Final",
+                "Final");
+
+            Add(
+                "dream_name_followers",
+                "Followers",
+                "关注者",
+                "關注者",
+                "フォロワー",
+                "팔로워",
+                "Nguoi theo doi",
+                "Abonnes",
+                "Follower",
+                "Seguidores",
+                "Seguidores");
+
+            Add(
+                "dream_name_food",
+                "Food",
+                "食物",
+                "食物",
+                "フード",
+                "음식",
+                "Do an",
+                "Nourriture",
+                "Essen",
+                "Comida",
+                "Comida");
+
+            Add(
+                "dream_name_future",
+                "Future",
+                "未来",
+                "未來",
+                "未来",
+                "미래",
+                "Tuong lai",
+                "Futur",
+                "Zukunft",
+                "Futuro",
+                "Futuro");
+
+            Add(
+                "dream_name_indulgence",
+                "Indulgence",
+                "放纵",
+                "放縱",
+                "放縦",
+                "방종",
+                "Huong lac",
+                "Indulgence",
+                "Genuss",
+                "Indulgencia",
+                "Indulgencia");
+
+            Add(
+                "dream_name_meditation",
+                "Meditation",
+                "冥想",
+                "冥想",
+                "瞑想",
+                "명상",
+                "Thien",
+                "Meditation",
+                "Meditation",
+                "Meditacion",
+                "Meditacao");
+
+            Add(
+                "dream_name_mind",
+                "Mind",
+                "心灵",
+                "心靈",
+                "マインド",
+                "마음",
+                "Tam tri",
+                "Esprit",
+                "Geist",
+                "Mente",
+                "Mente");
+
+            Add(
+                "dream_name_money",
+                "Money",
+                "金钱",
+                "金錢",
+                "お金",
+                "돈",
+                "Tien bac",
+                "Argent",
+                "Geld",
+                "Dinero",
+                "Dinheiro");
+
+            Add(
+                "dream_name_nature",
+                "Nature",
+                "自然",
+                "自然",
+                "自然",
+                "자연",
+                "Thien nhien",
+                "Nature",
+                "Natur",
+                "Naturaleza",
+                "Natureza");
+
+            Add(
+                "dream_name_past",
+                "Past",
+                "过去",
+                "過去",
+                "過去",
+                "과거",
+                "Qua khu",
+                "Passe",
+                "Vergangenheit",
+                "Pasado",
+                "Passado");
+
+            Add(
+                "dream_name_pressure",
+                "Pressure",
+                "压力",
+                "壓力",
+                "プレッシャー",
+                "압박",
+                "Ap luc",
+                "Pression",
+                "Druck",
+                "Presion",
+                "Pressao");
+
+            Add(
+                "dream_name_setbacks",
+                "Setbacks",
+                "挫折",
+                "挫折",
+                "挫折",
+                "좌절",
+                "Tro ngai",
+                "Revers",
+                "Rueckschlaege",
+                "Reveses",
+                "Contratempos");
+
+            Add(
+                "dream_name_shopping",
+                "Shopping",
+                "购物",
+                "購物",
+                "ショッピング",
+                "쇼핑",
+                "Mua sam",
+                "Shopping",
+                "Einkaufen",
+                "Compras",
+                "Compras");
+
+            Add(
+                "dream_name_space",
+                "Space",
+                "太空",
+                "太空",
+                "宇宙",
+                "우주",
+                "Khong gian",
+                "Espace",
+                "Weltraum",
+                "Espacio",
+                "Espaco");
+
+            Add(
+                "dream_name_stress",
+                "Stress",
+                "压力",
+                "壓力",
+                "ストレス",
+                "스트레스",
+                "Cang thang",
+                "Stress",
+                "Stress",
+                "Estres",
+                "Estresse");
+
+            Add(
+                "dream_name_tech",
+                "Tech",
+                "科技",
+                "科技",
+                "テック",
+                "테크",
+                "Cong nghe",
+                "Technologie",
+                "Technik",
+                "Tecnologia",
+                "Tecnologia");
+
+            Add(
+                "dream_name_time",
+                "Time",
+                "时间",
+                "時間",
+                "時間",
+                "시간",
+                "Thoi gian",
+                "Temps",
+                "Zeit",
+                "Tiempo",
+                "Tempo");
+
+            Add(
+                "dream_name_tutorial",
+                "Tutorial",
+                "教程",
+                "教學",
+                "チュートリアル",
+                "튜토리얼",
+                "Huong dan",
+                "Tutoriel",
+                "Tutorial",
+                "Tutorial",
+                "Tutorial");
 
             Add(
                 "editor_cursor_empty",

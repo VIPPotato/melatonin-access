@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.2 - 2026-02-10
+
+- Fixed settings value timing for directional options so value announcements are read after the applied change.
+- Added a dedicated wait-for-refresh path for resolution changes to avoid stale pre-change reads.
+- Included results comment text (`WavesBox` message) in spoken results summary.
+- Combined calibration hint text with calibration menu opening announcement into one utterance.
+- Localized dream/level name announcements across all game-supported languages.
+
 ## 1.0.1 - 2026-02-10
 
 - Fixed map teleport double-trigger where one press (`[`, `]`, `F9`, `F10`) could jump two landmarks.
