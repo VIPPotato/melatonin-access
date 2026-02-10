@@ -5,6 +5,7 @@
 - Added global `F3` toggle for menu position announcements (for example `1 of 4`), with immediate persistence to MelonPreferences.
 - Applied the position toggle across options menus, language/mode menus, stage-end results options, achievements rows, and downloaded-level row/page narration.
 - Added localized on/off confirmation messages for the new menu-position toggle in all supported game languages.
+- Updated release packaging to include `UserData/Loader.cfg` so launcher console visibility follows the provided MelonLoader config.
 
 ## 1.0.2 - 2026-02-10
 
