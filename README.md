@@ -79,6 +79,22 @@ dotnet build MelatoninAccess.csproj
 
 The project is configured to auto-copy `MelatoninAccess.dll` to your game `Mods` folder after build when `ModsPath` is valid in `MelatoninAccess.csproj`.
 
+## Release Package
+
+Create release ZIP (mod + required screen-reader DLLs only):
+
+```powershell
+pwsh -File .\scripts\Build-ReleasePackage.ps1 -Version "v1.0"
+```
+
+Package contents:
+
+- `Mods/MelatoninAccess.dll`
+- `Tolk.dll`
+- `nvdaControllerClient32.dll`
+
+The release ZIP intentionally excludes development docs/tools (for example changelog files and regression test scripts).
+
 ## Install (Manual)
 
 If auto-copy is not configured, copy:
