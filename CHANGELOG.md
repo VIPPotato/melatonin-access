@@ -1,0 +1,20 @@
+# Changelog
+
+## 1.1.6 - 2026-02-10
+
+- Added runtime `F2` toggle for rhythm cue announcements with immediate persistence to MelonPreferences.
+- Made `F12` debug mode persistent across sessions using MelonPreferences-backed state.
+- Reduced map hotspot speech chatter by debouncing repeated same-landmark arrival lines.
+- Fixed teleport star grammar with singular/plural handling (`1 star` vs `N stars`).
+- Added optional announcement toggles for map hotspots, rhythm cues, tutorial/dialog narration, and credits narration.
+- Added `scripts/Test-SpeechRegression.ps1` to detect common speech regressions from `[SR]` logs.
+- Improved translation consistency for startup loaded line and results stats wording.
+- Expanded README with controller-aware navigation, runtime toggle behavior, and regression test workflow.
+
+## 1.1.5 - 2026-02-09
+
+- Unified predictable menu announcements into single utterances.
+- Updated welcome prompt to localized controller-aware guidance.
+- Added/finished credits roll narration while scrolling.
+- Improved tutorial dialog coverage (including graphic text path) and punctuation joining.
+- Added map/gameplay playtest follow-up fixes (mode/language positions, results merge, snap controls).
