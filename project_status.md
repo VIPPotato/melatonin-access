@@ -32,9 +32,11 @@
 - [x] **Speech Regression Checker Script (2026-02-10)**: Added `scripts/Test-SpeechRegression.ps1` to scan MelonLoader logs for consecutive duplicate SR lines and known forbidden patterns.
 - [x] **Localization Consistency Pass (2026-02-10)**: Improved non-English coverage for startup loaded message, results summary wording, and Vietnamese space cue label.
 - [x] **README Release/Testing Update (2026-02-10)**: Expanded `README.md` with controller-aware navigation guidance, MelonPreferences toggle documentation, and speech regression script usage examples for post-playtest validation.
+- [x] **Runtime Settings Hotkeys + Persistence (2026-02-10)**: Added `F2` runtime toggle for rhythm cue announcements with immediate `MelonPreferences` save, and moved `F12` debug toggle to persistent config-backed state restored at startup.
 
 ## Next Steps
 - **Focused Playtest**: Validate end-to-end flow for map mode locks, stage-end locks, advanced menu/timeline narration, and credits scrolling narration.
 - **Language Spot Check**: Switch each in-game language and verify key mod-only lines (debug toggles, map lock reasons, teleport conflict hint, results summary) are spoken correctly.
 - **Config Spot Check**: Toggle each new `MelonPreferences` setting and verify the targeted announcement group turns on/off without side effects.
+- **Hotkey Spot Check**: Verify `F2` and `F12` update behavior immediately and remain in the same state after restarting the game.
 - **Release Prep**: If playtest passes, package current DLL and tag a release build.
