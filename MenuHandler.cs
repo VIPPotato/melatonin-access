@@ -2,6 +2,7 @@ using HarmonyLib;
 using MelonLoader;
 using UnityEngine;
 using TMPro;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace MelatoninAccess
@@ -203,7 +204,7 @@ namespace MelatoninAccess
         {
             public static void Postfix(Option __instance)
             {
-                OptionHelper.AnnounceValueChange(__instance);
+                MelonCoroutines.Start(OptionHelper.AnnounceValueChangeDelayed(__instance));
             }
         }
 
@@ -212,14 +213,25 @@ namespace MelatoninAccess
         {
             public static void Postfix(Option __instance)
             {
-                OptionHelper.AnnounceValueChange(__instance);
+                MelonCoroutines.Start(OptionHelper.AnnounceValueChangeDelayed(__instance));
             }
         }
 
         public static class OptionHelper
         {
+            private const float ValueChangeReadDelay = 0.03f;
+
+            public static IEnumerator AnnounceValueChangeDelayed(Option option)
+            {
+                if (option == null) yield break;
+
+                yield return new WaitForSecondsRealtime(ValueChangeReadDelay);
+                AnnounceValueChange(option);
+            }
+
             public static void AnnounceValueChange(Option option)
             {
+                if (option == null) return;
                 int functionNum = Traverse.Create(option).Field("functionNum").GetValue<int>();
 
                 if (option.num != null && option.num.CheckIsMeshRendered())
