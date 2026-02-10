@@ -44,6 +44,7 @@
 - [x] **Bugfix Release Published (2026-02-10)**: Released `v1.0.1` on GitHub as latest with map teleport double-jump fix and updated install/readme notes; attached minimal package (`Mods\MelatoninAccess.dll`, `Tolk.dll`, `nvdaControllerClient32.dll`).
 - [x] **Settings Value Timing + Results Comment Fix (2026-02-10)**: Adjusted option value-change speech to read after a short post-input delay (prevents stale pre-change value reads in display/calibration-style settings), and extended results narration to include `WavesBox` comment text in addition to score/stats/menu option.
 - [x] **Settings/Calibration/Localization Polish (2026-02-10)**: Added resolution-specific post-refresh value announcement logic to avoid stale reads, combined calibration hint with calibration menu opening into one utterance, and localized map dream/level names through `Loc.GetDreamName()` keys across all supported game languages.
+- [x] **Bugfix Release Published (2026-02-10)**: Released `v1.0.2` on GitHub as latest with resolution value-timing fix, calibration menu utterance merge, and localized map level-name announcements; attached minimal package (`Mods\MelatoninAccess.dll`, `Tolk.dll`, `nvdaControllerClient32.dll`).
 
 ## Next Steps
 - **Focused Playtest**: Validate end-to-end flow for map mode locks, stage-end locks, advanced menu/timeline narration, and credits scrolling narration.
