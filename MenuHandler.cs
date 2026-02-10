@@ -11,9 +11,12 @@ namespace MelatoninAccess
     {
         private static float lastTitleTime = 0f;
         private const float PendingTitleCombineWindowSeconds = 0.8f;
+        private const float PendingPrefaceCombineWindowSeconds = 1.2f;
         private const float FirstOptionSuppressSeconds = 1.0f;
         private static string _pendingMenuTitle = "";
         private static float _pendingMenuTitleTime = -10f;
+        private static string _pendingPrefaceAnnouncement = "";
+        private static float _pendingPrefaceAnnouncementTime = -10f;
         private static string _suppressedFirstOptionText = "";
         private static float _suppressedFirstOptionUntilTime = -10f;
 
@@ -187,6 +190,13 @@ namespace MelatoninAccess
                             _pendingMenuTitleTime = -10f;
                             _suppressedFirstOptionText = firstOptionText;
                             _suppressedFirstOptionUntilTime = Time.unscaledTime + FirstOptionSuppressSeconds;
+
+                            string preface = ConsumePrefaceAnnouncementIfPending();
+                            if (!string.IsNullOrWhiteSpace(preface))
+                            {
+                                text = $"{preface} {text}";
+                            }
+
                             ScreenReader.Say(text, true);
                             return;
                         }
@@ -202,28 +212,88 @@ namespace MelatoninAccess
         [HarmonyPatch(typeof(Option), "Select")]
         public static class Option_Select_Patch
         {
-            public static void Postfix(Option __instance)
+            public static void Prefix(Option __instance, out OptionValueSnapshot __state)
             {
-                MelonCoroutines.Start(OptionHelper.AnnounceValueChangeDelayed(__instance));
+                __state = OptionHelper.CaptureSnapshot(__instance);
+            }
+
+            public static void Postfix(Option __instance, OptionValueSnapshot __state)
+            {
+                MelonCoroutines.Start(OptionHelper.AnnounceValueChangeDelayed(__instance, __state));
             }
         }
 
         [HarmonyPatch(typeof(Option), "Reverse")]
         public static class Option_Reverse_Patch
         {
-            public static void Postfix(Option __instance)
+            public static void Prefix(Option __instance, out OptionValueSnapshot __state)
             {
-                MelonCoroutines.Start(OptionHelper.AnnounceValueChangeDelayed(__instance));
+                __state = OptionHelper.CaptureSnapshot(__instance);
             }
+
+            public static void Postfix(Option __instance, OptionValueSnapshot __state)
+            {
+                MelonCoroutines.Start(OptionHelper.AnnounceValueChangeDelayed(__instance, __state));
+            }
+        }
+
+        public struct OptionValueSnapshot
+        {
+            public int FunctionNum;
+            public string ValueText;
         }
 
         public static class OptionHelper
         {
             private const float ValueChangeReadDelay = 0.03f;
 
-            public static IEnumerator AnnounceValueChangeDelayed(Option option)
+            public static OptionValueSnapshot CaptureSnapshot(Option option)
+            {
+                if (option == null) return default;
+
+                int functionNum = Traverse.Create(option).Field("functionNum").GetValue<int>();
+                string valueText = "";
+                if (option.num != null && option.num.CheckIsMeshRendered())
+                {
+                    var numTmp = option.num.GetComponent<TextMeshPro>();
+                    if (numTmp != null)
+                    {
+                        valueText = numTmp.text ?? "";
+                    }
+                }
+
+                return new OptionValueSnapshot
+                {
+                    FunctionNum = functionNum,
+                    ValueText = valueText
+                };
+            }
+
+            public static IEnumerator AnnounceValueChangeDelayed(Option option, OptionValueSnapshot snapshot)
             {
                 if (option == null) yield break;
+
+                // Resolution (function 13) updates via Refresh; wait until we observe a changed value text
+                // or a short timeout so we read the post-adjusted value when available.
+                if (snapshot.FunctionNum == 13)
+                {
+                    const int maxFramesToWait = 12;
+                    for (int i = 0; i < maxFramesToWait; i++)
+                    {
+                        yield return null;
+
+                        if (option.num == null || !option.num.CheckIsMeshRendered()) continue;
+                        var numTmp = option.num.GetComponent<TextMeshPro>();
+                        string current = numTmp != null ? (numTmp.text ?? "") : "";
+                        if (!string.IsNullOrWhiteSpace(current) && current != snapshot.ValueText)
+                        {
+                            break;
+                        }
+                    }
+
+                    AnnounceValueChange(option);
+                    yield break;
+                }
 
                 yield return new WaitForSecondsRealtime(ValueChangeReadDelay);
                 AnnounceValueChange(option);
@@ -305,6 +375,30 @@ namespace MelatoninAccess
         private static string GetToggleStateText(bool state)
         {
             return state ? Loc.Get("state_on") : Loc.Get("state_off");
+        }
+
+        public static void QueuePrefaceAnnouncement(string text)
+        {
+            if (string.IsNullOrWhiteSpace(text)) return;
+
+            _pendingPrefaceAnnouncement = text.Trim();
+            _pendingPrefaceAnnouncementTime = Time.unscaledTime;
+        }
+
+        private static string ConsumePrefaceAnnouncementIfPending()
+        {
+            if (string.IsNullOrWhiteSpace(_pendingPrefaceAnnouncement)) return "";
+            if (Time.unscaledTime - _pendingPrefaceAnnouncementTime > PendingPrefaceCombineWindowSeconds)
+            {
+                _pendingPrefaceAnnouncement = "";
+                _pendingPrefaceAnnouncementTime = -10f;
+                return "";
+            }
+
+            string result = _pendingPrefaceAnnouncement;
+            _pendingPrefaceAnnouncement = "";
+            _pendingPrefaceAnnouncementTime = -10f;
+            return result;
         }
     }
 }

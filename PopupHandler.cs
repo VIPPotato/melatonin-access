@@ -9,13 +9,21 @@ namespace MelatoninAccess
     [HarmonyPatch(typeof(ExtraMessage), "Activate")]
     public static class ExtraMessage_Activate_Patch
     {
-        public static void Postfix(ExtraMessage __instance)
+        public static void Postfix(ExtraMessage __instance, int stateNum)
         {
             if (__instance.message != null)
             {
                 var tmp = __instance.message.GetComponent<TextMeshPro>();
                 if (tmp != null)
                 {
+                    // Submenu.SetCalibrationMenu() uses ExtraMessage.Activate(1).
+                    // Queue this hint so it is spoken together with the first calibration menu option.
+                    if (stateNum == 1)
+                    {
+                        MenuHandler.QueuePrefaceAnnouncement(tmp.text);
+                        return;
+                    }
+
                     ScreenReader.Say(tmp.text, true);
                 }
             }
