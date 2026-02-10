@@ -95,15 +95,33 @@ Package contents:
 
 The release ZIP intentionally excludes development docs/tools (for example changelog files and regression test scripts).
 
-## Install (Manual)
+## Install (Release ZIP - Recommended)
 
-If auto-copy is not configured, copy:
+1. Install MelonLoader for Melatonin.
+2. Download `MelatoninAccess-v1.0.zip`.
+3. Extract/copy all files from the ZIP into your Melatonin game folder (the folder with `Melatonin.exe`).
+4. Confirm these files exist:
+   - `<Melatonin folder>/Mods/MelatoninAccess.dll`
+   - `<Melatonin folder>/Tolk.dll`
+   - `<Melatonin folder>/nvdaControllerClient32.dll`
+5. Start the game and confirm you hear the mod loaded announcement.
 
-- `bin/Debug/net472/MelatoninAccess.dll`
+Important:
 
-to:
+- `Tolk.dll` and `nvdaControllerClient32.dll` must be in the main game folder, not in `Mods`.
 
-- `<Melatonin folder>/Mods/`
+## Install (From Source Build)
+
+1. Build:
+
+```bash
+dotnet build MelatoninAccess.csproj
+```
+
+2. If auto-copy is not configured, copy:
+   - `bin/Debug/net472/MelatoninAccess.dll` to `<Melatonin folder>/Mods/`
+   - `libs/x86/Tolk.dll` to `<Melatonin folder>/`
+   - `libs/x86/nvdaControllerClient32.dll` to `<Melatonin folder>/`
 
 ## Speech Regression Check (After Playtest)
 
