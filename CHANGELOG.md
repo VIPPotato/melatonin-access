@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.1 - 2026-02-10
+
+- Fixed map teleport double-trigger where one press (`[`, `]`, `F9`, `F10`) could jump two landmarks.
+- Added one-shot teleport dispatch guard and edge-based gamepad teleport input handling.
+- Updated README install/release notes and support link text.
+
 ## 1.1.6 - 2026-02-10
 
 - Added runtime `F2` toggle for rhythm cue announcements with immediate persistence to MelonPreferences.
