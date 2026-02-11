@@ -104,7 +104,7 @@ namespace MelatoninAccess
                 2 => Loc.Get("objective_hard"),
                 3 => Loc.Get("objective_score"),
                 4 => Loc.Get("objective_hard"),
-                5 => Loc.Get("objective_tutorial", SideLabelHelper.GetSkipPromptLabel()),
+                5 => Loc.Get("objective_tutorial"),
                 6 => Loc.Get("objective_editor_test"),
                 7 => Loc.Get("objective_community"),
                 _ => Loc.Get("objective_default")

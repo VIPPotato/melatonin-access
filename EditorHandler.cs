@@ -125,6 +125,8 @@ namespace MelatoninAccess
         {
             public static void Postfix()
             {
+                string downloadFilePath = Traverse.Create(typeof(LvlEditor)).Field("downloadFilePath").GetValue<string>();
+                if (!string.IsNullOrWhiteSpace(downloadFilePath)) return;
                 ScreenReader.Say(Loc.Get("editor_ready"), true);
             }
         }

@@ -1487,16 +1487,16 @@ namespace MelatoninAccess
 
             Add(
                 "objective_tutorial",
-                "Follow instructions to learn mechanics. Press {0} to skip.",
-                "按照说明学习机制。按 {0} 可跳过。",
-                "按照說明學習機制。按 {0} 可跳過。",
-                "指示に従って仕組みを学びます。{0} でスキップ。",
-                "안내에 따라 기본 조작을 익히세요. {0} 키로 건너뛸 수 있습니다.",
-                "Lam theo huong dan de hoc co che. Nhan {0} de bo qua.",
-                "Suivez les instructions pour apprendre les mecaniques. Appuyez sur {0} pour passer.",
-                "Folge den Anweisungen, um die Mechanik zu lernen. Druecke {0}, um zu ueberspringen.",
-                "Sigue las instrucciones para aprender mecanicas. Pulsa {0} para omitir.",
-                "Siga as instrucoes para aprender as mecanicas. Pressione {0} para pular.");
+                "Follow instructions to learn mechanics.",
+                "按照说明学习机制。",
+                "按照說明學習機制。",
+                "指示に従って仕組みを学びます。",
+                "안내에 따라 기본 조작을 익히세요.",
+                "Lam theo huong dan de hoc co che.",
+                "Suivez les instructions pour apprendre les mecaniques.",
+                "Folge den Anweisungen, um die Mechanik zu lernen.",
+                "Sigue las instrucciones para aprender mecanicas.",
+                "Siga as instrucoes para aprender as mecanicas.");
 
             Add(
                 "objective_editor_test",

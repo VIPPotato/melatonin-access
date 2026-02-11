@@ -35,6 +35,8 @@ namespace MelatoninAccess
         public static void Postfix(DialogBox __instance)
         {
             DialogHelper.ReadDialog(__instance);
+            MelonCoroutines.Start(DialogHelper.ReadDialogDelayed(__instance, 0.12f));
+            MelonCoroutines.Start(DialogHelper.ReadDialogDelayed(__instance, 0.36f));
         }
     }
 
