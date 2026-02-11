@@ -226,9 +226,9 @@ namespace MelatoninAccess
             private static void Teleport(McMap player, int direction)
             {
                 if (Map.env == null || Map.env.Neighbourhood == null) return;
-                
-                var landmarks = Map.env.Neighbourhood.Landmarks;
-                if (landmarks == null || landmarks.Length == 0) return;
+
+                var landmarks = GetPlayableLandmarks(Map.env.Neighbourhood);
+                if (landmarks.Length == 0) return;
 
                 if (currentIndex < 0 || currentIndex >= landmarks.Length)
                 {
@@ -266,6 +266,27 @@ namespace MelatoninAccess
                 yield return new WaitForSecondsRealtime(1.0f);
                 IsTeleporting = false;
             }
+        }
+
+        private static Landmark[] GetPlayableLandmarks(Neighbourhood neighbourhood)
+        {
+            if (neighbourhood == null || neighbourhood.Landmarks == null || neighbourhood.Landmarks.Length == 0)
+            {
+                return new Landmark[0];
+            }
+
+            return neighbourhood.Landmarks.Where(IsPlayableLevelLandmark).ToArray();
+        }
+
+        private static bool IsPlayableLevelLandmark(Landmark landmark)
+        {
+            if (landmark == null || string.IsNullOrWhiteSpace(landmark.dreamName))
+            {
+                return false;
+            }
+
+            string dreamName = landmark.dreamName.Trim();
+            return AccessTools.TypeByName("Dream_" + dreamName) != null;
         }
 
         private static string FormatDreamName(string rawName)
