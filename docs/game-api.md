@@ -116,3 +116,8 @@
 - Gamepad-only helpers in mods should not depend exclusively on `GetCtrlType() > 0`, because controller hardware input can still be active while `ctrlType` is temporarily keyboard.
 - Safer approach for map navigation helpers: read shoulder/trigger states from `Gamepad.current` directly when you only want gamepad actions.
 - References: `decompiled/ControlHandler.cs:57-70`, `decompiled/ControlHandler.cs:535-585`.
+
+## Map Progress Summary
+- `TotalBox` visual map summary uses chapter totals from `SaveManager.GetChapterEarnedStars(Chapter.GetActiveChapterNum())` (plus rings/perfects).
+- Map activation checks use an 8-star threshold on chapters 1-4 (`GetChapterEarnedStars(chapter) >= 8`) for chapter map progression/remix gating.
+- References: `decompiled/TotalBox.cs:28-30`, `decompiled/Map.cs:66-83`.

@@ -655,16 +655,16 @@ namespace MelatoninAccess
 
             Add(
                 "map_progress_status",
-                "{0}. Stars collected: {1}. Need {2} more to pass.",
-                "{0}。已收集星星：{1}。还需要 {2} 颗才能通过。",
-                "{0}。已收集星星：{1}。還需要 {2} 顆才能通過。",
-                "{0}。獲得スター: {1}。クリアまであと {2}。",
-                "{0}. 획득한 별: {1}. 통과까지 {2}개 더 필요합니다.",
-                "{0}. So sao da thu duoc: {1}. Can them {2} sao de vuot qua.",
-                "{0}. Etoiles obtenues : {1}. Il en faut encore {2} pour valider.",
-                "{0}. Gesammelte Sterne: {1}. Noch {2} zum Bestehen noetig.",
-                "{0}. Estrellas conseguidas: {1}. Faltan {2} para completar.",
-                "{0}. Estrelas obtidas: {1}. Faltam {2} para passar.");
+                "Map stars: {0}. Need {1} more to pass.",
+                "地图星星：{0}。还需要 {1} 颗才能通过。",
+                "地圖星星：{0}。還需要 {1} 顆才能通過。",
+                "マップのスター: {0}。クリアまであと {1}。",
+                "맵 별: {0}. 통과까지 {1}개 더 필요합니다.",
+                "So sao ban do: {0}. Can them {1} sao de vuot qua.",
+                "Etoiles de la carte : {0}. Il en faut encore {1} pour valider.",
+                "Kartensterne: {0}. Noch {1} zum Bestehen noetig.",
+                "Estrellas del mapa: {0}. Faltan {1} para completar.",
+                "Estrelas do mapa: {0}. Faltam {1} para passar.");
 
             Add(
                 "teleport_conflict_hint",

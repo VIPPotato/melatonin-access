@@ -50,6 +50,7 @@
 - [x] **Release Published (2026-02-10)**: Released `v1.0.3` on GitHub as latest with global `F3` menu-position toggle and bundled `UserData\Loader.cfg` in the release package.
 - [x] **Release Notes Formatting Fix (2026-02-10)**: Rewrote GitHub release bodies for `v1.0`, `v1.0.1`, `v1.0.2`, and `v1.0.3` using proper multiline markdown so headings/lists render correctly (removed literal `\n` text artifacts).
 - [x] **Map Progress Hotkey + Gamepad Input Source Fix (2026-02-11)**: Added map-only `F1` announcement for current landmark progress (stars collected and stars still needed to pass), and removed `ctrlType` dependency from map teleport gamepad detection so `Action Left/Right` navigation assist keeps working after keyboard input.
+- [x] **Map Progress Hotkey Refinement (2026-02-11)**: Updated `F1` to announce map/chapter-level star totals (matching `TotalBox` behavior) instead of nearest-landmark stars; summary now reports total chapter stars and remaining stars to pass threshold.
 
 ## Next Steps
 - **Focused Playtest**: Validate end-to-end flow for map mode locks, stage-end locks, advanced menu/timeline narration, and credits scrolling narration.
