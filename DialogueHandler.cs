@@ -12,8 +12,7 @@ namespace MelatoninAccess
     {
         public static void Postfix(DialogBox __instance, string newText)
         {
-            DialogHelper.ReadDialogText(newText);
-            DialogHelper.ReadDialog(__instance);
+            DialogHelper.ReadDialog(__instance, newText);
             MelonCoroutines.Start(DialogHelper.ReadDialogDelayed(__instance, 0.18f));
             MelonCoroutines.Start(DialogHelper.ReadDialogDelayed(__instance, 0.42f));
         }
@@ -50,7 +49,15 @@ namespace MelatoninAccess
         }
     }
 
-    // --- New Patches for Activation (Fixes Food/Followers) ---
+    [HarmonyPatch(typeof(DialogBox), "Show")]
+    public static class DialogBox_Show_Patch
+    {
+        public static void Postfix(DialogBox __instance)
+        {
+            DialogHelper.ReadDialog(__instance);
+            MelonCoroutines.Start(DialogHelper.ReadDialogDelayed(__instance, 0.12f));
+        }
+    }
 
     [HarmonyPatch(typeof(DialogBox), "Activate")]
     public static class DialogBox_Activate_Patch
@@ -58,6 +65,7 @@ namespace MelatoninAccess
         public static void Postfix(DialogBox __instance)
         {
             DialogHelper.ReadDialog(__instance);
+            MelonCoroutines.Start(DialogHelper.ReadDialogDelayed(__instance, 0.08f));
         }
     }
 
@@ -95,20 +103,30 @@ namespace MelatoninAccess
             ScreenReader.Say(text, interrupt);
         }
 
-        public static void ReadDialogText(string text)
+        public static void ReadDialog(DialogBox box, string fallbackText = "")
         {
-            SpeakDialog(text, true);
-        }
+            if (box == null) return;
 
-        public static void ReadDialog(DialogBox box)
-        {
-            if (box == null || box.dialog == null) return;
-
-            var tmp = box.dialog.GetComponent<TextMeshPro>();
-            if (tmp != null)
+            string dialogText = GetFragmentText(box.dialog);
+            if (string.IsNullOrWhiteSpace(dialogText))
             {
-                SpeakDialog(tmp.text, true);
+                dialogText = fallbackText;
             }
+
+            if (string.IsNullOrWhiteSpace(dialogText))
+            {
+                ReadGraphicDialog(box);
+                return;
+            }
+
+            string speakerText = GetVisibleFragmentText(box.label);
+            if (!string.IsNullOrWhiteSpace(speakerText) && ShouldIncludeSpeaker(speakerText, dialogText))
+            {
+                SpeakDialog($"{speakerText}: {dialogText}", true);
+                return;
+            }
+
+            SpeakDialog(dialogText, true);
         }
 
         public static void ReadGraphicDialog(DialogBox box)
@@ -148,6 +166,23 @@ namespace MelatoninAccess
             if (tmp == null || string.IsNullOrWhiteSpace(tmp.text)) return "";
 
             return tmp.text.Trim();
+        }
+
+        private static string GetVisibleFragmentText(textboxFragment fragment)
+        {
+            if (fragment == null || !fragment.CheckIsMeshRendered()) return "";
+            return GetFragmentText(fragment);
+        }
+
+        private static bool ShouldIncludeSpeaker(string speakerText, string dialogText)
+        {
+            if (string.IsNullOrWhiteSpace(speakerText) || string.IsNullOrWhiteSpace(dialogText)) return false;
+
+            string speaker = speakerText.Trim();
+            string dialog = dialogText.Trim();
+            if (speaker.Equals(dialog, System.StringComparison.OrdinalIgnoreCase)) return false;
+            if (dialog.StartsWith(speaker + ":", System.StringComparison.OrdinalIgnoreCase)) return false;
+            return true;
         }
 
         private static string JoinDialogParts(string left, string right)

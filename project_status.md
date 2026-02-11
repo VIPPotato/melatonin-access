@@ -61,6 +61,7 @@
 - [x] **Packaging QA Gate Verification (2026-02-11)**: Ran `pwsh -File .\scripts\Build-ReleasePackage.ps1`; confirmed localization QA executes in packaging flow and `Build-ReleasePackage.ps1` is configured to exit with the QA failure code on localization check failure.
 - [x] **Cutscene AD Timing Pipeline (2026-02-11)**: Added data-driven intro/outro timing scaffold (`cutscene-ad/manifest.json` + per-cutscene JSON files), validator script (`scripts\Test-CutsceneAdPipeline.ps1`) for ordering/overlap/missing-entry checks, initial C# loader/validation models (`CutsceneAdPipeline.cs`), and workflow docs (`docs/cutscene-ad-pipeline.md` + `README.md` section).
 - [x] **Runtime Startup Fix (2026-02-11)**: Removed `System.Runtime.Serialization` runtime dependency from `CutsceneAdPipeline` (startup `FileNotFoundException` in MelonLoader), switched to Unity JSON path with `UnityEngine.JSONSerializeModule` reference, and verified clean local build.
+- [x] **Dialogue Coverage Pass (2026-02-11)**: Expanded `DialogueHandler` to cover `DialogBox.Show()` in addition to existing dialog hooks, added speaker-label prefixing when the in-game label is visible, and kept debounce-safe delayed reads for rapid dialog state changes.
 
 ## Next Steps
 - **Focused Playtest**: Validate end-to-end flow for map mode locks, stage-end locks, advanced menu/timeline narration, and credits scrolling narration.
