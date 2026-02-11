@@ -87,10 +87,11 @@ Some levels might have unique mechanics requiring specific cues.
     - On level/mode entry, announce a concise summary of objective and key mechanics.
     - Include active mode context (practice, score mode, hard mode, etc.).
     - Ensure briefing is a single utterance to avoid interruption overlap.
-- [ ] **Cutscene Audio Description Timing Pipeline**
+- [x] **Cutscene Audio Description Timing Pipeline**
     - Create a data-driven timing format for AD lines (timestamps + text) instead of hardcoding.
     - Add a small validation/test utility to catch timing overlaps and missing entries.
     - Support quick iteration so AD scripts can be refined without code changes.
+    - Implemented with `cutscene-ad/manifest.json`, per-cutscene JSON scripts, `scripts/Test-CutsceneAdPipeline.ps1`, and `docs/cutscene-ad-pipeline.md`.
 - [x] **Localization QA Checker Script**
     - Add a script that verifies every localization key exists in all supported languages.
     - Validate placeholder parity (for example `{0}`, `{1}` counts) across translations.

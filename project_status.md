@@ -57,6 +57,9 @@
 - [x] **Context Help Hotkey (2026-02-11)**: Added global `F11` context-aware control help (`ContextHelpHandler`) with localized prompts for title screen, generic menus, map navigation, mode menu, gameplay, results, and editor contexts.
 - [x] **Tutorial/Dialog + Community Loader Follow-up (2026-02-11)**: Added delayed reads to `DialogBox.SetDialogState` to reliably capture initial tutorial text lines, and prevented `editor_ready` from announcing on downloaded/community-level loader path (`LvlEditor` with non-empty `downloadFilePath`).
 - [x] **Per-Level Completion Briefing Reverted (2026-02-11)**: Removed mod-generated level-start briefing per user preference to keep startup narration limited to game-provided/tutorial text.
+- [x] **Release QA Spot Check (2026-02-11)**: Ran `pwsh -File .\scripts\Test-LocalizationQA.ps1` (116 localization keys parsed, 0 errors, 0 warnings).
+- [x] **Packaging QA Gate Verification (2026-02-11)**: Ran `pwsh -File .\scripts\Build-ReleasePackage.ps1`; confirmed localization QA executes in packaging flow and `Build-ReleasePackage.ps1` is configured to exit with the QA failure code on localization check failure.
+- [x] **Cutscene AD Timing Pipeline (2026-02-11)**: Added data-driven intro/outro timing scaffold (`cutscene-ad/manifest.json` + per-cutscene JSON files), validator script (`scripts\Test-CutsceneAdPipeline.ps1`) for ordering/overlap/missing-entry checks, initial C# loader/validation models (`CutsceneAdPipeline.cs`), and workflow docs (`docs/cutscene-ad-pipeline.md` + `README.md` section).
 
 ## Next Steps
 - **Focused Playtest**: Validate end-to-end flow for map mode locks, stage-end locks, advanced menu/timeline narration, and credits scrolling narration.
@@ -70,5 +73,5 @@
 - **Context Help Spot Check**: Press `F11` on title screen, in regular menus, on map, in map mode menu, during gameplay, on results, and in editor; verify each context speaks relevant controls and uses current action/cancel prompts.
 - **Tutorial Intro Spot Check**: Enter tutorial from chapter menu and verify the first instruction block (including multi-line startup warning text) is announced without hardcoded text dependencies.
 - **Community Loader Spot Check**: Start downloaded/community level flow and verify `Level editor ready` is no longer announced before gameplay.
-- **Release QA Spot Check**: Run `pwsh -File .\scripts\Test-LocalizationQA.ps1` before packaging; confirm `scripts\Build-ReleasePackage.ps1` fails fast on localization mismatches.
+- **Cutscene AD Authoring Step**: Fill `cutscene-ad/scripts/chapter_*_intro.json` and `cutscene-ad/scripts/chapter_*_outro.json` with first-pass timestamp/text-key entries, then run `pwsh -File .\scripts\Test-CutsceneAdPipeline.ps1 -StrictCoverage -RequireEntries`.
 - **Post-Release Validation**: Monitor issues/feedback from `v1.0.4` and collect any remaining edge cases from real-world play sessions.
