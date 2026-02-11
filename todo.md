@@ -68,6 +68,12 @@ Some levels might have unique mechanics requiring specific cues.
 - [ ] **Dream_dating.cs**: Check for "Swipe" directions.
 - [ ] **General Approach**: Audit each `Dream_*.cs` file for `QueueHitWindow` calls and ensure the `hitType` (Left, Right, etc.) has a corresponding audio cue.
 
+## 7. Future Feature Ideas
+- [ ] **Live Audio Description for Intro/Outro Video Scenes**
+    - Analyze intro/outro video assets to extract timing and visual events.
+    - Generate concise scene descriptions and play them live in sync during cutscenes.
+    - Keep descriptions interrupt-safe so gameplay/menu announcements still take priority.
+
 ## Implementation Priorities
 1.  **Framework**: `ScreenReader` and global input hooks.
 2.  **Menus**: Essential for navigating to the game.
