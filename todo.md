@@ -77,6 +77,22 @@ Some levels might have unique mechanics requiring specific cues.
     - Add optional descriptive callouts for major visual events in each rhythm level.
     - Keep descriptions short and non-blocking so rhythm cue timing remains accurate.
     - Provide a per-feature toggle in config so players can enable/disable level AD independently.
+- [ ] **Global "What Can I Press Here?" Hotkey**
+    - Add a context-aware help key that speaks available controls for the current screen.
+    - Cover menus, map navigation, gameplay/tutorial, and editor contexts.
+    - Keep output short and ordered by priority actions.
+- [ ] **Per-Level Completion Briefing**
+    - On level/mode entry, announce a concise summary of objective and key mechanics.
+    - Include active mode context (practice, score mode, hard mode, etc.).
+    - Ensure briefing is a single utterance to avoid interruption overlap.
+- [ ] **Cutscene Audio Description Timing Pipeline**
+    - Create a data-driven timing format for AD lines (timestamps + text) instead of hardcoding.
+    - Add a small validation/test utility to catch timing overlaps and missing entries.
+    - Support quick iteration so AD scripts can be refined without code changes.
+- [ ] **Localization QA Checker Script**
+    - Add a script that verifies every localization key exists in all supported languages.
+    - Validate placeholder parity (for example `{0}`, `{1}` counts) across translations.
+    - Integrate the checker into release prep to prevent missing or broken localized lines.
 
 ## Implementation Priorities
 1.  **Framework**: `ScreenReader` and global input hooks.
