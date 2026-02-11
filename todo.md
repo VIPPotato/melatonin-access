@@ -73,6 +73,10 @@ Some levels might have unique mechanics requiring specific cues.
     - Analyze intro/outro video assets to extract timing and visual events.
     - Generate concise scene descriptions and play them live in sync during cutscenes.
     - Keep descriptions interrupt-safe so gameplay/menu announcements still take priority.
+- [ ] **Per-Level Audio Descriptions During Gameplay**
+    - Add optional descriptive callouts for major visual events in each rhythm level.
+    - Keep descriptions short and non-blocking so rhythm cue timing remains accurate.
+    - Provide a per-feature toggle in config so players can enable/disable level AD independently.
 
 ## Implementation Priorities
 1.  **Framework**: `ScreenReader` and global input hooks.
