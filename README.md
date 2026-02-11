@@ -89,7 +89,7 @@ The project is configured to auto-copy `MelatoninAccess.dll` to your game `Mods`
 Create release ZIP (mod + required screen-reader DLLs only):
 
 ```powershell
-pwsh -File .\scripts\Build-ReleasePackage.ps1 -Version "v1.0.2"
+pwsh -File .\scripts\Build-ReleasePackage.ps1 -Version "v1.0.4"
 ```
 
 Package contents:
@@ -105,7 +105,7 @@ The release ZIP intentionally excludes development docs/tools (for example chang
 
 1. Install MelonLoader for Melatonin:
    - https://github.com/LavaGang/MelonLoader.Installer/releases
-2. Download `MelatoninAccess-v1.0.2.zip`.
+2. Download `MelatoninAccess-v1.0.4.zip`.
 3. Extract/copy all files from the ZIP into your Melatonin game folder (the folder with `Melatonin.exe`).
 4. Confirm these files exist:
     - `<Melatonin folder>/Mods/MelatoninAccess.dll`

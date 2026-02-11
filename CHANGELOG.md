@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.4 - 2026-02-11
+
+- Added map-only `F1` hotkey that announces map/chapter star progress summary.
+- Refined `F1` behavior to match map UI totals (`TotalBox`): chapter stars collected plus stars still needed to pass.
+- Fixed map navigation assist so gamepad teleport (`Action Left` / `Action Right`) keeps working after keyboard input, without requiring pause-menu reset.
+
 ## 1.0.3 - 2026-02-10
 
 - Added global `F3` toggle for menu position announcements (for example `1 of 4`), with immediate persistence to MelonPreferences.
