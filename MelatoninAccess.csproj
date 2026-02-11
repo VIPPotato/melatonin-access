@@ -30,6 +30,9 @@
     <Reference Include="UnityEngine.InputLegacyModule">
       <HintPath>$(GameManagedPath)\UnityEngine.InputLegacyModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>$(GameManagedPath)\UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.InputSystem">
       <HintPath>$(GameManagedPath)\Unity.InputSystem.dll</HintPath>
     </Reference>

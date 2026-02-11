@@ -1,71 +1,54 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Json;
-using System.Text;
+using UnityEngine;
 
 namespace MelatoninAccess
 {
-    [DataContract]
+    [Serializable]
     internal sealed class CutsceneAdManifest
     {
-        [DataMember(Name = "schemaVersion")]
-        public int schemaVersion { get; set; } = 1;
+        public int schemaVersion = 1;
 
-        [DataMember(Name = "cutscenes")]
-        public CutsceneAdCutsceneRef[] cutscenes { get; set; } = Array.Empty<CutsceneAdCutsceneRef>();
+        public CutsceneAdCutsceneRef[] cutscenes = Array.Empty<CutsceneAdCutsceneRef>();
     }
 
-    [DataContract]
+    [Serializable]
     internal sealed class CutsceneAdCutsceneRef
     {
-        [DataMember(Name = "id")]
-        public string id { get; set; } = "";
+        public string id = "";
 
-        [DataMember(Name = "sceneName")]
-        public string sceneName { get; set; } = "";
+        public string sceneName = "";
 
-        [DataMember(Name = "cutsceneType")]
-        public string cutsceneType { get; set; } = "";
+        public string cutsceneType = "";
 
-        [DataMember(Name = "scriptPath")]
-        public string scriptPath { get; set; } = "";
+        public string scriptPath = "";
 
-        [DataMember(Name = "sourceRef")]
-        public string sourceRef { get; set; } = "";
+        public string sourceRef = "";
     }
 
-    [DataContract]
+    [Serializable]
     internal sealed class CutsceneAdScript
     {
-        [DataMember(Name = "schemaVersion")]
-        public int schemaVersion { get; set; } = 1;
+        public int schemaVersion = 1;
 
-        [DataMember(Name = "id")]
-        public string id { get; set; } = "";
+        public string id = "";
 
-        [DataMember(Name = "sceneName")]
-        public string sceneName { get; set; } = "";
+        public string sceneName = "";
 
-        [DataMember(Name = "cutsceneType")]
-        public string cutsceneType { get; set; } = "";
+        public string cutsceneType = "";
 
-        [DataMember(Name = "entries")]
-        public CutsceneAdCue[] entries { get; set; } = Array.Empty<CutsceneAdCue>();
+        public CutsceneAdCue[] entries = Array.Empty<CutsceneAdCue>();
     }
 
-    [DataContract]
+    [Serializable]
     internal sealed class CutsceneAdCue
     {
-        [DataMember(Name = "atSeconds")]
-        public float atSeconds { get; set; }
+        public float atSeconds = 0f;
 
-        [DataMember(Name = "durationSeconds")]
-        public float durationSeconds { get; set; }
+        public float durationSeconds = 0f;
 
-        [DataMember(Name = "textKey")]
-        public string textKey { get; set; } = "";
+        public string textKey = "";
     }
 
     internal static class CutsceneAdPipeline
@@ -261,12 +244,12 @@ namespace MelatoninAccess
 
         private static T Deserialize<T>(string json) where T : class
         {
-            var serializer = new DataContractJsonSerializer(typeof(T));
-            byte[] bytes = Encoding.UTF8.GetBytes(json);
-            using (var stream = new MemoryStream(bytes))
+            if (string.IsNullOrWhiteSpace(json))
             {
-                return serializer.ReadObject(stream) as T;
+                return null;
             }
+
+            return JsonUtility.FromJson<T>(json);
         }
     }
 }
