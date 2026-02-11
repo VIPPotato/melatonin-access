@@ -654,6 +654,19 @@ namespace MelatoninAccess
                 "{0}. {1} estrela.");
 
             Add(
+                "map_progress_status",
+                "{0}. Stars collected: {1}. Need {2} more to pass.",
+                "{0}。已收集星星：{1}。还需要 {2} 颗才能通过。",
+                "{0}。已收集星星：{1}。還需要 {2} 顆才能通過。",
+                "{0}。獲得スター: {1}。クリアまであと {2}。",
+                "{0}. 획득한 별: {1}. 통과까지 {2}개 더 필요합니다.",
+                "{0}. So sao da thu duoc: {1}. Can them {2} sao de vuot qua.",
+                "{0}. Etoiles obtenues : {1}. Il en faut encore {2} pour valider.",
+                "{0}. Gesammelte Sterne: {1}. Noch {2} zum Bestehen noetig.",
+                "{0}. Estrellas conseguidas: {1}. Faltan {2} para completar.",
+                "{0}. Estrelas obtidas: {1}. Faltam {2} para passar.");
+
+            Add(
                 "teleport_conflict_hint",
                 "Bracket teleport is disabled because Action is bound to brackets. Use F9 and F10 for teleport.",
                 "由于操作键绑定到方括号，方括号传送已禁用。请使用 F9 和 F10 传送。",
