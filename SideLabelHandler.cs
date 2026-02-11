@@ -37,7 +37,13 @@ namespace MelatoninAccess
     {
         public static void AnnounceTutorialStart()
         {
+            if (LevelBriefingHandler.ShouldSuppressPracticePrompt()) return;
             ScreenReader.Say(Loc.Get("tutorial_skip_prompt", GetSkipPrompt()), true);
+        }
+
+        public static string GetSkipPromptLabel()
+        {
+            return GetSkipPrompt();
         }
 
         public static void AnnounceLabel(textboxFragment fragment)
