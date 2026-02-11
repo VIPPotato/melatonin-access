@@ -141,6 +141,11 @@ namespace MelatoninAccess
                 MelonLogger.Msg($"Menu position announcements {(enabled ? "enabled" : "disabled")}.");
             }
 
+            if (Keyboard.current.f11Key.wasPressedThisFrame)
+            {
+                ContextHelpHandler.TryAnnounceContextHelp();
+            }
+
             if (Keyboard.current.f12Key.wasPressedThisFrame)
             {
                 DebugMode = ModConfig.ToggleDebugMode();

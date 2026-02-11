@@ -77,10 +77,11 @@ Some levels might have unique mechanics requiring specific cues.
     - Add optional descriptive callouts for major visual events in each rhythm level.
     - Keep descriptions short and non-blocking so rhythm cue timing remains accurate.
     - Provide a per-feature toggle in config so players can enable/disable level AD independently.
-- [ ] **Global "What Can I Press Here?" Hotkey**
+- [x] **Global "What Can I Press Here?" Hotkey**
     - Add a context-aware help key that speaks available controls for the current screen.
     - Cover menus, map navigation, gameplay/tutorial, and editor contexts.
     - Keep output short and ordered by priority actions.
+    - Implemented on `F11` via `ContextHelpHandler.cs` with localized context-specific prompts.
 - [ ] **Per-Level Completion Briefing**
     - On level/mode entry, announce a concise summary of objective and key mechanics.
     - Include active mode context (practice, score mode, hard mode, etc.).
