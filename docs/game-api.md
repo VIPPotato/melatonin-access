@@ -17,6 +17,7 @@
 - **Cancel/Back**: Escape or R (default, rebindable).
 - **Pause**: Escape or Start button.
 - **Gameplay**: Space, Arrow keys, WASD, and others depending on level.
+- **Action-key token source**: `SaveManager.mgr.GetActionKey()` returns tokens written by `ControlHandler.GetKeyFromKeyControl` (`SPACE`, `ENTER`, letters, `[`, `]`, `PERIOD`, `SLASH`, etc.), useful for spoken prompt localization.
 
 ## Safe Mod Keys
 - `F1` - `F12`: Unused by the game.
@@ -110,6 +111,12 @@
 ## Key-Rebind Collision Note
 - The game allows rebinding Action to `[` and `]` (`ControlHandler.GetStringFromKey` / rebind checks), which can conflict with mod map teleport if teleport also uses brackets.
 - References: `decompiled/ControlHandler.cs:157-163`, `decompiled/ControlHandler.cs:357-358`, `decompiled/ControlHandler.cs:458-464`.
+
+## Mode Menu Dream Context
+- `ModeMenu` stores the currently selected map dream in private field `dreamName`.
+- `dreamName` is assigned at the start of `ModeMenu.Transitioning(newDreamName, ...)`, before `isTransitioned` is set.
+- For mode-menu opening narration, mods can read `dreamName` via reflection and prepend a localized "Dream about {Level}" context line.
+- References: `decompiled/ModeMenu.cs:38`, `decompiled/ModeMenu.cs:155-158`, `decompiled/ModeMenu.cs:226`.
 
 ## Input-Source Switching Note
 - `ControlHandler.Update()` sets `ctrlType = 0` (keyboard) on any keyboard key press.

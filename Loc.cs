@@ -628,6 +628,19 @@ namespace MelatoninAccess
                 "Menu de modo");
 
             Add(
+                "dream_about_level",
+                "Dream about {0}",
+                "关于 {0} 的梦境",
+                "關於 {0} 的夢境",
+                "{0} についての夢",
+                "{0}에 대한 꿈",
+                "Giac mo ve {0}",
+                "Reve de {0}",
+                "Traum ueber {0}",
+                "Sueno sobre {0}",
+                "Sonho sobre {0}");
+
+            Add(
                 "teleport_arrived_stars",
                 "{0}. {1} stars.",
                 "{0}。{1} 星。",
@@ -1107,6 +1120,71 @@ namespace MelatoninAccess
                 "Leertaste",
                 "Espacio",
                 "Espaco");
+
+            Add(
+                "cue_press_action",
+                "Press {0}",
+                "按 {0}",
+                "按 {0}",
+                "{0} を押す",
+                "{0} 누르기",
+                "Nhan {0}",
+                "Appuyer sur {0}",
+                "{0} druecken",
+                "Pulsa {0}",
+                "Pressione {0}");
+
+            Add(
+                "cue_hold_action",
+                "Hold {0}",
+                "按住 {0}",
+                "按住 {0}",
+                "{0} を長押し",
+                "{0} 길게 누르기",
+                "Giu {0}",
+                "Maintenir {0}",
+                "{0} halten",
+                "Mantener {0}",
+                "Segurar {0}");
+
+            Add(
+                "key_enter",
+                "Enter",
+                "回车",
+                "Enter",
+                "エンター",
+                "엔터",
+                "Enter",
+                "Entree",
+                "Eingabetaste",
+                "Enter",
+                "Enter");
+
+            Add(
+                "key_period",
+                "Period",
+                "句点",
+                "句點",
+                "ピリオド",
+                "마침표",
+                "Dau cham",
+                "Point",
+                "Punkt",
+                "Punto",
+                "Ponto");
+
+            Add(
+                "key_slash",
+                "Slash",
+                "斜杠",
+                "斜線",
+                "スラッシュ",
+                "슬래시",
+                "Dau gach cheo",
+                "Barre oblique",
+                "Schraegstrich",
+                "Barra",
+                "Barra");
 
             Add(
                 "cue_left",

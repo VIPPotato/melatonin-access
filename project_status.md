@@ -52,6 +52,7 @@
 - [x] **Map Progress Hotkey + Gamepad Input Source Fix (2026-02-11)**: Added map-only `F1` announcement for current landmark progress (stars collected and stars still needed to pass), and removed `ctrlType` dependency from map teleport gamepad detection so `Action Left/Right` navigation assist keeps working after keyboard input.
 - [x] **Map Progress Hotkey Refinement (2026-02-11)**: Updated `F1` to announce map/chapter-level star totals (matching `TotalBox` behavior) instead of nearest-landmark stars; summary now reports total chapter stars and remaining stars to pass threshold.
 - [x] **Release Published (2026-02-11)**: Released `v1.0.4` on GitHub as latest with map-summary `F1` behavior and map gamepad input-source handoff fix.
+- [x] **v1.0.5 Local Prompt + Mode-Title Pass (2026-02-11)**: Rhythm tutorial cues now announce dynamic action prompts (`Press {Action}` / `Hold {Action}`) based on rebind/controller context instead of hardcoded Space, and mode-menu open narration now prepends the localized full dream title (`Dream about {Level}. Mode menu...`).
 
 ## Next Steps
 - **Focused Playtest**: Validate end-to-end flow for map mode locks, stage-end locks, advanced menu/timeline narration, and credits scrolling narration.
@@ -60,4 +61,6 @@
 - **Hotkey Spot Check**: Verify `F2`, `F3`, and `F12` update behavior immediately and remain in the same state after restarting the game.
 - **New Feature Spot Check**: On map scenes, press `F1` and verify it announces chapter/map star totals + remaining stars needed to pass; verify `F1` is silent in non-map scenes.
 - **Gamepad Resilience Spot Check**: Use map gamepad teleport (`Action Left/Right`), press any keyboard key, then confirm gamepad teleport still works without needing to open/close pause menu.
+- **v1.0.5 Prompt Spot Check**: In tutorial/practice gameplay, rebind Action (for example to `Enter`, `Period`, `Slash`, and a letter key) and verify rhythm cues announce the new action prompt correctly; with controller active, verify prompts use controller action naming.
+- **v1.0.5 Mode Menu Spot Check**: From map navigation, open multiple levels and confirm the opening line says the full dream title before mode menu/options (for example `Dream about Money. Mode menu. Practice...`).
 - **Post-Release Validation**: Monitor issues/feedback from `v1.0.4` and collect any remaining edge cases from real-world play sessions.
