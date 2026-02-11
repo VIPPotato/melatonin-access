@@ -124,7 +124,15 @@ namespace MelatoninAccess
 
                     if (includeMenuTitle)
                     {
-                        modeText = $"{Loc.Get("mode_menu")}. {modeText}";
+                        string dreamTitle = GetModeDreamTitle(menu);
+                        if (!string.IsNullOrWhiteSpace(dreamTitle))
+                        {
+                            modeText = $"{Loc.Get("dream_about_level", dreamTitle)}. {Loc.Get("mode_menu")}. {modeText}";
+                        }
+                        else
+                        {
+                            modeText = $"{Loc.Get("mode_menu")}. {modeText}";
+                        }
                     }
 
                     float now = Time.unscaledTime;
@@ -263,6 +271,14 @@ namespace MelatoninAccess
         private static string FormatDreamName(string rawName)
         {
             return Loc.GetDreamName(rawName);
+        }
+
+        private static string GetModeDreamTitle(ModeMenu menu)
+        {
+            if (menu == null) return "";
+
+            string rawDreamName = Traverse.Create(menu).Field("dreamName").GetValue<string>();
+            return FormatDreamName(rawDreamName);
         }
 
         private static void AnnounceTeleportConflictHint()
