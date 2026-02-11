@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "cutscenes": [
+    {
+      "id": "chapter_1_intro",
+      "sceneName": "Chapter_1",
+      "cutsceneType": "intro",
+      "scriptPath": "scripts/chapter_1_intro.json",
+      "sourceRef": "decompiled/Chapter.cs:110-141"
+    },
+    {
+      "id": "chapter_2_intro",
+      "sceneName": "Chapter_2",
+      "cutsceneType": "intro",
+      "scriptPath": "scripts/chapter_2_intro.json",
+      "sourceRef": "decompiled/Chapter.cs:143-170"
+    },
+    {
+      "id": "chapter_3_intro",
+      "sceneName": "Chapter_3",
+      "cutsceneType": "intro",
+      "scriptPath": "scripts/chapter_3_intro.json",
+      "sourceRef": "decompiled/Chapter.cs:172-197"
+    },
+    {
+      "id": "chapter_4_intro",
+      "sceneName": "Chapter_4",
+      "cutsceneType": "intro",
+      "scriptPath": "scripts/chapter_4_intro.json",
+      "sourceRef": "decompiled/Chapter.cs:199-223"
+    },
+    {
+      "id": "chapter_5_intro",
+      "sceneName": "Chapter_5",
+      "cutsceneType": "intro",
+      "scriptPath": "scripts/chapter_5_intro.json",
+      "sourceRef": "decompiled/Chapter.cs:224-244"
+    },
+    {
+      "id": "chapter_1_outro",
+      "sceneName": "Chapter_1",
+      "cutsceneType": "outro",
+      "scriptPath": "scripts/chapter_1_outro.json",
+      "sourceRef": "decompiled/Chapter.cs:325-348"
+    },
+    {
+      "id": "chapter_2_outro",
+      "sceneName": "Chapter_2",
+      "cutsceneType": "outro",
+      "scriptPath": "scripts/chapter_2_outro.json",
+      "sourceRef": "decompiled/Chapter.cs:349-376"
+    },
+    {
+      "id": "chapter_3_outro",
+      "sceneName": "Chapter_3",
+      "cutsceneType": "outro",
+      "scriptPath": "scripts/chapter_3_outro.json",
+      "sourceRef": "decompiled/Chapter.cs:377-401"
+    },
+    {
+      "id": "chapter_4_outro",
+      "sceneName": "Chapter_4",
+      "cutsceneType": "outro",
+      "scriptPath": "scripts/chapter_4_outro.json",
+      "sourceRef": "decompiled/Chapter.cs:402-423"
+    },
+    {
+      "id": "chapter_5_outro",
+      "sceneName": "Chapter_5",
+      "cutsceneType": "outro",
+      "scriptPath": "scripts/chapter_5_outro.json",
+      "sourceRef": "decompiled/Chapter.cs:424-447"
+    }
+  ]
+}

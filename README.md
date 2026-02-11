@@ -164,6 +164,24 @@ pwsh -File .\scripts\Test-LocalizationQA.ps1
 
 This check runs automatically during release packaging (`scripts/Build-ReleasePackage.ps1`) unless you pass `-SkipLocalizationQa`.
 
+## Cutscene AD Pipeline Check
+
+Validate cutscene intro/outro timing script files:
+
+```powershell
+pwsh -File .\scripts\Test-CutsceneAdPipeline.ps1
+```
+
+Strict/authoring options:
+
+```powershell
+pwsh -File .\scripts\Test-CutsceneAdPipeline.ps1 -StrictCoverage -RequireEntries
+pwsh -File .\scripts\Test-CutsceneAdPipeline.ps1 -ValidateLocKeys -LocPath .\Loc.cs
+```
+
+Reference format and workflow:
+- `docs/cutscene-ad-pipeline.md`
+
 ## Requirements
 
 - Melatonin (PC)

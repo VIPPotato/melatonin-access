@@ -140,3 +140,17 @@
 - `TotalBox` visual map summary uses chapter totals from `SaveManager.GetChapterEarnedStars(Chapter.GetActiveChapterNum())` (plus rings/perfects).
 - Map activation checks use an 8-star threshold on chapters 1-4 (`GetChapterEarnedStars(chapter) >= 8`) for chapter map progression/remix gating.
 - References: `decompiled/TotalBox.cs:28-30`, `decompiled/Map.cs:66-83`.
+
+## Intro/Outro Cutscene Entry Points
+- Chapter intro replay path:
+  - `Option` case `33` sets `Chapter.ToggleIsEnteringWithIntro(true)` and exits to `Chapter_{chapterNum}`.
+  - References: `decompiled/Option.cs:1065-1067`.
+- Chapter outro replay path:
+  - `Option` case `34` sets `Chapter.ToggleIsEnteringWithOutro(true)` and exits to `Chapter_{chapterNum}` when unlocked.
+  - References: `decompiled/Option.cs:1070-1080`.
+- Intro timeline implementation:
+  - `Chapter.EnteringWithIntro()` coroutine, chapter-specific branches for chapter 1-5.
+  - References: `decompiled/Chapter.cs:101-244`.
+- Outro timeline implementation:
+  - `Chapter.ExitingToNextChapter()` coroutine, chapter-specific branches for chapter 1-5.
+  - References: `decompiled/Chapter.cs:319-451`.

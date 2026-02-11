@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "chapter_1_intro",
+  "sceneName": "Chapter_1",
+  "cutsceneType": "intro",
+  "entries": [
+    {
+      "atSeconds": 0.0,
+      "durationSeconds": 2.0,
+      "textKey": "ad_chapter_1_intro_001"
+    }
+  ]
+}
