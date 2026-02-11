@@ -1187,6 +1187,136 @@ namespace MelatoninAccess
                 "Barra");
 
             Add(
+                "key_tab",
+                "Tab",
+                "Tab",
+                "Tab",
+                "Tab",
+                "Tab",
+                "Tab",
+                "Tab",
+                "Tab",
+                "Tab",
+                "Tab");
+
+            Add(
+                "key_escape",
+                "Escape",
+                "Esc",
+                "Esc",
+                "Esc",
+                "Esc",
+                "Esc",
+                "Echap",
+                "Esc",
+                "Esc",
+                "Esc");
+
+            Add(
+                "key_start",
+                "Start",
+                "开始键",
+                "開始鍵",
+                "スタート",
+                "시작 버튼",
+                "Start",
+                "Start",
+                "Start",
+                "Start",
+                "Start");
+
+            Add(
+                "help_title_screen",
+                "Title screen help. Press {0} to begin. Press {1} to change language.",
+                "标题界面帮助。按 {0} 开始。按 {1} 更改语言。",
+                "標題畫面說明。按 {0} 開始。按 {1} 更改語言。",
+                "タイトル画面ヘルプ。{0} で開始。{1} で言語変更。",
+                "타이틀 화면 도움말. {0} 키로 시작하고 {1} 키로 언어를 변경합니다.",
+                "Tro giup man hinh tieu de. Nhan {0} de bat dau. Nhan {1} de doi ngon ngu.",
+                "Aide ecran titre. Appuyez sur {0} pour commencer. Appuyez sur {1} pour changer la langue.",
+                "Titelbildschirm-Hilfe. Druecke {0} zum Starten. Druecke {1} fuer die Sprache.",
+                "Ayuda de pantalla de titulo. Pulsa {0} para empezar. Pulsa {1} para cambiar idioma.",
+                "Ajuda da tela inicial. Pressione {0} para comecar. Pressione {1} para mudar o idioma.");
+
+            Add(
+                "help_menu",
+                "Menu help. Use Up and Down to move. Press {0} to select. Press {1} to go back.",
+                "菜单帮助。使用上下方向移动。按 {0} 选择。按 {1} 返回。",
+                "選單說明。使用上下方向移動。按 {0} 選擇。按 {1} 返回。",
+                "メニューヘルプ。上下で移動。{0} で決定。{1} で戻る。",
+                "메뉴 도움말. 위아래로 이동하고 {0} 키로 선택합니다. {1} 키로 돌아갑니다.",
+                "Tro giup menu. Dung Len va Xuong de di chuyen. Nhan {0} de chon. Nhan {1} de quay lai.",
+                "Aide menu. Utilisez Haut et Bas pour bouger. Appuyez sur {0} pour choisir. Appuyez sur {1} pour retour.",
+                "Menue-Hilfe. Mit Hoch und Runter bewegen. Druecke {0} zum Waehlen. Druecke {1} zum Zurueckgehen.",
+                "Ayuda de menu. Usa Arriba y Abajo para moverte. Pulsa {0} para seleccionar. Pulsa {1} para volver.",
+                "Ajuda de menu. Use Cima e Baixo para mover. Pressione {0} para selecionar. Pressione {1} para voltar.");
+
+            Add(
+                "help_map",
+                "Map help. Use [ and ] or F9 and F10 to move between levels. Press {0} to open the selected level. Press F1 for map stars.",
+                "地图帮助。使用 [ 和 ] 或 F9 和 F10 在关卡间移动。按 {0} 打开所选关卡。按 F1 播报地图星星。",
+                "地圖說明。使用 [ 和 ] 或 F9 與 F10 在關卡間移動。按 {0} 開啟所選關卡。按 F1 播報地圖星星。",
+                "マップヘルプ。[ と ] または F9 と F10 でレベル間を移動。{0} で選択レベルを開く。F1 でマップスター。",
+                "맵 도움말. [ 와 ] 또는 F9/F10으로 레벨 사이를 이동합니다. {0} 키로 선택한 레벨을 엽니다. F1으로 맵 별을 확인합니다.",
+                "Tro giup ban do. Dung [ va ] hoac F9 va F10 de di giua cac man. Nhan {0} de mo man da chon. Nhan F1 de nghe sao ban do.",
+                "Aide carte. Utilisez [ et ] ou F9 et F10 pour changer de niveau. Appuyez sur {0} pour ouvrir le niveau choisi. Appuyez sur F1 pour les etoiles de la carte.",
+                "Karten-Hilfe. Nutze [ und ] oder F9 und F10 zum Wechseln zwischen Levels. Druecke {0}, um das ausgewaehlte Level zu oeffnen. Druecke F1 fuer Kartensterne.",
+                "Ayuda del mapa. Usa [ y ] o F9 y F10 para moverte entre niveles. Pulsa {0} para abrir el nivel seleccionado. Pulsa F1 para las estrellas del mapa.",
+                "Ajuda do mapa. Use [ e ] ou F9 e F10 para mover entre niveis. Pressione {0} para abrir o nivel selecionado. Pressione F1 para as estrelas do mapa.");
+
+            Add(
+                "help_mode_menu",
+                "Mode menu help. Use Up and Down to choose mode. Press {0} to start. Press {1} to close this menu.",
+                "模式菜单帮助。使用上下方向选择模式。按 {0} 开始。按 {1} 关闭此菜单。",
+                "模式選單說明。使用上下方向選擇模式。按 {0} 開始。按 {1} 關閉此選單。",
+                "モードメニューヘルプ。上下でモード選択。{0} で開始。{1} でこのメニューを閉じる。",
+                "모드 메뉴 도움말. 위아래로 모드를 선택합니다. {0} 키로 시작하고 {1} 키로 이 메뉴를 닫습니다.",
+                "Tro giup menu che do. Dung Len va Xuong de chon che do. Nhan {0} de bat dau. Nhan {1} de dong menu nay.",
+                "Aide menu de mode. Utilisez Haut et Bas pour choisir un mode. Appuyez sur {0} pour lancer. Appuyez sur {1} pour fermer ce menu.",
+                "Modusmenue-Hilfe. Mit Hoch und Runter Modus waehlen. Druecke {0} zum Starten. Druecke {1}, um dieses Menue zu schliessen.",
+                "Ayuda del menu de modo. Usa Arriba y Abajo para elegir modo. Pulsa {0} para iniciar. Pulsa {1} para cerrar este menu.",
+                "Ajuda do menu de modo. Use Cima e Baixo para escolher o modo. Pressione {0} para iniciar. Pressione {1} para fechar este menu.");
+
+            Add(
+                "help_results",
+                "Results help. Use Up and Down to choose an option. Press {0} to confirm. Press {1} to go back.",
+                "结果界面帮助。使用上下方向选择选项。按 {0} 确认。按 {1} 返回。",
+                "結果畫面說明。使用上下方向選擇選項。按 {0} 確認。按 {1} 返回。",
+                "リザルトヘルプ。上下で項目選択。{0} で決定。{1} で戻る。",
+                "결과 화면 도움말. 위아래로 옵션을 선택합니다. {0} 키로 확인하고 {1} 키로 돌아갑니다.",
+                "Tro giup ket qua. Dung Len va Xuong de chon tuy chon. Nhan {0} de xac nhan. Nhan {1} de quay lai.",
+                "Aide resultats. Utilisez Haut et Bas pour choisir une option. Appuyez sur {0} pour confirmer. Appuyez sur {1} pour retour.",
+                "Ergebnis-Hilfe. Mit Hoch und Runter Option waehlen. Druecke {0} zum Bestaetigen. Druecke {1} zum Zurueckgehen.",
+                "Ayuda de resultados. Usa Arriba y Abajo para elegir una opcion. Pulsa {0} para confirmar. Pulsa {1} para volver.",
+                "Ajuda de resultados. Use Cima e Baixo para escolher uma opcao. Pressione {0} para confirmar. Pressione {1} para voltar.");
+
+            Add(
+                "help_gameplay",
+                "Gameplay help. Follow rhythm cues and press the announced actions. Press {0} to pause.",
+                "游戏帮助。跟随节奏提示并按播报的动作键。按 {0} 暂停。",
+                "遊戲說明。跟隨節奏提示並按語音播報的動作鍵。按 {0} 暫停。",
+                "ゲームプレイヘルプ。リズムキューに従って指示された入力を押す。{0} で一時停止。",
+                "게임플레이 도움말. 리듬 큐를 따라 안내된 동작을 누르세요. {0} 키로 일시정지합니다.",
+                "Tro giup choi game. Theo cue nhip va nhan hanh dong duoc doc. Nhan {0} de tam dung.",
+                "Aide gameplay. Suivez les reperes rythmiques et appuyez sur les actions annoncees. Appuyez sur {0} pour pause.",
+                "Gameplay-Hilfe. Folge den Rhythmus-Hinweisen und druecke die angesagten Aktionen. Druecke {0} zum Pausieren.",
+                "Ayuda de juego. Sigue las senales ritmicas y pulsa las acciones anunciadas. Pulsa {0} para pausar.",
+                "Ajuda de jogo. Siga as dicas de ritmo e pressione as acoes anunciadas. Pressione {0} para pausar.");
+
+            Add(
+                "help_editor",
+                "Editor help. Use arrows to move in the timeline. Press {0} to place or select. Press {1} to cancel.",
+                "编辑器帮助。使用方向键在时间线上移动。按 {0} 放置或选择。按 {1} 取消。",
+                "編輯器說明。使用方向鍵在時間軸上移動。按 {0} 放置或選擇。按 {1} 取消。",
+                "エディターヘルプ。矢印キーでタイムラインを移動。{0} で配置または選択。{1} でキャンセル。",
+                "에디터 도움말. 방향키로 타임라인을 이동합니다. {0} 키로 배치 또는 선택하고 {1} 키로 취소합니다.",
+                "Tro giup trinh sua. Dung phim mui ten de di tren timeline. Nhan {0} de dat hoac chon. Nhan {1} de huy.",
+                "Aide editeur. Utilisez les fleches pour bouger sur la timeline. Appuyez sur {0} pour placer ou choisir. Appuyez sur {1} pour annuler.",
+                "Editor-Hilfe. Nutze Pfeiltasten zum Bewegen in der Timeline. Druecke {0} zum Platzieren oder Auswaehlen. Druecke {1} zum Abbrechen.",
+                "Ayuda del editor. Usa flechas para moverte por la linea de tiempo. Pulsa {0} para colocar o seleccionar. Pulsa {1} para cancelar.",
+                "Ajuda do editor. Use as setas para mover na linha do tempo. Pressione {0} para colocar ou selecionar. Pressione {1} para cancelar.");
+
+            Add(
                 "cue_left",
                 "Left",
                 "左",

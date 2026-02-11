@@ -44,6 +44,7 @@ Example flow:
 - `F2`: Toggle rhythm cue announcements on/off (saved immediately to MelonPreferences).
 - `F3`: Toggle menu position announcements on/off (for example `1 of 4`, saved immediately to MelonPreferences).
 - `F1`: On map scenes only, announce chapter/map star totals and how many more stars are needed to pass.
+- `F11`: Speak context help (`What can I press here?`) for the current screen.
 - `F12`: Toggle debug logging on/off.
   - State is persisted in MelonPreferences and restored on next launch.
 
