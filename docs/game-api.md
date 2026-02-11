@@ -95,6 +95,7 @@
   - Option index `2`: requires `starScore >= 2`.
   - Option index `3`: requires `starScore >= 2` and full game (`Builder.mgr.CheckIsFullGame()`).
   - Failed action plays only blocked SFX by default.
+  - For simple "can pass" checks on a standard landmark, the effective threshold is `1` star (`starScore > 0`).
 - **Stage end locks**:
   - In `StageEndMenu.Show(gameMode)`, icon/label for index `0` is locked in modes `1` and `3` when chapter score `< 2`.
   - In `Results.Update()`, selecting locked paths only plays blocked SFX.
@@ -109,3 +110,9 @@
 ## Key-Rebind Collision Note
 - The game allows rebinding Action to `[` and `]` (`ControlHandler.GetStringFromKey` / rebind checks), which can conflict with mod map teleport if teleport also uses brackets.
 - References: `decompiled/ControlHandler.cs:157-163`, `decompiled/ControlHandler.cs:357-358`, `decompiled/ControlHandler.cs:458-464`.
+
+## Input-Source Switching Note
+- `ControlHandler.Update()` sets `ctrlType = 0` (keyboard) on any keyboard key press.
+- Gamepad-only helpers in mods should not depend exclusively on `GetCtrlType() > 0`, because controller hardware input can still be active while `ctrlType` is temporarily keyboard.
+- Safer approach for map navigation helpers: read shoulder/trigger states from `Gamepad.current` directly when you only want gamepad actions.
+- References: `decompiled/ControlHandler.cs:57-70`, `decompiled/ControlHandler.cs:535-585`.

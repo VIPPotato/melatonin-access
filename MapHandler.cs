@@ -144,15 +144,20 @@ namespace MelatoninAccess
         {
             public static void Postfix(McMap __instance)
             {
-                if (Keyboard.current == null) return;
+                bool f1Pressed = Keyboard.current != null && Keyboard.current.f1Key.wasPressedThisFrame;
+                if (f1Pressed)
+                {
+                    AnnounceCurrentMapProgress(__instance);
+                }
+
                 if (__instance != null && __instance.ModeMenu != null && __instance.ModeMenu.CheckIsTranstioned()) return;
 
-                bool leftBracketPressed = Keyboard.current.leftBracketKey.wasPressedThisFrame;
-                bool rightBracketPressed = Keyboard.current.rightBracketKey.wasPressedThisFrame;
-                bool f9Pressed = Keyboard.current.f9Key.wasPressedThisFrame;
-                bool f10Pressed = Keyboard.current.f10Key.wasPressedThisFrame;
-                bool gamepadPrevDown = ControlHandler.mgr != null && ControlHandler.mgr.GetCtrlType() > 0 && ControlHandler.mgr.CheckIsActionLeftPressed();
-                bool gamepadNextDown = ControlHandler.mgr != null && ControlHandler.mgr.GetCtrlType() > 0 && ControlHandler.mgr.CheckIsActionRightPressed();
+                bool leftBracketPressed = Keyboard.current != null && Keyboard.current.leftBracketKey.wasPressedThisFrame;
+                bool rightBracketPressed = Keyboard.current != null && Keyboard.current.rightBracketKey.wasPressedThisFrame;
+                bool f9Pressed = Keyboard.current != null && Keyboard.current.f9Key.wasPressedThisFrame;
+                bool f10Pressed = Keyboard.current != null && Keyboard.current.f10Key.wasPressedThisFrame;
+                bool gamepadPrevDown = Gamepad.current != null && (Gamepad.current.leftShoulder.isPressed || Gamepad.current.leftTrigger.isPressed);
+                bool gamepadNextDown = Gamepad.current != null && (Gamepad.current.rightShoulder.isPressed || Gamepad.current.rightTrigger.isPressed);
                 bool gamepadPrevPressed = gamepadPrevDown && !_wasGamepadPrevDown;
                 bool gamepadNextPressed = gamepadNextDown && !_wasGamepadNextDown;
                 _wasGamepadPrevDown = gamepadPrevDown;
@@ -180,6 +185,29 @@ namespace MelatoninAccess
             }
         }
 
+        private static void AnnounceCurrentMapProgress(McMap player)
+        {
+            if (player == null || SaveManager.mgr == null) return;
+            if (Map.env == null || Map.env.Neighbourhood == null) return;
+
+            var landmarks = Map.env.Neighbourhood.Landmarks;
+            if (landmarks == null || landmarks.Length == 0) return;
+
+            int nearestIndex = GetNearestLandmarkIndex(player.transform.position, landmarks);
+            if (nearestIndex < 0 || nearestIndex >= landmarks.Length) return;
+
+            Landmark landmark = landmarks[nearestIndex];
+            if (landmark == null || string.IsNullOrWhiteSpace(landmark.dreamName)) return;
+
+            int starsCollected = Mathf.Clamp(SaveManager.mgr.GetScore("Dream_" + landmark.dreamName), 0, 3);
+            bool isRemixLandmark = Map.env.Neighbourhood.GetRemixLandmark() == landmark;
+            int starsRequiredToPass = isRemixLandmark ? 0 : 1;
+            int starsNeeded = Mathf.Max(0, starsRequiredToPass - starsCollected);
+            string dreamName = FormatDreamName(landmark.dreamName);
+
+            ScreenReader.Say(Loc.Get("map_progress_status", dreamName, starsCollected, starsNeeded), true);
+        }
+
         public static class MapTeleporter
         {
             public static bool IsTeleporting = false;
@@ -204,7 +232,7 @@ namespace MelatoninAccess
 
                 if (currentIndex < 0 || currentIndex >= landmarks.Length)
                 {
-                    currentIndex = GetNearestIndex(player.transform.position, landmarks);
+                    currentIndex = GetNearestLandmarkIndex(player.transform.position, landmarks);
                 }
 
                 currentIndex = (currentIndex + direction + landmarks.Length) % landmarks.Length;
@@ -231,22 +259,6 @@ namespace MelatoninAccess
                 }
 
                 MelonCoroutines.Start(ResetTeleportFlag());
-            }
-
-            private static int GetNearestIndex(Vector3 pos, Landmark[] landmarks)
-            {
-                int best = 0;
-                float minDist = float.MaxValue;
-                for (int i = 0; i < landmarks.Length; i++)
-                {
-                    float d = Vector3.Distance(pos, landmarks[i].transform.position);
-                    if (d < minDist)
-                    {
-                        minDist = d;
-                        best = i;
-                    }
-                }
-                return best;
             }
 
             private static IEnumerator ResetTeleportFlag()
@@ -294,6 +306,25 @@ namespace MelatoninAccess
             _lastTeleportDispatchFrame = frame;
             _lastTeleportDispatchTime = now;
             return true;
+        }
+
+        private static int GetNearestLandmarkIndex(Vector3 position, Landmark[] landmarks)
+        {
+            int best = 0;
+            float minDist = float.MaxValue;
+            for (int i = 0; i < landmarks.Length; i++)
+            {
+                if (landmarks[i] == null) continue;
+
+                float distance = Vector3.Distance(position, landmarks[i].transform.position);
+                if (distance < minDist)
+                {
+                    minDist = distance;
+                    best = i;
+                }
+            }
+
+            return best;
         }
 
         private static string GetModeLockReason(ModeMenu menu, int activeItemNum)

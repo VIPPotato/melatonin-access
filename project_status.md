@@ -1,7 +1,7 @@
 # Project Status
 
 **Current Phase**: Testing & Polish
-**Last Update**: 2026-02-10
+**Last Update**: 2026-02-11
 
 ## Completed
 - [x] **Core System**: `ScreenReader` (Tolk), `MelatoninAccess` (MelonLoader Mod).
@@ -49,10 +49,13 @@
 - [x] **Release Bundle Loader Config (2026-02-10)**: Added tracked `UserData\Loader.cfg` (copied unchanged from maintainer install) and updated `scripts\Build-ReleasePackage.ps1` to always include it in release ZIPs under `UserData\Loader.cfg`.
 - [x] **Release Published (2026-02-10)**: Released `v1.0.3` on GitHub as latest with global `F3` menu-position toggle and bundled `UserData\Loader.cfg` in the release package.
 - [x] **Release Notes Formatting Fix (2026-02-10)**: Rewrote GitHub release bodies for `v1.0`, `v1.0.1`, `v1.0.2`, and `v1.0.3` using proper multiline markdown so headings/lists render correctly (removed literal `\n` text artifacts).
+- [x] **Map Progress Hotkey + Gamepad Input Source Fix (2026-02-11)**: Added map-only `F1` announcement for current landmark progress (stars collected and stars still needed to pass), and removed `ctrlType` dependency from map teleport gamepad detection so `Action Left/Right` navigation assist keeps working after keyboard input.
 
 ## Next Steps
 - **Focused Playtest**: Validate end-to-end flow for map mode locks, stage-end locks, advanced menu/timeline narration, and credits scrolling narration.
 - **Language Spot Check**: Switch each in-game language and verify key mod-only lines (debug toggles, map lock reasons, teleport conflict hint, results summary) are spoken correctly.
 - **Config Spot Check**: Toggle each new `MelonPreferences` setting and verify the targeted announcement group turns on/off without side effects.
 - **Hotkey Spot Check**: Verify `F2`, `F3`, and `F12` update behavior immediately and remain in the same state after restarting the game.
+- **New Feature Spot Check**: On map scenes, press `F1` and verify it announces current landmark stars + remaining stars needed to pass; verify `F1` is silent in non-map scenes.
+- **Gamepad Resilience Spot Check**: Use map gamepad teleport (`Action Left/Right`), press any keyboard key, then confirm gamepad teleport still works without needing to open/close pause menu.
 - **Post-Release Validation**: Monitor issues/feedback from `v1.0.3` and collect any remaining edge cases from real-world play sessions.
