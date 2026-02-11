@@ -52,6 +52,28 @@ namespace MelatoninAccess
         }
     }
 
+    [HarmonyPatch(typeof(PingBar), "StopTimer")]
+    public static class PingBar_StopTimer_Patch
+    {
+        public static void Prefix(PingBar __instance)
+        {
+            if (CalibrationTool.env == null || !CalibrationTool.env.CheckIsActivated()) return;
+
+            float timer = Traverse.Create(__instance).Field("timer").GetValue<float>();
+            int deltaMs = Mathf.RoundToInt((timer - 0.11667f) * 1000f);
+            int absMs = Mathf.Abs(deltaMs);
+
+            if (absMs <= 5)
+            {
+                ScreenReader.Say(Loc.Get("calibration_timing_on_time"), true);
+                return;
+            }
+
+            string key = deltaMs < 0 ? "calibration_timing_early_ms" : "calibration_timing_late_ms";
+            ScreenReader.Say(Loc.Get(key, absMs), true);
+        }
+    }
+
     public static class CalibrationHelper
     {
         private static string _lastDescription = "";
@@ -192,23 +214,19 @@ namespace MelatoninAccess
                  var row = menu.LevelRows[highlightNum];
                  if (row != null)
                  {
-                    var tmp = row.GetComponentInChildren<TextMeshPro>();
-                    if (tmp != null)
-                    {
-                        int visibleRows = 0;
-                        foreach(var r in menu.LevelRows) if(r.gameObject.activeSelf) visibleRows++;
+                    int visibleRows = 0;
+                    foreach(var r in menu.LevelRows) if(r.gameObject.activeSelf) visibleRows++;
 
-                        string rowText = tmp.text != null ? tmp.text.Trim() : "";
-                        string selection = ModConfig.AnnounceMenuPositions
-                            ? Loc.Get("item_of", rowText, highlightNum + 1, visibleRows)
-                            : rowText;
-                        float now = Time.unscaledTime;
-                        if (selection == _lastSelectionText && now - _lastSelectionTime < ExtraMenuDebounce.SelectionCooldown) return;
+                    string rowText = BuildCommunityRowText(row);
+                    string selection = ModConfig.AnnounceMenuPositions
+                        ? Loc.Get("item_of", rowText, highlightNum + 1, visibleRows)
+                        : rowText;
+                    float now = Time.unscaledTime;
+                    if (selection == _lastSelectionText && now - _lastSelectionTime < ExtraMenuDebounce.SelectionCooldown) return;
 
-                        _lastSelectionText = selection;
-                        _lastSelectionTime = now;
-                        ScreenReader.Say(selection, true);
-                     }
+                    _lastSelectionText = selection;
+                    _lastSelectionTime = now;
+                    ScreenReader.Say(selection, true);
                   }
               }
         }
@@ -226,6 +244,46 @@ namespace MelatoninAccess
             _lastPageTotal = pageTotal;
             _lastPageAnnounceTime = now;
             ScreenReader.Say(Loc.Get("page_of", pageNum, pageTotal), false);
+        }
+
+        private static string BuildCommunityRowText(LevelRow row)
+        {
+            string title = CleanFragmentText(row != null ? row.title : null);
+            string subtitle = CleanFragmentText(row != null ? row.subtitle : null);
+            string tags = CleanFragmentText(row != null ? row.tags : null);
+
+            if (string.IsNullOrWhiteSpace(title)) title = Loc.Get("unknown_level");
+            string combined = title;
+
+            if (!string.IsNullOrWhiteSpace(subtitle) && !string.Equals(subtitle, title, System.StringComparison.OrdinalIgnoreCase))
+            {
+                combined += ". " + subtitle;
+            }
+
+            if (!string.IsNullOrWhiteSpace(tags) &&
+                !string.Equals(tags, title, System.StringComparison.OrdinalIgnoreCase) &&
+                !string.Equals(tags, subtitle, System.StringComparison.OrdinalIgnoreCase))
+            {
+                combined += ". " + tags;
+            }
+
+            return combined;
+        }
+
+        private static string CleanFragmentText(textboxFragment fragment)
+        {
+            if (fragment == null) return "";
+
+            var tmp = fragment.GetComponent<TextMeshPro>();
+            if (tmp == null || string.IsNullOrWhiteSpace(tmp.text)) return "";
+
+            return tmp.text
+                .Replace("\r", " ")
+                .Replace("\n", " ")
+                .Replace("<br>", ", ")
+                .Replace("<br/>", ", ")
+                .Replace("<BR>", ", ")
+                .Trim();
         }
     }
 }

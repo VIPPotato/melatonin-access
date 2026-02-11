@@ -122,6 +122,22 @@
   - In `Results.Update()`, selecting locked paths only plays blocked SFX.
 - References: `decompiled/Landmark.cs:64-87`, `decompiled/ModeMenu.cs:179-220`, `decompiled/StageEndMenu.cs:78-177`, `decompiled/Results.cs:182-214`.
 
+## Achievement Lock Detection
+- `AchievementsMenu.Activate()` always sets title/description text for rows 5-13, even when still locked.
+- Locked state is represented by `CheevoRow.checkmark` sprite state: `0` locked, `1` checked/unlocked (`CheevoRow.Check()` sets state `1`).
+- Accessibility lock announcements should not rely only on title text (`?????`) because that pattern only covers early story achievements.
+- References: `decompiled/AchievementsMenu.cs:74-160`, `decompiled/CheevoRow.cs:57-60`, `decompiled/spriteFragment.cs:100-173`.
+
+## Calibration Timing Feedback
+- `PingBar.StopTimer()` computes timing from `timer - 0.11667f` (center of timing window) and places the marker accordingly.
+- This delta can be converted to milliseconds for spoken "early/late" calibration feedback.
+- References: `decompiled/PingBar.cs:109-123`.
+
+## Map Input Availability
+- `McMap` movement input is controlled by private `isEnabled`, set to `true` only after `McMap.Introducing()` completes.
+- During chapter intro/outro transitions, map visuals can be present while navigation should remain blocked (`Chapter.CheckIsCutsceneIntro/Outro()`).
+- References: `decompiled/McMap.cs:372-387`, `decompiled/McMap.cs:412-424`, `decompiled/Chapter.cs:101-245`, `decompiled/Chapter.cs:319-451`, `decompiled/Chapter.cs:568-575`.
+
 ## Credits Flow
 - Credits sequence is driven by `Creditor.Starting()`:
   - `Credits.Show()` -> logo transitions -> `Credits.ScrollList()` -> exit to title.

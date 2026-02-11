@@ -68,6 +68,10 @@ namespace MelatoninAccess
                                 text = Loc.Get("chapter_locked", chapterNum);
                             }
                         }
+                        else if (functionNum == 36)
+                        {
+                            text = Loc.Get("action_key_current_binding", text, GetActionPromptLabel());
+                        }
 
                         // Check if it's a slider
                         bool isSlider = false;
@@ -370,6 +374,27 @@ namespace MelatoninAccess
         private static string GetWindowModeText()
         {
             return Screen.fullScreen ? Loc.Get("fullscreen") : Loc.Get("windowed");
+        }
+
+        private static string GetActionPromptLabel()
+        {
+            int ctrlType = ControlHandler.mgr != null ? ControlHandler.mgr.GetCtrlType() : 0;
+            if (ctrlType == 1) return "A";
+            if (ctrlType == 2) return "Cross";
+
+            string key = SaveManager.mgr != null ? SaveManager.mgr.GetActionKey() : "SPACE";
+            if (string.IsNullOrWhiteSpace(key)) return Loc.Get("cue_space");
+
+            return key.Trim().ToUpperInvariant() switch
+            {
+                "SPACE" => Loc.Get("cue_space"),
+                "ENTER" => Loc.Get("key_enter"),
+                "PERIOD" => Loc.Get("key_period"),
+                "SLASH" => Loc.Get("key_slash"),
+                _ => key.Trim().Length == 1
+                    ? key.Trim().ToUpperInvariant()
+                    : char.ToUpperInvariant(key.Trim()[0]) + key.Trim().Substring(1).ToLowerInvariant()
+            };
         }
 
         private static string GetToggleStateText(bool state)
