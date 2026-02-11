@@ -190,22 +190,14 @@ namespace MelatoninAccess
             if (player == null || SaveManager.mgr == null) return;
             if (Map.env == null || Map.env.Neighbourhood == null) return;
 
-            var landmarks = Map.env.Neighbourhood.Landmarks;
-            if (landmarks == null || landmarks.Length == 0) return;
+            int chapterNum = Chapter.GetActiveChapterNum();
+            if (chapterNum <= 0) return;
 
-            int nearestIndex = GetNearestLandmarkIndex(player.transform.position, landmarks);
-            if (nearestIndex < 0 || nearestIndex >= landmarks.Length) return;
+            int starsCollected = Mathf.Max(0, SaveManager.mgr.GetChapterEarnedStars(chapterNum));
+            int starsRequired = GetChapterStarsRequiredToPass(chapterNum);
+            int starsNeeded = Mathf.Max(0, starsRequired - starsCollected);
 
-            Landmark landmark = landmarks[nearestIndex];
-            if (landmark == null || string.IsNullOrWhiteSpace(landmark.dreamName)) return;
-
-            int starsCollected = Mathf.Clamp(SaveManager.mgr.GetScore("Dream_" + landmark.dreamName), 0, 3);
-            bool isRemixLandmark = Map.env.Neighbourhood.GetRemixLandmark() == landmark;
-            int starsRequiredToPass = isRemixLandmark ? 0 : 1;
-            int starsNeeded = Mathf.Max(0, starsRequiredToPass - starsCollected);
-            string dreamName = FormatDreamName(landmark.dreamName);
-
-            ScreenReader.Say(Loc.Get("map_progress_status", dreamName, starsCollected, starsNeeded), true);
+            ScreenReader.Say(Loc.Get("map_progress_status", starsCollected, starsNeeded), true);
         }
 
         public static class MapTeleporter
@@ -306,6 +298,13 @@ namespace MelatoninAccess
             _lastTeleportDispatchFrame = frame;
             _lastTeleportDispatchTime = now;
             return true;
+        }
+
+        private static int GetChapterStarsRequiredToPass(int chapterNum)
+        {
+            // Map progression target used by chapter maps (remix unlock/checkpoint threshold).
+            if (chapterNum >= 1 && chapterNum <= 4) return 8;
+            return 0;
         }
 
         private static int GetNearestLandmarkIndex(Vector3 position, Landmark[] landmarks)

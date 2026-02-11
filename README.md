@@ -28,7 +28,7 @@ Screen-reader accessibility mod for **Melatonin** (MelonLoader).
   - Keyboard: `[` and `]` jump to previous/next landmark.
   - Keyboard fallback: if Action is bound to brackets, use `F9` (previous) and `F10` (next).
   - Gamepad: `Action Left` / `Action Right` (commonly `LB` / `RB`) jump between landmarks.
-  - Press `F1` to hear current map star progress (`stars collected` and `stars still needed to pass`).
+  - Press `F1` to hear map/chapter star summary (`total stars collected` and `stars still needed to pass`).
   - Open mode menu with Action, then choose mode with `Up`/`Down` and confirm with Action.
 - Results/stage-end menu:
   - Move with `Up`/`Down`.
@@ -43,7 +43,7 @@ Example flow:
 
 - `F2`: Toggle rhythm cue announcements on/off (saved immediately to MelonPreferences).
 - `F3`: Toggle menu position announcements on/off (for example `1 of 4`, saved immediately to MelonPreferences).
-- `F1`: On map scenes only, announce stars collected for the current landmark and how many more are needed to pass.
+- `F1`: On map scenes only, announce chapter/map star totals and how many more stars are needed to pass.
 - `F12`: Toggle debug logging on/off.
   - State is persisted in MelonPreferences and restored on next launch.
 
