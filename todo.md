@@ -39,6 +39,7 @@ This document outlines the roadmap for making Melatonin 100% accessible to total
 - [ ] **Tutorial Level (`Dream_tutorial.cs`)**
     - [ ] The tutorial uses a state machine to advance. Ensure every state change that updates instructions is vocalized.
     - [ ] Announce when the game waits for user input vs. when it's just demonstrating.
+    - [x] Added delayed `DialogBox.SetDialogState` reads to improve first-line capture for tutorial startup text without hardcoded strings.
 - [ ] **Practice Mode**
     - [ ] Announce entry into Practice Mode.
     - [ ] Announce "Scored Mode" transition.
