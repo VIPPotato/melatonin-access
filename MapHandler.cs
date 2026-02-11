@@ -152,11 +152,15 @@ namespace MelatoninAccess
         {
             public static void Postfix(McMap __instance)
             {
+                bool assistAllowed = IsMapNavigationAssistAllowed(__instance);
+
                 bool f1Pressed = Keyboard.current != null && Keyboard.current.f1Key.wasPressedThisFrame;
-                if (f1Pressed)
+                if (f1Pressed && assistAllowed)
                 {
                     AnnounceCurrentMapProgress(__instance);
                 }
+
+                if (!assistAllowed) return;
 
                 if (__instance != null && __instance.ModeMenu != null && __instance.ModeMenu.CheckIsTranstioned()) return;
 
@@ -191,6 +195,22 @@ namespace MelatoninAccess
                     MapTeleporter.TeleportToNext(__instance);
                 }
             }
+        }
+
+        private static bool IsMapNavigationAssistAllowed(McMap map)
+        {
+            if (map == null) return false;
+            if (Map.env == null || Map.env.Neighbourhood == null) return false;
+
+            bool isMapEnabled = Traverse.Create(map).Field("isEnabled").GetValue<bool>();
+            if (!isMapEnabled) return false;
+
+            if (Chapter.dir != null && (Chapter.dir.CheckIsCutsceneIntro() || Chapter.dir.CheckIsCutsceneOutro()))
+            {
+                return false;
+            }
+
+            return true;
         }
 
         private static void AnnounceCurrentMapProgress(McMap player)

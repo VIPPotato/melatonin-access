@@ -2,6 +2,7 @@ using HarmonyLib;
 using MelonLoader;
 using UnityEngine;
 using TMPro;
+using System;
 
 namespace MelatoninAccess
 {
@@ -37,6 +38,12 @@ namespace MelatoninAccess
     {
         public static void AnnounceTutorialStart()
         {
+            if (IsStandaloneTutorial())
+            {
+                ScreenReader.Say(Loc.Get("tutorial_label"), true);
+                return;
+            }
+
             ScreenReader.Say(Loc.Get("tutorial_skip_prompt", GetSkipPrompt()), true);
         }
 
@@ -60,6 +67,13 @@ namespace MelatoninAccess
             if (ctrlType == 1) return "Y";
             if (ctrlType == 2) return "Triangle";
             return "Tab";
+        }
+
+        private static bool IsStandaloneTutorial()
+        {
+            if (SceneMonitor.mgr == null) return false;
+            string sceneName = SceneMonitor.mgr.GetActiveSceneName();
+            return string.Equals(sceneName, "Dream_tutorial", System.StringComparison.OrdinalIgnoreCase);
         }
     }
 }

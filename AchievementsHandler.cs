@@ -2,6 +2,7 @@ using HarmonyLib;
 using MelonLoader;
 using UnityEngine;
 using TMPro;
+using System;
 
 namespace MelatoninAccess
 {
@@ -98,9 +99,10 @@ namespace MelatoninAccess
 
             string title = GetText(row.title);
             string desc = GetText(row.description);
+            bool isLocked = IsLocked(row, title, desc);
 
             bool includePosition = ModConfig.AnnounceMenuPositions;
-            announcement = title == "?????"
+            announcement = isLocked
                 ? (includePosition ? Loc.Get("locked_achievement", highlightNum + 1, rows.Length) : Loc.Get("locked_achievement_plain"))
                 : (includePosition ? Loc.Get("achievement_with_desc", title, desc, highlightNum + 1, rows.Length) : Loc.Get("achievement_with_desc_plain", title, desc));
 
@@ -112,6 +114,17 @@ namespace MelatoninAccess
             if (fragment == null) return "";
             var tmp = fragment.GetComponent<TextMeshPro>();
             return tmp != null ? tmp.text : "";
+        }
+
+        private static bool IsLocked(CheevoRow row, string title, string desc)
+        {
+            bool questionMarks =
+                string.Equals(title?.Trim(), "?????", System.StringComparison.Ordinal) ||
+                string.Equals(desc?.Trim(), "?????", System.StringComparison.Ordinal);
+            if (questionMarks) return true;
+
+            if (row == null || row.checkmark == null) return false;
+            return row.checkmark.GetState() == 0;
         }
     }
 }

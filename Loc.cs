@@ -368,6 +368,19 @@ namespace MelatoninAccess
                 "Controle deslizante {0}");
 
             Add(
+                "action_key_current_binding",
+                "{0}, currently bound to {1}.",
+                "{0}，当前绑定为 {1}。",
+                "{0}，目前綁定為 {1}。",
+                "{0}。現在の割り当ては {1} です。",
+                "{0}, 현재 {1}에 바인딩됨.",
+                "{0}, hien dang gan voi {1}.",
+                "{0}, actuellement assigne a {1}.",
+                "{0}, derzeit auf {1} gebunden.",
+                "{0}, actualmente asignado a {1}.",
+                "{0}, atualmente vinculado a {1}.");
+
+            Add(
                 "state_on",
                 "On",
                 "开",
@@ -444,6 +457,45 @@ namespace MelatoninAccess
                 "Offset {0}",
                 "Desfase {0}",
                 "Deslocamento {0}");
+
+            Add(
+                "calibration_timing_on_time",
+                "On time.",
+                "时机准确。",
+                "時機準確。",
+                "タイミングは正確です。",
+                "타이밍이 정확합니다.",
+                "Dung nhip.",
+                "Au bon moment.",
+                "Im Takt.",
+                "A tiempo.",
+                "No tempo.");
+
+            Add(
+                "calibration_timing_early_ms",
+                "Early by {0} ms.",
+                "提前了 {0} 毫秒。",
+                "提前了 {0} 毫秒。",
+                "{0} ミリ秒早いです。",
+                "{0}ms 빨랐습니다.",
+                "Som {0} ms.",
+                "En avance de {0} ms.",
+                "{0} ms zu frueh.",
+                "Temprano por {0} ms.",
+                "Adiantado em {0} ms.");
+
+            Add(
+                "calibration_timing_late_ms",
+                "Late by {0} ms.",
+                "慢了 {0} 毫秒。",
+                "慢了 {0} 毫秒。",
+                "{0} ミリ秒遅いです。",
+                "{0}ms 늦었습니다.",
+                "Tre {0} ms.",
+                "En retard de {0} ms.",
+                "{0} ms zu spaet.",
+                "Tarde por {0} ms.",
+                "Atrasado em {0} ms.");
 
             Add(
                 "downloaded_levels_loading",
@@ -1107,6 +1159,19 @@ namespace MelatoninAccess
                 "Tutorial. Drucke {0}, um zu ueberspringen.",
                 "Tutorial. Pulsa {0} para omitir.",
                 "Tutorial. Pressione {0} para pular.");
+
+            Add(
+                "tutorial_label",
+                "Tutorial.",
+                "教程。",
+                "教學。",
+                "チュートリアル。",
+                "튜토리얼.",
+                "Huong dan.",
+                "Tutoriel.",
+                "Tutorial.",
+                "Tutorial.",
+                "Tutorial.");
 
             Add(
                 "cue_space",

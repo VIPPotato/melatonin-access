@@ -57,6 +57,7 @@ namespace MelatoninAccess
             public static IEnumerator AnnounceCreatorDelayed(Credits credits)
             {
                 yield return new WaitForSecondsRealtime(0.72f);
+                if (!ShouldContinueNarration(credits)) yield break;
 
                 string entry = BuildEntry(credits, 0);
                 if (string.IsNullOrWhiteSpace(entry)) yield break;
@@ -84,6 +85,7 @@ namespace MelatoninAccess
 
                 foreach (string entry in entries)
                 {
+                    if (!ShouldContinueNarration(credits)) break;
                     if (string.IsNullOrWhiteSpace(entry) || _spokenEntries.Contains(entry)) continue;
 
                     _spokenEntries.Add(entry);
@@ -92,6 +94,15 @@ namespace MelatoninAccess
                 }
 
                 _isNarrating = false;
+            }
+
+            private static bool ShouldContinueNarration(Credits credits)
+            {
+                if (!ModConfig.AnnounceCreditsRoll) return false;
+                if (credits == null) return false;
+                if (!credits.gameObject.activeInHierarchy) return false;
+                if (Interface.env != null && Interface.env.Submenu != null && Interface.env.Submenu.CheckIsActivated()) return false;
+                return true;
             }
 
             private static List<string> CollectEntries(Credits credits)
