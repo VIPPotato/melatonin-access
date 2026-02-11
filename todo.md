@@ -83,11 +83,10 @@ Some levels might have unique mechanics requiring specific cues.
     - Cover menus, map navigation, gameplay/tutorial, and editor contexts.
     - Keep output short and ordered by priority actions.
     - Implemented on `F11` via `ContextHelpHandler.cs` with localized context-specific prompts.
-- [x] **Per-Level Completion Briefing**
+- [ ] **Per-Level Completion Briefing**
     - On level/mode entry, announce a concise summary of objective and key mechanics.
     - Include active mode context (practice, score mode, hard mode, etc.).
     - Ensure briefing is a single utterance to avoid interruption overlap.
-    - Implemented via `LevelBriefingHandler.cs` (`Dream.Start` patch) with localized mode/objective lines.
 - [ ] **Cutscene Audio Description Timing Pipeline**
     - Create a data-driven timing format for AD lines (timestamps + text) instead of hardcoding.
     - Add a small validation/test utility to catch timing overlaps and missing entries.

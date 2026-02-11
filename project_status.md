@@ -55,8 +55,8 @@
 - [x] **v1.0.5 Local Prompt + Mode-Title Pass (2026-02-11)**: Rhythm tutorial cues now announce dynamic action prompts (`Press {Action}` / `Hold {Action}`) based on rebind/controller context instead of hardcoded Space, and mode-menu open narration now prepends the localized full dream title (`Dream about {Level}. Mode menu...`).
 - [x] **Localization QA Automation (2026-02-11)**: Added `scripts\Test-LocalizationQA.ps1` to validate full `Loc.cs` coverage and placeholder parity across all supported languages; integrated automatic execution into `scripts\Build-ReleasePackage.ps1` (with `-SkipLocalizationQa` override) and documented usage in `README.md`.
 - [x] **Context Help Hotkey (2026-02-11)**: Added global `F11` context-aware control help (`ContextHelpHandler`) with localized prompts for title screen, generic menus, map navigation, mode menu, gameplay, results, and editor contexts.
-- [x] **Per-Level Completion Briefing (2026-02-11)**: Added localized single-utterance level-start briefing (`LevelBriefingHandler`) from `Dream.Start` with level name + mode + objective text, including practice/tutorial skip-key context; suppressed duplicate practice start prompt overlap from `SideLabel`.
-- [x] **Tutorial/Dialog + Community Loader Follow-up (2026-02-11)**: Updated tutorial-mode briefing objective to remove incorrect skip-key guidance, added delayed reads to `DialogBox.SetDialogState` to reliably capture initial tutorial text lines, and prevented `editor_ready` from announcing on downloaded/community-level loader path (`LvlEditor` with non-empty `downloadFilePath`).
+- [x] **Tutorial/Dialog + Community Loader Follow-up (2026-02-11)**: Added delayed reads to `DialogBox.SetDialogState` to reliably capture initial tutorial text lines, and prevented `editor_ready` from announcing on downloaded/community-level loader path (`LvlEditor` with non-empty `downloadFilePath`).
+- [x] **Per-Level Completion Briefing Reverted (2026-02-11)**: Removed mod-generated level-start briefing per user preference to keep startup narration limited to game-provided/tutorial text.
 
 ## Next Steps
 - **Focused Playtest**: Validate end-to-end flow for map mode locks, stage-end locks, advanced menu/timeline narration, and credits scrolling narration.
@@ -68,7 +68,6 @@
 - **v1.0.5 Prompt Spot Check**: In tutorial/practice gameplay, rebind Action (for example to `Enter`, `Period`, `Slash`, and a letter key) and verify rhythm cues announce the new action prompt correctly; with controller active, verify prompts use controller action naming.
 - **v1.0.5 Mode Menu Spot Check**: From map navigation, open multiple levels and confirm the opening line says the full dream title before mode menu/options (for example `Dream about Money. Mode menu. Practice...`).
 - **Context Help Spot Check**: Press `F11` on title screen, in regular menus, on map, in map mode menu, during gameplay, on results, and in editor; verify each context speaks relevant controls and uses current action/cancel prompts.
-- **Level Briefing Spot Check**: Start levels in practice, score, hard, tutorial, and editor/community paths; verify the opening briefing is a single utterance (`<Level>. <Mode>. <Objective>`) and that practice/tutorial includes the correct skip key.
 - **Tutorial Intro Spot Check**: Enter tutorial from chapter menu and verify the first instruction block (including multi-line startup warning text) is announced without hardcoded text dependencies.
 - **Community Loader Spot Check**: Start downloaded/community level flow and verify `Level editor ready` is no longer announced before gameplay.
 - **Release QA Spot Check**: Run `pwsh -File .\scripts\Test-LocalizationQA.ps1` before packaging; confirm `scripts\Build-ReleasePackage.ps1` fails fast on localization mismatches.
