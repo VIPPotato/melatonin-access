@@ -1,7 +1,8 @@
 param(
     [string]$Version = "v1.0.4",
     [string]$Configuration = "Debug",
-    [switch]$KeepStage
+    [switch]$KeepStage,
+    [switch]$SkipLocalizationQa
 )
 
 Set-StrictMode -Version Latest
@@ -12,6 +13,7 @@ $modDll = Join-Path $projectRoot "bin\$Configuration\net472\MelatoninAccess.dll"
 $tolkDll = Join-Path $projectRoot "libs\x86\Tolk.dll"
 $nvdaDll = Join-Path $projectRoot "libs\x86\nvdaControllerClient32.dll"
 $loaderCfg = Join-Path $projectRoot "UserData\Loader.cfg"
+$locQaScript = Join-Path $projectRoot "scripts\Test-LocalizationQA.ps1"
 
 if (-not (Test-Path -LiteralPath $modDll)) {
     Write-Host "ERROR: Mod DLL not found: $modDll"
@@ -32,6 +34,20 @@ if (-not (Test-Path -LiteralPath $nvdaDll)) {
 if (-not (Test-Path -LiteralPath $loaderCfg)) {
     Write-Host "ERROR: Loader config not found: $loaderCfg"
     exit 1
+}
+
+if (-not $SkipLocalizationQa.IsPresent) {
+    if (-not (Test-Path -LiteralPath $locQaScript)) {
+        Write-Host "ERROR: Localization QA script not found: $locQaScript"
+        exit 1
+    }
+
+    Write-Host "Running localization QA check..."
+    & $locQaScript -LocPath (Join-Path $projectRoot "Loc.cs")
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "ERROR: Localization QA check failed."
+        exit $LASTEXITCODE
+    }
 }
 
 $releaseDir = Join-Path $projectRoot "release"
