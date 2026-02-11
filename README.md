@@ -153,6 +153,16 @@ pwsh -File .\scripts\Test-SpeechRegression.ps1 -LogPath "D:\games\steam\steamapp
 pwsh -File .\scripts\Test-SpeechRegression.ps1 -RequiredPattern "Tutorial\. Press .+ to skip\."
 ```
 
+## Localization QA Check
+
+Validate that all `Loc.cs` keys have complete language coverage and matching placeholders:
+
+```powershell
+pwsh -File .\scripts\Test-LocalizationQA.ps1
+```
+
+This check runs automatically during release packaging (`scripts/Build-ReleasePackage.ps1`) unless you pass `-SkipLocalizationQa`.
+
 ## Requirements
 
 - Melatonin (PC)

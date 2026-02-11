@@ -89,10 +89,11 @@ Some levels might have unique mechanics requiring specific cues.
     - Create a data-driven timing format for AD lines (timestamps + text) instead of hardcoding.
     - Add a small validation/test utility to catch timing overlaps and missing entries.
     - Support quick iteration so AD scripts can be refined without code changes.
-- [ ] **Localization QA Checker Script**
+- [x] **Localization QA Checker Script**
     - Add a script that verifies every localization key exists in all supported languages.
     - Validate placeholder parity (for example `{0}`, `{1}` counts) across translations.
     - Integrate the checker into release prep to prevent missing or broken localized lines.
+    - Implemented as `scripts/Test-LocalizationQA.ps1` and wired into `scripts/Build-ReleasePackage.ps1`.
 
 ## Implementation Priorities
 1.  **Framework**: `ScreenReader` and global input hooks.
