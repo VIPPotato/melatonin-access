@@ -14,10 +14,10 @@ This document outlines the roadmap for making Melatonin 100% accessible to total
 - [x] **Main Menus & Submenus (`Menu.cs`, `Option.cs`)**
     - [x] Announce currently selected option name and state (On/Off).
     - [x] Announce menu transitions (entering/exiting submenus) (Implemented in `MenuHandler.cs`).
-- [ ] **Dialogue System (`DialogBox.cs`)**
-    - [ ] Announce dialogue text when it appears or changes.
-    - [ ] Announce speaker names if available.
-    - **Suggestion**: Patch `DialogBox.SetText()` and `DialogBox.Activate()`. Ensure multiple updates in quick succession don't flood the TTS queue (debounce if necessary).
+- [x] **Dialogue System (`DialogBox.cs`)**
+    - [x] Announce dialogue text when it appears or changes.
+    - [x] Announce speaker names if available.
+    - Added coverage for `DialogBox.Show()` and label-aware dialog composition, while keeping debounce to avoid rapid duplicate speech.
 - [ ] **Transient Labels**
     - [ ] **Title Screen**: Read "Press Space to Start" (`Instruction.cs`).
     - [ ] **Language Hint**: Read language change prompts (`LangHint.cs`).

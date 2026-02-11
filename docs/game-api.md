@@ -31,6 +31,14 @@
 - **Text**: `Option` uses `textboxFragment` for labels (`label`, `num`, `tip`).
 - **Localization**: `textboxFragment.SetState(int)` uses `SaveManager.GetLang()` to pick translations.
 
+## DialogBox Hooks
+- `DialogBox.Show()` can present dialog content immediately (without `Activate()`), so accessibility hooks should include `Show` plus text/state changes.
+- `DialogBox.Activate()` and `DialogBox.ActivateDelayed()` control panel transitions and optional speaker SFX but do not inherently guarantee new text state assignment.
+- `DialogBox.SetDialogState()` / `ChangeDialogState()` update localized dialog text states; many dream scripts call these before or around activation.
+- `DialogBox.SetText()` is used for dynamic token replacement (`[]`, `[1]`, `[2]`) based on keyboard/controller context.
+- `DialogBox` also exposes a `label` (`textboxFragment`) that can carry additional context (for example, speaker/context tags) when rendered.
+- References: `decompiled/DialogBox.cs:47-87`, `decompiled/DialogBox.cs:188-248`, `decompiled/Dream_tutorial.cs:28-44`, `decompiled/Dream_tutorial.cs:198-210`, `decompiled/Dream_tutorial.cs:295-311`.
+
 ## Game Mechanics
 - Rhythm-based gameplay.
 - Different worlds/dreams represented by `[Name]World` classes.
