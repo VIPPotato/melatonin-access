@@ -91,6 +91,7 @@ namespace MelatoninAccess
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(RhythmHandler.Dream_QueueRightHitWindow_Patch));
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(RhythmHandler.Dream_QueueLeftRightHitWindow_Patch));
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(RhythmHandler.Dream_QueueHoldReleaseWindow_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(LevelBriefingHandler.Dream_Start_Patch));
 
             // Level Editor
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.Daw_IncreaseBeat_Patch));

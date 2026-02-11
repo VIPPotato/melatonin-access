@@ -36,6 +36,18 @@
 - Different worlds/dreams represented by `[Name]World` classes.
 - Tutorial: `Dream_tutorial` class and `TutorialWorld.env`.
 
+## Dream GameMode Mapping
+- `Dream.gameMode` values used at level start (`Dream.Start()`):
+  - `0`: Practice (`SideLabel.ShowAsPractice`, no score meter).
+  - `1`: Score mode.
+  - `2`: Hard mode.
+  - `3`: Score remix mode.
+  - `4`: Hard remix mode.
+  - `5`: Tutorial mode.
+  - `6`: Editor test mode (`SideLabel.ShowAsEdited` path).
+  - `7`: Community/downloaded level mode.
+- References: `decompiled/Dream.cs:159-203`, `decompiled/Dream.cs:1698-1700`.
+
 ## Tutorial Analysis
 - **Scene/entry point**: Tutorial runs in `Dream_tutorial`.
   - Start path: `Option` functions call `Interface.env.ExitTo("Dream_tutorial")` with `Dream.SetGameMode(5)`.

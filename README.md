@@ -11,6 +11,7 @@ Screen-reader accessibility mod for **Melatonin** (MelonLoader).
 - Level editor narration (cursor, tools, advanced menu, timeline tabs).
 - Results and stage-end option announcements, including lock-state reasons.
 - Credits roll narration while entries scroll.
+- Per-level start briefing with localized level name, mode, and objective summary.
 - Localization for mod-generated messages across all game-supported languages.
 - Optional toggles for announcement groups via `MelonPreferences`.
 - A regression-check script for validating speech logs after playtests.

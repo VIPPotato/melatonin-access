@@ -1317,6 +1317,214 @@ namespace MelatoninAccess
                 "Ajuda do editor. Use as setas para mover na linha do tempo. Pressione {0} para colocar ou selecionar. Pressione {1} para cancelar.");
 
             Add(
+                "level_briefing_line",
+                "{0}. {1}. {2}",
+                "{0}。{1}。{2}",
+                "{0}。{1}。{2}",
+                "{0}。{1}。{2}",
+                "{0}. {1}. {2}",
+                "{0}. {1}. {2}",
+                "{0}. {1}. {2}",
+                "{0}. {1}. {2}",
+                "{0}. {1}. {2}",
+                "{0}. {1}. {2}");
+
+            Add(
+                "mode_practice",
+                "Practice mode",
+                "练习模式",
+                "練習模式",
+                "練習モード",
+                "연습 모드",
+                "Che do luyen tap",
+                "Mode entrainement",
+                "Uebungsmodus",
+                "Modo practica",
+                "Modo pratica");
+
+            Add(
+                "mode_score",
+                "Score mode",
+                "计分模式",
+                "計分模式",
+                "スコアモード",
+                "점수 모드",
+                "Che do tinh diem",
+                "Mode score",
+                "Punktemodus",
+                "Modo puntuacion",
+                "Modo pontuacao");
+
+            Add(
+                "mode_hard",
+                "Hard mode",
+                "困难模式",
+                "困難模式",
+                "ハードモード",
+                "하드 모드",
+                "Che do kho",
+                "Mode difficile",
+                "Schwerer Modus",
+                "Modo dificil",
+                "Modo dificil");
+
+            Add(
+                "mode_score_remix",
+                "Score mode remix",
+                "计分混音模式",
+                "計分混音模式",
+                "スコアリミックスモード",
+                "점수 리믹스 모드",
+                "Che do tinh diem remix",
+                "Mode score remix",
+                "Punktemodus Remix",
+                "Modo puntuacion remix",
+                "Modo pontuacao remix");
+
+            Add(
+                "mode_hard_remix",
+                "Hard mode remix",
+                "困难混音模式",
+                "困難混音模式",
+                "ハードリミックスモード",
+                "하드 리믹스 모드",
+                "Che do kho remix",
+                "Mode difficile remix",
+                "Schwerer Modus Remix",
+                "Modo dificil remix",
+                "Modo dificil remix");
+
+            Add(
+                "mode_tutorial",
+                "Tutorial mode",
+                "教程模式",
+                "教學模式",
+                "チュートリアルモード",
+                "튜토리얼 모드",
+                "Che do huong dan",
+                "Mode tutoriel",
+                "Tutorial-Modus",
+                "Modo tutorial",
+                "Modo tutorial");
+
+            Add(
+                "mode_editor_test",
+                "Editor test mode",
+                "编辑器测试模式",
+                "編輯器測試模式",
+                "エディターテストモード",
+                "에디터 테스트 모드",
+                "Che do thu editor",
+                "Mode test editeur",
+                "Editor-Testmodus",
+                "Modo prueba editor",
+                "Modo teste do editor");
+
+            Add(
+                "mode_community",
+                "Community mode",
+                "社区模式",
+                "社群模式",
+                "コミュニティモード",
+                "커뮤니티 모드",
+                "Che do cong dong",
+                "Mode communaute",
+                "Community-Modus",
+                "Modo comunidad",
+                "Modo comunidade");
+
+            Add(
+                "objective_default",
+                "Follow rhythm cues and stay on beat.",
+                "跟随节奏提示并保持节拍。",
+                "跟隨節奏提示並保持節拍。",
+                "リズムキューに従ってビートを保ってください。",
+                "리듬 큐를 따라 비트를 유지하세요.",
+                "Theo cue nhip va giu dung nhip.",
+                "Suivez les reperes rythmiques et restez en rythme.",
+                "Folge den Rhythmus-Hinweisen und bleibe im Takt.",
+                "Sigue las senales ritmicas y manten el ritmo.",
+                "Siga as dicas de ritmo e mantenha o tempo.");
+
+            Add(
+                "objective_practice",
+                "Learn the pattern and timing. Press {0} to skip.",
+                "学习节奏与时机。按 {0} 可跳过。",
+                "學習節奏與時機。按 {0} 可跳過。",
+                "パターンとタイミングを学びます。{0} でスキップ。",
+                "패턴과 타이밍을 익히세요. {0} 키로 건너뛸 수 있습니다.",
+                "Hoc mau nhip va thoi diem. Nhan {0} de bo qua.",
+                "Apprenez le rythme et le timing. Appuyez sur {0} pour passer.",
+                "Lerne Muster und Timing. Druecke {0}, um zu ueberspringen.",
+                "Aprende el patron y el tiempo. Pulsa {0} para omitir.",
+                "Aprenda o padrao e o tempo. Pressione {0} para pular.");
+
+            Add(
+                "objective_score",
+                "Build score by timing actions on beat.",
+                "在节拍上精准操作以提高分数。",
+                "在節拍上精準操作以提高分數。",
+                "ビートに合わせた入力でスコアを伸ばします。",
+                "박자에 맞춘 입력으로 점수를 올리세요.",
+                "Tang diem bang cach nhan dung theo nhip.",
+                "Gagnez des points en entrant vos actions dans le rythme.",
+                "Baue Punkte auf, indem du Aktionen im Takt eingibst.",
+                "Gana puntuacion marcando acciones a tiempo.",
+                "Aumente a pontuacao acertando as acoes no ritmo.");
+
+            Add(
+                "objective_hard",
+                "Maintain accuracy on tighter patterns.",
+                "在更紧凑的节奏中保持准确。",
+                "在更緊湊的節奏中保持準確。",
+                "より厳しいパターンで精度を維持します。",
+                "더 촘촘한 패턴에서도 정확도를 유지하세요.",
+                "Giu do chinh xac voi cac mau kho hon.",
+                "Gardez une bonne precision sur des patterns plus exigeants.",
+                "Halte Genauigkeit bei strengeren Mustern.",
+                "Manten la precision en patrones mas exigentes.",
+                "Mantenha a precisao em padroes mais exigentes.");
+
+            Add(
+                "objective_tutorial",
+                "Follow instructions to learn mechanics. Press {0} to skip.",
+                "按照说明学习机制。按 {0} 可跳过。",
+                "按照說明學習機制。按 {0} 可跳過。",
+                "指示に従って仕組みを学びます。{0} でスキップ。",
+                "안내에 따라 기본 조작을 익히세요. {0} 키로 건너뛸 수 있습니다.",
+                "Lam theo huong dan de hoc co che. Nhan {0} de bo qua.",
+                "Suivez les instructions pour apprendre les mecaniques. Appuyez sur {0} pour passer.",
+                "Folge den Anweisungen, um die Mechanik zu lernen. Druecke {0}, um zu ueberspringen.",
+                "Sigue las instrucciones para aprender mecanicas. Pulsa {0} para omitir.",
+                "Siga as instrucoes para aprender as mecanicas. Pressione {0} para pular.");
+
+            Add(
+                "objective_editor_test",
+                "Test your chart timing and flow.",
+                "测试你的谱面节奏与流程。",
+                "測試你的譜面節奏與流程。",
+                "譜面のタイミングと流れをテストします。",
+                "차트의 타이밍과 흐름을 테스트하세요.",
+                "Thu timing va nhip chay cua ban chart.",
+                "Testez le timing et le flow de votre niveau.",
+                "Teste Timing und Ablauf deiner Chart.",
+                "Prueba el timing y flujo de tu nivel.",
+                "Teste o timing e o fluxo do seu mapa.");
+
+            Add(
+                "objective_community",
+                "Play and evaluate this community level.",
+                "游玩并评价该社区关卡。",
+                "遊玩並評價此社群關卡。",
+                "このコミュニティレベルをプレイして評価します。",
+                "커뮤니티 레벨을 플레이하고 평가하세요.",
+                "Choi va danh gia man cong dong nay.",
+                "Jouez et evaluez ce niveau communautaire.",
+                "Spiele und bewerte dieses Community-Level.",
+                "Juega y evalua este nivel de la comunidad.",
+                "Jogue e avalie este nivel da comunidade.");
+
+            Add(
                 "cue_left",
                 "Left",
                 "左",
