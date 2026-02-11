@@ -46,63 +46,137 @@ namespace MelatoninAccess
         private static class CreditsNarrationHelper
         {
             private static bool _isNarrating;
-            private static readonly HashSet<string> _spokenEntries = new HashSet<string>();
+            private static readonly List<string> _entries = new List<string>();
+            private static int _nextEntryIndex;
+            private static float _entryInterval = 1f;
 
             public static void Reset()
             {
                 _isNarrating = false;
-                _spokenEntries.Clear();
+                _entries.Clear();
+                _nextEntryIndex = 0;
+                _entryInterval = 1f;
             }
 
             public static IEnumerator AnnounceCreatorDelayed(Credits credits)
             {
                 yield return new WaitForSecondsRealtime(0.72f);
-                if (!ShouldContinueNarration(credits)) yield break;
+                if (!PrepareEntries(credits)) yield break;
+                if (!ShouldNarrationSessionAlive(credits)) yield break;
+                if (IsPausedBySubmenu()) yield break;
+                if (_nextEntryIndex >= _entries.Count) yield break;
 
-                string entry = BuildEntry(credits, 0);
-                if (string.IsNullOrWhiteSpace(entry)) yield break;
+                string entry = _entries[_nextEntryIndex];
+                if (!string.IsNullOrWhiteSpace(entry))
+                {
+                    ScreenReader.Say(entry, false);
+                }
 
-                _spokenEntries.Add(entry);
-                ScreenReader.Say(entry, false);
+                _nextEntryIndex++;
             }
 
             public static IEnumerator NarrateScrollingEntries(Credits credits)
             {
                 if (_isNarrating) yield break;
+                if (!PrepareEntries(credits)) yield break;
 
                 _isNarrating = true;
-                yield return new WaitForSecondsRealtime(0.9f);
+                yield return WaitWithPauseSupport(0.9f, credits);
 
-                List<string> entries = CollectEntries(credits);
-                if (entries.Count == 0)
+                if (!ShouldNarrationSessionAlive(credits))
                 {
+                    ClearProgress();
                     _isNarrating = false;
                     yield break;
                 }
 
-                float scrollDuration = Mathf.Max(credits.GetScrollDuration(), 1f);
-                float interval = Mathf.Clamp(scrollDuration / Mathf.Max(entries.Count, 1), 0.7f, 2f);
-
-                foreach (string entry in entries)
+                while (_nextEntryIndex < _entries.Count)
                 {
-                    if (!ShouldContinueNarration(credits)) break;
-                    if (string.IsNullOrWhiteSpace(entry) || _spokenEntries.Contains(entry)) continue;
+                    if (!ShouldNarrationSessionAlive(credits))
+                    {
+                        ClearProgress();
+                        break;
+                    }
 
-                    _spokenEntries.Add(entry);
-                    ScreenReader.Say(entry, false);
-                    yield return new WaitForSecondsRealtime(interval);
+                    if (IsPausedBySubmenu())
+                    {
+                        yield return null;
+                        continue;
+                    }
+
+                    string entry = _entries[_nextEntryIndex];
+                    _nextEntryIndex++;
+                    if (!string.IsNullOrWhiteSpace(entry))
+                    {
+                        ScreenReader.Say(entry, false);
+                    }
+
+                    if (_nextEntryIndex >= _entries.Count) break;
+
+                    yield return WaitWithPauseSupport(_entryInterval, credits);
+                }
+
+                if (_nextEntryIndex >= _entries.Count)
+                {
+                    ClearProgress();
                 }
 
                 _isNarrating = false;
             }
 
-            private static bool ShouldContinueNarration(Credits credits)
+            private static IEnumerator WaitWithPauseSupport(float seconds, Credits credits)
+            {
+                float elapsed = 0f;
+                while (elapsed < seconds)
+                {
+                    if (!ShouldNarrationSessionAlive(credits)) yield break;
+
+                    if (!IsPausedBySubmenu())
+                    {
+                        elapsed += Time.unscaledDeltaTime;
+                    }
+
+                    yield return null;
+                }
+            }
+
+            private static bool PrepareEntries(Credits credits)
+            {
+                if (_entries.Count > 0) return true;
+
+                _entries.Clear();
+                _nextEntryIndex = 0;
+                _entryInterval = 1f;
+
+                List<string> collectedEntries = CollectEntries(credits);
+                if (collectedEntries.Count == 0) return false;
+
+                _entries.AddRange(collectedEntries);
+                float scrollDuration = Mathf.Max(credits.GetScrollDuration(), 1f);
+                _entryInterval = Mathf.Clamp(scrollDuration / Mathf.Max(_entries.Count, 1), 0.7f, 2f);
+                return true;
+            }
+
+            private static void ClearProgress()
+            {
+                _entries.Clear();
+                _nextEntryIndex = 0;
+                _entryInterval = 1f;
+            }
+
+            private static bool ShouldNarrationSessionAlive(Credits credits)
             {
                 if (!ModConfig.AnnounceCreditsRoll) return false;
                 if (credits == null) return false;
                 if (!credits.gameObject.activeInHierarchy) return false;
-                if (Interface.env != null && Interface.env.Submenu != null && Interface.env.Submenu.CheckIsActivated()) return false;
                 return true;
+            }
+
+            private static bool IsPausedBySubmenu()
+            {
+                return Interface.env != null &&
+                       Interface.env.Submenu != null &&
+                       Interface.env.Submenu.CheckIsActivated();
             }
 
             private static List<string> CollectEntries(Credits credits)

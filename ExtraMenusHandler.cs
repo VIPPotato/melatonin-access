@@ -121,14 +121,7 @@ namespace MelatoninAccess
 
             if (menu.CheckIsActivated())
             {
-                int totalLevels = Traverse.Create(menu).Field("totalLevels").GetValue<int>();
-                int pageNum = Traverse.Create(menu).Field("pageNum").GetValue<int>();
-                int pageTotal = Traverse.Create(menu).Field("pageTotal").GetValue<int>();
-
-                string summary = ModConfig.AnnounceMenuPositions
-                    ? Loc.Get("downloaded_levels_page_total", totalLevels, pageNum, pageTotal)
-                    : Loc.Get("downloaded_levels_total", totalLevels);
-                ScreenReader.Say(summary, false);
+                CommunityMenuHelper.AnnounceLoadedSummary(menu);
             }
             
             isAnnouncing = false;
@@ -167,10 +160,10 @@ namespace MelatoninAccess
     {
         public static void Postfix(CommunityMenu __instance)
         {
-             if (!CommunityMenuHelper.ShouldAnnouncePageAction(Loc.Get("next_page"))) return;
+             string action = Loc.Get("next_page");
+             if (!CommunityMenuHelper.ShouldAnnouncePageAction(action)) return;
 
-             ScreenReader.Say(Loc.Get("next_page"), true);
-             CommunityMenuHelper.AnnouncePage(__instance);
+             MelonCoroutines.Start(CommunityMenuHelper.AnnouncePageActionWithFirstItem(__instance, action));
         }
     }
 
@@ -179,10 +172,10 @@ namespace MelatoninAccess
     {
         public static void Postfix(CommunityMenu __instance)
         {
-             if (!CommunityMenuHelper.ShouldAnnouncePageAction(Loc.Get("previous_page"))) return;
+             string action = Loc.Get("previous_page");
+             if (!CommunityMenuHelper.ShouldAnnouncePageAction(action)) return;
 
-             ScreenReader.Say(Loc.Get("previous_page"), true);
-             CommunityMenuHelper.AnnouncePage(__instance);
+             MelonCoroutines.Start(CommunityMenuHelper.AnnouncePageActionWithFirstItem(__instance, action));
         }
     }
 
@@ -195,6 +188,7 @@ namespace MelatoninAccess
         private static int _lastPageNum = -1;
         private static int _lastPageTotal = -1;
         private static float _lastPageAnnounceTime = -10f;
+        private static float _suppressSelectionUntil = -10f;
 
         public static bool ShouldAnnouncePageAction(string action)
         {
@@ -208,6 +202,8 @@ namespace MelatoninAccess
 
         public static void AnnounceSelection(CommunityMenu menu)
         {
+              if (Time.unscaledTime < _suppressSelectionUntil) return;
+
               int highlightNum = Traverse.Create(menu).Field("highlightNum").GetValue<int>();
               if (menu.LevelRows != null && highlightNum >= 0 && highlightNum < menu.LevelRows.Length)
               {
@@ -227,8 +223,40 @@ namespace MelatoninAccess
                     _lastSelectionText = selection;
                     _lastSelectionTime = now;
                     ScreenReader.Say(selection, true);
-                  }
-              }
+                   }
+               }
+        }
+
+        public static void AnnounceLoadedSummary(CommunityMenu menu)
+        {
+            string summary = BuildLoadedSummary(menu);
+            if (string.IsNullOrWhiteSpace(summary)) return;
+
+            ScreenReader.Say(summary, false);
+            _suppressSelectionUntil = Time.unscaledTime + 0.8f;
+        }
+
+        public static IEnumerator AnnouncePageActionWithFirstItem(CommunityMenu menu, string action)
+        {
+            if (menu == null || string.IsNullOrWhiteSpace(action)) yield break;
+
+            float start = Time.unscaledTime;
+            while (Time.unscaledTime - start < 1.5f)
+            {
+                if (!menu.CheckIsActivated()) yield break;
+                if (!SteamWorkshop.mgr.CheckIsDownloading() && GetFirstPlayableLevelRow(menu) != null) break;
+                yield return null;
+            }
+
+            if (!menu.CheckIsActivated()) yield break;
+
+            string firstItem = BuildFirstPlayableSelection(menu);
+            string message = string.IsNullOrWhiteSpace(firstItem)
+                ? action
+                : action + ". " + firstItem;
+
+            ScreenReader.Say(message, true);
+            _suppressSelectionUntil = Time.unscaledTime + 0.8f;
         }
 
         public static void AnnouncePage(CommunityMenu menu)
@@ -244,6 +272,64 @@ namespace MelatoninAccess
             _lastPageTotal = pageTotal;
             _lastPageAnnounceTime = now;
             ScreenReader.Say(Loc.Get("page_of", pageNum, pageTotal), false);
+        }
+
+        private static string BuildLoadedSummary(CommunityMenu menu)
+        {
+            if (menu == null) return "";
+
+            int totalLevels = Traverse.Create(menu).Field("totalLevels").GetValue<int>();
+            int pageNum = Traverse.Create(menu).Field("pageNum").GetValue<int>();
+            int pageTotal = Traverse.Create(menu).Field("pageTotal").GetValue<int>();
+
+            string summary = ModConfig.AnnounceMenuPositions
+                ? Loc.Get("downloaded_levels_page_total", totalLevels, pageNum, pageTotal)
+                : Loc.Get("downloaded_levels_total", totalLevels);
+
+            string firstItem = BuildFirstPlayableSelection(menu);
+            if (!string.IsNullOrWhiteSpace(firstItem))
+            {
+                summary += ". " + firstItem;
+            }
+
+            return summary;
+        }
+
+        private static string BuildFirstPlayableSelection(CommunityMenu menu)
+        {
+            LevelRow firstRow = GetFirstPlayableLevelRow(menu);
+            if (firstRow == null) return "";
+
+            string rowText = BuildCommunityRowText(firstRow);
+            if (!ModConfig.AnnounceMenuPositions) return rowText;
+
+            int visibleRows = 0;
+            if (menu != null && menu.LevelRows != null)
+            {
+                foreach (var row in menu.LevelRows)
+                {
+                    if (row != null && row.gameObject.activeSelf) visibleRows++;
+                }
+            }
+
+            if (visibleRows <= 0) visibleRows = 1;
+            return Loc.Get("item_of", rowText, 1, visibleRows);
+        }
+
+        private static LevelRow GetFirstPlayableLevelRow(CommunityMenu menu)
+        {
+            if (menu == null || menu.LevelRows == null) return null;
+
+            for (int i = 1; i < menu.LevelRows.Length; i++)
+            {
+                LevelRow row = menu.LevelRows[i];
+                if (row != null && row.gameObject.activeSelf)
+                {
+                    return row;
+                }
+            }
+
+            return null;
         }
 
         private static string BuildCommunityRowText(LevelRow row)

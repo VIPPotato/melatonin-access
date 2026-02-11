@@ -2,6 +2,26 @@
 
 This document outlines the roadmap for making Melatonin 100% accessible to totally blind players.
 
+## 0. v1.0.5 Active Fixes
+- [x] **Credits Pause/Resume Narration**
+  - Pause credits speech while pause/submenu is open.
+  - Resume from the previous unread entry when gameplay returns.
+  - Clear narration progress when credits finish or exit.
+- [x] **Community Levels One-Utterance Paging**
+  - On menu load: announce total/page and first level row in one utterance.
+  - On next/previous page: announce page action and first level row in one utterance.
+  - Suppress immediate duplicate row re-announcements after auto page reset.
+- [x] **Action Key Option Label (Keyboard Binding)**
+  - `Change action key` now announces the currently bound keyboard key token only.
+  - Controller face button names are no longer used for that settings line.
+- [x] **Chapter 1 Tutorial Rhythm Cue Pass**
+  - Tech: rapid/double action cues announce as "press twice" instead of collapsing.
+  - Followers: replaced spammy press prompts with rhythm guidance and double-press cue.
+  - Food: one-time beat-target guidance for 3rd, 5th, and 4th beat sections.
+  - Shopping: one-time "repeat audio pattern" guidance instead of continuous spam.
+- [ ] **Calibration Feedback Accuracy Validation**
+  - Keep current early/late ms narration and validate timing feel with additional playtests.
+
 ## 1. Core System & Output
 - [ ] **Screen Reader Integration (`ScreenReader.cs`)**
     - Ensure robust connection to Tolk/SAPI.

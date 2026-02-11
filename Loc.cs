@@ -1200,6 +1200,84 @@ namespace MelatoninAccess
                 "Pressione {0}");
 
             Add(
+                "cue_press_action_twice",
+                "Press {0} twice",
+                "按 {0} 两次",
+                "按 {0} 兩次",
+                "{0} を2回押す",
+                "{0} 두 번 누르기",
+                "Nhan {0} hai lan",
+                "Appuyer deux fois sur {0}",
+                "{0} zweimal druecken",
+                "Pulsa {0} dos veces",
+                "Pressione {0} duas vezes");
+
+            Add(
+                "cue_followers_rhythm_stop",
+                "Press {0} to the rhythm. Stop on the audio cue.",
+                "跟着节奏按 {0}。听到音频提示后停止。",
+                "跟著節奏按 {0}。聽到音效提示後停止。",
+                "リズムに合わせて {0} を押します。音の合図で止めます。",
+                "리듬에 맞춰 {0}를 누르세요. 오디오 신호에서 멈추세요.",
+                "Nhan {0} theo nhip. Dung lai khi nghe tin hieu am thanh.",
+                "Appuyez sur {0} en rythme. Arretez au signal audio.",
+                "Druecke {0} im Rhythmus. Beim Audio-Signal stoppen.",
+                "Pulsa {0} al ritmo. Detente con la senal de audio.",
+                "Pressione {0} no ritmo. Pare no sinal de audio.");
+
+            Add(
+                "cue_food_press_third_beat",
+                "Press {0} on the third beat.",
+                "在第3拍按 {0}。",
+                "在第3拍按 {0}。",
+                "3拍目で {0} を押す。",
+                "3번째 박자에 {0}를 누르세요.",
+                "Nhan {0} o nhip thu 3.",
+                "Appuyez sur {0} au troisieme temps.",
+                "Druecke {0} beim dritten Schlag.",
+                "Pulsa {0} en el tercer pulso.",
+                "Pressione {0} no terceiro tempo.");
+
+            Add(
+                "cue_food_press_fifth_beat",
+                "Press {0} on the fifth beat.",
+                "在第5拍按 {0}。",
+                "在第5拍按 {0}。",
+                "5拍目で {0} を押す。",
+                "5번째 박자에 {0}를 누르세요.",
+                "Nhan {0} o nhip thu 5.",
+                "Appuyez sur {0} au cinquieme temps.",
+                "Druecke {0} beim fuenften Schlag.",
+                "Pulsa {0} en el quinto pulso.",
+                "Pressione {0} no quinto tempo.");
+
+            Add(
+                "cue_food_press_fourth_beat",
+                "Press {0} on the fourth beat.",
+                "在第4拍按 {0}。",
+                "在第4拍按 {0}。",
+                "4拍目で {0} を押す。",
+                "4번째 박자에 {0}를 누르세요.",
+                "Nhan {0} o nhip thu 4.",
+                "Appuyez sur {0} au quatrieme temps.",
+                "Druecke {0} beim vierten Schlag.",
+                "Pulsa {0} en el cuarto pulso.",
+                "Pressione {0} no quarto tempo.");
+
+            Add(
+                "cue_shopping_repeat_patterns",
+                "Repeat the audio cue patterns with {0}.",
+                "用 {0} 重复音频提示节奏。",
+                "用 {0} 重複音訊提示節奏。",
+                "{0} で音のパターンを繰り返します。",
+                "{0}로 오디오 큐 패턴을 반복하세요.",
+                "Lap lai cac mau tin hieu am thanh bang {0}.",
+                "Repetez les motifs audio avec {0}.",
+                "Wiederhole die Audio-Muster mit {0}.",
+                "Repite los patrones de audio con {0}.",
+                "Repita os padroes de audio com {0}.");
+
+            Add(
                 "cue_hold_action",
                 "Hold {0}",
                 "按住 {0}",

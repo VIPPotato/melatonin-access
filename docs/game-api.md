@@ -142,7 +142,23 @@
 - Credits sequence is driven by `Creditor.Starting()`:
   - `Credits.Show()` -> logo transitions -> `Credits.ScrollList()` -> exit to title.
 - Scroll duration is exposed by `Credits.GetScrollDuration()` and the actual list animation is `lister.TriggerAnim("scroll")`.
+- Opening a pause/submenu during credits does not reset the internal credits list state; mods can pause/resume narration safely instead of restarting from the top.
 - References: `decompiled/Creditor.cs:18-39`, `decompiled/Credits.cs:102-126`.
+
+## Community Menu Row Layout
+- `CommunityMenu.LevelRows[0]` is a banner row (`ActivateAsBanner`) and does not expose level metadata text fields.
+- Downloaded level rows start at index `1` and are populated by `ConfigingRows()` with title/author/tags.
+- `NextPage()` / `PrevPage()` reset `highlightNum` to `0` first, then repopulate rows asynchronously through `ConfigContent()`.
+- References: `decompiled/CommunityMenu.cs:67-99`, `decompiled/CommunityMenu.cs:222-263`, `decompiled/CommunityMenu.cs:362-387`, `decompiled/LevelRow.cs:48-68`.
+
+## Chapter 1 Practice Cue Patterns
+- `Dream_food` practice queues tutorial timing with:
+  - `QueueHitWindow(2)` (target on 3rd beat),
+  - `QueueHitWindow(4)` (target on 5th beat),
+  - `QueueHitWindow(3)` (target on 4th beat).
+- `Dream_followers` includes rapid patterns in `sequences[4]` using `QueueHitWindow(1)`, `QueueHitWindow(1, isHalfBeatAdded: true)`, and a follow-up `QueueHitWindow(2)`.
+- `Dream_shopping` practice repeatedly uses `QueueHitWindow(4)` / `QueueHitWindow(8)` while visual/audio store patterns are presented, making it suitable for a concise "follow repeating audio pattern" instruction.
+- References: `decompiled/Dream_food.cs:114-255`, `decompiled/Dream_followers.cs:241-390`, `decompiled/Dream_shopping.cs:115-233`.
 
 ## Key-Rebind Collision Note
 - The game allows rebinding Action to `[` and `]` (`ControlHandler.GetStringFromKey` / rebind checks), which can conflict with mod map teleport if teleport also uses brackets.

@@ -378,10 +378,6 @@ namespace MelatoninAccess
 
         private static string GetActionPromptLabel()
         {
-            int ctrlType = ControlHandler.mgr != null ? ControlHandler.mgr.GetCtrlType() : 0;
-            if (ctrlType == 1) return "A";
-            if (ctrlType == 2) return "Cross";
-
             string key = SaveManager.mgr != null ? SaveManager.mgr.GetActionKey() : "SPACE";
             if (string.IsNullOrWhiteSpace(key)) return Loc.Get("cue_space");
 
