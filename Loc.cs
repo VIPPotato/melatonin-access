@@ -884,7 +884,7 @@ namespace MelatoninAccess
                 "Thien",
                 "Meditation",
                 "Meditation",
-                "Meditacion",
+                "Meditación",
                 "Meditacao");
 
             Add(
@@ -949,7 +949,7 @@ namespace MelatoninAccess
                 "Ap luc",
                 "Pression",
                 "Druck",
-                "Presion",
+                "Presión",
                 "Pressao");
 
             Add(
@@ -1001,7 +1001,7 @@ namespace MelatoninAccess
                 "Cang thang",
                 "Stress",
                 "Stress",
-                "Estres",
+                "Estrés",
                 "Estresse");
 
             Add(
@@ -1014,7 +1014,7 @@ namespace MelatoninAccess
                 "Cong nghe",
                 "Technologie",
                 "Technik",
-                "Tecnologia",
+                "Tecnología",
                 "Tecnologia");
 
             Add(

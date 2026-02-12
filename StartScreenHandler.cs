@@ -159,18 +159,33 @@ namespace MelatoninAccess
                           languageWithContext = $"{language}, {position}";
                       }
 
+                      string menuTitle = GetMenuTitleText(menu);
                       string announcement = includeMenuTitle
-                          ? $"{Loc.Get("language_menu")}. {languageWithContext}"
+                          ? $"{menuTitle}. {languageWithContext}"
                           : languageWithContext;
 
                       float now = Time.unscaledTime;
                       if (announcement == _lastAnnouncedLanguage && now - _lastAnnouncedLanguageTime < LanguageRepeatBlockSeconds) return;
 
                       _lastAnnouncedLanguage = announcement;
-                      _lastAnnouncedLanguageTime = now;
-                      ScreenReader.Say(announcement, true);
-                  }
-             }
+                       _lastAnnouncedLanguageTime = now;
+                       ScreenReader.Say(announcement, true);
+                   }
+              }
+        }
+
+        private static string GetMenuTitleText(LangMenu menu)
+        {
+            if (menu != null && menu.title != null)
+            {
+                var titleTmp = menu.title.GetComponent<TextMeshPro>();
+                if (titleTmp != null && !string.IsNullOrWhiteSpace(titleTmp.text))
+                {
+                    return titleTmp.text.Trim();
+                }
+            }
+
+            return Loc.Get("language_menu");
         }
     }
 }

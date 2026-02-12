@@ -30,6 +30,9 @@
 - **Menu Items**: `Menu` contains a list of `Option` objects.
 - **Text**: `Option` uses `textboxFragment` for labels (`label`, `num`, `tip`).
 - **Localization**: `textboxFragment.SetState(int)` uses `SaveManager.GetLang()` to pick translations.
+- **Menu title fragments**:
+  - `LangMenu.title` and `AchievementsMenu.title` are live localized UI fragments and should be preferred for spoken menu titles over mod-owned title strings.
+  - References: `decompiled/LangMenu.cs:16`, `decompiled/AchievementsMenu.cs:18`.
 
 ## DialogBox Hooks
 - `DialogBox.Show()` can present dialog content immediately (without `Activate()`), so accessibility hooks should include `Show` plus text/state changes.
