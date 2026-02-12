@@ -1304,6 +1304,71 @@ namespace MelatoninAccess
                 "Repita os padroes de audio com {0}.");
 
             Add(
+                "cue_dating_follow_swipes",
+                "Swipe left or right on the cue.",
+                "按提示向左或向右滑动。",
+                "按提示向左或向右滑動。",
+                "合図に合わせて左または右にスワイプします。",
+                "신호에 맞춰 왼쪽 또는 오른쪽으로 스와이프하세요.",
+                "Vuot trai hoac phai theo tin hieu.",
+                "Glissez a gauche ou a droite selon le signal.",
+                "Wische beim Signal nach links oder rechts.",
+                "Desliza a la izquierda o derecha con la senal.",
+                "Deslize para a esquerda ou direita no sinal.");
+
+            Add(
+                "cue_swipe_left",
+                "Swipe left",
+                "向左滑动",
+                "向左滑動",
+                "左にスワイプ",
+                "왼쪽으로 스와이프",
+                "Vuot trai",
+                "Glisser a gauche",
+                "Nach links wischen",
+                "Desliza a la izquierda",
+                "Deslize para a esquerda");
+
+            Add(
+                "cue_swipe_right",
+                "Swipe right",
+                "向右滑动",
+                "向右滑動",
+                "右にスワイプ",
+                "오른쪽으로 스와이프",
+                "Vuot phai",
+                "Glisser a droite",
+                "Nach rechts wischen",
+                "Desliza a la derecha",
+                "Deslize para a direita");
+
+            Add(
+                "cue_swipe_left_long",
+                "Swipe left after the long cue.",
+                "在长提示后向左滑动。",
+                "在長提示後向左滑動。",
+                "長い合図の後で左にスワイプ。",
+                "긴 신호 후 왼쪽으로 스와이프하세요.",
+                "Vuot trai sau tin hieu dai.",
+                "Glissez a gauche apres le long signal.",
+                "Nach dem langen Signal nach links wischen.",
+                "Desliza a la izquierda despues de la senal larga.",
+                "Deslize para a esquerda apos o sinal longo.");
+
+            Add(
+                "cue_swipe_right_long",
+                "Swipe right after the long cue.",
+                "在长提示后向右滑动。",
+                "在長提示後向右滑動。",
+                "長い合図の後で右にスワイプ。",
+                "긴 신호 후 오른쪽으로 스와이프하세요.",
+                "Vuot phai sau tin hieu dai.",
+                "Glissez a droite apres le long signal.",
+                "Nach dem langen Signal nach rechts wischen.",
+                "Desliza a la derecha despues de la senal larga.",
+                "Deslize para a direita apos o sinal longo.");
+
+            Add(
                 "cue_hold_action",
                 "Hold {0}",
                 "按住 {0}",
