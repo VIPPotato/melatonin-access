@@ -33,11 +33,12 @@ namespace MelatoninAccess
                     _lastAnnouncementTime = now;
                     _suppressedInitialHighlight = highlightNum;
                     _suppressedInitialHighlightUntil = now + InitialHighlightSuppressSeconds;
-                    ScreenReader.Say($"{Loc.Get("achievements_menu")}. {highlightAnnouncement}", true);
+                    string title = GetMenuTitle(__instance);
+                    ScreenReader.Say($"{title}. {highlightAnnouncement}", true);
                     return;
                 }
 
-                ScreenReader.Say(Loc.Get("achievements_menu"), true);
+                ScreenReader.Say(GetMenuTitle(__instance), true);
             }
         }
 
@@ -114,6 +115,20 @@ namespace MelatoninAccess
             if (fragment == null) return "";
             var tmp = fragment.GetComponent<TextMeshPro>();
             return tmp != null ? tmp.text : "";
+        }
+
+        private static string GetMenuTitle(AchievementsMenu menu)
+        {
+            if (menu != null)
+            {
+                string title = GetText(menu.title).Trim();
+                if (!string.IsNullOrWhiteSpace(title))
+                {
+                    return title;
+                }
+            }
+
+            return Loc.Get("achievements_menu");
         }
 
         private static bool IsLocked(CheevoRow row, string title, string desc)

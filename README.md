@@ -137,6 +137,11 @@ dotnet build MelatoninAccess.csproj
 If you like what I do, I would appreciate a coffee:
 https://buymeacoffee.com/potatophones
 
+## Thanks
+
+- Thanks to **luyi** for testing the mod and providing fixed Chinese localization strings.
+- Thanks to **dreamburguer** for providing fixed Spanish localization strings.
+
 ## Speech Regression Check (After Playtest)
 
 1. Enable debug logs with `F12` in-game.
