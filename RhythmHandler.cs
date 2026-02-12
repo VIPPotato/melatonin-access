@@ -23,6 +23,10 @@ namespace MelatoninAccess
         private static bool _foodThirdBeatPromptSpoken;
         private static bool _foodFifthBeatPromptSpoken;
         private static bool _foodFourthBeatPromptSpoken;
+        private static bool _followersThirdPhasePromptSpoken;
+        private static bool _techPhaseOnePromptSpoken;
+        private static bool _techPhaseTwoPromptSpoken;
+        private static float _lastTechQueueCueTime = -10f;
 
         // --- Hit Window Cues (pre-cues) ---
         [HarmonyPatch(typeof(Dream), "QueueHitWindow")]
@@ -134,6 +138,59 @@ namespace MelatoninAccess
             }
         }
 
+        [HarmonyPatch(typeof(Dream_tech), "OnBeat")]
+        public static class DreamTech_OnBeat_Patch
+        {
+            public static void Postfix(Dream_tech __instance)
+            {
+                if (__instance == null || !ShouldAnnounceCues()) return;
+
+                RefreshTutorialCueState();
+
+                int phrase = GetPhraseSafe();
+                int bar = GetBarSafe();
+                int beat = GetBeatSafe();
+                string actionPrompt = GetActionPrompt();
+
+                if (!_techPhaseOnePromptSpoken && phrase == 1 && bar == 1 && beat == 1)
+                {
+                    _techPhaseOnePromptSpoken = true;
+                    ScreenReader.Say(Loc.Get("cue_tech_every_two_beats", actionPrompt), true);
+                    return;
+                }
+
+                if (!_techPhaseTwoPromptSpoken && phrase == 2 && bar == 1 && beat == 1)
+                {
+                    _techPhaseTwoPromptSpoken = true;
+                    ScreenReader.Say(Loc.Get("cue_tech_next_three_beats", actionPrompt), true);
+                }
+            }
+        }
+
+        [HarmonyPatch(typeof(Dream_followers), "OnBeat")]
+        public static class DreamFollowers_OnBeat_Patch
+        {
+            public static void Postfix(Dream_followers __instance)
+            {
+                if (__instance == null || !ShouldAnnounceCues()) return;
+
+                RefreshTutorialCueState();
+
+                int phrase = GetPhraseSafe();
+                int bar = GetBarSafe();
+                int beat = GetBeatSafe();
+                if (_followersThirdPhasePromptSpoken) return;
+
+                // Phrase 3 starts after phrase 2 closes at bar 8 beat 4.
+                // Announce this 2 beats earlier so the message finishes before the new section starts.
+                if (phrase == 2 && bar == 8 && beat == 2)
+                {
+                    _followersThirdPhasePromptSpoken = true;
+                    ScreenReader.Say(Loc.Get("cue_followers_third_phase_double_after_vibration", GetActionPrompt()), true);
+                }
+            }
+        }
+
         private static bool ShouldAnnounceCues()
         {
             return ModConfig.AnnounceRhythmCues && Dream.dir != null && Dream.dir.GetGameMode() == 0;
@@ -200,7 +257,7 @@ namespace MelatoninAccess
 
             if (string.Equals(sceneName, "Dream_tech", StringComparison.OrdinalIgnoreCase))
             {
-                return TryAnnounceTechDoubleCue(actionPrompt);
+                return TryAnnounceTechCue(actionPrompt);
             }
 
             return false;
@@ -225,17 +282,48 @@ namespace MelatoninAccess
             return true;
         }
 
+        private static bool TryAnnounceTechCue(string actionPrompt)
+        {
+            int phrase = GetPhraseSafe();
+            if (!_techPhaseOnePromptSpoken && phrase <= 1)
+            {
+                _techPhaseOnePromptSpoken = true;
+                ScreenReader.Say(Loc.Get("cue_tech_every_two_beats", actionPrompt), true);
+                return true;
+            }
+
+            if (!_techPhaseTwoPromptSpoken && phrase == 2)
+            {
+                _techPhaseTwoPromptSpoken = true;
+                ScreenReader.Say(Loc.Get("cue_tech_next_three_beats", actionPrompt), true);
+                return true;
+            }
+
+            if (phrase >= 3)
+            {
+                if (TryAnnounceTechDoubleCue(actionPrompt))
+                {
+                    return true;
+                }
+            }
+
+            // For Dream_tech practice, phrase-level guidance is spoken in OnBeat patch.
+            // Suppress per-note generic "Press {Action}" chatter from QueueHitWindow.
+            return true;
+        }
+
         private static bool TryAnnounceTechDoubleCue(string actionPrompt)
         {
             float now = Time.unscaledTime;
-            float delta = now - _lastActionCueTime;
-            bool looksLikeRapidDouble = delta >= 0.2f && delta <= 0.85f;
+            float delta = now - _lastTechQueueCueTime;
+            _lastTechQueueCueTime = now;
+
+            bool looksLikeRapidDouble = delta >= 0.1f && delta <= 0.45f;
             if (!looksLikeRapidDouble) return false;
 
-            if (now - _lastTechDoubleCueTime <= 1f) return false;
+            if (now - _lastTechDoubleCueTime <= 0.65f) return false;
 
             _lastTechDoubleCueTime = now;
-            _lastActionCueTime = now;
             ScreenReader.Say(Loc.Get("cue_press_action_twice", actionPrompt), true);
             return true;
         }
@@ -274,8 +362,12 @@ namespace MelatoninAccess
                 _foodThirdBeatPromptSpoken = false;
                 _foodFifthBeatPromptSpoken = false;
                 _foodFourthBeatPromptSpoken = false;
+                _followersThirdPhasePromptSpoken = false;
+                _techPhaseOnePromptSpoken = false;
+                _techPhaseTwoPromptSpoken = false;
                 _lastActionCueTime = -10f;
                 _lastTechDoubleCueTime = -10f;
+                _lastTechQueueCueTime = -10f;
                 _lastQueueSignature = "";
                 _lastQueueSignatureTime = -10f;
             }

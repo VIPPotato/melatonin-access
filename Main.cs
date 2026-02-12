@@ -95,6 +95,8 @@ namespace MelatoninAccess
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(RhythmHandler.Dream_QueueHoldReleaseWindow_Patch));
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(RhythmHandler.Dream_TriggerSong_Patch));
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(RhythmHandler.DreamTutorial_TriggerState_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(RhythmHandler.DreamTech_OnBeat_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(RhythmHandler.DreamFollowers_OnBeat_Patch));
 
             // Level Editor
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.Daw_IncreaseBeat_Patch));
@@ -129,28 +131,34 @@ namespace MelatoninAccess
 
         public override void OnUpdate()
         {
-            if (Keyboard.current == null) return;
+            bool rhythmTogglePressed =
+                (Keyboard.current != null && Keyboard.current.f2Key.wasPressedThisFrame) ||
+                (Gamepad.current != null && Gamepad.current.leftStickButton.wasPressedThisFrame);
 
-            if (Keyboard.current.f2Key.wasPressedThisFrame)
+            if (rhythmTogglePressed)
             {
                 bool enabled = ModConfig.ToggleRhythmCues();
                 ScreenReader.Say(enabled ? Loc.Get("rhythm_cues_enabled") : Loc.Get("rhythm_cues_disabled"), true);
                 MelonLogger.Msg($"Rhythm cue announcements {(enabled ? "enabled" : "disabled")}.");
             }
 
-            if (Keyboard.current.f3Key.wasPressedThisFrame)
+            bool menuPositionTogglePressed =
+                (Keyboard.current != null && Keyboard.current.f3Key.wasPressedThisFrame) ||
+                (Gamepad.current != null && Gamepad.current.rightStickButton.wasPressedThisFrame);
+
+            if (menuPositionTogglePressed)
             {
                 bool enabled = ModConfig.ToggleMenuPositions();
                 ScreenReader.Say(enabled ? Loc.Get("menu_positions_enabled") : Loc.Get("menu_positions_disabled"), true);
                 MelonLogger.Msg($"Menu position announcements {(enabled ? "enabled" : "disabled")}.");
             }
 
-            if (Keyboard.current.f11Key.wasPressedThisFrame)
+            if (Keyboard.current != null && Keyboard.current.f11Key.wasPressedThisFrame)
             {
                 ContextHelpHandler.TryAnnounceContextHelp();
             }
 
-            if (Keyboard.current.f12Key.wasPressedThisFrame)
+            if (Keyboard.current != null && Keyboard.current.f12Key.wasPressedThisFrame)
             {
                 DebugMode = ModConfig.ToggleDebugMode();
                 ScreenReader.Say(DebugMode ? Loc.Get("debug_enabled") : Loc.Get("debug_disabled"), true);

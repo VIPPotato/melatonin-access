@@ -19,6 +19,12 @@ This document outlines the roadmap for making Melatonin 100% accessible to total
   - Followers: replaced spammy press prompts with rhythm guidance and double-press cue.
   - Food: one-time beat-target guidance for 3rd, 5th, and 4th beat sections.
   - Shopping: one-time "repeat audio pattern" guidance instead of continuous spam.
+- [x] **Controller Mirrors for Utility Hotkeys**
+  - Added map-progress announcement on controller View button (same behavior as `F1`, map-only and silent outside map).
+  - Added rhythm-cue toggle on `L3` (same as `F2`) and menu-position toggle on `R3` (same as `F3`), with persisted config updates.
+- [x] **Tech/Followers Cue Timing Refinement**
+  - Dream tech practice now uses phase-level prompts instead of repeating per-hit "Press {Action}" lines.
+  - Dream followers phase-3 briefing now plays 2 beats before the section starts.
 - [ ] **Calibration Feedback Accuracy Validation**
   - Keep current early/late ms narration and validate timing feel with additional playtests.
 
@@ -89,8 +95,10 @@ Some levels might have unique mechanics requiring specific cues.
     - Prefer one-shot instructional prompts tied to phrase/section transitions over per-note spam.
     - Validate each cue against in-game audio cues and vibration patterns via playtest logs.
     - `Dream_dating` directional swipe cues and long-countdown variants are now implemented.
+    - `Dream_tech` now uses phrase-level cues and selective rapid-double callouts instead of per-hit spam.
+    - `Dream_followers` now includes a dedicated phase-3 pre-brief cue.
 - [ ] **Dream_food.cs**: Check for specific "Shoot" vs "Jump" visual cues.
-- [ ] **Dream_tech.cs**: Check for positional cues.
+- [x] **Dream_tech.cs**: Replaced noisy per-hit practice cues with phrase-level guidance and rapid-double callouts.
 - [x] **Dream_dating.cs**: Check for "Swipe" directions.
 - [ ] **General Approach**: Audit each `Dream_*.cs` file for `QueueHitWindow` calls and ensure the `hitType` (Left, Right, etc.) has a corresponding audio cue.
 

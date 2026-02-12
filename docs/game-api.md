@@ -16,6 +16,10 @@
 - **Action/Select**: Space (default, rebindable).
 - **Cancel/Back**: Escape or R (default, rebindable).
 - **Pause**: Escape or Start button.
+- **Controller utility buttons exposed by Unity Input System**:
+  - `Gamepad.selectButton`: View/Back button.
+  - `Gamepad.leftStickButton`: Left stick click (L3).
+  - `Gamepad.rightStickButton`: Right stick click (R3).
 - **Gameplay**: Space, Arrow keys, WASD, and others depending on level.
 - **Action-key token source**: `SaveManager.mgr.GetActionKey()` returns tokens written by `ControlHandler.GetKeyFromKeyControl` (`SPACE`, `ENTER`, letters, `[`, `]`, `PERIOD`, `SLASH`, etc.), useful for spoken prompt localization.
 
@@ -163,10 +167,18 @@
   - `QueueHitWindow(2)` (target on 3rd beat),
   - `QueueHitWindow(4)` (target on 5th beat),
   - `QueueHitWindow(3)` (target on 4th beat).
+- `Dream_tech` practice `OnSequence()` always queues `QueueHitWindow(1)` (except `beat == 4` branches), so per-note spoken cues become noisy; phase-level guidance is better than repeating every hit window.
+- `Dream_tech` phrase boundaries can be tracked through `Dream.dir.GetPhrase()` during practice; phrase 1/2 are suitable for one-shot section briefings, while later rapid sections benefit from selective `press twice` callouts.
 - `Dream_followers` includes rapid patterns in `sequences[4]` using `QueueHitWindow(1)`, `QueueHitWindow(1, isHalfBeatAdded: true)`, and a follow-up `QueueHitWindow(2)`.
 - `Dream_followers` second teaching phase transition appears at `phrase == 2`, `bar == 1`, `beat == 2` (`InfluencerLand.env.Reframe(30, "k", ...)`), useful for contextual "audio cue + vibration" guidance.
+- `Dream_followers` third teaching phase starts after phrase-2 close (`phrase == 2`, `bar == 8`, `beat == 4`), so announcing phase-3 guidance at `phrase == 2`, `bar == 8`, `beat == 2` gives ~2 beats of lead time.
 - `Dream_shopping` practice repeatedly uses `QueueHitWindow(4)` / `QueueHitWindow(8)` while visual/audio store patterns are presented, making it suitable for a concise "follow repeating audio pattern" instruction.
-- References: `decompiled/Dream_food.cs:114-255`, `decompiled/Dream_followers.cs:140-190`, `decompiled/Dream_followers.cs:241-390`, `decompiled/Dream_shopping.cs:115-233`.
+- References: `decompiled/Dream_food.cs:114-255`, `decompiled/Dream_tech.cs:115-220`, `decompiled/Dream_followers.cs:140-190`, `decompiled/Dream_followers.cs:241-390`, `decompiled/Dream_shopping.cs:115-233`.
+
+## Map Dream Name Source Note
+- `Landmark` stores only internal key `dreamName` (for example `food`, `dating`) and `DreamTitle` visuals are sprite-based (`spriteFragment`), not guaranteed text fragments.
+- Because of that, map dream-name speech should prefer live UI text when a readable `TextMeshPro` node is available and otherwise fall back to mod localization.
+- References: `decompiled/Landmark.cs:5-16`, `decompiled/Landmark.cs:255-258`, `decompiled/DreamTitle.cs:8-45`.
 
 ## Dream_dating Practice Cue Patterns
 - `Dream_dating` practice uses directional hit windows only (`QueueLeftHitWindow`, `QueueRightHitWindow`), so level cues should speak swipe direction rather than generic action prompts.

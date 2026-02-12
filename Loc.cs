@@ -1239,6 +1239,45 @@ namespace MelatoninAccess
                 "Apos o sinal de audio e a vibracao, pressione {0} no proximo tempo.");
 
             Add(
+                "cue_followers_third_phase_double_after_vibration",
+                "Press {0} to the beat. Press twice after vibration.",
+                "跟着节奏按 {0}。震动后按两次。",
+                "跟著節奏按 {0}。震動後按兩次。",
+                "リズムに合わせて {0}。振動の後に2回押す。",
+                "리듬에 맞춰 {0}를 누르세요. 진동 후 두 번 누르세요.",
+                "Nhan {0} theo nhip. Nhan hai lan sau rung.",
+                "Appuyez sur {0} en rythme. Appuyez deux fois apres la vibration.",
+                "Druecke {0} im Rhythmus. Nach der Vibration zweimal druecken.",
+                "Pulsa {0} al ritmo. Pulsa dos veces despues de la vibracion.",
+                "Pressione {0} no ritmo. Pressione duas vezes apos a vibracao.");
+
+            Add(
+                "cue_tech_every_two_beats",
+                "Press {0} every 2 beats.",
+                "每2拍按一次 {0}。",
+                "每2拍按一次 {0}。",
+                "{0} を2拍ごとに押す。",
+                "2박자마다 {0}를 누르세요.",
+                "Nhan {0} moi 2 nhip.",
+                "Appuyez sur {0} tous les 2 temps.",
+                "Druecke {0} alle 2 Schlaege.",
+                "Pulsa {0} cada 2 pulsos.",
+                "Pressione {0} a cada 2 tempos.");
+
+            Add(
+                "cue_tech_next_three_beats",
+                "Press {0} on the next 3 beats.",
+                "接下来3拍都按 {0}。",
+                "接下來3拍都按 {0}。",
+                "次の3拍で {0} を押す。",
+                "다음 3박자에서 {0}를 누르세요.",
+                "Nhan {0} o 3 nhip tiep theo.",
+                "Appuyez sur {0} pendant les 3 temps suivants.",
+                "Druecke {0} in den naechsten 3 Schlaegen.",
+                "Pulsa {0} en los proximos 3 pulsos.",
+                "Pressione {0} nos proximos 3 tempos.");
+
+            Add(
                 "cue_tutorial_press_second_beat",
                 "Press {0} on the second beat.",
                 "在第2拍按 {0}。",
@@ -1487,16 +1526,16 @@ namespace MelatoninAccess
 
             Add(
                 "help_map",
-                "Map help. Use [ and ] or F9 and F10 to move between levels. Press {0} to open the selected level. Press F1 for map stars.",
-                "地图帮助。使用 [ 和 ] 或 F9 和 F10 在关卡间移动。按 {0} 打开所选关卡。按 F1 播报地图星星。",
-                "地圖說明。使用 [ 和 ] 或 F9 與 F10 在關卡間移動。按 {0} 開啟所選關卡。按 F1 播報地圖星星。",
-                "マップヘルプ。[ と ] または F9 と F10 でレベル間を移動。{0} で選択レベルを開く。F1 でマップスター。",
-                "맵 도움말. [ 와 ] 또는 F9/F10으로 레벨 사이를 이동합니다. {0} 키로 선택한 레벨을 엽니다. F1으로 맵 별을 확인합니다.",
-                "Tro giup ban do. Dung [ va ] hoac F9 va F10 de di giua cac man. Nhan {0} de mo man da chon. Nhan F1 de nghe sao ban do.",
-                "Aide carte. Utilisez [ et ] ou F9 et F10 pour changer de niveau. Appuyez sur {0} pour ouvrir le niveau choisi. Appuyez sur F1 pour les etoiles de la carte.",
-                "Karten-Hilfe. Nutze [ und ] oder F9 und F10 zum Wechseln zwischen Levels. Druecke {0}, um das ausgewaehlte Level zu oeffnen. Druecke F1 fuer Kartensterne.",
-                "Ayuda del mapa. Usa [ y ] o F9 y F10 para moverte entre niveles. Pulsa {0} para abrir el nivel seleccionado. Pulsa F1 para las estrellas del mapa.",
-                "Ajuda do mapa. Use [ e ] ou F9 e F10 para mover entre niveis. Pressione {0} para abrir o nivel selecionado. Pressione F1 para as estrelas do mapa.");
+                "Map help. Use [ and ] or F9 and F10 to move between levels. Press {0} to open the selected level. Press F1 or View on controller for map stars.",
+                "地图帮助。使用 [ 和 ] 或 F9 和 F10 在关卡间移动。按 {0} 打开所选关卡。按 F1 或手柄 View 键播报地图星星。",
+                "地圖說明。使用 [ 和 ] 或 F9 與 F10 在關卡間移動。按 {0} 開啟所選關卡。按 F1 或手把 View 鍵播報地圖星星。",
+                "マップヘルプ。[ と ] または F9 と F10 でレベル間を移動。{0} で選択レベルを開く。F1 またはコントローラーのViewでマップスター。",
+                "맵 도움말. [ 와 ] 또는 F9/F10으로 레벨 사이를 이동합니다. {0} 키로 선택한 레벨을 엽니다. F1 또는 컨트롤러 View 버튼으로 맵 별을 확인합니다.",
+                "Tro giup ban do. Dung [ va ] hoac F9 va F10 de di giua cac man. Nhan {0} de mo man da chon. Nhan F1 hoac nut View tren tay cam de nghe sao ban do.",
+                "Aide carte. Utilisez [ et ] ou F9 et F10 pour changer de niveau. Appuyez sur {0} pour ouvrir le niveau choisi. Appuyez sur F1 ou View sur la manette pour les etoiles de la carte.",
+                "Karten-Hilfe. Nutze [ und ] oder F9 und F10 zum Wechseln zwischen Levels. Druecke {0}, um das ausgewaehlte Level zu oeffnen. Druecke F1 oder View am Controller fuer Kartensterne.",
+                "Ayuda del mapa. Usa [ y ] o F9 y F10 para moverte entre niveles. Pulsa {0} para abrir el nivel seleccionado. Pulsa F1 o View en mando para las estrellas del mapa.",
+                "Ajuda do mapa. Use [ e ] ou F9 e F10 para mover entre niveis. Pressione {0} para abrir o nivel selecionado. Pressione F1 ou View no controle para as estrelas do mapa.");
 
             Add(
                 "help_mode_menu",
