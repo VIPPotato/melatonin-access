@@ -1226,6 +1226,32 @@ namespace MelatoninAccess
                 "Pressione {0} no ritmo. Pare no sinal de audio.");
 
             Add(
+                "cue_followers_vibration_next_beat",
+                "After the audio cue and vibration, press {0} on the next beat.",
+                "在音频提示和震动后，于下一拍按 {0}。",
+                "在音訊提示和震動後，於下一拍按 {0}。",
+                "音の合図と振動の後、次の拍で {0} を押す。",
+                "오디오 신호와 진동 후 다음 박자에 {0}를 누르세요.",
+                "Sau tin hieu am thanh va rung, nhan {0} o nhip tiep theo.",
+                "Apres le signal audio et la vibration, appuyez sur {0} au temps suivant.",
+                "Nach Audio-Signal und Vibration {0} beim naechsten Schlag druecken.",
+                "Despues de la senal de audio y vibracion, pulsa {0} en el siguiente pulso.",
+                "Apos o sinal de audio e a vibracao, pressione {0} no proximo tempo.");
+
+            Add(
+                "cue_tutorial_press_second_beat",
+                "Press {0} on the second beat.",
+                "在第2拍按 {0}。",
+                "在第2拍按 {0}。",
+                "2拍目で {0} を押す。",
+                "2번째 박자에 {0}를 누르세요.",
+                "Nhan {0} o nhip thu 2.",
+                "Appuyez sur {0} au deuxieme temps.",
+                "Druecke {0} beim zweiten Schlag.",
+                "Pulsa {0} en el segundo pulso.",
+                "Pressione {0} no segundo tempo.");
+
+            Add(
                 "cue_food_press_third_beat",
                 "Press {0} on the third beat.",
                 "在第3拍按 {0}。",

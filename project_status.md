@@ -1,7 +1,7 @@
 # Project Status
 
 **Current Phase**: Testing & Polish
-**Last Update**: 2026-02-11
+**Last Update**: 2026-02-12
 
 ## Completed
 - [x] **Core System**: `ScreenReader` (Tolk), `MelatoninAccess` (MelonLoader Mod).
@@ -64,6 +64,7 @@
 - [x] **Dialogue Coverage Pass (2026-02-11)**: Expanded `DialogueHandler` to cover `DialogBox.Show()` in addition to existing dialog hooks, added speaker-label prefixing when the in-game label is visible, and kept debounce-safe delayed reads for rapid dialog state changes.
 - [x] **v1.0.5 Accessibility Bugfix Pass (2026-02-11)**: Reduced duplicate dialog narration bursts (especially tutorial `Redo`/state transitions), changed standalone tutorial chapter side label to `Tutorial` (no misleading skip prompt), blocked map snap assist while map input is disabled/cutscenes are active, added calibration timing callouts (`early/late` in milliseconds), improved action-key option speech to include current binding, expanded community level row speech with subtitle/tags context, fixed locked-achievement detection using checkmark state, and stopped credits roll narration when pause/title menus are active.
 - [x] **v1.0.5 Tutorial + Community + Credits Follow-up (2026-02-11)**: Updated credits narration to pause/resume across pause menu without losing position, merged downloaded-level initial/page-change narration into one utterance with first playable row context, switched action-key option binding speech to keyboard mapping only, and added chapter-1 tutorial cue overrides (tech double-press callout, followers rhythm/stop guidance, food beat-target guidance, shopping pattern guidance). Added new localization keys, refreshed `docs/game-api.md` with row-layout and chapter-1 cue findings, and tracked completion in `todo.md`.
+- [x] **v1.0.5 Log-Driven Fixes Pass 2 (2026-02-12)**: Fixed downloaded-level page-change utterance targeting by waiting for async row repopulation and summarizing from the highlighted row, prevented trailing credits narration when exiting to title by stopping narration on `Creditor.ExitToTitle`, added one-time tutorial-chapter metronome hint (`Press {Action} on the second beat`), moved shopping pattern guidance earlier to song start, refined followers guidance with section-specific vibration timing prompt (and removed premature double-press callouts), tightened tech double-press detection to rapid sections only, and added remaining-practice contextual-cue expansion to `todo.md`.
 
 ## Next Steps
 - **Focused Playtest**: Validate end-to-end flow for map mode locks, stage-end locks, advanced menu/timeline narration, and credits scrolling narration.
@@ -80,6 +81,8 @@
 - **v1.0.5 Community Summary Spot Check**: Enter Downloaded Levels and verify one utterance on load (`total/page + first level row + position`) and one utterance on next/previous page (`page action + first level row + position`) without immediate duplicate row readback.
 - **v1.0.5 Credits Resume Spot Check**: During credits, open pause menu, wait, then resume and verify narration continues from the next unread credit entry; verify narration state resets cleanly after credits finish/exit.
 - **v1.0.5 Tutorial Cue Spot Check**: In Tech/Followers/Food/Shopping practice, verify reduced spam and scene-specific guidance lines (double-press, rhythm stop cue, beat-target lines, repeat-pattern line).
+- **v1.0.5 Tutorial Chapter Cue Spot Check**: Start standalone tutorial chapter and confirm one-time hint is spoken when metronome gameplay starts (`Press {Action} on the second beat`).
+- **v1.0.5 Credits Exit Spot Check**: From rolling credits, choose `Exit to menu` and verify no additional credits-entry lines are spoken after exit is selected.
 - **Calibration Validation**: Confirm early/late ms values feel directionally correct against intentional early/late taps and note any offset formula tuning needed.
 - **Cutscene AD Authoring Step**: Fill `cutscene-ad/scripts/chapter_*_intro.json` and `cutscene-ad/scripts/chapter_*_outro.json` with first-pass timestamp/text-key entries, then run `pwsh -File .\scripts\Test-CutsceneAdPipeline.ps1 -StrictCoverage -RequireEntries`.
 - **Post-Release Validation**: Monitor issues/feedback from `v1.0.4` and collect any remaining edge cases from real-world play sessions.

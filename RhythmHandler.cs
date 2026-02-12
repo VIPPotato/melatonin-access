@@ -1,39 +1,41 @@
 using HarmonyLib;
-using MelonLoader;
 using System;
 using UnityEngine;
 
 namespace MelatoninAccess
 {
-    // Handles Rhythm Cues and Gameplay Notifications
+    // Handles rhythm cues and gameplay notifications.
     public static class RhythmHandler
     {
         private static string _lastSceneName = "";
         private static int _lastBeatTotal = -1;
         private static float _lastActionCueTime = -10f;
-        private static float _lastDoubleCueTime = -10f;
+        private static float _lastTechDoubleCueTime = -10f;
+        private static float _lastTutorialSecondBeatCueTime = -10f;
+
+        private static string _lastQueueSignature = "";
+        private static float _lastQueueSignatureTime = -10f;
+
         private static bool _followersRhythmPromptSpoken;
+        private static bool _followersVibrationPromptSpoken;
         private static bool _shoppingPatternPromptSpoken;
         private static bool _foodThirdBeatPromptSpoken;
         private static bool _foodFifthBeatPromptSpoken;
         private static bool _foodFourthBeatPromptSpoken;
 
-        // --- Hit Window Cues (Pre-cues) ---
-
+        // --- Hit Window Cues (pre-cues) ---
         [HarmonyPatch(typeof(Dream), "QueueHitWindow")]
         public static class Dream_QueueHitWindow_Patch
         {
             public static void Postfix(int numBeatsTilHit, bool isHalfBeatAdded)
             {
-                if (ShouldAnnounceCues())
-                {
-                    RefreshTutorialCueState();
-                    if (!TryAnnounceTutorialOverride(numBeatsTilHit, isHalfBeatAdded))
-                    {
-                        ScreenReader.Say(Loc.Get("cue_press_action", GetActionPrompt()), true);
-                        _lastActionCueTime = Time.unscaledTime;
-                    }
-                }
+                if (!ShouldAnnounceCues()) return;
+
+                RefreshTutorialCueState();
+                if (TryAnnounceTutorialOverride(numBeatsTilHit, isHalfBeatAdded)) return;
+
+                ScreenReader.Say(Loc.Get("cue_press_action", GetActionPrompt()), true);
+                _lastActionCueTime = Time.unscaledTime;
             }
         }
 
@@ -85,6 +87,41 @@ namespace MelatoninAccess
             }
         }
 
+        [HarmonyPatch(typeof(Dream), "TriggerSong")]
+        public static class Dream_TriggerSong_Patch
+        {
+            public static void Postfix()
+            {
+                if (!ShouldAnnounceCues()) return;
+                RefreshTutorialCueState();
+
+                if (string.Equals(GetActiveSceneName(), "Dream_shopping", StringComparison.OrdinalIgnoreCase) &&
+                    !_shoppingPatternPromptSpoken)
+                {
+                    _shoppingPatternPromptSpoken = true;
+                    ScreenReader.Say(Loc.Get("cue_shopping_repeat_patterns", GetActionPrompt()), true);
+                }
+            }
+        }
+
+        [HarmonyPatch(typeof(Dream_tutorial), "TriggerState")]
+        public static class DreamTutorial_TriggerState_Patch
+        {
+            public static void Postfix(Dream_tutorial __instance)
+            {
+                if (!ModConfig.AnnounceRhythmCues || __instance == null) return;
+
+                int state = Traverse.Create(__instance).Field("state").GetValue<int>();
+                if (state != 2) return;
+
+                float now = Time.unscaledTime;
+                if (now - _lastTutorialSecondBeatCueTime < 0.4f) return;
+
+                _lastTutorialSecondBeatCueTime = now;
+                ScreenReader.Say(Loc.Get("cue_tutorial_press_second_beat", GetActionPrompt()), true);
+            }
+        }
+
         private static bool ShouldAnnounceCues()
         {
             return ModConfig.AnnounceRhythmCues && Dream.dir != null && Dream.dir.GetGameMode() == 0;
@@ -93,6 +130,8 @@ namespace MelatoninAccess
         private static bool TryAnnounceTutorialOverride(int numBeatsTilHit, bool isHalfBeatAdded)
         {
             string sceneName = GetActiveSceneName();
+            if (IsDuplicateQueueCue(sceneName, numBeatsTilHit, isHalfBeatAdded)) return true;
+
             string actionPrompt = GetActionPrompt();
 
             if (string.Equals(sceneName, "Dream_food", StringComparison.OrdinalIgnoreCase))
@@ -135,41 +174,56 @@ namespace MelatoninAccess
                 {
                     _followersRhythmPromptSpoken = true;
                     ScreenReader.Say(Loc.Get("cue_followers_rhythm_stop", actionPrompt), true);
-                    _lastActionCueTime = Time.unscaledTime;
-                    return true;
                 }
 
-                if ((isHalfBeatAdded || IsRapidActionCue(0.9f)) && CanSpeakDoubleCue())
+                if (!_followersVibrationPromptSpoken && IsFollowersVibrationSection())
                 {
-                    ScreenReader.Say(Loc.Get("cue_press_action_twice", actionPrompt), true);
-                    _lastActionCueTime = Time.unscaledTime;
-                    _lastDoubleCueTime = Time.unscaledTime;
+                    _followersVibrationPromptSpoken = true;
+                    ScreenReader.Say(Loc.Get("cue_followers_vibration_next_beat", actionPrompt), true);
                 }
 
+                _lastActionCueTime = Time.unscaledTime;
                 return true;
             }
 
-            if (string.Equals(sceneName, "Dream_tech", StringComparison.OrdinalIgnoreCase) &&
-                (isHalfBeatAdded || IsRapidActionCue(0.9f)) &&
-                CanSpeakDoubleCue())
+            if (string.Equals(sceneName, "Dream_tech", StringComparison.OrdinalIgnoreCase))
             {
-                ScreenReader.Say(Loc.Get("cue_press_action_twice", actionPrompt), true);
-                _lastActionCueTime = Time.unscaledTime;
-                _lastDoubleCueTime = Time.unscaledTime;
-                return true;
+                return TryAnnounceTechDoubleCue(actionPrompt);
             }
 
             return false;
         }
 
-        private static bool IsRapidActionCue(float thresholdSeconds)
+        private static bool TryAnnounceTechDoubleCue(string actionPrompt)
         {
-            return Time.unscaledTime - _lastActionCueTime <= thresholdSeconds;
+            float now = Time.unscaledTime;
+            float delta = now - _lastActionCueTime;
+            bool looksLikeRapidDouble = delta >= 0.2f && delta <= 0.85f;
+            if (!looksLikeRapidDouble) return false;
+
+            if (now - _lastTechDoubleCueTime <= 1f) return false;
+
+            _lastTechDoubleCueTime = now;
+            _lastActionCueTime = now;
+            ScreenReader.Say(Loc.Get("cue_press_action_twice", actionPrompt), true);
+            return true;
         }
 
-        private static bool CanSpeakDoubleCue()
+        private static bool IsFollowersVibrationSection()
         {
-            return Time.unscaledTime - _lastDoubleCueTime > 0.4f;
+            int phrase = GetPhraseSafe();
+            return phrase >= 2;
+        }
+
+        private static bool IsDuplicateQueueCue(string sceneName, int numBeatsTilHit, bool isHalfBeatAdded)
+        {
+            float now = Time.unscaledTime;
+            string signature = $"{sceneName}|{numBeatsTilHit}|{isHalfBeatAdded}|{GetPhraseSafe()}|{GetBarSafe()}|{GetBeatSafe()}";
+            bool duplicate = signature == _lastQueueSignature && now - _lastQueueSignatureTime < 0.05f;
+
+            _lastQueueSignature = signature;
+            _lastQueueSignatureTime = now;
+            return duplicate;
         }
 
         private static void RefreshTutorialCueState()
@@ -183,12 +237,15 @@ namespace MelatoninAccess
             if (sceneChanged || restartedBeatCounter)
             {
                 _followersRhythmPromptSpoken = false;
+                _followersVibrationPromptSpoken = false;
                 _shoppingPatternPromptSpoken = false;
                 _foodThirdBeatPromptSpoken = false;
                 _foodFifthBeatPromptSpoken = false;
                 _foodFourthBeatPromptSpoken = false;
                 _lastActionCueTime = -10f;
-                _lastDoubleCueTime = -10f;
+                _lastTechDoubleCueTime = -10f;
+                _lastQueueSignature = "";
+                _lastQueueSignatureTime = -10f;
             }
 
             _lastSceneName = sceneName;
@@ -208,6 +265,45 @@ namespace MelatoninAccess
             try
             {
                 return Dream.dir.GetBeatTotal();
+            }
+            catch
+            {
+                return -1;
+            }
+        }
+
+        private static int GetPhraseSafe()
+        {
+            if (Dream.dir == null) return -1;
+            try
+            {
+                return Dream.dir.GetPhrase();
+            }
+            catch
+            {
+                return -1;
+            }
+        }
+
+        private static int GetBarSafe()
+        {
+            if (Dream.dir == null) return -1;
+            try
+            {
+                return Dream.dir.GetBar();
+            }
+            catch
+            {
+                return -1;
+            }
+        }
+
+        private static int GetBeatSafe()
+        {
+            if (Dream.dir == null) return -1;
+            try
+            {
+                return Dream.dir.GetBeat();
             }
             catch
             {

@@ -77,6 +77,10 @@
 - **Extracted tutorial/help texts**:
   - See `docs/tutorial-texts.md` for the extracted text list with source context.
   - Deep asset scan (`Melatonin_Data/level0`) recovered additional guidance lines like metronome/timing-circle help, score-mode readiness, and auto-restart penalty behavior.
+- **Initial metronome gameplay start**:
+  - In `Dream_tutorial.TriggerState()`, `state == 2` starts the first playable metronome segment (`TriggerSong()`) and enables tutorial side-label UI.
+  - This transition point is suitable for one-time spoken timing hints like "press on second beat" before the first hit window sequence begins.
+  - References: `decompiled/Dream_tutorial.cs:212-219`, `decompiled/Dream_tutorial.cs:466-517`.
 
 ## Event Hooks
 - `Menu.Next()` / `Menu.Prev()`: Good for announcing menu navigation.
@@ -157,8 +161,9 @@
   - `QueueHitWindow(4)` (target on 5th beat),
   - `QueueHitWindow(3)` (target on 4th beat).
 - `Dream_followers` includes rapid patterns in `sequences[4]` using `QueueHitWindow(1)`, `QueueHitWindow(1, isHalfBeatAdded: true)`, and a follow-up `QueueHitWindow(2)`.
+- `Dream_followers` second teaching phase transition appears at `phrase == 2`, `bar == 1`, `beat == 2` (`InfluencerLand.env.Reframe(30, "k", ...)`), useful for contextual "audio cue + vibration" guidance.
 - `Dream_shopping` practice repeatedly uses `QueueHitWindow(4)` / `QueueHitWindow(8)` while visual/audio store patterns are presented, making it suitable for a concise "follow repeating audio pattern" instruction.
-- References: `decompiled/Dream_food.cs:114-255`, `decompiled/Dream_followers.cs:241-390`, `decompiled/Dream_shopping.cs:115-233`.
+- References: `decompiled/Dream_food.cs:114-255`, `decompiled/Dream_followers.cs:140-190`, `decompiled/Dream_followers.cs:241-390`, `decompiled/Dream_shopping.cs:115-233`.
 
 ## Key-Rebind Collision Note
 - The game allows rebinding Action to `[` and `]` (`ControlHandler.GetStringFromKey` / rebind checks), which can conflict with mod map teleport if teleport also uses brackets.

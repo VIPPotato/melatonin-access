@@ -117,7 +117,7 @@ namespace MelatoninAccess
         {
             // Wait for download to finish
             yield return new WaitUntil(() => !SteamWorkshop.mgr.CheckIsDownloading());
-            yield return new WaitForSecondsRealtime(0.2f); // Buffer
+            yield return CommunityMenuHelper.WaitForRowsReady(menu);
 
             if (menu.CheckIsActivated())
             {
@@ -239,24 +239,45 @@ namespace MelatoninAccess
         public static IEnumerator AnnouncePageActionWithFirstItem(CommunityMenu menu, string action)
         {
             if (menu == null || string.IsNullOrWhiteSpace(action)) yield break;
+            int expectedPageNum = Traverse.Create(menu).Field("pageNum").GetValue<int>();
 
-            float start = Time.unscaledTime;
-            while (Time.unscaledTime - start < 1.5f)
-            {
-                if (!menu.CheckIsActivated()) yield break;
-                if (!SteamWorkshop.mgr.CheckIsDownloading() && GetFirstPlayableLevelRow(menu) != null) break;
-                yield return null;
-            }
+            yield return WaitForRowsReady(menu, expectedPageNum);
 
             if (!menu.CheckIsActivated()) yield break;
 
-            string firstItem = BuildFirstPlayableSelection(menu);
+            string firstItem = BuildHighlightedSelection(menu);
             string message = string.IsNullOrWhiteSpace(firstItem)
                 ? action
                 : action + ". " + firstItem;
 
             ScreenReader.Say(message, true);
             _suppressSelectionUntil = Time.unscaledTime + 0.8f;
+        }
+
+        public static IEnumerator WaitForRowsReady(CommunityMenu menu, int expectedPageNum = -1)
+        {
+            if (menu == null) yield break;
+
+            float start = Time.unscaledTime;
+            while (Time.unscaledTime - start < 2f)
+            {
+                if (!menu.CheckIsActivated()) yield break;
+                if (SteamWorkshop.mgr.CheckIsDownloading())
+                {
+                    yield return null;
+                    continue;
+                }
+
+                int rowCount = Traverse.Create(menu).Field("rowCount").GetValue<int>();
+                int pageNum = Traverse.Create(menu).Field("pageNum").GetValue<int>();
+                if (rowCount > 1 && (expectedPageNum < 1 || pageNum == expectedPageNum))
+                {
+                    yield return null; // Ensure row text fragments are fully updated.
+                    yield break;
+                }
+
+                yield return null;
+            }
         }
 
         public static void AnnouncePage(CommunityMenu menu)
@@ -286,7 +307,7 @@ namespace MelatoninAccess
                 ? Loc.Get("downloaded_levels_page_total", totalLevels, pageNum, pageTotal)
                 : Loc.Get("downloaded_levels_total", totalLevels);
 
-            string firstItem = BuildFirstPlayableSelection(menu);
+            string firstItem = BuildHighlightedSelection(menu);
             if (!string.IsNullOrWhiteSpace(firstItem))
             {
                 summary += ". " + firstItem;
@@ -295,41 +316,44 @@ namespace MelatoninAccess
             return summary;
         }
 
-        private static string BuildFirstPlayableSelection(CommunityMenu menu)
+        private static string BuildHighlightedSelection(CommunityMenu menu)
         {
-            LevelRow firstRow = GetFirstPlayableLevelRow(menu);
-            if (firstRow == null) return "";
+            if (menu == null || menu.LevelRows == null) return "";
 
-            string rowText = BuildCommunityRowText(firstRow);
+            int highlightNum = Traverse.Create(menu).Field("highlightNum").GetValue<int>();
+            if (highlightNum < 0 || highlightNum >= menu.LevelRows.Length || menu.LevelRows[highlightNum] == null)
+            {
+                highlightNum = 0;
+            }
+
+            LevelRow row = menu.LevelRows[highlightNum];
+            if (row == null || !row.gameObject.activeSelf)
+            {
+                for (int i = 0; i < menu.LevelRows.Length; i++)
+                {
+                    LevelRow candidate = menu.LevelRows[i];
+                    if (candidate != null && candidate.gameObject.activeSelf)
+                    {
+                        row = candidate;
+                        highlightNum = i;
+                        break;
+                    }
+                }
+            }
+
+            if (row == null) return "";
+
+            string rowText = BuildCommunityRowText(row);
             if (!ModConfig.AnnounceMenuPositions) return rowText;
 
             int visibleRows = 0;
-            if (menu != null && menu.LevelRows != null)
+            foreach (var menuRow in menu.LevelRows)
             {
-                foreach (var row in menu.LevelRows)
-                {
-                    if (row != null && row.gameObject.activeSelf) visibleRows++;
-                }
+                if (menuRow != null && menuRow.gameObject.activeSelf) visibleRows++;
             }
 
             if (visibleRows <= 0) visibleRows = 1;
-            return Loc.Get("item_of", rowText, 1, visibleRows);
-        }
-
-        private static LevelRow GetFirstPlayableLevelRow(CommunityMenu menu)
-        {
-            if (menu == null || menu.LevelRows == null) return null;
-
-            for (int i = 1; i < menu.LevelRows.Length; i++)
-            {
-                LevelRow row = menu.LevelRows[i];
-                if (row != null && row.gameObject.activeSelf)
-                {
-                    return row;
-                }
-            }
-
-            return null;
+            return Loc.Get("item_of", rowText, highlightNum + 1, visibleRows);
         }
 
         private static string BuildCommunityRowText(LevelRow row)
