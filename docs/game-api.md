@@ -189,6 +189,20 @@
   - `Dream_dating.Starting()` calls `TriggerSong()` after the pre-song tutorial dialog gate, so one-time "follow swipes" prompts can safely be attached to `TriggerSong`.
 - References: `decompiled/Dream_dating.cs:16-44`, `decompiled/Dream_dating.cs:86-219`.
 
+## Text-File Tutorial Cue Batch (v1.1)
+- This pass maps `melatonin tutorials.txt` requests to decompiled gameplay queues for these scenes only:
+  - `Dream_followers`: section-level guidance moved to phrase timing (`phrase 1` start/stop spring cue, `phrase 2` resume-after-vibration cue, and phase-3 pre-brief at `phrase 2, bar 8, beat 2`).
+  - `Dream_dating`: directional swipe speech on queue direction, including long-countdown variants (`QueueLeft/RightHitWindow(6)`).
+  - `Dream_time`, `Dream_space`, `Dream_desires`: use `QueueHoldReleaseWindow(...)` arguments to announce hold + release duration in beats.
+  - `Dream_nature`: water sprout triple sequence detected from `QueueHitWindow(2)`, `(2, half)`, `(3)` and condensed to one "press thrice" line; soak sections still use hold/release duration cues.
+  - `Dream_mind`: triple off-beat section detected from `QueueHitWindow(1)`, `(1, half)`, `(2)` and spoken as one off-beat triple instruction.
+  - `Dream_past`: camera-specific hold cues mapped from distinct hold durations:
+    - `QueueHoldReleaseWindow(4, 5)` -> hold 1 beat
+    - `QueueHoldReleaseWindow(4, 4, false, true)` -> hold half beat
+    - `QueueHoldReleaseWindow(4, 6)` -> hold 2 beats
+  - `Dream_future`: `QueueHitWindow(...)` is the up input and `QueueLeftRightHitWindow(...)` is both lateral inputs, so spoken cues should be "Press Up" and a short "Left right".
+- References: `decompiled/Dream_followers.cs:140-394`, `decompiled/Dream_dating.cs:82-205`, `decompiled/Dream_time.cs:157-315`, `decompiled/Dream_space.cs:130-226`, `decompiled/Dream_desires.cs:105-140`, `decompiled/Dream_nature.cs:100-139`, `decompiled/Dream_mind.cs:75-211`, `decompiled/Dream_past.cs:98-159`, `decompiled/Dream_future.cs:98-148`.
+
 ## Key-Rebind Collision Note
 - The game allows rebinding Action to `[` and `]` (`ControlHandler.GetStringFromKey` / rebind checks), which can conflict with mod map teleport if teleport also uses brackets.
 - References: `decompiled/ControlHandler.cs:157-163`, `decompiled/ControlHandler.cs:357-358`, `decompiled/ControlHandler.cs:458-464`.
