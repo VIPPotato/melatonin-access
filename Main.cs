@@ -80,6 +80,7 @@ namespace MelatoninAccess
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(CreditsHandler.Credits_Show_Patch));
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(CreditsHandler.Credits_TransitionLogoCompanyToCreator_Patch));
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(CreditsHandler.Credits_ScrollList_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(CreditsHandler.Creditor_ExitToTitle_Patch));
              
             // Side Labels
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(SideLabel_ShowAsPractice_Patch));
@@ -92,6 +93,8 @@ namespace MelatoninAccess
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(RhythmHandler.Dream_QueueRightHitWindow_Patch));
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(RhythmHandler.Dream_QueueLeftRightHitWindow_Patch));
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(RhythmHandler.Dream_QueueHoldReleaseWindow_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(RhythmHandler.Dream_TriggerSong_Patch));
+            HarmonyLib.Harmony.CreateAndPatchAll(typeof(RhythmHandler.DreamTutorial_TriggerState_Patch));
 
             // Level Editor
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(EditorHandler.Daw_IncreaseBeat_Patch));

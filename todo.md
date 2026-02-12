@@ -84,6 +84,10 @@ The current map allows free movement (`McMap.cs`), which is inaccessible.
 ## 6. Specific Level Support
 Some levels might have unique mechanics requiring specific cues.
 
+- [ ] **Contextual Rhythm Cues for Remaining Practice Modes**
+    - Add scene-specific, low-noise timing guidance for non-chapter-1 practice levels.
+    - Prefer one-shot instructional prompts tied to phrase/section transitions over per-note spam.
+    - Validate each cue against in-game audio cues and vibration patterns via playtest logs.
 - [ ] **Dream_food.cs**: Check for specific "Shoot" vs "Jump" visual cues.
 - [ ] **Dream_tech.cs**: Check for positional cues.
 - [ ] **Dream_dating.cs**: Check for "Swipe" directions.

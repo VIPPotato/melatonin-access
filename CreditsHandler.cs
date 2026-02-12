@@ -43,9 +43,19 @@ namespace MelatoninAccess
             }
         }
 
+        [HarmonyPatch(typeof(Creditor), "ExitToTitle")]
+        public static class Creditor_ExitToTitle_Patch
+        {
+            public static void Postfix()
+            {
+                CreditsNarrationHelper.MarkExitingToTitle();
+            }
+        }
+
         private static class CreditsNarrationHelper
         {
             private static bool _isNarrating;
+            private static bool _isExitingToTitle;
             private static readonly List<string> _entries = new List<string>();
             private static int _nextEntryIndex;
             private static float _entryInterval = 1f;
@@ -56,6 +66,14 @@ namespace MelatoninAccess
                 _entries.Clear();
                 _nextEntryIndex = 0;
                 _entryInterval = 1f;
+                _isExitingToTitle = false;
+            }
+
+            public static void MarkExitingToTitle()
+            {
+                _isExitingToTitle = true;
+                _isNarrating = false;
+                ClearProgress();
             }
 
             public static IEnumerator AnnounceCreatorDelayed(Credits credits)
@@ -169,6 +187,7 @@ namespace MelatoninAccess
                 if (!ModConfig.AnnounceCreditsRoll) return false;
                 if (credits == null) return false;
                 if (!credits.gameObject.activeInHierarchy) return false;
+                if (_isExitingToTitle) return false;
                 return true;
             }
 
