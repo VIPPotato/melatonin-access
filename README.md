@@ -5,7 +5,7 @@ Screen-reader accessibility mod for **Melatonin** (MelonLoader).
 ## What This Mod Adds
 
 - Spoken menu navigation and option state announcements.
-- Rhythm cue announcements in gameplay.
+- Contextual tutorial/gameplay cue announcements in gameplay.
 - Tutorial/dialog and popup reading.
 - World map navigation support, including fast landmark teleport.
 - Level editor narration (cursor, tools, advanced menu, timeline tabs).
@@ -41,7 +41,7 @@ Example flow:
 
 ## Hotkeys
 
-- `F2`: Toggle rhythm cue announcements on/off (saved immediately to MelonPreferences).
+- `F2`: Toggle contextual tutorial/gameplay cue announcements on/off (saved immediately to MelonPreferences).
 - `F3`: Toggle menu position announcements on/off (for example `1 of 4`, saved immediately to MelonPreferences).
 - `F1`: On map scenes only, announce chapter/map star totals and how many more stars are needed to pass.
 - `F11`: Speak context help (`What can I press here?`) for the current screen.
@@ -69,7 +69,7 @@ Supported language set matches the game language menu:
 Settings are stored in `UserData/MelonPreferences.cfg` under category `MelatoninAccess`.
 
 - `AnnounceMapHotspots` (default `true`): map arrival and teleport destination/star lines.
-- `AnnounceRhythmCues` (default `true`): gameplay rhythm cues (`Space`, `Left`, `Right`, `Both`, `Hold`).
+- `AnnounceRhythmCues` (default `true`): contextual tutorial/gameplay cues (action, direction, and hold/release guidance).
   - Can be toggled in-game with `F2`.
 - `AnnounceMenuPositions` (default `true`): menu position context (`1 of N`) across supported menus.
   - Can be toggled in-game with `F3`.

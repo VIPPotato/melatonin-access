@@ -22,11 +22,15 @@ namespace MelatoninAccess
         private static bool _followersPhaseThreePromptSpoken;
         private static bool _shoppingPatternPromptSpoken;
         private static bool _datingIntroPromptSpoken;
+        private static bool _futurePatternPromptSpoken;
         private static bool _foodThirdBeatPromptSpoken;
         private static bool _foodFifthBeatPromptSpoken;
         private static bool _foodFourthBeatPromptSpoken;
         private static bool _techPhaseOnePromptSpoken;
         private static bool _techPhaseTwoPromptSpoken;
+        private static bool _pastOneBeatHintSpoken;
+        private static bool _pastHalfBeatHintSpoken;
+        private static bool _pastTwoBeatHintSpoken;
         private static float _lastTechQueueCueTime = -10f;
 
         // --- Hit Window Cues (pre-cues) ---
@@ -121,6 +125,13 @@ namespace MelatoninAccess
                     _datingIntroPromptSpoken = true;
                     ScreenReader.Say(Loc.Get("cue_dating_follow_swipes"), true);
                 }
+
+                if (string.Equals(GetActiveSceneName(), "Dream_future", StringComparison.OrdinalIgnoreCase) &&
+                    !_futurePatternPromptSpoken)
+                {
+                    _futurePatternPromptSpoken = true;
+                    ScreenReader.Say(Loc.Get("cue_future_follow_patterns"), true);
+                }
             }
         }
 
@@ -199,8 +210,8 @@ namespace MelatoninAccess
                 }
 
                 // Phrase 3 starts after phrase 2 closes at bar 8 beat 4.
-                // Announce this 2 beats earlier so the message finishes before the new section starts.
-                if (!_followersPhaseThreePromptSpoken && phrase == 2 && bar == 8 && beat == 2)
+                // Speak this after the spring-stop transition so it lands closer to the section start.
+                if (!_followersPhaseThreePromptSpoken && phrase == 3 && bar == 1 && beat == 1)
                 {
                     _followersPhaseThreePromptSpoken = true;
                     ScreenReader.Say(Loc.Get("cue_followers_phase_three_press_thrice", GetActionPrompt()), true);
@@ -326,6 +337,13 @@ namespace MelatoninAccess
             if (!isHoldReleaseTutorialScene) return false;
 
             string actionPrompt = GetActionPrompt();
+            if ((string.Equals(sceneName, "Dream_space", StringComparison.OrdinalIgnoreCase) ||
+                 string.Equals(sceneName, "Dream_desires", StringComparison.OrdinalIgnoreCase)) &&
+                TryAnnounceReleaseBeatCue(actionPrompt, numBeatsTilRelease, isHalfBeatAddedToRelease))
+            {
+                return true;
+            }
+
             if (string.Equals(sceneName, "Dream_past", StringComparison.OrdinalIgnoreCase) &&
                 TryAnnouncePastCameraHoldCue(actionPrompt, numBeatsTilHold, numBeatsTilRelease, isHalfBeatAddedToHold, isHalfBeatAddedToRelease))
             {
@@ -377,6 +395,14 @@ namespace MelatoninAccess
             return false;
         }
 
+        private static bool TryAnnounceReleaseBeatCue(string actionPrompt, int numBeatsTilRelease, bool isHalfBeatAddedToRelease)
+        {
+            if (numBeatsTilRelease <= 0 || isHalfBeatAddedToRelease) return false;
+
+            ScreenReader.Say(Loc.Get("cue_hold_release_on_beat", actionPrompt, numBeatsTilRelease), true);
+            return true;
+        }
+
         private static bool TryAnnouncePastCameraHoldCue(string actionPrompt, int numBeatsTilHold, int numBeatsTilRelease, bool isHalfBeatAddedToHold, bool isHalfBeatAddedToRelease)
         {
             double holdMoment = numBeatsTilHold + (isHalfBeatAddedToHold ? 0.5d : 0d);
@@ -385,19 +411,31 @@ namespace MelatoninAccess
 
             if (Math.Abs(duration - 1d) < 0.01d)
             {
-                ScreenReader.Say(Loc.Get("cue_past_camera_first_sound", actionPrompt), true);
+                if (!_pastOneBeatHintSpoken)
+                {
+                    _pastOneBeatHintSpoken = true;
+                    ScreenReader.Say(Loc.Get("cue_past_camera_first_sound", actionPrompt), true);
+                }
                 return true;
             }
 
             if (Math.Abs(duration - 0.5d) < 0.01d)
             {
-                ScreenReader.Say(Loc.Get("cue_past_camera_second_sound", actionPrompt), true);
+                if (!_pastHalfBeatHintSpoken)
+                {
+                    _pastHalfBeatHintSpoken = true;
+                    ScreenReader.Say(Loc.Get("cue_past_camera_second_sound", actionPrompt), true);
+                }
                 return true;
             }
 
             if (Math.Abs(duration - 2d) < 0.01d)
             {
-                ScreenReader.Say(Loc.Get("cue_past_camera_third_sound", actionPrompt), true);
+                if (!_pastTwoBeatHintSpoken)
+                {
+                    _pastTwoBeatHintSpoken = true;
+                    ScreenReader.Say(Loc.Get("cue_past_camera_third_sound", actionPrompt), true);
+                }
                 return true;
             }
 
@@ -477,11 +515,15 @@ namespace MelatoninAccess
                 _followersPhaseThreePromptSpoken = false;
                 _shoppingPatternPromptSpoken = false;
                 _datingIntroPromptSpoken = false;
+                _futurePatternPromptSpoken = false;
                 _foodThirdBeatPromptSpoken = false;
                 _foodFifthBeatPromptSpoken = false;
                 _foodFourthBeatPromptSpoken = false;
                 _techPhaseOnePromptSpoken = false;
                 _techPhaseTwoPromptSpoken = false;
+                _pastOneBeatHintSpoken = false;
+                _pastHalfBeatHintSpoken = false;
+                _pastTwoBeatHintSpoken = false;
                 _lastTechDoubleCueTime = -10f;
                 _lastTechQueueCueTime = -10f;
                 _lastNatureTriplePromptTime = -10f;

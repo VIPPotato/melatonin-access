@@ -203,6 +203,20 @@
   - `Dream_future`: `QueueHitWindow(...)` is the up input and `QueueLeftRightHitWindow(...)` is both lateral inputs, so spoken cues should be "Press Up" and a short "Left right".
 - References: `decompiled/Dream_followers.cs:140-394`, `decompiled/Dream_dating.cs:82-205`, `decompiled/Dream_time.cs:157-315`, `decompiled/Dream_space.cs:130-226`, `decompiled/Dream_desires.cs:105-140`, `decompiled/Dream_nature.cs:100-139`, `decompiled/Dream_mind.cs:75-211`, `decompiled/Dream_past.cs:98-159`, `decompiled/Dream_future.cs:98-148`.
 
+## v1.1 Cue Refinement Notes
+- `Dream_followers` phase-3 callout can be moved from phrase-2 pre-roll to `phrase == 3, bar == 1, beat == 1` when players prefer hearing it after the spring-stop transition.
+- `Dream_space` and `Dream_desires` hold windows can be announced by release beat number (`numBeatsTilRelease`) instead of hold duration when that wording is easier to follow.
+- `Dream_future` supports an additional one-time `TriggerSong()` primer line ("follow patterns") while keeping directional/up queue callouts.
+- `Dream_past` queue windows repeat frequently; one-shot-per-duration hints (1 beat, half beat, 2 beats) reduce tutorial spam while preserving all unique timing hints.
+- References: `decompiled/Dream_followers.cs:140-190`, `decompiled/Dream_space.cs:130-226`, `decompiled/Dream_desires.cs:105-140`, `decompiled/Dream_future.cs:98-148`, `decompiled/Dream_past.cs:98-159`.
+
+## Remix Landmark Lock State
+- Remix landmark lock state on map is represented by private `Landmark.isDisabled` after `Landmark.Show()`.
+- `Landmark.isRemix` is set when the landmark equals `Neighbourhood.GetRemixLandmark()`.
+- For non-final remix landmarks, `Landmark.Show()` sets `isDisabled = true` until map unlock conditions enable the landmark.
+- This allows teleport narration to append a lock requirement line when snapping to a locked remix landmark.
+- References: `decompiled/Landmark.cs:44-55`, `decompiled/Landmark.cs:112-119`, `decompiled/Neighbourhood.cs:40-43`, `decompiled/Map.cs:66-83`.
+
 ## Key-Rebind Collision Note
 - The game allows rebinding Action to `[` and `]` (`ControlHandler.GetStringFromKey` / rebind checks), which can conflict with mod map teleport if teleport also uses brackets.
 - References: `decompiled/ControlHandler.cs:157-163`, `decompiled/ControlHandler.cs:357-358`, `decompiled/ControlHandler.cs:458-464`.
