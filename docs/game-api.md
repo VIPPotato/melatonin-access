@@ -205,7 +205,7 @@
 
 ## v1.1 Cue Refinement Notes
 - `Dream_followers` phase-3 callout can be moved from phrase-2 pre-roll to `phrase == 3, bar == 1, beat == 1` when players prefer hearing it after the spring-stop transition.
-- `Dream_space` and `Dream_desires` hold windows can be announced by release beat number (`numBeatsTilRelease`) instead of hold duration when that wording is easier to follow.
+- `Dream_space` and `Dream_desires` hold windows are clearer when announced as phase-relative release beat (`numBeatsTilRelease - numBeatsTilHold + 1`) instead of absolute queue beat values.
 - `Dream_future` supports an additional one-time `TriggerSong()` primer line ("follow patterns") while keeping directional/up queue callouts.
 - `Dream_past` queue windows repeat frequently; one-shot-per-duration hints (1 beat, half beat, 2 beats) reduce tutorial spam while preserving all unique timing hints.
 - References: `decompiled/Dream_followers.cs:140-190`, `decompiled/Dream_space.cs:130-226`, `decompiled/Dream_desires.cs:105-140`, `decompiled/Dream_future.cs:98-148`, `decompiled/Dream_past.cs:98-159`.
