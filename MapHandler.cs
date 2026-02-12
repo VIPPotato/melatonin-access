@@ -2,6 +2,7 @@ using HarmonyLib;
 using MelonLoader;
 using UnityEngine;
 using TMPro;
+using System;
 using System.Linq;
 using System.Collections;
 using UnityEngine.InputSystem; 
@@ -155,7 +156,8 @@ namespace MelatoninAccess
                 bool assistAllowed = IsMapNavigationAssistAllowed(__instance);
 
                 bool f1Pressed = Keyboard.current != null && Keyboard.current.f1Key.wasPressedThisFrame;
-                if (f1Pressed && assistAllowed)
+                bool gamepadViewPressed = Gamepad.current != null && Gamepad.current.selectButton.wasPressedThisFrame;
+                if ((f1Pressed || gamepadViewPressed) && assistAllowed)
                 {
                     AnnounceCurrentMapProgress(__instance);
                 }
@@ -311,7 +313,77 @@ namespace MelatoninAccess
 
         private static string FormatDreamName(string rawName)
         {
+            string liveUiName = TryGetDreamNameFromLiveUi(rawName);
+            if (!string.IsNullOrWhiteSpace(liveUiName))
+            {
+                return liveUiName;
+            }
+
             return Loc.GetDreamName(rawName);
+        }
+
+        private static string TryGetDreamNameFromLiveUi(string rawName)
+        {
+            if (string.IsNullOrWhiteSpace(rawName)) return "";
+            if (Map.env == null || Map.env.Neighbourhood == null || Map.env.Neighbourhood.Landmarks == null) return "";
+
+            Landmark[] landmarks = Map.env.Neighbourhood.Landmarks;
+            for (int i = 0; i < landmarks.Length; i++)
+            {
+                Landmark landmark = landmarks[i];
+                if (landmark == null) continue;
+                if (!string.Equals(landmark.dreamName, rawName, StringComparison.OrdinalIgnoreCase)) continue;
+
+                if (landmark.DreamTitle != null && TryExtractFirstReadableText(landmark.DreamTitle.transform, out string dreamTitleText))
+                {
+                    return dreamTitleText;
+                }
+
+                if (TryExtractFirstReadableText(landmark.transform, out string landmarkText))
+                {
+                    return landmarkText;
+                }
+
+                return "";
+            }
+
+            return "";
+        }
+
+        private static bool TryExtractFirstReadableText(Transform root, out string text)
+        {
+            text = "";
+            if (root == null) return false;
+
+            TextMeshPro[] labels = root.GetComponentsInChildren<TextMeshPro>(true);
+            for (int i = 0; i < labels.Length; i++)
+            {
+                if (labels[i] == null) continue;
+
+                string candidate = labels[i].text;
+                if (string.IsNullOrWhiteSpace(candidate)) continue;
+
+                candidate = candidate.Replace("\n", " ").Trim();
+                if (candidate.Length == 0) continue;
+                if (!ContainsLetter(candidate)) continue;
+
+                text = candidate;
+                return true;
+            }
+
+            return false;
+        }
+
+        private static bool ContainsLetter(string value)
+        {
+            if (string.IsNullOrWhiteSpace(value)) return false;
+
+            for (int i = 0; i < value.Length; i++)
+            {
+                if (char.IsLetter(value[i])) return true;
+            }
+
+            return false;
         }
 
         private static string GetModeDreamTitle(ModeMenu menu)

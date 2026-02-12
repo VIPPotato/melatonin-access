@@ -67,6 +67,7 @@
 - [x] **v1.0.5 Log-Driven Fixes Pass 2 (2026-02-12)**: Fixed downloaded-level page-change utterance targeting by waiting for async row repopulation and summarizing from the highlighted row, prevented trailing credits narration when exiting to title by stopping narration on `Creditor.ExitToTitle`, added one-time tutorial-chapter metronome hint (`Press {Action} on the second beat`), moved shopping pattern guidance earlier to song start, refined followers guidance with section-specific vibration timing prompt (and removed premature double-press callouts), tightened tech double-press detection to rapid sections only, and added remaining-practice contextual-cue expansion to `todo.md`.
 - [x] **Localization Polish Pass (2026-02-12)**: Updated Spanish dream-name accents (`Tecnología`, `Presión`, `Meditación`, `Estrés`), switched language/achievements menu title announcements to prefer live game UI title fragments over mod-owned title strings, and expanded `README.md` acknowledgements for localization/testing contributions (`luyi`, `dreamburguer`). Added corresponding API note in `docs/game-api.md`.
 - [x] **v1.1 Contextual Cues Pass 1 (2026-02-12)**: Added scene-specific `Dream_dating` swipe cue narration (left/right + long-countdown variants), added one-time `Dream_dating` intro guidance on song start, localized new cue keys for all supported languages, and documented cue timing patterns in `docs/game-api.md`.
+- [x] **v1.1 Contextual Cues Pass 2 (2026-02-12)**: Added controller mirrors for utility hotkeys (`View` -> map stars/F1 equivalent, `L3` -> rhythm cues/F2 equivalent, `R3` -> menu positions/F3 equivalent), replaced noisy `Dream_tech` per-hit prompts with phase-level guidance and selective rapid-double callouts, added `Dream_followers` phase-3 pre-brief 2 beats early, and updated map dream-name formatting to prefer live UI text when available before localization fallback.
 
 ## Next Steps
 - **Focused Playtest**: Validate end-to-end flow for map mode locks, stage-end locks, advanced menu/timeline narration, and credits scrolling narration.
@@ -89,6 +90,16 @@
   - short countdown windows (`Queue*HitWindow(3)`) should say `Swipe left` / `Swipe right`
   - long countdown windows (`Queue*HitWindow(6)`) should say `Swipe left/right after the long cue`
   - prompts should remain directional (not generic `press action`) during dating practice
+- **v1.1 Controller Utility Hotkey Spot Check**:
+  - On map scenes, press controller `View` and confirm it speaks chapter stars summary (same line as `F1`).
+  - Outside map scenes/menus/gameplay, press controller `View` and confirm no map-stars line is spoken.
+  - Press `L3`/`R3` and confirm they toggle rhythm/menu-position announcements exactly like `F2`/`F3`, including persistence after restart.
+- **v1.1 Tech/Followers Cue Spot Check**:
+  - `Dream_tech` practice phase 1 should announce one-time `Press {Action} every 2 beats`.
+  - `Dream_tech` practice phase 2 should announce one-time `Press {Action} on the next 3 beats` (earlier, not overlapping first target).
+  - Rapid-double sections should only call out `Press {Action} twice` without mixed duplicate `Press {Action}` lines.
+  - `Dream_followers` phase 3 should announce one pre-brief 2 beats before section start (`to the beat`, then `press twice after vibration`).
+- **v1.1 Dream Name Source Spot Check**: In non-English map language, confirm landmark/mode-menu dream names prefer live in-game text when present and otherwise fall back cleanly (no empty/broken names).
 - **Calibration Validation**: Confirm early/late ms values feel directionally correct against intentional early/late taps and note any offset formula tuning needed.
 - **Cutscene AD Authoring Step**: Fill `cutscene-ad/scripts/chapter_*_intro.json` and `cutscene-ad/scripts/chapter_*_outro.json` with first-pass timestamp/text-key entries, then run `pwsh -File .\scripts\Test-CutsceneAdPipeline.ps1 -StrictCoverage -RequireEntries`.
 - **Post-Release Validation**: Monitor issues/feedback from `v1.0.4` and collect any remaining edge cases from real-world play sessions.
