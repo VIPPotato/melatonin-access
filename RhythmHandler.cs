@@ -19,6 +19,7 @@ namespace MelatoninAccess
         private static bool _followersRhythmPromptSpoken;
         private static bool _followersVibrationPromptSpoken;
         private static bool _shoppingPatternPromptSpoken;
+        private static bool _datingIntroPromptSpoken;
         private static bool _foodThirdBeatPromptSpoken;
         private static bool _foodFifthBeatPromptSpoken;
         private static bool _foodFourthBeatPromptSpoken;
@@ -46,6 +47,8 @@ namespace MelatoninAccess
             {
                 if (ShouldAnnounceCues())
                 {
+                    RefreshTutorialCueState();
+                    if (TryAnnounceDirectionalCue(isLeft: true, numBeatsTilHit, isHalfBeatAdded)) return;
                     ScreenReader.Say(Loc.Get("cue_left"), true);
                 }
             }
@@ -58,6 +61,8 @@ namespace MelatoninAccess
             {
                 if (ShouldAnnounceCues())
                 {
+                    RefreshTutorialCueState();
+                    if (TryAnnounceDirectionalCue(isLeft: false, numBeatsTilHit, isHalfBeatAdded)) return;
                     ScreenReader.Say(Loc.Get("cue_right"), true);
                 }
             }
@@ -100,6 +105,13 @@ namespace MelatoninAccess
                 {
                     _shoppingPatternPromptSpoken = true;
                     ScreenReader.Say(Loc.Get("cue_shopping_repeat_patterns", GetActionPrompt()), true);
+                }
+
+                if (string.Equals(GetActiveSceneName(), "Dream_dating", StringComparison.OrdinalIgnoreCase) &&
+                    !_datingIntroPromptSpoken)
+                {
+                    _datingIntroPromptSpoken = true;
+                    ScreenReader.Say(Loc.Get("cue_dating_follow_swipes"), true);
                 }
             }
         }
@@ -194,6 +206,25 @@ namespace MelatoninAccess
             return false;
         }
 
+        private static bool TryAnnounceDirectionalCue(bool isLeft, int numBeatsTilHit, bool isHalfBeatAdded)
+        {
+            string sceneName = GetActiveSceneName();
+            if (!string.Equals(sceneName, "Dream_dating", StringComparison.OrdinalIgnoreCase)) return false;
+
+            if (IsDuplicateQueueCue($"{sceneName}|{(isLeft ? "L" : "R")}", numBeatsTilHit, isHalfBeatAdded)) return true;
+
+            if (numBeatsTilHit >= 6)
+            {
+                ScreenReader.Say(Loc.Get(isLeft ? "cue_swipe_left_long" : "cue_swipe_right_long"), true);
+            }
+            else
+            {
+                ScreenReader.Say(Loc.Get(isLeft ? "cue_swipe_left" : "cue_swipe_right"), true);
+            }
+
+            return true;
+        }
+
         private static bool TryAnnounceTechDoubleCue(string actionPrompt)
         {
             float now = Time.unscaledTime;
@@ -239,6 +270,7 @@ namespace MelatoninAccess
                 _followersRhythmPromptSpoken = false;
                 _followersVibrationPromptSpoken = false;
                 _shoppingPatternPromptSpoken = false;
+                _datingIntroPromptSpoken = false;
                 _foodThirdBeatPromptSpoken = false;
                 _foodFifthBeatPromptSpoken = false;
                 _foodFourthBeatPromptSpoken = false;

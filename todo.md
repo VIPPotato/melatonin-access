@@ -88,9 +88,10 @@ Some levels might have unique mechanics requiring specific cues.
     - Add scene-specific, low-noise timing guidance for non-chapter-1 practice levels.
     - Prefer one-shot instructional prompts tied to phrase/section transitions over per-note spam.
     - Validate each cue against in-game audio cues and vibration patterns via playtest logs.
+    - `Dream_dating` directional swipe cues and long-countdown variants are now implemented.
 - [ ] **Dream_food.cs**: Check for specific "Shoot" vs "Jump" visual cues.
 - [ ] **Dream_tech.cs**: Check for positional cues.
-- [ ] **Dream_dating.cs**: Check for "Swipe" directions.
+- [x] **Dream_dating.cs**: Check for "Swipe" directions.
 - [ ] **General Approach**: Audit each `Dream_*.cs` file for `QueueHitWindow` calls and ensure the `hitType` (Left, Right, etc.) has a corresponding audio cue.
 
 ## 7. Future Feature Ideas

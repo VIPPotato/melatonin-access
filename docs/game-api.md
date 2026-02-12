@@ -168,6 +168,15 @@
 - `Dream_shopping` practice repeatedly uses `QueueHitWindow(4)` / `QueueHitWindow(8)` while visual/audio store patterns are presented, making it suitable for a concise "follow repeating audio pattern" instruction.
 - References: `decompiled/Dream_food.cs:114-255`, `decompiled/Dream_followers.cs:140-190`, `decompiled/Dream_followers.cs:241-390`, `decompiled/Dream_shopping.cs:115-233`.
 
+## Dream_dating Practice Cue Patterns
+- `Dream_dating` practice uses directional hit windows only (`QueueLeftHitWindow`, `QueueRightHitWindow`), so level cues should speak swipe direction rather than generic action prompts.
+- Core directional patterns:
+  - `QueueLeftHitWindow(3)` / `QueueRightHitWindow(3)` for standard countdown swipes.
+  - `QueueLeftHitWindow(6)` / `QueueRightHitWindow(6)` for longer-countdown swipes (good spot for "after long cue" phrasing).
+- Song start path:
+  - `Dream_dating.Starting()` calls `TriggerSong()` after the pre-song tutorial dialog gate, so one-time "follow swipes" prompts can safely be attached to `TriggerSong`.
+- References: `decompiled/Dream_dating.cs:16-44`, `decompiled/Dream_dating.cs:86-219`.
+
 ## Key-Rebind Collision Note
 - The game allows rebinding Action to `[` and `]` (`ControlHandler.GetStringFromKey` / rebind checks), which can conflict with mod map teleport if teleport also uses brackets.
 - References: `decompiled/ControlHandler.cs:157-163`, `decompiled/ControlHandler.cs:357-358`, `decompiled/ControlHandler.cs:458-464`.
