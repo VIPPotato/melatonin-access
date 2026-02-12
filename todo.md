@@ -97,6 +97,10 @@ Some levels might have unique mechanics requiring specific cues.
     - `Dream_dating` directional swipe cues and long-countdown variants are now implemented.
     - `Dream_tech` now uses phrase-level cues and selective rapid-double callouts instead of per-hit spam.
     - `Dream_followers` now includes a dedicated phase-3 pre-brief cue.
+- [x] **Text-File Tutorial Cue Pack (`melatonin tutorials.txt`)**
+    - Applied requested cue behavior to listed dreams only: `Dream_followers`, `Dream_dating`, `Dream_time`, `Dream_space`, `Dream_desires`, `Dream_nature`, `Dream_mind`, `Dream_past`, `Dream_future`.
+    - Added hold/release duration narration for hold-window tutorials and camera-specific duration callouts for `Dream_past`.
+    - Added `Dream_future` direction-specific cue overrides (`Press Up`, short `Left right`) and stabilized localization coverage for all newly used cue keys.
 - [ ] **Dream_food.cs**: Check for specific "Shoot" vs "Jump" visual cues.
 - [x] **Dream_tech.cs**: Replaced noisy per-hit practice cues with phrase-level guidance and rapid-double callouts.
 - [x] **Dream_dating.cs**: Check for "Swipe" directions.

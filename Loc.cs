@@ -1213,43 +1213,43 @@ namespace MelatoninAccess
                 "Pressione {0} duas vezes");
 
             Add(
-                "cue_followers_rhythm_stop",
-                "Press {0} to the rhythm. Stop on the audio cue.",
-                "跟着节奏按 {0}。听到音频提示后停止。",
-                "跟著節奏按 {0}。聽到音效提示後停止。",
-                "リズムに合わせて {0} を押します。音の合図で止めます。",
-                "리듬에 맞춰 {0}를 누르세요. 오디오 신호에서 멈추세요.",
-                "Nhan {0} theo nhip. Dung lai khi nghe tin hieu am thanh.",
-                "Appuyez sur {0} en rythme. Arretez au signal audio.",
-                "Druecke {0} im Rhythmus. Beim Audio-Signal stoppen.",
-                "Pulsa {0} al ritmo. Detente con la senal de audio.",
-                "Pressione {0} no ritmo. Pare no sinal de audio.");
+                "cue_followers_phase_one_start_stop",
+                "Press {0} to the rhythm. Start and stop after the spring sound.",
+                "跟着节奏按 {0}。在弹簧声音后开始和停止。",
+                "跟著節奏按 {0}。在彈簧聲音後開始和停止。",
+                "リズムに合わせて {0} を押す。バネ音の後で開始と停止。",
+                "리듬에 맞춰 {0}를 누르세요. 스프링 소리 후 시작하고 멈추세요.",
+                "Nhan {0} theo nhip. Bat dau va dung lai sau am thanh lo xo.",
+                "Appuyez sur {0} en rythme. Commencez et arretez apres le son du ressort.",
+                "Druecke {0} im Rhythmus. Nach dem Federgeraeusch starten und stoppen.",
+                "Pulsa {0} al ritmo. Empieza y detente despues del sonido del resorte.",
+                "Pressione {0} no ritmo. Comece e pare apos o som da mola.");
 
             Add(
-                "cue_followers_vibration_next_beat",
-                "After the audio cue and vibration, press {0} on the next beat.",
-                "在音频提示和震动后，于下一拍按 {0}。",
-                "在音訊提示和震動後，於下一拍按 {0}。",
-                "音の合図と振動の後、次の拍で {0} を押す。",
-                "오디오 신호와 진동 후 다음 박자에 {0}를 누르세요.",
-                "Sau tin hieu am thanh va rung, nhan {0} o nhip tiep theo.",
-                "Apres le signal audio et la vibration, appuyez sur {0} au temps suivant.",
-                "Nach Audio-Signal und Vibration {0} beim naechsten Schlag druecken.",
-                "Despues de la senal de audio y vibracion, pulsa {0} en el siguiente pulso.",
-                "Apos o sinal de audio e a vibracao, pressione {0} no proximo tempo.");
+                "cue_followers_phase_two_resume_after_vibration",
+                "Stop after the jump sound. Continue after vibration.",
+                "在跳跃声音后停止。在震动后继续。",
+                "在跳躍聲音後停止。在震動後繼續。",
+                "ジャンプ音の後で止まる。振動の後で再開。",
+                "점프 소리 후 멈추고 진동 후 다시 계속하세요.",
+                "Dung lai sau am thanh nhay. Tiep tuc sau rung.",
+                "Arretez apres le son du saut. Reprenez apres la vibration.",
+                "Nach dem Sprunggeraeusch stoppen. Nach der Vibration weitermachen.",
+                "Detente despues del sonido de salto. Continua despues de la vibracion.",
+                "Pare apos o som do salto. Continue apos a vibracao.");
 
             Add(
-                "cue_followers_third_phase_double_after_vibration",
-                "Press {0} to the beat. Press twice after vibration.",
-                "跟着节奏按 {0}。震动后按两次。",
-                "跟著節奏按 {0}。震動後按兩次。",
-                "リズムに合わせて {0}。振動の後に2回押す。",
-                "리듬에 맞춰 {0}를 누르세요. 진동 후 두 번 누르세요.",
-                "Nhan {0} theo nhip. Nhan hai lan sau rung.",
-                "Appuyez sur {0} en rythme. Appuyez deux fois apres la vibration.",
-                "Druecke {0} im Rhythmus. Nach der Vibration zweimal druecken.",
-                "Pulsa {0} al ritmo. Pulsa dos veces despues de la vibracion.",
-                "Pressione {0} no ritmo. Pressione duas vezes apos a vibracao.");
+                "cue_followers_phase_three_press_thrice",
+                "Press {0} three times after double vibration.",
+                "双震动后按 {0} 三次。",
+                "雙震動後按 {0} 三次。",
+                "二重振動の後で {0} を3回押す。",
+                "이중 진동 후 {0}를 세 번 누르세요.",
+                "Nhan {0} ba lan sau rung doi.",
+                "Appuyez sur {0} trois fois apres la double vibration.",
+                "Nach doppelter Vibration {0} dreimal druecken.",
+                "Pulsa {0} tres veces despues de la doble vibracion.",
+                "Pressione {0} tres vezes apos a vibracao dupla.");
 
             Add(
                 "cue_tech_every_two_beats",
@@ -1276,6 +1276,136 @@ namespace MelatoninAccess
                 "Druecke {0} in den naechsten 3 Schlaegen.",
                 "Pulsa {0} en los proximos 3 pulsos.",
                 "Pressione {0} nos proximos 3 tempos.");
+
+            Add(
+                "cue_nature_water_press_thrice",
+                "Press {0} three times.",
+                "按 {0} 三次。",
+                "按 {0} 三次。",
+                "{0} を3回押す。",
+                "{0}를 세 번 누르세요.",
+                "Nhan {0} ba lan.",
+                "Appuyez sur {0} trois fois.",
+                "{0} dreimal druecken.",
+                "Pulsa {0} tres veces.",
+                "Pressione {0} tres vezes.");
+
+            Add(
+                "cue_mind_triple_offbeat",
+                "Press {0} three times on the off-beat cue.",
+                "在切分拍提示时按 {0} 三次。",
+                "在切分拍提示時按 {0} 三次。",
+                "オフビートの合図で {0} を3回押す。",
+                "엇박자 신호에 {0}를 세 번 누르세요.",
+                "Nhan {0} ba lan theo tin hieu lech nhip.",
+                "Appuyez sur {0} trois fois sur le repere contretemps.",
+                "{0} beim Offbeat-Signal dreimal druecken.",
+                "Pulsa {0} tres veces con la senal de contratiempo.",
+                "Pressione {0} tres vezes no sinal de contratempo.");
+
+            Add(
+                "cue_press_up",
+                "Press Up",
+                "按上方向",
+                "按上方向",
+                "上を押す",
+                "위를 누르기",
+                "Nhan Len",
+                "Appuyer sur Haut",
+                "Nach oben druecken",
+                "Pulsa Arriba",
+                "Pressione Cima");
+
+            Add(
+                "cue_hold_release_duration",
+                "Hold {0}. Release after {1}.",
+                "按住 {0}。在 {1} 后松开。",
+                "按住 {0}。在 {1} 後鬆開。",
+                "{0} を長押し。{1} 後に離す。",
+                "{0}를 길게 누르고 {1} 후에 떼세요.",
+                "Giu {0}. Tha sau {1}.",
+                "Maintenez {0}. Relachez apres {1}.",
+                "{0} halten. Nach {1} loslassen.",
+                "Mantener {0}. Soltar despues de {1}.",
+                "Segure {0}. Solte apos {1}.");
+
+            Add(
+                "duration_half_beat",
+                "half a beat",
+                "半拍",
+                "半拍",
+                "半拍",
+                "반 박자",
+                "nua nhip",
+                "un demi-temps",
+                "einem halben Schlag",
+                "medio pulso",
+                "meio tempo");
+
+            Add(
+                "duration_one_beat",
+                "1 beat",
+                "1拍",
+                "1拍",
+                "1拍",
+                "1박자",
+                "1 nhip",
+                "1 temps",
+                "1 Schlag",
+                "1 pulso",
+                "1 tempo");
+
+            Add(
+                "duration_n_beats",
+                "{0} beats",
+                "{0}拍",
+                "{0}拍",
+                "{0}拍",
+                "{0}박자",
+                "{0} nhip",
+                "{0} temps",
+                "{0} Schlaege",
+                "{0} pulsos",
+                "{0} tempos");
+
+            Add(
+                "cue_past_camera_first_sound",
+                "First camera sound. Hold {0} for 1 beat.",
+                "第一个相机声音。按住 {0} 1拍。",
+                "第一個相機聲音。按住 {0} 1拍。",
+                "最初のカメラ音。{0} を1拍長押し。",
+                "첫 번째 카메라 소리. {0}를 1박자 길게 누르세요.",
+                "Am may anh dau tien. Giu {0} 1 nhip.",
+                "Premier son d'appareil photo. Maintenez {0} pendant 1 temps.",
+                "Erstes Kamerageraeusch. {0} 1 Schlag halten.",
+                "Primer sonido de camara. Mantener {0} por 1 pulso.",
+                "Primeiro som de camera. Segure {0} por 1 tempo.");
+
+            Add(
+                "cue_past_camera_second_sound",
+                "Second camera sound. Hold {0} for half a beat.",
+                "第二个相机声音。按住 {0} 半拍。",
+                "第二個相機聲音。按住 {0} 半拍。",
+                "2つ目のカメラ音。{0} を半拍長押し。",
+                "두 번째 카메라 소리. {0}를 반 박자 길게 누르세요.",
+                "Am may anh thu hai. Giu {0} nua nhip.",
+                "Deuxieme son d'appareil photo. Maintenez {0} pendant un demi-temps.",
+                "Zweites Kamerageraeusch. {0} einen halben Schlag halten.",
+                "Segundo sonido de camara. Mantener {0} medio pulso.",
+                "Segundo som de camera. Segure {0} por meio tempo.");
+
+            Add(
+                "cue_past_camera_third_sound",
+                "Third camera sound. Hold {0} for 2 beats.",
+                "第三个相机声音。按住 {0} 2拍。",
+                "第三個相機聲音。按住 {0} 2拍。",
+                "3つ目のカメラ音。{0} を2拍長押し。",
+                "세 번째 카메라 소리. {0}를 2박자 길게 누르세요.",
+                "Am may anh thu ba. Giu {0} 2 nhip.",
+                "Troisieme son d'appareil photo. Maintenez {0} pendant 2 temps.",
+                "Drittes Kamerageraeusch. {0} 2 Schlaege halten.",
+                "Tercer sonido de camara. Mantener {0} por 2 pulsos.",
+                "Terceiro som de camera. Segure {0} por 2 tempos.");
 
             Add(
                 "cue_tutorial_press_second_beat",
@@ -1344,42 +1474,42 @@ namespace MelatoninAccess
 
             Add(
                 "cue_dating_follow_swipes",
-                "Swipe left or right on the cue.",
-                "按提示向左或向右滑动。",
-                "按提示向左或向右滑動。",
-                "合図に合わせて左または右にスワイプします。",
-                "신호에 맞춰 왼쪽 또는 오른쪽으로 스와이프하세요.",
-                "Vuot trai hoac phai theo tin hieu.",
-                "Glissez a gauche ou a droite selon le signal.",
-                "Wische beim Signal nach links oder rechts.",
-                "Desliza a la izquierda o derecha con la senal.",
-                "Deslize para a esquerda ou direita no sinal.");
+                "Swipe left or right on the cue at the fourth beat.",
+                "在第4拍按提示向左或向右滑动。",
+                "在第4拍按提示向左或向右滑動。",
+                "4拍目の合図で左または右にスワイプ。",
+                "4번째 박자 신호에서 왼쪽 또는 오른쪽으로 스와이프하세요.",
+                "Vuot trai hoac phai theo tin hieu o nhip thu 4.",
+                "Glissez a gauche ou a droite au quatrieme temps.",
+                "Wische beim Signal auf dem vierten Schlag nach links oder rechts.",
+                "Desliza a la izquierda o derecha en el cuarto pulso.",
+                "Deslize para a esquerda ou direita no quarto tempo.");
 
             Add(
                 "cue_swipe_left",
-                "Swipe left",
-                "向左滑动",
-                "向左滑動",
-                "左にスワイプ",
-                "왼쪽으로 스와이프",
-                "Vuot trai",
-                "Glisser a gauche",
-                "Nach links wischen",
-                "Desliza a la izquierda",
-                "Deslize para a esquerda");
+                "Swipe left on the fourth beat.",
+                "在第4拍向左滑动。",
+                "在第4拍向左滑動。",
+                "4拍目で左にスワイプ。",
+                "4번째 박자에 왼쪽으로 스와이프.",
+                "Vuot trai o nhip thu 4.",
+                "Glisser a gauche au quatrieme temps.",
+                "Beim vierten Schlag nach links wischen.",
+                "Desliza a la izquierda en el cuarto pulso.",
+                "Deslize para a esquerda no quarto tempo.");
 
             Add(
                 "cue_swipe_right",
-                "Swipe right",
-                "向右滑动",
-                "向右滑動",
-                "右にスワイプ",
-                "오른쪽으로 스와이프",
-                "Vuot phai",
-                "Glisser a droite",
-                "Nach rechts wischen",
-                "Desliza a la derecha",
-                "Deslize para a direita");
+                "Swipe right on the fourth beat.",
+                "在第4拍向右滑动。",
+                "在第4拍向右滑動。",
+                "4拍目で右にスワイプ。",
+                "4번째 박자에 오른쪽으로 스와이프.",
+                "Vuot phai o nhip thu 4.",
+                "Glisser a droite au quatrieme temps.",
+                "Beim vierten Schlag nach rechts wischen.",
+                "Desliza a la derecha en el cuarto pulso.",
+                "Deslize para a direita no quarto tempo.");
 
             Add(
                 "cue_swipe_left_long",
@@ -1835,6 +1965,19 @@ namespace MelatoninAccess
                 "Beide",
                 "Ambos",
                 "Ambos");
+
+            Add(
+                "cue_left_right_short",
+                "Left right",
+                "左右",
+                "左右",
+                "左右",
+                "좌우",
+                "Trai phai",
+                "Gauche droite",
+                "Links rechts",
+                "Izquierda derecha",
+                "Izquierda derecha");
 
             Add(
                 "cue_hold",
