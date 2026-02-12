@@ -339,7 +339,12 @@ namespace MelatoninAccess
             string actionPrompt = GetActionPrompt();
             if ((string.Equals(sceneName, "Dream_space", StringComparison.OrdinalIgnoreCase) ||
                  string.Equals(sceneName, "Dream_desires", StringComparison.OrdinalIgnoreCase)) &&
-                TryAnnounceReleaseBeatCue(actionPrompt, numBeatsTilRelease, isHalfBeatAddedToRelease))
+                TryAnnounceReleaseBeatCue(
+                    actionPrompt,
+                    numBeatsTilHold,
+                    numBeatsTilRelease,
+                    isHalfBeatAddedToHold,
+                    isHalfBeatAddedToRelease))
             {
                 return true;
             }
@@ -395,11 +400,20 @@ namespace MelatoninAccess
             return false;
         }
 
-        private static bool TryAnnounceReleaseBeatCue(string actionPrompt, int numBeatsTilRelease, bool isHalfBeatAddedToRelease)
+        private static bool TryAnnounceReleaseBeatCue(
+            string actionPrompt,
+            int numBeatsTilHold,
+            int numBeatsTilRelease,
+            bool isHalfBeatAddedToHold,
+            bool isHalfBeatAddedToRelease)
         {
-            if (numBeatsTilRelease <= 0 || isHalfBeatAddedToRelease) return false;
+            double holdMoment = numBeatsTilHold + (isHalfBeatAddedToHold ? 0.5d : 0d);
+            double releaseMoment = numBeatsTilRelease + (isHalfBeatAddedToRelease ? 0.5d : 0d);
+            double releaseBeat = releaseMoment - holdMoment + 1d;
+            if (releaseBeat < 1d) return false;
 
-            ScreenReader.Say(Loc.Get("cue_hold_release_on_beat", actionPrompt, numBeatsTilRelease), true);
+            int beatNumber = Math.Max(1, (int)Math.Round(releaseBeat));
+            ScreenReader.Say(Loc.Get("cue_hold_release_on_beat", actionPrompt, beatNumber), true);
             return true;
         }
 
