@@ -139,7 +139,7 @@ namespace MelatoninAccess
             {
                 bool enabled = ModConfig.ToggleRhythmCues();
                 ScreenReader.Say(enabled ? Loc.Get("rhythm_cues_enabled") : Loc.Get("rhythm_cues_disabled"), true);
-                MelonLogger.Msg($"Rhythm cue announcements {(enabled ? "enabled" : "disabled")}.");
+                MelonLogger.Msg($"Contextual tutorial cues {(enabled ? "enabled" : "disabled")}.");
             }
 
             bool menuPositionTogglePressed =

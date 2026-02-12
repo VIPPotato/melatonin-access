@@ -277,7 +277,13 @@ namespace MelatoninAccess
                 if (ModConfig.AnnounceMapHotspots)
                 {
                     string starKey = stars == 1 ? "teleport_arrived_one_star" : "teleport_arrived_stars";
-                    ScreenReader.Say(Loc.Get(starKey, name, stars), true);
+                    string line = Loc.Get(starKey, name, stars);
+                    if (IsLockedRemixLandmark(target))
+                    {
+                        line = $"{line} {Loc.Get("locked_requires_two_stars_each_dream")}";
+                    }
+
+                    ScreenReader.Say(line, true);
                 }
 
                 MelonCoroutines.Start(ResetTeleportFlag());
@@ -309,6 +315,15 @@ namespace MelatoninAccess
 
             string dreamName = landmark.dreamName.Trim();
             return AccessTools.TypeByName("Dream_" + dreamName) != null;
+        }
+
+        private static bool IsLockedRemixLandmark(Landmark landmark)
+        {
+            if (landmark == null) return false;
+
+            bool isRemix = Traverse.Create(landmark).Field("isRemix").GetValue<bool>();
+            bool isDisabled = Traverse.Create(landmark).Field("isDisabled").GetValue<bool>();
+            return isRemix && isDisabled;
         }
 
         private static string FormatDreamName(string rawName)

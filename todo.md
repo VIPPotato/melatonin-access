@@ -25,6 +25,12 @@ This document outlines the roadmap for making Melatonin 100% accessible to total
 - [x] **Tech/Followers Cue Timing Refinement**
   - Dream tech practice now uses phase-level prompts instead of repeating per-hit "Press {Action}" lines.
   - Dream followers phase-3 briefing now plays 2 beats before the section starts.
+- [x] **v1.1 Cue Refinement Pass**
+  - Followers phase-3 "press three times after double vibration" cue moved later to land after spring-stop transition.
+  - Past camera tutorial hints simplified to plain hold-duration lines and limited to one-shot-per-duration (no repeated spam).
+  - Space/Desires hold windows now use release-beat phrasing (for example `release on beat 4/2/7` and `release on beat 9`).
+  - Future tutorial now announces a one-time "follow patterns" primer at song start and uses short `Up` wording for up-lane cues.
+  - Map teleport arrival now appends a remix-lock requirement line for locked final/remix landmarks in one utterance.
 - [ ] **Calibration Feedback Accuracy Validation**
   - Keep current early/late ms narration and validate timing feel with additional playtests.
 

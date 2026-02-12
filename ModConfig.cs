@@ -22,7 +22,7 @@ namespace MelatoninAccess
         public static bool AnnounceMapHotspots => _announceMapHotspots == null || _announceMapHotspots.Value;
 
         /// <summary>
-        /// Whether gameplay rhythm cue prompts are spoken.
+        /// Whether contextual tutorial/gameplay cue prompts are spoken.
         /// </summary>
         public static bool AnnounceRhythmCues => _announceRhythmCues == null || _announceRhythmCues.Value;
 
@@ -63,7 +63,7 @@ namespace MelatoninAccess
             _announceRhythmCues = _category.CreateEntry(
                 "AnnounceRhythmCues",
                 true,
-                description: "Speak gameplay rhythm cues (Space/Left/Right/Both/Hold).");
+                description: "Speak contextual tutorial/gameplay cues (including action, direction, hold/release guidance).");
 
             _announceMenuPositions = _category.CreateEntry(
                 "AnnounceMenuPositions",

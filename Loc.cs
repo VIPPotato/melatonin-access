@@ -200,29 +200,29 @@ namespace MelatoninAccess
 
             Add(
                 "rhythm_cues_enabled",
-                "Rhythm cue announcements enabled.",
-                "节奏提示播报已启用。",
-                "節奏提示播報已啟用。",
-                "リズムキューの読み上げを有効にしました。",
-                "리듬 큐 안내를 켰습니다.",
-                "Da bat thong bao nhac nhip.",
-                "Annonces des reperes rythmiques activees.",
-                "Rhythmus-Hinweise aktiviert.",
-                "Anuncios de ritmos activados.",
-                "Anuncios de ritmo ativados.");
+                "Contextual tutorial cues enabled.",
+                "上下文教程提示已启用。",
+                "上下文教學提示已啟用。",
+                "文脈チュートリアルキューを有効にしました。",
+                "상황별 튜토리얼 큐를 켰습니다.",
+                "Da bat goi y huong dan theo ngu canh.",
+                "Repères contextuels de tutoriel actives.",
+                "Kontextbezogene Tutorial-Hinweise aktiviert.",
+                "Indicaciones contextuales de tutorial activadas.",
+                "Dicas contextuais de tutorial ativadas.");
 
             Add(
                 "rhythm_cues_disabled",
-                "Rhythm cue announcements disabled.",
-                "节奏提示播报已禁用。",
-                "節奏提示播報已停用。",
-                "リズムキューの読み上げを無効にしました。",
-                "리듬 큐 안내를 껐습니다.",
-                "Da tat thong bao nhac nhip.",
-                "Annonces des reperes rythmiques desactivees.",
-                "Rhythmus-Hinweise deaktiviert.",
-                "Anuncios de ritmos desactivados.",
-                "Anuncios de ritmo desativados.");
+                "Contextual tutorial cues disabled.",
+                "上下文教程提示已禁用。",
+                "上下文教學提示已停用。",
+                "文脈チュートリアルキューを無効にしました。",
+                "상황별 튜토리얼 큐를 껐습니다.",
+                "Da tat goi y huong dan theo ngu canh.",
+                "Repères contextuels de tutoriel desactives.",
+                "Kontextbezogene Tutorial-Hinweise deaktiviert.",
+                "Indicaciones contextuales de tutorial desactivadas.",
+                "Dicas contextuais de tutorial desativadas.");
 
             Add(
                 "menu_positions_enabled",
@@ -1305,16 +1305,16 @@ namespace MelatoninAccess
 
             Add(
                 "cue_press_up",
-                "Press Up",
-                "按上方向",
-                "按上方向",
-                "上を押す",
-                "위를 누르기",
-                "Nhan Len",
-                "Appuyer sur Haut",
-                "Nach oben druecken",
-                "Pulsa Arriba",
-                "Pressione Cima");
+                "Up",
+                "上",
+                "上",
+                "上",
+                "위",
+                "Len",
+                "Haut",
+                "Hoch",
+                "Arriba",
+                "Cima");
 
             Add(
                 "cue_hold_release_duration",
@@ -1328,6 +1328,19 @@ namespace MelatoninAccess
                 "{0} halten. Nach {1} loslassen.",
                 "Mantener {0}. Soltar despues de {1}.",
                 "Segure {0}. Solte apos {1}.");
+
+            Add(
+                "cue_hold_release_on_beat",
+                "Hold {0}. Release on beat {1}.",
+                "按住 {0}。在第 {1} 拍松开。",
+                "按住 {0}。在第 {1} 拍鬆開。",
+                "{0} を長押し。{1}拍目で離す。",
+                "{0}를 길게 누르고 {1}박자에 떼세요.",
+                "Giu {0}. Tha o nhip {1}.",
+                "Maintenez {0}. Relachez au temps {1}.",
+                "{0} halten. Bei Schlag {1} loslassen.",
+                "Mantener {0}. Soltar en el pulso {1}.",
+                "Segure {0}. Solte no tempo {1}.");
 
             Add(
                 "duration_half_beat",
@@ -1370,42 +1383,42 @@ namespace MelatoninAccess
 
             Add(
                 "cue_past_camera_first_sound",
-                "First camera sound. Hold {0} for 1 beat.",
-                "第一个相机声音。按住 {0} 1拍。",
-                "第一個相機聲音。按住 {0} 1拍。",
-                "最初のカメラ音。{0} を1拍長押し。",
-                "첫 번째 카메라 소리. {0}를 1박자 길게 누르세요.",
-                "Am may anh dau tien. Giu {0} 1 nhip.",
-                "Premier son d'appareil photo. Maintenez {0} pendant 1 temps.",
-                "Erstes Kamerageraeusch. {0} 1 Schlag halten.",
-                "Primer sonido de camara. Mantener {0} por 1 pulso.",
-                "Primeiro som de camera. Segure {0} por 1 tempo.");
+                "Hold {0} for 1 beat.",
+                "按住 {0} 1拍。",
+                "按住 {0} 1拍。",
+                "{0} を1拍長押し。",
+                "{0}를 1박자 길게 누르세요.",
+                "Giu {0} 1 nhip.",
+                "Maintenez {0} pendant 1 temps.",
+                "{0} 1 Schlag halten.",
+                "Mantener {0} por 1 pulso.",
+                "Segure {0} por 1 tempo.");
 
             Add(
                 "cue_past_camera_second_sound",
-                "Second camera sound. Hold {0} for half a beat.",
-                "第二个相机声音。按住 {0} 半拍。",
-                "第二個相機聲音。按住 {0} 半拍。",
-                "2つ目のカメラ音。{0} を半拍長押し。",
-                "두 번째 카메라 소리. {0}를 반 박자 길게 누르세요.",
-                "Am may anh thu hai. Giu {0} nua nhip.",
-                "Deuxieme son d'appareil photo. Maintenez {0} pendant un demi-temps.",
-                "Zweites Kamerageraeusch. {0} einen halben Schlag halten.",
-                "Segundo sonido de camara. Mantener {0} medio pulso.",
-                "Segundo som de camera. Segure {0} por meio tempo.");
+                "Hold {0} for half a beat.",
+                "按住 {0} 半拍。",
+                "按住 {0} 半拍。",
+                "{0} を半拍長押し。",
+                "{0}를 반 박자 길게 누르세요.",
+                "Giu {0} nua nhip.",
+                "Maintenez {0} pendant un demi-temps.",
+                "{0} einen halben Schlag halten.",
+                "Mantener {0} medio pulso.",
+                "Segure {0} por meio tempo.");
 
             Add(
                 "cue_past_camera_third_sound",
-                "Third camera sound. Hold {0} for 2 beats.",
-                "第三个相机声音。按住 {0} 2拍。",
-                "第三個相機聲音。按住 {0} 2拍。",
-                "3つ目のカメラ音。{0} を2拍長押し。",
-                "세 번째 카메라 소리. {0}를 2박자 길게 누르세요.",
-                "Am may anh thu ba. Giu {0} 2 nhip.",
-                "Troisieme son d'appareil photo. Maintenez {0} pendant 2 temps.",
-                "Drittes Kamerageraeusch. {0} 2 Schlaege halten.",
-                "Tercer sonido de camara. Mantener {0} por 2 pulsos.",
-                "Terceiro som de camera. Segure {0} por 2 tempos.");
+                "Hold {0} for 2 beats.",
+                "按住 {0} 2拍。",
+                "按住 {0} 2拍。",
+                "{0} を2拍長押し。",
+                "{0}를 2박자 길게 누르세요.",
+                "Giu {0} 2 nhip.",
+                "Maintenez {0} pendant 2 temps.",
+                "{0} 2 Schlaege halten.",
+                "Mantener {0} por 2 pulsos.",
+                "Segure {0} por 2 tempos.");
 
             Add(
                 "cue_tutorial_press_second_beat",
@@ -1484,6 +1497,19 @@ namespace MelatoninAccess
                 "Wische beim Signal auf dem vierten Schlag nach links oder rechts.",
                 "Desliza a la izquierda o derecha en el cuarto pulso.",
                 "Deslize para a esquerda ou direita no quarto tempo.");
+
+            Add(
+                "cue_future_follow_patterns",
+                "Follow the pattern cues.",
+                "跟随图案提示。",
+                "跟隨圖案提示。",
+                "パターンの合図に従う。",
+                "패턴 신호를 따라가세요.",
+                "Lam theo cac tin hieu mau.",
+                "Suivez les reperes de motif.",
+                "Folge den Muster-Hinweisen.",
+                "Sigue las senales de patron.",
+                "Siga os sinais de padrao.");
 
             Add(
                 "cue_swipe_left",
@@ -2069,6 +2095,19 @@ namespace MelatoninAccess
                 "Gesperrt. 2 Sterne und Vollversion erforderlich.",
                 "Bloqueado. Requiere 2 estrellas y juego completo.",
                 "Bloqueado. Requer 2 estrelas e o jogo completo.");
+
+            Add(
+                "locked_requires_two_stars_each_dream",
+                "Locked. Get at least 2 stars in each dream on this night to pass.",
+                "已锁定。本夜每个梦境至少获得 2 颗星才能通过。",
+                "已鎖定。本夜每個夢境至少獲得 2 顆星才能通過。",
+                "ロック中。この夜の各夢で少なくとも2つ星を獲得すると解放されます。",
+                "잠김. 이 밤의 각 꿈에서 별 2개 이상을 얻어야 통과할 수 있습니다.",
+                "Bi khoa. Dat it nhat 2 sao o moi giac mo trong dem nay de vuot qua.",
+                "Verrouille. Obtenez au moins 2 etoiles dans chaque reve de cette nuit pour valider.",
+                "Gesperrt. Hole in jedem Traum dieser Nacht mindestens 2 Sterne, um zu bestehen.",
+                "Bloqueado. Consigue al menos 2 estrellas en cada sueno de esta noche para completar.",
+                "Bloqueado. Consiga pelo menos 2 estrelas em cada sonho desta noite para passar.");
         }
     }
 }
