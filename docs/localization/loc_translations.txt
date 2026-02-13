@@ -1,0 +1,154 @@
+mod_loaded	Mod Melatonin Access charge.	Melatonin Access Mod geladen.	Mod Melatonin Access cargado.	Mod Melatonin Access carregado.
+mod_active_help	Melatonin Access est actif. Utilisez les fleches pour naviguer dans les menus.	Melatonin Access ist aktiv. Nutze die Pfeiltasten zur Menunavigation.	Melatonin Access esta activo. Usa las flechas para navegar por los menus.	Melatonin Access esta ativo. Use as setas para navegar nos menus.
+debug_enabled	Mode debug active.	Debug-Modus aktiviert.	Modo depuracion activado.	Modo de depuracao ativado.
+debug_disabled	Mode debug desactive.	Debug-Modus deaktiviert.	Modo depuracion desactivado.	Modo de depuracao desativado.
+rhythm_cues_enabled	Repères contextuels de tutoriel actives.	Kontextbezogene Tutorial-Hinweise aktiviert.	Indicaciones contextuales de tutorial activadas.	Dicas contextuais de tutorial ativadas.
+rhythm_cues_disabled	Repères contextuels de tutoriel desactives.	Kontextbezogene Tutorial-Hinweise deaktiviert.	Indicaciones contextuales de tutorial desactivadas.	Dicas contextuais de tutorial desativadas.
+menu_positions_enabled	Annonces de position de menu activees.	Menuepositionsansagen aktiviert.	Anuncios de posicion de menu activados.	Anuncios de posicao de menu ativados.
+menu_positions_disabled	Annonces de position de menu desactivees.	Menuepositionsansagen deaktiviert.	Anuncios de posicion de menu desactivados.	Anuncios de posicao de menu desativados.
+intro_welcome	Appuyez sur {0} pour commencer. Appuyez sur {1} pour changer la langue.	Drucke {0} zum Starten. Drucke {1}, um die Sprache zu aendern.	Pulsa {0} para comenzar. Pulsa {1} para cambiar el idioma.	Pressione {0} para iniciar. Pressione {1} para alterar o idioma.
+language_selected	Langue selectionnee.	Sprache ausgewahlt.	Idioma seleccionado.	Idioma selecionado.
+language_menu	Menu langue	Sprachmenu	Menu de idioma	Menu de idioma
+credits_title	Generique	Credits	Creditos	Creditos
+menu_suffix	Menu {0}	{0} Menu	Menu {0}	Menu {0}
+order_of	{0} sur {1}	{0} von {1}	{0} de {1}	{0} de {1}
+chapter_locked	Chapitre {0} verrouille	Kapitel {0} gesperrt	Capitulo {0} bloqueado	Capitulo {0} bloqueado
+option_with_slider	{0} curseur {1}	{0} Regler {1}	{0} deslizador {1}	{0} controle deslizante {1}
+slider_value	Curseur {0}	Regler {0}	Deslizador {0}	Controle deslizante {0}
+action_key_current_binding	{0}, actuellement assigne a {1}.	{0}, derzeit auf {1} gebunden.	{0}, actualmente asignado a {1}.	{0}, atualmente vinculado a {1}.
+state_on	Active	Ein	Activado	Ligado
+state_off	Desactive	Aus	Desactivado	Desligado
+fullscreen	Plein ecran	Vollbild	Pantalla completa	Tela cheia
+windowed	Fenetre	Fenstermodus	Ventana	Janela
+calibration_tool_intro	Outil de calibration. Ajustez le decalage pour correspondre au rythme.	Kalibrierungswerkzeug. Passe den Offset an den Beat an.	Herramienta de calibracion. Ajusta el desfase para coincidir con el ritmo.	Ferramenta de calibracao. Ajuste o deslocamento para combinar com a batida.
+calibration_offset	Decalage {0}	Offset {0}	Desfase {0}	Deslocamento {0}
+calibration_timing_on_time	Au bon moment.	Im Takt.	A tiempo.	No tempo.
+calibration_timing_early_ms	En avance de {0} ms.	{0} ms zu frueh.	Temprano por {0} ms.	Adiantado em {0} ms.
+calibration_timing_late_ms	En retard de {0} ms.	{0} ms zu spaet.	Tarde por {0} ms.	Atrasado em {0} ms.
+downloaded_levels_loading	Niveaux telecharges. Chargement...	Heruntergeladene Level. Laden...	Niveles descargados. Cargando...	Niveis baixados. Carregando...
+downloaded_levels_page_total	{0} niveaux au total. Page {1} sur {2}	{0} Level insgesamt. Seite {1} von {2}	{0} niveles en total. Pagina {1} de {2}	{0} niveis no total. Pagina {1} de {2}
+downloaded_levels_total	{0} niveaux au total.	{0} Level insgesamt.	{0} niveles en total.	{0} niveis no total.
+next_page	Page suivante	Nachte Seite	Pagina siguiente	Proxima pagina
+previous_page	Page precedente	Vorherige Seite	Pagina anterior	Pagina anterior
+page_of	Page {0} sur {1}	Seite {0} von {1}	Pagina {0} de {1}	Pagina {0} de {1}
+item_of	{0}, element {1} sur {2}	{0}, Eintrag {1} von {2}	{0}, elemento {1} de {2}	{0}, item {1} de {2}
+achievements_menu	Menu des succes	Erfolge-Menue	Menu de logros	Menu de conquistas
+locked_achievement	Succes verrouille. {0} sur {1}	Gesperrter Erfolg. {0} von {1}	Logro bloqueado. {0} de {1}	Conquista bloqueada. {0} de {1}
+locked_achievement_plain	Succes verrouille.	Gesperrter Erfolg.	Logro bloqueado.	Conquista bloqueada.
+achievement_with_desc	{0} : {1}. {2} sur {3}	{0}: {1}. {2} von {3}	{0}: {1}. {2} de {3}	{0}: {1}. {2} de {3}
+achievement_with_desc_plain	{0} : {1}.	{0}: {1}.	{0}: {1}.	{0}: {1}.
+arrived_at	Arrive a {0}	Angekommen bei {0}	Llegaste a {0}	Chegou em {0}
+mode_menu	Menu de mode	Modus-Menue	Menu de modo	Menu de modo
+dream_about_level	Reve de {0}	Traum ueber {0}	Sueno sobre {0}	Sonho sobre {0}
+teleport_arrived_stars	{0}. {1} etoiles.	{0}. {1} Sterne.	{0}. {1} estrellas.	{0}. {1} estrelas.
+teleport_arrived_one_star	{0}. {1} etoile.	{0}. {1} Stern.	{0}. {1} estrella.	{0}. {1} estrela.
+map_progress_status	Etoiles de la carte : {0}. Il en faut encore {1} pour valider.	Kartensterne: {0}. Noch {1} zum Bestehen noetig.	Estrellas del mapa: {0}. Faltan {1} para completar.	Estrelas do mapa: {0}. Faltam {1} para passar.
+teleport_conflict_hint	La teleportation avec crochets est desactivee car l'action est assignee aux crochets. Utilisez F9 et F10.	Klammer-Teleport ist deaktiviert, weil Aktion auf Klammern gebunden ist. Nutze F9 und F10.	La teletransportacion con corchetes esta desactivada porque Accion usa corchetes. Usa F9 y F10.	O teleporte com colchetes foi desativado porque a Acao esta vinculada a colchetes. Use F9 e F10.
+unknown_level	Niveau inconnu	Unbekanntes Level	Nivel desconocido	Nivel desconhecido
+dream_name_career	Carriere	Karriere	Carrera	Carreira
+dream_name_dating	Rendez-vous	Dating	Citas	Encontros
+dream_name_desires	Desirs	Wuensche	Deseos	Desejos
+dream_name_exercise	Exercice	Training	Ejercicio	Exercicio
+dream_name_final	Final	Finale	Final	Final
+dream_name_followers	Abonnes	Follower	Seguidores	Seguidores
+dream_name_food	Nourriture	Essen	Comida	Comida
+dream_name_future	Futur	Zukunft	Futuro	Futuro
+dream_name_indulgence	Indulgence	Genuss	Indulgencia	Indulgencia
+dream_name_meditation	Meditation	Meditation	Meditación	Meditacao
+dream_name_mind	Esprit	Geist	Mente	Mente
+dream_name_money	Argent	Geld	Dinero	Dinheiro
+dream_name_nature	Nature	Natur	Naturaleza	Natureza
+dream_name_past	Passe	Vergangenheit	Pasado	Passado
+dream_name_pressure	Pression	Druck	Presión	Pressao
+dream_name_setbacks	Revers	Rueckschlaege	Reveses	Contratempos
+dream_name_shopping	Shopping	Einkaufen	Compras	Compras
+dream_name_space	Espace	Weltraum	Espacio	Espaco
+dream_name_stress	Stress	Stress	Estrés	Estresse
+dream_name_tech	Technologie	Technik	Tecnología	Tecnologia
+dream_name_time	Temps	Zeit	Tiempo	Tempo
+dream_name_tutorial	Tutoriel	Tutorial	Tutorial	Tutorial
+editor_cursor_empty	Phrase {0}, mesure {1}, temps {2}. Vide.	Phrase {0}, Takt {1}, Schlag {2}. Leer.	Frase {0}, compas {1}, tiempo {2}. Vacio.	Frase {0}, compasso {1}, batida {2}. Vazio.
+editor_cursor_content	Phrase {0}, mesure {1}, temps {2}. {3}.	Phrase {0}, Takt {1}, Schlag {2}. {3}.	Frase {0}, compas {1}, tiempo {2}. {3}.	Frase {0}, compasso {1}, batida {2}. {3}.
+editor_placed	{0} place	{0} platziert	Colocado {0}	Colocado {0}
+editor_removed	Supprime	Entfernt	Eliminado	Removido
+editor_tool_select	Selection d'outil	Werkzeugauswahl	Seleccion de herramienta	Selecao de ferramenta
+advanced_menu	Menu avance	Erweitertes Menue	Menu avanzado	Menu avancado
+editor_ready	Editeur de niveau pret	Level-Editor bereit	Editor de niveles listo	Editor de nivel pronto
+editor_page	Page {0}	Seite {0}	Pagina {0}	Pagina {0}
+tutorial_skip_prompt	Tutoriel. Appuyez sur {0} pour passer.	Tutorial. Drucke {0}, um zu ueberspringen.	Tutorial. Pulsa {0} para omitir.	Tutorial. Pressione {0} para pular.
+tutorial_label	Tutoriel.	Tutorial.	Tutorial.	Tutorial.
+cue_space	Espace	Leertaste	Espacio	Espaco
+cue_press_action	Appuyer sur {0}	{0} druecken	Pulsa {0}	Pressione {0}
+cue_press_action_twice	Appuyer deux fois sur {0}	{0} zweimal druecken	Pulsa {0} dos veces	Pressione {0} duas vezes
+cue_followers_phase_one_start_stop	Appuyez sur {0} en rythme. Commencez et arretez apres le son du ressort.	Druecke {0} im Rhythmus. Nach dem Federgeraeusch starten und stoppen.	Pulsa {0} al ritmo. Empieza y detente despues del sonido del resorte.	Pressione {0} no ritmo. Comece e pare apos o som da mola.
+cue_followers_phase_two_resume_after_vibration	Arretez apres le son du saut. Reprenez apres la vibration.	Nach dem Sprunggeraeusch stoppen. Nach der Vibration weitermachen.	Detente despues del sonido de salto. Continua despues de la vibracion.	Pare apos o som do salto. Continue apos a vibracao.
+cue_followers_phase_three_press_thrice	Appuyez sur {0} trois fois apres la double vibration.	Nach doppelter Vibration {0} dreimal druecken.	Pulsa {0} tres veces despues de la doble vibracion.	Pressione {0} tres vezes apos a vibracao dupla.
+cue_tech_every_two_beats	Appuyez sur {0} tous les 2 temps.	Druecke {0} alle 2 Schlaege.	Pulsa {0} cada 2 pulsos.	Pressione {0} a cada 2 tempos.
+cue_tech_next_three_beats	Appuyez sur {0} pendant les 3 temps suivants.	Druecke {0} in den naechsten 3 Schlaegen.	Pulsa {0} en los proximos 3 pulsos.	Pressione {0} nos proximos 3 tempos.
+cue_nature_water_press_thrice	Appuyez sur {0} trois fois.	{0} dreimal druecken.	Pulsa {0} tres veces.	Pressione {0} tres vezes.
+cue_mind_triple_offbeat	Appuyez sur {0} trois fois sur le repere contretemps.	{0} beim Offbeat-Signal dreimal druecken.	Pulsa {0} tres veces con la senal de contratiempo.	Pressione {0} tres vezes no sinal de contratempo.
+cue_press_up	Haut	Hoch	Arriba	Cima
+cue_hold_release_duration	Maintenez {0}. Relachez apres {1}.	{0} halten. Nach {1} loslassen.	Mantener {0}. Soltar despues de {1}.	Segure {0}. Solte apos {1}.
+cue_hold_release_on_beat	Maintenez {0}. Relachez au temps {1}.	{0} halten. Bei Schlag {1} loslassen.	Mantener {0}. Soltar en el pulso {1}.	Segure {0}. Solte no tempo {1}.
+duration_half_beat	un demi-temps	einem halben Schlag	medio pulso	meio tempo
+duration_one_beat	1 temps	1 Schlag	1 pulso	1 tempo
+duration_n_beats	{0} temps	{0} Schlaege	{0} pulsos	{0} tempos
+cue_past_camera_first_sound	Maintenez {0} pendant 1 temps.	{0} 1 Schlag halten.	Mantener {0} por 1 pulso.	Segure {0} por 1 tempo.
+cue_past_camera_second_sound	Maintenez {0} pendant un demi-temps.	{0} einen halben Schlag halten.	Mantener {0} medio pulso.	Segure {0} por meio tempo.
+cue_past_camera_third_sound	Maintenez {0} pendant 2 temps.	{0} 2 Schlaege halten.	Mantener {0} por 2 pulsos.	Segure {0} por 2 tempos.
+cue_tutorial_press_second_beat	Appuyez sur {0} au deuxieme temps.	Druecke {0} beim zweiten Schlag.	Pulsa {0} en el segundo pulso.	Pressione {0} no segundo tempo.
+cue_food_press_third_beat	Appuyez sur {0} au troisieme temps.	Druecke {0} beim dritten Schlag.	Pulsa {0} en el tercer pulso.	Pressione {0} no terceiro tempo.
+cue_food_press_fifth_beat	Appuyez sur {0} au cinquieme temps.	Druecke {0} beim fuenften Schlag.	Pulsa {0} en el quinto pulso.	Pressione {0} no quinto tempo.
+cue_food_press_fourth_beat	Appuyez sur {0} au quatrieme temps.	Druecke {0} beim vierten Schlag.	Pulsa {0} en el cuarto pulso.	Pressione {0} no quarto tempo.
+cue_food_press_seventh_beat	Appuyez sur {0} au septieme temps.	Druecke {0} beim siebten Schlag.	Pulsa {0} en el septimo pulso.	Pressione {0} no setimo tempo.
+cue_shopping_repeat_patterns	Repetez les motifs audio avec {0}.	Wiederhole die Audio-Muster mit {0}.	Repite los patrones de audio con {0}.	Repita os padroes de audio com {0}.
+cue_dating_follow_swipes	Glissez a gauche ou a droite au quatrieme temps.	Wische beim Signal auf dem vierten Schlag nach links oder rechts.	Desliza a la izquierda o derecha en el cuarto pulso.	Deslize para a esquerda ou direita no quarto tempo.
+cue_future_follow_patterns	Suivez les reperes de motif.	Folge den Muster-Hinweisen.	Sigue las senales de patron.	Siga os sinais de padrao.
+cue_swipe_left	Glisser a gauche au quatrieme temps.	Beim vierten Schlag nach links wischen.	Desliza a la izquierda en el cuarto pulso.	Deslize para a esquerda no quarto tempo.
+cue_swipe_right	Glisser a droite au quatrieme temps.	Beim vierten Schlag nach rechts wischen.	Desliza a la derecha en el cuarto pulso.	Deslize para a direita no quarto tempo.
+cue_swipe_left_long	Glissez a gauche apres le long signal.	Nach dem langen Signal nach links wischen.	Desliza a la izquierda despues de la senal larga.	Deslize para a esquerda apos o sinal longo.
+cue_swipe_right_long	Glissez a droite apres le long signal.	Nach dem langen Signal nach rechts wischen.	Desliza a la derecha despues de la senal larga.	Deslize para a direita apos o sinal longo.
+cue_hold_action	Maintenir {0}	{0} halten	Mantener {0}	Segurar {0}
+key_enter	Entree	Eingabetaste	Enter	Enter
+key_period	Point	Punkt	Punto	Ponto
+key_slash	Barre oblique	Schraegstrich	Barra	Barra
+key_tab	Tab	Tab	Tab	Tab
+key_escape	Echap	Esc	Esc	Esc
+key_start	Start	Start	Start	Start
+help_title_screen	Aide ecran titre. Appuyez sur {0} pour commencer. Appuyez sur {1} pour changer la langue.	Titelbildschirm-Hilfe. Druecke {0} zum Starten. Druecke {1} fuer die Sprache.	Ayuda de pantalla de titulo. Pulsa {0} para empezar. Pulsa {1} para cambiar idioma.	Ajuda da tela inicial. Pressione {0} para comecar. Pressione {1} para mudar o idioma.
+help_menu	Aide menu. Utilisez Haut et Bas pour bouger. Appuyez sur {0} pour choisir. Appuyez sur {1} pour retour.	Menue-Hilfe. Mit Hoch und Runter bewegen. Druecke {0} zum Waehlen. Druecke {1} zum Zurueckgehen.	Ayuda de menu. Usa Arriba y Abajo para moverte. Pulsa {0} para seleccionar. Pulsa {1} para volver.	Ajuda de menu. Use Cima e Baixo para mover. Pressione {0} para selecionar. Pressione {1} para voltar.
+help_map	Aide carte. Utilisez [ et ] ou F9 et F10 pour changer de niveau. Appuyez sur {0} pour ouvrir le niveau choisi. Appuyez sur F1 ou View sur la manette pour les etoiles de la carte.	Karten-Hilfe. Nutze [ und ] oder F9 und F10 zum Wechseln zwischen Levels. Druecke {0}, um das ausgewaehlte Level zu oeffnen. Druecke F1 oder View am Controller fuer Kartensterne.	Ayuda del mapa. Usa [ y ] o F9 y F10 para moverte entre niveles. Pulsa {0} para abrir el nivel seleccionado. Pulsa F1 o View en mando para las estrellas del mapa.	Ajuda do mapa. Use [ e ] ou F9 e F10 para mover entre niveis. Pressione {0} para abrir o nivel selecionado. Pressione F1 ou View no controle para as estrelas do mapa.
+help_mode_menu	Aide menu de mode. Utilisez Haut et Bas pour choisir un mode. Appuyez sur {0} pour lancer. Appuyez sur {1} pour fermer ce menu.	Modusmenue-Hilfe. Mit Hoch und Runter Modus waehlen. Druecke {0} zum Starten. Druecke {1}, um dieses Menue zu schliessen.	Ayuda del menu de modo. Usa Arriba y Abajo para elegir modo. Pulsa {0} para iniciar. Pulsa {1} para cerrar este menu.	Ajuda do menu de modo. Use Cima e Baixo para escolher o modo. Pressione {0} para iniciar. Pressione {1} para fechar este menu.
+help_results	Aide resultats. Utilisez Haut et Bas pour choisir une option. Appuyez sur {0} pour confirmer. Appuyez sur {1} pour retour.	Ergebnis-Hilfe. Mit Hoch und Runter Option waehlen. Druecke {0} zum Bestaetigen. Druecke {1} zum Zurueckgehen.	Ayuda de resultados. Usa Arriba y Abajo para elegir una opcion. Pulsa {0} para confirmar. Pulsa {1} para volver.	Ajuda de resultados. Use Cima e Baixo para escolher uma opcao. Pressione {0} para confirmar. Pressione {1} para voltar.
+help_gameplay	Aide gameplay. Suivez les reperes contextuels et appuyez sur les actions annoncees. Appuyez sur {0} pour pause.	Gameplay-Hilfe. Folge den kontextbezogenen Hinweisen und druecke die angesagten Aktionen. Druecke {0} zum Pausieren.	Ayuda de juego. Sigue las senales contextuales y pulsa las acciones anunciadas. Pulsa {0} para pausar.	Ajuda de jogo. Siga as dicas contextuais e pressione as acoes anunciadas. Pressione {0} para pausar.
+help_editor	Aide editeur. Utilisez les fleches pour bouger sur la timeline. Appuyez sur {0} pour placer ou choisir. Appuyez sur {1} pour annuler.	Editor-Hilfe. Nutze Pfeiltasten zum Bewegen in der Timeline. Druecke {0} zum Platzieren oder Auswaehlen. Druecke {1} zum Abbrechen.	Ayuda del editor. Usa flechas para moverte por la linea de tiempo. Pulsa {0} para colocar o seleccionar. Pulsa {1} para cancelar.	Ajuda do editor. Use as setas para mover na linha do tempo. Pressione {0} para colocar ou selecionar. Pressione {1} para cancelar.
+level_briefing_line	{0}. {1}. {2}	{0}. {1}. {2}	{0}. {1}. {2}	{0}. {1}. {2}
+mode_practice	Mode entrainement	Uebungsmodus	Modo practica	Modo pratica
+practice_mode_started	Mode entrainement demarre.	Uebungsmodus gestartet.	Modo practica iniciado.	Modo pratica iniciado.
+mode_score	Mode score	Punktemodus	Modo puntuacion	Modo pontuacao
+score_mode_started	Mode score demarre.	Punktemodus gestartet.	Modo puntuacion iniciado.	Modo pontuacao iniciado.
+mode_hard	Mode difficile	Schwerer Modus	Modo dificil	Modo dificil
+mode_score_remix	Mode score remix	Punktemodus Remix	Modo puntuacion remix	Modo pontuacao remix
+mode_hard_remix	Mode difficile remix	Schwerer Modus Remix	Modo dificil remix	Modo dificil remix
+mode_tutorial	Mode tutoriel	Tutorial-Modus	Modo tutorial	Modo tutorial
+mode_editor_test	Mode test editeur	Editor-Testmodus	Modo prueba editor	Modo teste do editor
+mode_community	Mode communaute	Community-Modus	Modo comunidad	Modo comunidade
+objective_default	Suivez les reperes contextuels et restez en rythme.	Folge den kontextbezogenen Hinweisen und bleibe im Takt.	Sigue las senales contextuales y manten el ritmo.	Siga as dicas contextuais e mantenha o tempo.
+objective_practice	Apprenez le rythme et le timing. Appuyez sur {0} pour passer.	Lerne Muster und Timing. Druecke {0}, um zu ueberspringen.	Aprende el patron y el tiempo. Pulsa {0} para omitir.	Aprenda o padrao e o tempo. Pressione {0} para pular.
+objective_score	Gagnez des points en entrant vos actions dans le rythme.	Baue Punkte auf, indem du Aktionen im Takt eingibst.	Gana puntuacion marcando acciones a tiempo.	Aumente a pontuacao acertando as acoes no ritmo.
+objective_hard	Gardez une bonne precision sur des patterns plus exigeants.	Halte Genauigkeit bei strengeren Mustern.	Manten la precision en patrones mas exigentes.	Mantenha a precisao em padroes mais exigentes.
+objective_tutorial	Suivez les instructions pour apprendre les mecaniques.	Folge den Anweisungen, um die Mechanik zu lernen.	Sigue las instrucciones para aprender mecanicas.	Siga as instrucoes para aprender as mecanicas.
+objective_editor_test	Testez le timing et le flow de votre niveau.	Teste Timing und Ablauf deiner Chart.	Prueba el timing y flujo de tu nivel.	Teste o timing e o fluxo do seu mapa.
+objective_community	Jouez et evaluez ce niveau communautaire.	Spiele und bewerte dieses Community-Level.	Juega y evalua este nivel de la comunidad.	Jogue e avalie este nivel da comunidade.
+cue_left	Gauche	Links	Izquierda	Esquerda
+cue_right	Droite	Rechts	Derecha	Direita
+cue_both	Les deux	Beide	Ambos	Ambos
+cue_left_right_short	Gauche droite	Links rechts	Izquierda derecha	Izquierda derecha
+cue_hold	Maintenir	Halten	Mantener	Segurar
+results_stats	Parfait : {0}, Tard : {1}, Tôt : {2}, Rate : {3}.	Perfekt: {0}, Spaet: {1}, Frueh: {2}, Verpasst: {3}.	Perfecto: {0}, Tarde: {1}, Temprano: {2}, Fallo: {3}.	Perfeito: {0}, Tarde: {1}, Cedo: {2}, Erro: {3}.
+stage_end_position	{0}, {1} sur {2}	{0}, {1} von {2}	{0}, {1} de {2}	{0}, {1} de {2}
+locked_requires_one_star	Verrouille. Necessite au moins 1 etoile.	Gesperrt. Mindestens 1 Stern erforderlich.	Bloqueado. Requiere al menos 1 estrella.	Bloqueado. Requer pelo menos 1 estrela.
+locked_requires_two_stars	Verrouille. Necessite 2 etoiles.	Gesperrt. 2 Sterne erforderlich.	Bloqueado. Requiere 2 estrellas.	Bloqueado. Requer 2 estrelas.
+locked_requires_full_game	Verrouille. Necessite le jeu complet.	Gesperrt. Vollversion erforderlich.	Bloqueado. Requiere el juego completo.	Bloqueado. Requer o jogo completo.
+locked_requires_two_stars_full_game	Verrouille. Necessite 2 etoiles et le jeu complet.	Gesperrt. 2 Sterne und Vollversion erforderlich.	Bloqueado. Requiere 2 estrellas y juego completo.	Bloqueado. Requer 2 estrelas e o jogo completo.
+locked_requires_two_stars_each_dream	Verrouille. Obtenez au moins 2 etoiles dans chaque reve de cette nuit pour valider.	Gesperrt. Hole in jedem Traum dieser Nacht mindestens 2 Sterne, um zu bestehen.	Bloqueado. Consigue al menos 2 estrellas en cada sueno de esta noche para completar.	Bloqueado. Consiga pelo menos 2 estrelas em cada sonho desta noite para passar.

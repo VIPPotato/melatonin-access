@@ -1,0 +1,28 @@
+import re
+quote=chr(34)
+lines=open('Loc.cs','r',encoding='utf-8').read().splitlines()
+entries=[]
+i=0
+while i<len(lines):
+    if 'Add(' in lines[i] and 'private static void Add' not in lines[i]:
+        block=[]
+        i+=1
+        while i<len(lines) and ');' not in lines[i]:
+            block.append(lines[i])
+            i+=1
+        block.append(lines[i])
+        entries.append(block)
+    i+=1
+for block in entries:
+    strings=[]
+    for line in block:
+        stripped=line.strip()
+        if stripped.startswith(quote):
+            end=stripped.rfind(quote)
+            if end>0:
+                strings.append(stripped[1:end])
+    if len(strings)==11:
+        key, fr, de, es, pt = strings[0], strings[7], strings[8], strings[9], strings[10]
+        print('\t'.join([key, fr, de, es, pt]))
+    else:
+        print('unexpected', len(strings))

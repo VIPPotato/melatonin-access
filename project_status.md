@@ -110,3 +110,8 @@
 - **Calibration Validation**: Confirm early/late ms values feel directionally correct against intentional early/late taps and note any offset formula tuning needed.
 - **Cutscene AD Authoring Step**: Fill `cutscene-ad/scripts/chapter_*_intro.json` and `cutscene-ad/scripts/chapter_*_outro.json` with first-pass timestamp/text-key entries, then run `pwsh -File .\scripts\Test-CutsceneAdPipeline.ps1 -StrictCoverage -RequireEntries`.
 - **Post-Release Validation**: Monitor issues/feedback from `v1.0.4` and collect any remaining edge cases from real-world play sessions.
+
+## Session Notes
+- [2026-02-13] Reviewed `Loc.cs` zh-Hans/zh-Hant localization entries for naturalness; documented awkward contextual-cue wording, key-labels, the map progress summary, and duplicate dream names for follow-up with the user.
+- [2026-02-13] Reviewed `Loc.cs` FR/DE/ES/PT strings for naturalness, highlighted missing accents and garbled phrases, and captured a focused list of keys to clean up.
+- [2026-02-13] Reviewed JA/KO `Loc.cs` strings; only `results_stats` still reads in English/romanization so it needs localized words before release.
