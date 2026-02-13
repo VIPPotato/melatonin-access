@@ -73,8 +73,8 @@ This document outlines the roadmap for making Melatonin 100% accessible to total
     - [ ] Announce when the game waits for user input vs. when it's just demonstrating.
     - [x] Added delayed `DialogBox.SetDialogState` reads to improve first-line capture for tutorial startup text without hardcoded strings.
 - [ ] **Practice Mode**
-    - [ ] Announce entry into Practice Mode.
-    - [ ] Announce "Scored Mode" transition.
+    - [x] Announce entry into Practice Mode.
+    - [x] Announce "Scored Mode" transition.
 
 ## 4. Overworld / Map (`Neighbourhood.cs`)
 The current map allows free movement (`McMap.cs`), which is inaccessible.

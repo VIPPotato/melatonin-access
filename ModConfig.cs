@@ -89,7 +89,7 @@ namespace MelatoninAccess
         }
 
         /// <summary>
-        /// Toggles rhythm cue announcements and saves immediately.
+        /// Toggles contextual tutorial cue announcements and saves immediately.
         /// </summary>
         public static bool ToggleRhythmCues()
         {
