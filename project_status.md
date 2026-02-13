@@ -73,6 +73,7 @@
 - [x] **v1.1 Contextual Cues Pass 5 (2026-02-12)**: Fixed release-beat math for `Dream_space` and `Dream_desires` to use phase-relative counting (`release - hold + 1`) instead of absolute queue beat values, matching requested outputs like phase 1/2/3 -> beat `4/2/7` in Space and corrected Desires beat callouts.
 - [x] **Level Editor Graduation (2026-02-12)**: Confirmed level editor accessibility is fully supported (no longer experimental), including cursor, tool, advanced menu, and timeline narration.
 - [x] **v1.1 Release Polish Pack 1 (2026-02-12)**: Added missing `Dream_food` 7th-beat practice cue coverage, added gameplay-start announcements for Practice and Score modes (`TriggerSong`), and completed terminology cleanup for user-facing wording from "rhythm cues" to "contextual cues" in help/objective strings and config comments. Updated `docs/game-api.md`, `README.md`, and `todo.md`.
+- [x] **Backlog Cleanup (2026-02-12)**: Simplified `todo.md` to keep only actionable `v1.1` items, moved audio-description work explicitly under deferred `v1.2`, and removed stale template tasks that are already implemented or not applicable (for example `Dream_food` jump/shoot split at queue level).
 
 ## Next Steps
 - **Focused Playtest**: Validate end-to-end flow for map mode locks, stage-end locks, advanced menu/timeline narration, and credits scrolling narration.
