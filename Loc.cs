@@ -682,8 +682,8 @@ namespace MelatoninAccess
             Add(
                 "dream_about_level",
                 "Dream about {0}",
-                "关于 {0} 的梦境",
-                "關於 {0} 的夢境",
+                "梦见{0}",
+                "夢見{0}",
                 "{0} についての夢",
                 "{0}에 대한 꿈",
                 "Giac mo ve {0}",
