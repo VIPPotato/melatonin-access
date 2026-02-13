@@ -6,6 +6,7 @@ Screen-reader accessibility mod for **Melatonin** (MelonLoader).
 
 - Spoken menu navigation and option state announcements.
 - Contextual tutorial/gameplay cue announcements in gameplay.
+- Practice/score mode start announcements when gameplay begins.
 - Tutorial/dialog and popup reading.
 - World map navigation support, including fast landmark teleport.
 - Full level editor accessibility narration (cursor, tools, advanced menu, timeline tabs).

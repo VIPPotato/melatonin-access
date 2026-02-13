@@ -1473,6 +1473,19 @@ namespace MelatoninAccess
                 "Pressione {0} no quarto tempo.");
 
             Add(
+                "cue_food_press_seventh_beat",
+                "Press {0} on the seventh beat.",
+                "在第7拍按 {0}。",
+                "在第7拍按 {0}。",
+                "7拍目で {0} を押す。",
+                "7번째 박자에 {0}를 누르세요.",
+                "Nhan {0} o nhip thu 7.",
+                "Appuyez sur {0} au septieme temps.",
+                "Druecke {0} beim siebten Schlag.",
+                "Pulsa {0} en el septimo pulso.",
+                "Pressione {0} no setimo tempo.");
+
+            Add(
                 "cue_shopping_repeat_patterns",
                 "Repeat the audio cue patterns with {0}.",
                 "用 {0} 重复音频提示节奏。",
@@ -1721,16 +1734,16 @@ namespace MelatoninAccess
 
             Add(
                 "help_gameplay",
-                "Gameplay help. Follow rhythm cues and press the announced actions. Press {0} to pause.",
-                "游戏帮助。跟随节奏提示并按播报的动作键。按 {0} 暂停。",
-                "遊戲說明。跟隨節奏提示並按語音播報的動作鍵。按 {0} 暫停。",
-                "ゲームプレイヘルプ。リズムキューに従って指示された入力を押す。{0} で一時停止。",
-                "게임플레이 도움말. 리듬 큐를 따라 안내된 동작을 누르세요. {0} 키로 일시정지합니다.",
-                "Tro giup choi game. Theo cue nhip va nhan hanh dong duoc doc. Nhan {0} de tam dung.",
-                "Aide gameplay. Suivez les reperes rythmiques et appuyez sur les actions annoncees. Appuyez sur {0} pour pause.",
-                "Gameplay-Hilfe. Folge den Rhythmus-Hinweisen und druecke die angesagten Aktionen. Druecke {0} zum Pausieren.",
-                "Ayuda de juego. Sigue las senales ritmicas y pulsa las acciones anunciadas. Pulsa {0} para pausar.",
-                "Ajuda de jogo. Siga as dicas de ritmo e pressione as acoes anunciadas. Pressione {0} para pausar.");
+                "Gameplay help. Follow contextual cues and press the announced actions. Press {0} to pause.",
+                "游戏帮助。跟随上下文提示并按播报的动作键。按 {0} 暂停。",
+                "遊戲說明。跟隨上下文提示並按語音播報的動作鍵。按 {0} 暫停。",
+                "ゲームプレイヘルプ。文脈キューに従って指示された入力を押す。{0} で一時停止。",
+                "게임플레이 도움말. 상황별 큐를 따라 안내된 동작을 누르세요. {0} 키로 일시정지합니다.",
+                "Tro giup choi game. Theo cue theo ngu canh va nhan hanh dong duoc doc. Nhan {0} de tam dung.",
+                "Aide gameplay. Suivez les reperes contextuels et appuyez sur les actions annoncees. Appuyez sur {0} pour pause.",
+                "Gameplay-Hilfe. Folge den kontextbezogenen Hinweisen und druecke die angesagten Aktionen. Druecke {0} zum Pausieren.",
+                "Ayuda de juego. Sigue las senales contextuales y pulsa las acciones anunciadas. Pulsa {0} para pausar.",
+                "Ajuda de jogo. Siga as dicas contextuais e pressione as acoes anunciadas. Pressione {0} para pausar.");
 
             Add(
                 "help_editor",
@@ -1772,6 +1785,19 @@ namespace MelatoninAccess
                 "Modo pratica");
 
             Add(
+                "practice_mode_started",
+                "Practice mode started.",
+                "练习模式已开始。",
+                "練習模式已開始。",
+                "練習モードを開始しました。",
+                "연습 모드가 시작되었습니다.",
+                "Che do luyen tap da bat dau.",
+                "Mode entrainement demarre.",
+                "Uebungsmodus gestartet.",
+                "Modo practica iniciado.",
+                "Modo pratica iniciado.");
+
+            Add(
                 "mode_score",
                 "Score mode",
                 "计分模式",
@@ -1783,6 +1809,19 @@ namespace MelatoninAccess
                 "Punktemodus",
                 "Modo puntuacion",
                 "Modo pontuacao");
+
+            Add(
+                "score_mode_started",
+                "Score mode started.",
+                "计分模式已开始。",
+                "計分模式已開始。",
+                "スコアモードを開始しました。",
+                "점수 모드가 시작되었습니다.",
+                "Che do tinh diem da bat dau.",
+                "Mode score demarre.",
+                "Punktemodus gestartet.",
+                "Modo puntuacion iniciado.",
+                "Modo pontuacao iniciado.");
 
             Add(
                 "mode_hard",
@@ -1864,16 +1903,16 @@ namespace MelatoninAccess
 
             Add(
                 "objective_default",
-                "Follow rhythm cues and stay on beat.",
-                "跟随节奏提示并保持节拍。",
-                "跟隨節奏提示並保持節拍。",
-                "リズムキューに従ってビートを保ってください。",
-                "리듬 큐를 따라 비트를 유지하세요.",
-                "Theo cue nhip va giu dung nhip.",
-                "Suivez les reperes rythmiques et restez en rythme.",
-                "Folge den Rhythmus-Hinweisen und bleibe im Takt.",
-                "Sigue las senales ritmicas y manten el ritmo.",
-                "Siga as dicas de ritmo e mantenha o tempo.");
+                "Follow contextual cues and stay on beat.",
+                "跟随上下文提示并保持节拍。",
+                "跟隨上下文提示並保持節拍。",
+                "文脈キューに従ってビートを保ってください。",
+                "상황별 큐를 따라 비트를 유지하세요.",
+                "Theo cue theo ngu canh va giu dung nhip.",
+                "Suivez les reperes contextuels et restez en rythme.",
+                "Folge den kontextbezogenen Hinweisen und bleibe im Takt.",
+                "Sigue las senales contextuales y manten el ritmo.",
+                "Siga as dicas contextuais e mantenha o tempo.");
 
             Add(
                 "objective_practice",

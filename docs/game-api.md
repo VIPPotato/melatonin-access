@@ -166,7 +166,9 @@
 - `Dream_food` practice queues tutorial timing with:
   - `QueueHitWindow(2)` (target on 3rd beat),
   - `QueueHitWindow(4)` (target on 5th beat),
-  - `QueueHitWindow(3)` (target on 4th beat).
+  - `QueueHitWindow(3)` (target on 4th beat),
+  - `QueueHitWindow(6)` (target on 7th beat).
+- `Dream_food` uses `QueueHitWindow(...)` only for these practice prompts; decompiled gameplay path does not expose separate jump-vs-shoot input queue types in this dream.
 - `Dream_tech` practice `OnSequence()` always queues `QueueHitWindow(1)` (except `beat == 4` branches), so per-note spoken cues become noisy; phase-level guidance is better than repeating every hit window.
 - `Dream_tech` phrase boundaries can be tracked through `Dream.dir.GetPhrase()` during practice; phrase 1/2 are suitable for one-shot section briefings, while later rapid sections benefit from selective `press twice` callouts.
 - `Dream_followers` includes rapid patterns in `sequences[4]` using `QueueHitWindow(1)`, `QueueHitWindow(1, isHalfBeatAdded: true)`, and a follow-up `QueueHitWindow(2)`.

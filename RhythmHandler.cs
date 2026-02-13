@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MelatoninAccess
 {
-    // Handles rhythm cues and gameplay notifications.
+    // Handles contextual tutorial cues and gameplay notifications.
     public static class RhythmHandler
     {
         private static string _lastSceneName = "";
@@ -26,11 +26,14 @@ namespace MelatoninAccess
         private static bool _foodThirdBeatPromptSpoken;
         private static bool _foodFifthBeatPromptSpoken;
         private static bool _foodFourthBeatPromptSpoken;
+        private static bool _foodSeventhBeatPromptSpoken;
         private static bool _techPhaseOnePromptSpoken;
         private static bool _techPhaseTwoPromptSpoken;
         private static bool _pastOneBeatHintSpoken;
         private static bool _pastHalfBeatHintSpoken;
         private static bool _pastTwoBeatHintSpoken;
+        private static bool _practiceModeStartPromptSpoken;
+        private static bool _scoreModeStartPromptSpoken;
         private static float _lastTechQueueCueTime = -10f;
 
         // --- Hit Window Cues (pre-cues) ---
@@ -109,8 +112,11 @@ namespace MelatoninAccess
         {
             public static void Postfix()
             {
-                if (!ShouldAnnounceCues()) return;
+                if (!ModConfig.AnnounceRhythmCues || Dream.dir == null) return;
                 RefreshTutorialCueState();
+                TryAnnounceModeStartPrompt();
+
+                if (!ShouldAnnounceCues()) return;
 
                 if (string.Equals(GetActiveSceneName(), "Dream_shopping", StringComparison.OrdinalIgnoreCase) &&
                     !_shoppingPatternPromptSpoken)
@@ -224,6 +230,25 @@ namespace MelatoninAccess
             return ModConfig.AnnounceRhythmCues && Dream.dir != null && Dream.dir.GetGameMode() == 0;
         }
 
+        private static void TryAnnounceModeStartPrompt()
+        {
+            int gameMode = Dream.dir.GetGameMode();
+            if (gameMode == 0)
+            {
+                if (_practiceModeStartPromptSpoken) return;
+
+                _practiceModeStartPromptSpoken = true;
+                ScreenReader.Say(Loc.Get("practice_mode_started"), true);
+                return;
+            }
+
+            if (gameMode != 1 && gameMode != 3) return;
+            if (_scoreModeStartPromptSpoken) return;
+
+            _scoreModeStartPromptSpoken = true;
+            ScreenReader.Say(Loc.Get("score_mode_started"), true);
+        }
+
         private static bool TryAnnounceTutorialOverride(int numBeatsTilHit, bool isHalfBeatAdded)
         {
             string sceneName = GetActiveSceneName();
@@ -253,6 +278,11 @@ namespace MelatoninAccess
                 {
                     _foodFourthBeatPromptSpoken = true;
                     ScreenReader.Say(Loc.Get("cue_food_press_fourth_beat", actionPrompt), true);
+                }
+                else if (numBeatsTilHit == 6 && !_foodSeventhBeatPromptSpoken)
+                {
+                    _foodSeventhBeatPromptSpoken = true;
+                    ScreenReader.Say(Loc.Get("cue_food_press_seventh_beat", actionPrompt), true);
                 }
 
                 return true;
@@ -533,11 +563,14 @@ namespace MelatoninAccess
                 _foodThirdBeatPromptSpoken = false;
                 _foodFifthBeatPromptSpoken = false;
                 _foodFourthBeatPromptSpoken = false;
+                _foodSeventhBeatPromptSpoken = false;
                 _techPhaseOnePromptSpoken = false;
                 _techPhaseTwoPromptSpoken = false;
                 _pastOneBeatHintSpoken = false;
                 _pastHalfBeatHintSpoken = false;
                 _pastTwoBeatHintSpoken = false;
+                _practiceModeStartPromptSpoken = false;
+                _scoreModeStartPromptSpoken = false;
                 _lastTechDoubleCueTime = -10f;
                 _lastTechQueueCueTime = -10f;
                 _lastNatureTriplePromptTime = -10f;
