@@ -3,5 +3,36 @@
   "id": "chapter_5_outro",
   "sceneName": "Chapter_5",
   "cutsceneType": "outro",
-  "entries": []
+  "entries": [
+    {
+      "atSeconds": 0.0,
+      "durationSeconds": 1.6,
+      "textKey": "ad_transition_from_dream"
+    },
+    {
+      "atSeconds": 2.0,
+      "durationSeconds": 5.5,
+      "textKey": "ad_camera_moves_to_window"
+    },
+    {
+      "atSeconds": 7.8,
+      "durationSeconds": 1.6,
+      "textKey": "ad_window_fills_view"
+    },
+    {
+      "atSeconds": 9.6,
+      "durationSeconds": 2.4,
+      "textKey": "ad_character_looks_out_window"
+    },
+    {
+      "atSeconds": 12.5,
+      "durationSeconds": 4.0,
+      "textKey": "ad_screen_fades_black"
+    },
+    {
+      "atSeconds": 20.5,
+      "durationSeconds": 1.3,
+      "textKey": "ad_credits_begin"
+    }
+  ]
 }
