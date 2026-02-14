@@ -2019,6 +2019,266 @@ namespace MelatoninAccess
                 "Jogue e avalie este nivel da comunidade.");
 
             Add(
+                "ad_title_card_shown",
+                "Chapter title card appears.",
+                "Chapter title card appears.",
+                "Chapter title card appears.",
+                "Chapter title card appears.",
+                "Chapter title card appears.",
+                "Chapter title card appears.",
+                "Chapter title card appears.",
+                "Chapter title card appears.",
+                "Chapter title card appears.",
+                "Chapter title card appears.");
+
+            Add(
+                "ad_camera_drifts_wider",
+                "Camera drifts to a wider room view.",
+                "Camera drifts to a wider room view.",
+                "Camera drifts to a wider room view.",
+                "Camera drifts to a wider room view.",
+                "Camera drifts to a wider room view.",
+                "Camera drifts to a wider room view.",
+                "Camera drifts to a wider room view.",
+                "Camera drifts to a wider room view.",
+                "Camera drifts to a wider room view.",
+                "Camera drifts to a wider room view.");
+
+            Add(
+                "ad_screen_fades_black",
+                "Screen fades to black.",
+                "Screen fades to black.",
+                "Screen fades to black.",
+                "Screen fades to black.",
+                "Screen fades to black.",
+                "Screen fades to black.",
+                "Screen fades to black.",
+                "Screen fades to black.",
+                "Screen fades to black.",
+                "Screen fades to black.");
+
+            Add(
+                "ad_camera_centers_map",
+                "Camera settles over the map.",
+                "Camera settles over the map.",
+                "Camera settles over the map.",
+                "Camera settles over the map.",
+                "Camera settles over the map.",
+                "Camera settles over the map.",
+                "Camera settles over the map.",
+                "Camera settles over the map.",
+                "Camera settles over the map.",
+                "Camera settles over the map.");
+
+            Add(
+                "ad_map_music_starts",
+                "Map music starts.",
+                "Map music starts.",
+                "Map music starts.",
+                "Map music starts.",
+                "Map music starts.",
+                "Map music starts.",
+                "Map music starts.",
+                "Map music starts.",
+                "Map music starts.",
+                "Map music starts.");
+
+            Add(
+                "ad_map_controls_unlock",
+                "Map controls are now available.",
+                "Map controls are now available.",
+                "Map controls are now available.",
+                "Map controls are now available.",
+                "Map controls are now available.",
+                "Map controls are now available.",
+                "Map controls are now available.",
+                "Map controls are now available.",
+                "Map controls are now available.",
+                "Map controls are now available.");
+
+            Add(
+                "ad_room_returns_character_asleep",
+                "Room view returns. The character is asleep.",
+                "Room view returns. The character is asleep.",
+                "Room view returns. The character is asleep.",
+                "Room view returns. The character is asleep.",
+                "Room view returns. The character is asleep.",
+                "Room view returns. The character is asleep.",
+                "Room view returns. The character is asleep.",
+                "Room view returns. The character is asleep.",
+                "Room view returns. The character is asleep.",
+                "Room view returns. The character is asleep.");
+
+            Add(
+                "ad_character_falls_asleep",
+                "The character drops back to sleep.",
+                "The character drops back to sleep.",
+                "The character drops back to sleep.",
+                "The character drops back to sleep.",
+                "The character drops back to sleep.",
+                "The character drops back to sleep.",
+                "The character drops back to sleep.",
+                "The character drops back to sleep.",
+                "The character drops back to sleep.",
+                "The character drops back to sleep.");
+
+            Add(
+                "ad_map_controls_unlock_mirrored",
+                "Map controls unlock. Map starts mirrored.",
+                "Map controls unlock. Map starts mirrored.",
+                "Map controls unlock. Map starts mirrored.",
+                "Map controls unlock. Map starts mirrored.",
+                "Map controls unlock. Map starts mirrored.",
+                "Map controls unlock. Map starts mirrored.",
+                "Map controls unlock. Map starts mirrored.",
+                "Map controls unlock. Map starts mirrored.",
+                "Map controls unlock. Map starts mirrored.",
+                "Map controls unlock. Map starts mirrored.");
+
+            Add(
+                "ad_transition_from_dream",
+                "Dream scene closes into the bedroom.",
+                "Dream scene closes into the bedroom.",
+                "Dream scene closes into the bedroom.",
+                "Dream scene closes into the bedroom.",
+                "Dream scene closes into the bedroom.",
+                "Dream scene closes into the bedroom.",
+                "Dream scene closes into the bedroom.",
+                "Dream scene closes into the bedroom.",
+                "Dream scene closes into the bedroom.",
+                "Dream scene closes into the bedroom.");
+
+            Add(
+                "ad_border_fades",
+                "Border fades and the room becomes clear.",
+                "Border fades and the room becomes clear.",
+                "Border fades and the room becomes clear.",
+                "Border fades and the room becomes clear.",
+                "Border fades and the room becomes clear.",
+                "Border fades and the room becomes clear.",
+                "Border fades and the room becomes clear.",
+                "Border fades and the room becomes clear.",
+                "Border fades and the room becomes clear.",
+                "Border fades and the room becomes clear.");
+
+            Add(
+                "ad_character_wakes",
+                "The character wakes up.",
+                "The character wakes up.",
+                "The character wakes up.",
+                "The character wakes up.",
+                "The character wakes up.",
+                "The character wakes up.",
+                "The character wakes up.",
+                "The character wakes up.",
+                "The character wakes up.",
+                "The character wakes up.");
+
+            Add(
+                "ad_character_wakes_again",
+                "The character wakes again.",
+                "The character wakes again.",
+                "The character wakes again.",
+                "The character wakes again.",
+                "The character wakes again.",
+                "The character wakes again.",
+                "The character wakes again.",
+                "The character wakes again.",
+                "The character wakes again.",
+                "The character wakes again.");
+
+            Add(
+                "ad_next_chapter_loads",
+                "Next chapter is loading.",
+                "Next chapter is loading.",
+                "Next chapter is loading.",
+                "Next chapter is loading.",
+                "Next chapter is loading.",
+                "Next chapter is loading.",
+                "Next chapter is loading.",
+                "Next chapter is loading.",
+                "Next chapter is loading.",
+                "Next chapter is loading.");
+
+            Add(
+                "ad_static_interrupts_room",
+                "A brief static flicker cuts through the room.",
+                "A brief static flicker cuts through the room.",
+                "A brief static flicker cuts through the room.",
+                "A brief static flicker cuts through the room.",
+                "A brief static flicker cuts through the room.",
+                "A brief static flicker cuts through the room.",
+                "A brief static flicker cuts through the room.",
+                "A brief static flicker cuts through the room.",
+                "A brief static flicker cuts through the room.",
+                "A brief static flicker cuts through the room.");
+
+            Add(
+                "ad_character_settles_deeper_sleep",
+                "The character settles into deeper sleep.",
+                "The character settles into deeper sleep.",
+                "The character settles into deeper sleep.",
+                "The character settles into deeper sleep.",
+                "The character settles into deeper sleep.",
+                "The character settles into deeper sleep.",
+                "The character settles into deeper sleep.",
+                "The character settles into deeper sleep.",
+                "The character settles into deeper sleep.",
+                "The character settles into deeper sleep.");
+
+            Add(
+                "ad_camera_moves_to_window",
+                "Camera glides toward the window.",
+                "Camera glides toward the window.",
+                "Camera glides toward the window.",
+                "Camera glides toward the window.",
+                "Camera glides toward the window.",
+                "Camera glides toward the window.",
+                "Camera glides toward the window.",
+                "Camera glides toward the window.",
+                "Camera glides toward the window.",
+                "Camera glides toward the window.");
+
+            Add(
+                "ad_window_fills_view",
+                "Window fills the view.",
+                "Window fills the view.",
+                "Window fills the view.",
+                "Window fills the view.",
+                "Window fills the view.",
+                "Window fills the view.",
+                "Window fills the view.",
+                "Window fills the view.",
+                "Window fills the view.",
+                "Window fills the view.");
+
+            Add(
+                "ad_character_looks_out_window",
+                "The character looks out the window.",
+                "The character looks out the window.",
+                "The character looks out the window.",
+                "The character looks out the window.",
+                "The character looks out the window.",
+                "The character looks out the window.",
+                "The character looks out the window.",
+                "The character looks out the window.",
+                "The character looks out the window.",
+                "The character looks out the window.");
+
+            Add(
+                "ad_credits_begin",
+                "Credits begin.",
+                "Credits begin.",
+                "Credits begin.",
+                "Credits begin.",
+                "Credits begin.",
+                "Credits begin.",
+                "Credits begin.",
+                "Credits begin.",
+                "Credits begin.",
+                "Credits begin.");
+
+            Add(
                 "cue_left",
                 "Left",
                 "左",
