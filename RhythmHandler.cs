@@ -34,7 +34,6 @@ namespace MelatoninAccess
         private static bool _pastOneBeatHintSpoken;
         private static bool _pastHalfBeatHintSpoken;
         private static bool _pastTwoBeatHintSpoken;
-        private static bool _practiceModeStartPromptSpoken;
         private static bool _scoreModeStartPromptSpoken;
         private static float _lastTechQueueCueTime = -10f;
 
@@ -235,15 +234,6 @@ namespace MelatoninAccess
         private static void TryAnnounceModeStartPrompt()
         {
             int gameMode = Dream.dir.GetGameMode();
-            if (gameMode == 0)
-            {
-                if (_practiceModeStartPromptSpoken) return;
-
-                _practiceModeStartPromptSpoken = true;
-                ScreenReader.Say(Loc.Get("practice_mode_started"), true);
-                return;
-            }
-
             if (gameMode != 1 && gameMode != 3) return;
             if (_scoreModeStartPromptSpoken) return;
 
@@ -617,7 +607,6 @@ namespace MelatoninAccess
                 _pastOneBeatHintSpoken = false;
                 _pastHalfBeatHintSpoken = false;
                 _pastTwoBeatHintSpoken = false;
-                _practiceModeStartPromptSpoken = false;
                 _scoreModeStartPromptSpoken = false;
                 _lastTechDoubleCueTime = -10f;
                 _lastTechQueueCueTime = -10f;
