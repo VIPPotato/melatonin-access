@@ -99,7 +99,7 @@ Package contents:
 - `Mods/MelatoninAccess.dll`
 - `Tolk.dll`
 - `nvdaControllerClient32.dll`
-- `UserData/Loader.cfg` (bundled from maintainer install; includes hidden-console setting)
+- `UserConfig/Loader.cfg` (bundled from maintainer install; includes hidden-console setting)
 
 The release ZIP intentionally excludes development docs/tools (for example changelog files and regression test scripts).
 
@@ -113,12 +113,17 @@ The release ZIP intentionally excludes development docs/tools (for example chang
     - `<Melatonin folder>/Mods/MelatoninAccess.dll`
     - `<Melatonin folder>/Tolk.dll`
     - `<Melatonin folder>/nvdaControllerClient32.dll`
-    - `<Melatonin folder>/UserData/Loader.cfg`
+    - `<Melatonin folder>/UserConfig/Loader.cfg`
 5. Start the game and confirm you hear the mod loaded announcement.
 
 Important:
 
 - `Tolk.dll` and `nvdaControllerClient32.dll` must be in the main game folder, not in `Mods`.
+
+## GitHub Release Packaging
+
+- A GitHub Actions workflow builds and uploads the release ZIP automatically when a tag like `v1.2` is pushed.
+- The uploaded ZIP uses the same layout as local packaging (`Mods`, `UserConfig`, root dependency DLLs).
 
 ## Install (From Source Build)
 
