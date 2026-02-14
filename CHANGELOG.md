@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.1 - 2026-02-14
+
+- Added the full v1.1 contextual-cue pass across targeted dreams, including scene-specific directional prompts and hold/release timing guidance.
+- Added controller utility mirrors for accessibility hotkeys (`View` for map stars, `L3` for contextual cues, `R3` for menu positions).
+- Added global `F11` context help with localized, screen-specific control guidance.
+- Improved tutorial/dialog, community loader, credits, and map behavior based on log-driven playtest fixes.
+- Expanded localization polish (including Chinese title phrasing and broad Spanish accent/diacritic corrections).
+- Added cutscene AD authoring foundations (`cutscene-ad` manifest/scripts, validator script, and workflow docs).
+- Added `scripts/extract_unity_assets.py` to extract/index Unity assets for cutscene/audio-description research.
+
 ## 1.0.4 - 2026-02-11
 
 - Added map-only `F1` hotkey that announces map/chapter star progress summary.

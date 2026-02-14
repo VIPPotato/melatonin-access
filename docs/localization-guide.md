@@ -286,7 +286,7 @@ public override void OnInitializeMelon()
 private void OnGameReady()
 {
     Loc.Initialize();
-    ScreenReader.Announce(Loc.Get("mod_loaded"));
+    ScreenReader.Say(Loc.Get("mod_loaded"));
 }
 ```
 
@@ -307,12 +307,12 @@ private void OnLanguageChanged()
 
 **Before (hardcoded):**
 ```csharp
-ScreenReader.Announce("Inventory opened. 5 items.");
+ScreenReader.Say("Inventory opened. 5 items.");
 ```
 
 **After (localized):**
 ```csharp
-ScreenReader.Announce(Loc.Get("inventory_opened", itemCount));
+ScreenReader.Say(Loc.Get("inventory_opened", itemCount));
 ```
 
 **Don't forget GetHelpText():**
@@ -524,7 +524,7 @@ public class InventoryHandler
     {
         if (inventory == null)
         {
-            ScreenReader.Announce(Loc.Get("inventory_not_available"));
+            ScreenReader.Say(Loc.Get("inventory_not_available"));
             return;
         }
 
@@ -532,11 +532,11 @@ public class InventoryHandler
 
         if (count == 0)
         {
-            ScreenReader.Announce(Loc.Get("inventory_empty"));
+            ScreenReader.Say(Loc.Get("inventory_empty"));
         }
         else
         {
-            ScreenReader.Announce(Loc.Get("inventory_count", count));
+            ScreenReader.Say(Loc.Get("inventory_count", count));
         }
     }
 
@@ -544,11 +544,11 @@ public class InventoryHandler
     {
         if (item == null)
         {
-            ScreenReader.Announce(Loc.Get("no_item_selected"));
+            ScreenReader.Say(Loc.Get("no_item_selected"));
             return;
         }
 
-        ScreenReader.Announce(
+        ScreenReader.Say(
             Loc.Get("item_info", item.name, item.quantity, item.description)
         );
     }

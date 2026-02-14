@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace [MODNAME]
+namespace NAMESPACE
 {
     /// <summary>
     /// Zentrale Lokalisierung für den Accessibility-Mod.

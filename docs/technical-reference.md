@@ -1,6 +1,6 @@
 # Technical Reference
 
-Compact overview: MelonLoader, Harmony, and Tolk.
+Compact overview: MelonLoader, BepInEx, Harmony, and Tolk.
 
 ---
 
@@ -127,12 +127,128 @@ if (Input.GetKey(KeyCode.LeftShift)) { }  // Held
 
 ---
 
+## BepInEx Basics
+
+### Project References (csproj)
+
+```xml
+<Reference Include="BepInEx">
+    <HintPath>[GameDirectory]\BepInEx\core\BepInEx.dll</HintPath>
+</Reference>
+<Reference Include="0Harmony">
+    <HintPath>[GameDirectory]\BepInEx\core\0Harmony.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine">
+    <HintPath>[GameDirectory]\[Game]_Data\Managed\UnityEngine.dll</HintPath>
+</Reference>
+<Reference Include="UnityEngine.CoreModule">
+    <HintPath>[GameDirectory]\[Game]_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+</Reference>
+<Reference Include="Assembly-CSharp">
+    <HintPath>[GameDirectory]\[Game]_Data\Managed\Assembly-CSharp.dll</HintPath>
+</Reference>
+```
+
+### BepInPlugin Attribute
+
+```csharp
+[BepInPlugin("com.author.modname", "ModName", "1.0.0")]
+```
+
+- First parameter: Unique GUID (reverse domain notation)
+- Unlike MelonLoader, these values are freely chosen (not from a log file)
+- The GUID must be unique across all mods for this game
+
+### Lifecycle
+
+```csharp
+using BepInEx;
+using UnityEngine;
+
+[BepInPlugin("com.author.modname", "ModName", "1.0.0")]
+public class Main : BaseUnityPlugin
+{
+    void Awake() { }    // Once on load (like OnInitializeMelon)
+    void Update() { }   // Every frame (like OnUpdate)
+    void OnDestroy() { } // On exit (like OnApplicationQuit)
+}
+```
+
+**Key differences from MelonLoader:**
+
+- `BaseUnityPlugin` inherits from `MonoBehaviour` — uses Unity lifecycle methods
+- No `OnSceneWasLoaded` equivalent built-in. Use `SceneManager.sceneLoaded` event instead:
+
+```csharp
+using UnityEngine.SceneManagement;
+
+void Awake()
+{
+    SceneManager.sceneLoaded += OnSceneLoaded;
+}
+
+private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+{
+    Logger.LogInfo($"Scene loaded: {scene.name}");
+}
+```
+
+### CRITICAL: Accessing Game Code (BepInEx)
+
+The same timing rules apply as with MelonLoader:
+
+- **Awake()**: Only own initialization, NO game class access
+- **After scene load**: Everything allowed
+
+```csharp
+private bool _gameReady = false;
+
+void Update()
+{
+    if (!_gameReady)
+    {
+        // Check for game singletons — adjust to your game!
+        // if (GameManager.instance != null)
+        //     _gameReady = true;
+        // else
+        //     return;
+        return;
+    }
+
+    // Game logic here
+}
+```
+
+### Logging
+
+```csharp
+Logger.LogInfo("Info");      // Instance logger (within plugin class)
+Logger.LogWarning("Warning");
+Logger.LogError("Error");
+```
+
+### Key Input
+
+Same as MelonLoader — both use Unity's Input system:
+
+```csharp
+if (Input.GetKeyDown(KeyCode.F1)) { }  // Pressed once
+if (Input.GetKey(KeyCode.LeftShift)) { }  // Held
+```
+
+### Mod Output Directory
+
+Built DLL goes into `BepInEx/plugins/` (not `Mods/` like MelonLoader).
+
+---
+
 ## Harmony Patching
 
-Harmony is included in MelonLoader - no extra import needed.
+Harmony is included in both MelonLoader and BepInEx - no extra import needed.
 
 ### Setup in Main
 
+**MelonLoader:**
 ```csharp
 private HarmonyLib.Harmony _harmony;
 
@@ -140,6 +256,16 @@ public override void OnInitializeMelon()
 {
     _harmony = new HarmonyLib.Harmony("com.author.modname");
     _harmony.PatchAll();
+}
+```
+
+**BepInEx:**
+```csharp
+// Harmony is auto-created by BepInEx. Just call PatchAll in Awake:
+void Awake()
+{
+    var harmony = new HarmonyLib.Harmony("com.author.modname");
+    harmony.PatchAll();
 }
 ```
 
@@ -262,6 +388,7 @@ public static class ScreenReader
 
 ### Usage
 
+**MelonLoader:**
 ```csharp
 public override void OnInitializeMelon()
 {
@@ -270,6 +397,20 @@ public override void OnInitializeMelon()
 }
 
 public override void OnApplicationQuit()
+{
+    ScreenReader.Shutdown();
+}
+```
+
+**BepInEx:**
+```csharp
+void Awake()
+{
+    ScreenReader.Initialize();
+    ScreenReader.Say("Mod loaded");
+}
+
+void OnDestroy()
 {
     ScreenReader.Shutdown();
 }
@@ -360,3 +501,128 @@ public void Say(string text)
     ScreenReader.Say(text);
 }
 ```
+
+---
+
+## Cross-Platform: Linux and macOS
+
+If the game runs on Linux or macOS, the mod can be ported. Here is what works, what needs changes, and how to approach it.
+
+### What works without changes
+
+- **All mod code** (Handlers, Loc, DebugLogger, Main) is pure C# — runs on any platform
+- **Harmony patching** works everywhere Mono/.NET runs
+- **Unity** is cross-platform, so game internals behave the same
+
+### Mod Loader
+
+- **BepInEx**: Has official Linux builds and works on macOS. Best choice for cross-platform mods.
+- **MelonLoader**: Linux support exists but is less mature than BepInEx. macOS support is limited.
+- If cross-platform is a goal, prefer BepInEx.
+
+### The main challenge: Screen reader integration
+
+**Tolk is Windows-only.** It uses Windows-specific DLLs (nvdaControllerClient, JAWS API, SAPI). On other platforms, different screen reader APIs exist:
+
+- **Linux**: speech-dispatcher (libspeechd / `spd-say` command), AT-SPI
+- **macOS**: VoiceOver via NSAccessibility API, or the `say` command
+
+### How to implement cross-platform screen reader support
+
+Replace the direct Tolk calls in `ScreenReader.cs` with a platform-aware abstraction:
+
+```csharp
+public static void Initialize()
+{
+    if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+        _backend = new TolkBackend();       // Existing Tolk integration
+    else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+        _backend = new SpeechDBackend();     // speech-dispatcher
+    else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+        _backend = new MacSayBackend();      // macOS say command
+}
+```
+
+**Simple Linux backend (using spd-say process call):**
+
+```csharp
+public class SpeechDBackend : IScreenReaderBackend
+{
+    public bool IsAvailable()
+    {
+        // Check if spd-say exists
+        try
+        {
+            var p = Process.Start(new ProcessStartInfo("which", "spd-say")
+                { RedirectStandardOutput = true, UseShellExecute = false });
+            p.WaitForExit();
+            return p.ExitCode == 0;
+        }
+        catch { return false; }
+    }
+
+    public void Say(string text, bool interrupt)
+    {
+        if (interrupt) Silence();
+        Process.Start("spd-say", $"\"{text}\"");
+    }
+
+    public void Silence()
+    {
+        try { Process.Start("spd-say", "--cancel"); } catch { }
+    }
+}
+```
+
+**Simple macOS backend (using say command):**
+
+```csharp
+public class MacSayBackend : IScreenReaderBackend
+{
+    public bool IsAvailable() => true; // say is always available on macOS
+
+    public void Say(string text, bool interrupt)
+    {
+        if (interrupt) Silence();
+        Process.Start("say", $"\"{text}\"");
+    }
+
+    public void Silence()
+    {
+        // Kill any running say process
+        try { Process.Start("killall", "say"); } catch { }
+    }
+}
+```
+
+**Shared interface:**
+
+```csharp
+public interface IScreenReaderBackend
+{
+    bool IsAvailable();
+    void Say(string text, bool interrupt);
+    void Silence();
+}
+```
+
+### Limitations of the simple approach
+
+- **Process calls have slight latency** (~50-100ms) compared to Tolk's direct DLL calls
+- **No queueing** — `spd-say` and `say` don't queue natively (would need custom queue)
+- **`say` on macOS uses VoiceOver's voice but NOT the VoiceOver screen reader** — blind macOS users who use VoiceOver may hear double output
+
+### Robust alternatives (more effort)
+
+- **Linux**: P/Invoke directly to `libspeechd.so` for speech-dispatcher — similar to how Tolk works on Windows, no process overhead
+- **macOS**: Use NSAccessibility APIs via P/Invoke or a native helper — integrates with VoiceOver properly
+- **Cross-platform library**: [Tolk-rs](https://github.com/mush42/tolk-rs) (Rust) or [accessible-output](https://github.com/accessibleapps/accessible_output2) (Python) exist as references, but no maintained cross-platform C# screen reader library exists yet
+
+### Effort estimate
+
+- ScreenReader abstraction layer: Small (refactor existing ScreenReader.cs)
+- Simple Linux backend (spd-say): Small
+- Simple macOS backend (say): Small
+- Robust Linux backend (libspeechd): Medium
+- Robust macOS backend (NSAccessibility): Medium
+- Everything else in the template: No changes needed

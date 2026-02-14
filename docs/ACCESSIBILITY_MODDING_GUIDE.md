@@ -63,6 +63,46 @@ Example: "Used Health Potion, health full"
 Example: "Cannot do that: Inventory full"
 ```
 
+### Queued vs. Interrupting Announcements
+
+**Interrupting (Standard):** Stops previous speech, speaks immediately
+**Queued:** Waits until previous speech finishes
+
+Use queued for additional info after a main announcement. Tolk's `Tolk_Output(text, interrupt)` supports this directly - passing `false` for the interrupt parameter queues the message:
+
+```csharp
+// Main message (interrupts previous speech)
+ScreenReader.Say("Quest accepted: Find the lost artifact");
+
+// Additional info (queued - waits for previous speech to finish)
+ScreenReader.Say("Press J to open quest log", false);
+```
+
+**When to use queued (interrupt = false):**
+- Available key commands after panel opening
+- Response options after dialog text
+- Hints after action confirmation
+
+### Announcement Priority (Suggestion)
+
+When multiple events happen at once (e.g., combat + status change + popup), you need to decide what the user hears first. This is highly game-specific - there is no universal rule. Consider these rough guidelines and adapt to each game:
+
+**Higher priority (typically interrupt):**
+- Critical state changes (health critical, game over, death)
+- Screen/mode transitions (menu opened, battle started)
+- Dialog text and response options
+- Error messages ("Can't do that")
+
+**Lower priority (typically queued):**
+- Navigation announcements (item selection)
+- Status updates (resource counts)
+- Hints and tooltips
+- Available key commands after panel opening
+
+**Simple implementation:** For most mods, using `ScreenReader.Say(text)` for important things (interrupts previous speech) and `ScreenReader.SayQueued(text)` for additional info (waits) is sufficient. Only build a full priority queue system if you have a game with many simultaneous events (e.g., real-time combat with UI overlays).
+
+**When in doubt:** Test with a screen reader and listen. If important information gets drowned out by less important announcements, increase priority of the important one. If the user misses context because everything interrupts, use more queuing.
+
 ## Output Formatting for Screen Readers
 
 ### Avoid
@@ -97,8 +137,6 @@ Instead of tables, format information like this:
 - Escape - Cancel/back
 
 ### Recommended Key Patterns
-- Single letters for quick zone/area access (e.g., C for cards, G for graveyard)
-- Shift+Letter for opponent/alternate views of the same zone
 - Arrow keys for navigation within a focused area
 - F1 for help, F2 for context information
 - Space for primary action/confirm
@@ -108,6 +146,55 @@ Instead of tables, format information like this:
 - Keys can have different functions based on game state
 - Always announce what the current context allows
 - Provide audio feedback for mode/context changes
+
+### Modifier Keys for Bulk Actions
+
+For buy/sell or other quantity actions:
+
+```csharp
+private int GetQuantityMultiplier()
+{
+    if (Input.GetKey(KeyCode.LeftAlt)) return 100;
+    if (Input.GetKey(KeyCode.LeftControl)) return 10;
+    if (Input.GetKey(KeyCode.LeftShift)) return 5;
+    return 1;
+}
+
+// Announce when panel opens:
+// "Hold Shift for 5, Ctrl for 10, Alt for 100 units."
+```
+
+## Advanced: Central Announcement Manager (optional)
+
+For most mods, calling `ScreenReader.Say()` directly from handlers works fine. However, for games with many simultaneous events, consider an AnnouncementManager that sits between handlers and ScreenReader:
+
+```
+Handler → AnnouncementManager → ScreenReader → Tolk → Screen Reader
+```
+
+### When You Might Need This
+
+- **Real-time strategy games:** Multiple units reporting status, buildings completing, resources changing - all at once
+- **Action RPGs with busy UI:** Combat log + health changes + buff/debuff notifications + loot drops simultaneously
+- **Games with multiple overlapping panels:** Chat messages arriving while navigating inventory while a quest notification pops up
+
+### What It Could Do
+
+- **Priority filtering:** Critical messages (health critical, game over) always interrupt. Low-priority messages (ambient hints) only speak when nothing else is queued.
+- **Duplicate suppression:** If "Health: 45" is already queued, don't queue it again.
+- **Verbosity control:** Reduce detail level when many events are competing. Full detail when things are calm.
+- **Rate limiting:** In a rapid combat log, summarize instead of reading every line ("3 enemies defeated" instead of announcing each one).
+
+### Why NOT to Use This by Default
+
+- Adds complexity that most mods don't need
+- Harder to debug (messages go through an extra layer)
+- Turn-based games, menu-heavy games, and most indie games don't have enough simultaneous events to justify it
+- Simple `Say()` (interrupt) and `SayQueued()` (queue) cover 90% of cases
+
+**Recommendation:** Start without an AnnouncementManager. If you find that important messages are getting lost in a flood of less important ones, that's the signal to introduce one. The Announcement Priority section above gives simpler alternatives to try first.
+
+---
 
 ## Code Architecture Recommendations
 
@@ -123,7 +210,6 @@ Bevor du einen neuen Handler schreibst, eine Spielmechanik ansprichst oder UI-El
 - Interne Mechaniken funktionieren selten so, wie man es von außen vermutet
 - Falsche Annahmen führen zu Code, der kompiliert aber nicht funktioniert - schwer zu debuggen
 - Reflection auf nicht-existente Felder schlägt still fehl
-- Ein falscher Klassenname bedeutet: Zeit verschwendet, Frust beim Benutzer
 
 #### Was muss VOR jeder Implementierung geprüft werden?
 
@@ -207,6 +293,7 @@ var inventory = GameObject.Find("InventoryPanel");
 - **Modular** - Separate concerns: input handling, UI extraction, announcement, game state
 - **Maintainable** - Clear structure, consistent patterns, easy to extend and debug
 - **Efficient** - Avoid unnecessary processing, cache where appropriate, minimize performance impact on the game
+- **Game-Integrated** - Always use original game methods for actions; never bypass game logic
 
 ### Essential Utility Classes to Build
 - **UITextExtractor** - Extract readable text from UI elements
@@ -251,6 +338,36 @@ if (Input.GetKeyDown(KeyCode.F2))
 
 **Rule of thumb:** One handler per screen/feature. Split when a handler exceeds 200-300 lines.
 
+### State Change Detection
+
+Only announce on actual changes - not every frame:
+
+```csharp
+public class NavigationHandler
+{
+    private string _lastAnnouncedLocation;
+    private string _lastAnnouncedTarget;
+
+    public void Update()
+    {
+        var currentLocation = GetCurrentLocation();
+        if (currentLocation != _lastAnnouncedLocation)
+        {
+            _lastAnnouncedLocation = currentLocation;
+            ScreenReader.Say($"Entered {currentLocation}");
+        }
+
+        var currentTarget = GetCurrentTarget();
+        if (currentTarget != _lastAnnouncedTarget)
+        {
+            _lastAnnouncedTarget = currentTarget;
+            if (!string.IsNullOrEmpty(currentTarget))
+                ScreenReader.Say($"Target: {currentTarget}");
+        }
+    }
+}
+```
+
 ### Performance Tips
 
 Mods should not slow down the game. Follow these patterns:
@@ -284,9 +401,47 @@ void Update() {
 }
 ```
 
+**When frame-checks ARE necessary:**
+- Player position tracking during fast movement
+- Quick animations/states that must not be missed
+- Input handling (Unity does this frame-based anyway)
+
 **Note:** The examples use Unity API. For other engines, apply the same principles with equivalent APIs.
 
+### Game Integration
+
+**Always use original game methods for actions.** When the mod performs actions like picking up items, buying, or interacting - use the game's own methods, not direct manipulation.
+
+**Why this matters:**
+- Game tracks statistics, achievements, progress
+- Sound effects and visual feedback play correctly
+- Other game systems get notified (quests, tutorials, etc.)
+- Prevents desyncs and broken game states
+
+```csharp
+// BAD: Bypasses game logic - achievements/sounds/stats won't trigger
+player.inventory.items.Add(item);
+itemOnGround.SetActive(false);
+
+// GOOD: Uses game's pickup method - all systems get notified
+player.PickupItem(item);
+
+// BAD: Direct gold manipulation
+player.gold += 100;
+
+// GOOD: Game handles it properly
+shop.SellItem(item); // Triggers sound, updates UI, logs transaction
+```
+
+**Rule of thumb:** If the game has a method for an action, use it. Only manipulate data directly when there's no alternative.
+
 ## Error Handling
+
+### Rules
+
+1. **Null-safety with logging:** Never fail silently. If something is null, log via DebugLogger AND tell the user something useful via ScreenReader.
+2. **Try-catch ONLY where failures are expected:** Reflection access (field names may change between game updates), Tolk/external library calls, and game API calls that may behave unexpectedly. Normal code paths use null-checks, not try-catch.
+3. **DebugLogger always, MelonLogger for critical:** Use `DebugLogger.Log()` for diagnostic info (only active in debug mode). Use `MelonLogger.Warning/Error()` for problems that persist outside debug mode (DLL not found, initialization failure).
 
 ### Defensive Programming
 
@@ -364,6 +519,7 @@ public void AnnounceInventory()
 - No redundant announcements (same info repeated)
 - **NEVER override game keys** - check game keybindings first!
 - No expensive search operations in Update loops (cache instead!)
+- **NEVER bypass game methods** - use original pickup/buy/sell methods so the game stays in sync
 
 ## Common Pitfalls
 
@@ -373,6 +529,8 @@ public void AnnounceInventory()
 - Overriding keys that screen reader users expect to work normally
 - Assuming visual context that isn't announced
 - Not handling rapid repeated key presses gracefully
+- Polling every frame instead of using intervals or change detection
+- Bypassing game methods (direct inventory manipulation) - breaks achievements, sounds, stats
 
 ---
 
@@ -445,3 +603,16 @@ obj.SetActive(true);
 if (Input.GetKeyDown(KeyCode.F1)) { }  // Pressed once
 if (Input.GetKey(KeyCode.LeftShift)) { }  // Held down
 ```
+
+---
+
+## Quick Reference: Best Practices
+
+1. **Only announce on changes** - Not every frame
+2. **Always include position** - "X of Y" for lists
+3. **Explicit empty states** - Never silence
+4. **Confirm actions** - What was done + new state
+5. **Announce available commands** - Key hints when panel opens
+6. **Use queued for details** - Don't interrupt main info
+7. **Consistent patterns** - Same actions = same announcements
+8. **Enable logging** - Essential for debugging

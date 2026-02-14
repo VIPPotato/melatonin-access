@@ -11,7 +11,15 @@ namespace NAMESPACE
     /// 2. Keep handlers focused - if it does too much, split it
     /// 3. Use static IsXXXOpen() method so Main can check without instantiating
     /// 4. Track state changes with _lastXXX fields to avoid duplicate announcements
-    /// 5. Use ScreenReader.Announce() for all announcements
+    /// 5. ALL strings to ScreenReader MUST go through Loc.Get() - no hardcoded strings!
+    ///
+    /// LOCALIZATION REMINDER:
+    /// When creating this handler, also add all Loc keys to Loc.cs InitializeStrings():
+    ///   Add("FEATURENAME_opened", "[German]", "FEATURENAME opened");
+    ///   Add("FEATURENAME_closed", "[German]", "FEATURENAME closed");
+    ///   Add("FEATURENAME_empty", "[German]", "Empty");
+    ///   Add("FEATURENAME_selected", "[German]", "Selected");
+    ///   Add("FEATURENAME_position", "[German] {0} von {1}: {2}", "{0} of {1}: {2}");
     /// </summary>
     public class FEATURENAMEHandler
     {
@@ -47,7 +55,7 @@ namespace NAMESPACE
             // Option 3: Check screen mode
             // return MainScreen.instance?.mode == 5;
 
-            return false; // TODO: Implementieren
+            return false; // TODO: Implement
         }
 
         #endregion
@@ -98,7 +106,7 @@ namespace NAMESPACE
             DebugLogger.LogState("FEATURENAME opened");
             _currentIndex = 0;
             _cachedPanel = null; // Reset cache
-            ScreenReader.Announce("FEATURENAME geöffnet");
+            ScreenReader.Say(Loc.Get("FEATURENAME_opened"));
             AnnounceCurrentItem();
         }
 
@@ -107,7 +115,7 @@ namespace NAMESPACE
             DebugLogger.LogState("FEATURENAME closed");
             _cachedPanel = null;
             _lastAnnouncedText = null;
-            ScreenReader.Announce("FEATURENAME geschlossen");
+            ScreenReader.Say(Loc.Get("FEATURENAME_closed"));
         }
 
         #endregion
@@ -147,7 +155,7 @@ namespace NAMESPACE
 
             if (total == 0)
             {
-                ScreenReader.Announce("Leer");
+                ScreenReader.Say(Loc.Get("FEATURENAME_empty"));
                 return;
             }
 
@@ -166,7 +174,7 @@ namespace NAMESPACE
         public void ActivateCurrent()
         {
             // TODO: Perform action for current item
-            ScreenReader.Announce("Ausgewählt");
+            ScreenReader.Say(Loc.Get("FEATURENAME_selected"));
         }
 
         #endregion
@@ -178,7 +186,7 @@ namespace NAMESPACE
             int total = GetItemCount();
             if (total == 0)
             {
-                ScreenReader.Announce("Leer");
+                ScreenReader.Say(Loc.Get("FEATURENAME_empty"));
                 return;
             }
 
@@ -189,7 +197,7 @@ namespace NAMESPACE
             _lastAnnouncedText = itemText;
 
             int position = _currentIndex + 1;
-            ScreenReader.Announce($"{position} von {total}: {itemText}");
+            ScreenReader.Say(Loc.Get("FEATURENAME_position", position, total, itemText));
         }
 
         #endregion
@@ -208,10 +216,10 @@ namespace NAMESPACE
             // TODO: Return text for item at index
             // Example:
             // var item = InventoryManager.Instance?.Items[index];
-            // var text = item?.Name ?? "Unbekannt";
+            // var text = item?.Name ?? Loc.Get("unknown");
             // DebugLogger.LogGameValue($"Item[{index}]", text);
             // return text;
-            return "Unbekannt";
+            return Loc.Get("unknown");
         }
 
         private GameObject GetPanel()

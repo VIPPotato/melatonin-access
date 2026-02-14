@@ -57,6 +57,7 @@ namespace NAMESPACE
         public override void OnInitializeMelon()
         {
             ScreenReader.Initialize();
+            Loc.Initialize();
             InitializeHandlers();
             MelonCoroutines.Start(AnnounceStartupDelayed());
         }
@@ -72,7 +73,7 @@ namespace NAMESPACE
         {
             // Short delay so screenreader is ready
             yield return new WaitForSeconds(1f);
-            ScreenReader.Announce("MODNAME geladen. F1 für Hilfe.");
+            ScreenReader.Say(Loc.Get("mod_loaded"));
         }
 
         public override void OnUpdate()
@@ -178,14 +179,14 @@ namespace NAMESPACE
 
         private void AnnounceHelp()
         {
-            string help = "Tastenbelegung: " +
-                "F1 Hilfe. ";
+            string help = "Key bindings: " +
+                "F1 Help. ";
                 // Add more keys as you implement them:
                 // "F2 Status. " +
                 // "Tab nächstes Element. " +
                 // "Enter aktivieren.";
 
-            ScreenReader.Announce(help);
+            ScreenReader.Say(help);
         }
 
         #endregion

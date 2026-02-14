@@ -1,0 +1,112 @@
+# Project Status: [MODNAME]
+
+## Project Info
+
+- **Game:** [GAME NAME]
+- **Engine:** [ENGINE + VERSION]
+- **Architecture:** [32-bit / 64-bit]
+- **Mod Loader:** [MelonLoader / BepInEx]
+- **Runtime:** [net35 / net6]
+- **Game directory:** [PATH]
+- **User experience level:** [Little/None or A Lot]
+- **User game familiarity:** [Very well / Somewhat / Not at all]
+
+## Setup Progress
+
+- [x] Experience level determined
+- [x] Game name and path confirmed
+- [x] Game familiarity assessed
+- [ ] Game directory auto-check completed
+- [ ] Mod loader selected and installed (MelonLoader or BepInEx)
+- [ ] Tolk DLLs in place
+- [ ] .NET SDK available
+- [ ] Decompiler tool ready
+- [ ] Game code decompiled to `decompiled/`
+- [ ] Tutorial texts extracted (if applicable)
+- [ ] Multilingual support decided
+- [ ] Project directory set up (csproj, Main.cs, etc.)
+- [ ] AGENTS.md updated with project-specific values
+- [ ] First build successful
+- [ ] "Mod loaded" announcement working in game
+
+## Current Phase
+
+**Phase:** [Setup / Analysis / Framework / Feature Development]
+**Currently working on:** [Description of current task]
+**Blocked by:** [Any blockers, or "Nothing"]
+
+## Codebase Analysis Progress
+
+- [ ] Tier 1: Structure overview (namespaces, singletons)
+- [ ] Tier 1: Input system (all key bindings documented)
+- [ ] Tier 1: UI system (base classes, text access patterns)
+- [ ] Tier 2: Game mechanics (analyzed as needed per feature)
+- [ ] Tier 2: Status/feedback systems
+- [ ] Tier 2: Event system / Harmony patch points
+- [ ] Tier 3: Localization system
+- [ ] Tier 3: Tutorial analysis
+- [ ] Results documented in `docs/game-api.md`
+
+## Implemented Features
+
+List features with their status:
+
+- (none yet)
+
+<!-- Example:
+- **Main Menu Navigation** - DONE - Arrow keys navigate, Enter activates
+- **Settings Menu** - DONE - All sliders and toggles accessible
+- **Inventory** - IN PROGRESS - Basic navigation works, item details missing
+- **Status Announcements** - PLANNED - F2 for health, F3 for resources
+-->
+
+## Pending Tests
+
+What the user should test in the next game session:
+
+- (none yet)
+
+<!-- Example:
+- Main menu: Check if all 5 menu items are announced with arrow keys
+- Settings: Test slider, check if percentage is read aloud
+- Try pressing F2 during gameplay — should announce health
+-->
+
+## Known Issues
+
+- (none yet)
+
+<!-- Example:
+- Menu navigation sometimes skips an item when scrolling fast
+- Shop prices not announced for bundled items
+-->
+
+## Architecture Decisions
+
+Document important decisions so future sessions understand the reasoning:
+
+- (none yet)
+
+<!-- Example:
+- Using ReflectionHelper for all UI text access (most fields are private)
+- State management via AccessStateManager (3+ handlers share arrow keys)
+- Manual Harmony patching in OnSceneWasLoaded (typeof() crashes at assembly load)
+-->
+
+## Key Bindings (Mod)
+
+- F1: Help
+- F12: Toggle debug mode
+<!-- Add more as features are implemented -->
+
+## Notes for Next Session
+
+Write anything the next conversation needs to know:
+
+- (none yet)
+
+<!-- Example:
+- Left off debugging the inventory handler - item count is correct but item names show as "Unknown"
+- Need to check if InventorySlot uses m_ItemName or title field
+- User wants crafting menu next
+-->
