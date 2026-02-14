@@ -29,6 +29,8 @@ namespace MelatoninAccess
         private static bool _foodSeventhBeatPromptSpoken;
         private static bool _techPhaseOnePromptSpoken;
         private static bool _techPhaseTwoPromptSpoken;
+        private static bool _timePortalGapPromptSpoken;
+        private static bool _timeSixthSeventhPromptSpoken;
         private static bool _pastOneBeatHintSpoken;
         private static bool _pastHalfBeatHintSpoken;
         private static bool _pastTwoBeatHintSpoken;
@@ -367,6 +369,13 @@ namespace MelatoninAccess
             if (!isHoldReleaseTutorialScene) return false;
 
             string actionPrompt = GetActionPrompt();
+
+            if (string.Equals(sceneName, "Dream_time", StringComparison.OrdinalIgnoreCase) &&
+                TryAnnounceTimeHoldCue(actionPrompt, numBeatsTilHold, numBeatsTilRelease, isHalfBeatAddedToHold, isHalfBeatAddedToRelease))
+            {
+                return true;
+            }
+
             if ((string.Equals(sceneName, "Dream_space", StringComparison.OrdinalIgnoreCase) ||
                  string.Equals(sceneName, "Dream_desires", StringComparison.OrdinalIgnoreCase)) &&
                 TryAnnounceReleaseBeatCue(
@@ -517,6 +526,43 @@ namespace MelatoninAccess
             return true;
         }
 
+        private static bool TryAnnounceTimeHoldCue(string actionPrompt, int numBeatsTilHold, int numBeatsTilRelease, bool isHalfBeatAddedToHold, bool isHalfBeatAddedToRelease)
+        {
+            bool isPortalGapCue =
+                numBeatsTilHold == 2 &&
+                numBeatsTilRelease == 3 &&
+                isHalfBeatAddedToHold &&
+                !isHalfBeatAddedToRelease;
+
+            if (isPortalGapCue)
+            {
+                if (!_timePortalGapPromptSpoken)
+                {
+                    _timePortalGapPromptSpoken = true;
+                    ScreenReader.Say(Loc.Get("cue_time_portal_gap_hold_release", actionPrompt), true);
+                }
+                return true;
+            }
+
+            bool isSixthSeventhCue =
+                numBeatsTilHold == 1 &&
+                numBeatsTilRelease == 2 &&
+                isHalfBeatAddedToHold &&
+                !isHalfBeatAddedToRelease;
+
+            if (isSixthSeventhCue)
+            {
+                if (!_timeSixthSeventhPromptSpoken)
+                {
+                    _timeSixthSeventhPromptSpoken = true;
+                    ScreenReader.Say(Loc.Get("cue_time_sixth_seventh_hold_release", actionPrompt), true);
+                }
+                return true;
+            }
+
+            return false;
+        }
+
         private static bool TryAnnounceTechDoubleCue(string actionPrompt)
         {
             float now = Time.unscaledTime;
@@ -566,6 +612,8 @@ namespace MelatoninAccess
                 _foodSeventhBeatPromptSpoken = false;
                 _techPhaseOnePromptSpoken = false;
                 _techPhaseTwoPromptSpoken = false;
+                _timePortalGapPromptSpoken = false;
+                _timeSixthSeventhPromptSpoken = false;
                 _pastOneBeatHintSpoken = false;
                 _pastHalfBeatHintSpoken = false;
                 _pastTwoBeatHintSpoken = false;

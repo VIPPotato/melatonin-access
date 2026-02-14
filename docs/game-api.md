@@ -208,9 +208,12 @@
 ## v1.1 Cue Refinement Notes
 - `Dream_followers` phase-3 callout can be moved from phrase-2 pre-roll to `phrase == 3, bar == 1, beat == 1` when players prefer hearing it after the spring-stop transition.
 - `Dream_space` and `Dream_desires` hold windows are clearer when announced as phase-relative release beat (`numBeatsTilRelease - numBeatsTilHold + 1`) instead of absolute queue beat values.
+- `Dream_time` tutorial can be split into two contextual hold/release hints by queue signature:
+  - `QueueHoldReleaseWindow(2, 3, isHalfBeatAddedToHold: true)` -> portal-gap buzz instruction (`hold on cue, release on next cue`)
+  - `QueueHoldReleaseWindow(1, 2, isHalfBeatAddedToHold: true)` -> late-section sixth/seventh cue instruction
 - `Dream_future` supports an additional one-time `TriggerSong()` primer line ("follow patterns") while keeping directional/up queue callouts.
 - `Dream_past` queue windows repeat frequently; one-shot-per-duration hints (1 beat, half beat, 2 beats) reduce tutorial spam while preserving all unique timing hints.
-- References: `decompiled/Dream_followers.cs:140-190`, `decompiled/Dream_space.cs:130-226`, `decompiled/Dream_desires.cs:105-140`, `decompiled/Dream_future.cs:98-148`, `decompiled/Dream_past.cs:98-159`.
+- References: `decompiled/Dream_followers.cs:140-190`, `decompiled/Dream_time.cs:157-315`, `decompiled/Dream_space.cs:130-226`, `decompiled/Dream_desires.cs:105-140`, `decompiled/Dream_future.cs:98-148`, `decompiled/Dream_past.cs:98-159`.
 
 ## Remix Landmark Lock State
 - Remix landmark lock state on map is represented by private `Landmark.isDisabled` after `Landmark.Show()`.

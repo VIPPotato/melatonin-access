@@ -169,7 +169,7 @@ namespace MelatoninAccess
                 "Melatonin Access dang hoat dong. Dung phim mui ten de dieu huong menu.",
                 "Melatonin Access est actif. Utilisez les fleches pour naviguer dans les menus.",
                 "Melatonin Access ist aktiv. Nutze die Pfeiltasten zur Menunavigation.",
-                "Melatonin Access esta activo. Usa las flechas para navegar por los menus.",
+                "Melatonin Access está activo. Usa las flechas para navegar por los menús.",
                 "Melatonin Access esta ativo. Use as setas para navegar nos menus.");
 
             Add(
@@ -182,7 +182,7 @@ namespace MelatoninAccess
                 "Da bat che do giai loi.",
                 "Mode debug active.",
                 "Debug-Modus aktiviert.",
-                "Modo depuracion activado.",
+                "Modo depuración activado.",
                 "Modo de depuracao ativado.");
 
             Add(
@@ -195,7 +195,7 @@ namespace MelatoninAccess
                 "Da tat che do giai loi.",
                 "Mode debug desactive.",
                 "Debug-Modus deaktiviert.",
-                "Modo depuracion desactivado.",
+                "Modo depuración desactivado.",
                 "Modo de depuracao desativado.");
 
             Add(
@@ -234,7 +234,7 @@ namespace MelatoninAccess
                 "Da bat thong bao vi tri menu.",
                 "Annonces de position de menu activees.",
                 "Menuepositionsansagen aktiviert.",
-                "Anuncios de posicion de menu activados.",
+                "Anuncios de posición de menú activados.",
                 "Anuncios de posicao de menu ativados.");
 
             Add(
@@ -247,7 +247,7 @@ namespace MelatoninAccess
                 "Da tat thong bao vi tri menu.",
                 "Annonces de position de menu desactivees.",
                 "Menuepositionsansagen deaktiviert.",
-                "Anuncios de posicion de menu desactivados.",
+                "Anuncios de posición de menú desactivados.",
                 "Anuncios de posicao de menu desativados.");
 
             Add(
@@ -286,7 +286,7 @@ namespace MelatoninAccess
                 "Menu ngon ngu",
                 "Menu langue",
                 "Sprachmenu",
-                "Menu de idioma",
+                "Menú de idioma",
                 "Menu de idioma");
 
             Add(
@@ -299,7 +299,7 @@ namespace MelatoninAccess
                 "Danh de",
                 "Generique",
                 "Credits",
-                "Creditos",
+                "Créditos",
                 "Creditos");
 
             Add(
@@ -312,7 +312,7 @@ namespace MelatoninAccess
                 "Menu {0}",
                 "Menu {0}",
                 "{0} Menu",
-                "Menu {0}",
+                "Menú {0}",
                 "Menu {0}");
 
             Add(
@@ -338,7 +338,7 @@ namespace MelatoninAccess
                 "Chuong {0} da bi khoa",
                 "Chapitre {0} verrouille",
                 "Kapitel {0} gesperrt",
-                "Capitulo {0} bloqueado",
+                "Capítulo {0} bloqueado",
                 "Capitulo {0} bloqueado");
 
             Add(
@@ -442,7 +442,7 @@ namespace MelatoninAccess
                 "Cong cu hieu chinh. Dieu chinh do lech de khop nhip.",
                 "Outil de calibration. Ajustez le decalage pour correspondre au rythme.",
                 "Kalibrierungswerkzeug. Passe den Offset an den Beat an.",
-                "Herramienta de calibracion. Ajusta el desfase para coincidir con el ritmo.",
+                "Herramienta de calibración. Ajusta el desfase para coincidir con el ritmo.",
                 "Ferramenta de calibracao. Ajuste o deslocamento para combinar com a batida.");
 
             Add(
@@ -520,7 +520,7 @@ namespace MelatoninAccess
                 "Tong cong {0} cap. Trang {1} tren {2}",
                 "{0} niveaux au total. Page {1} sur {2}",
                 "{0} Level insgesamt. Seite {1} von {2}",
-                "{0} niveles en total. Pagina {1} de {2}",
+                "{0} niveles en total. Página {1} de {2}",
                 "{0} niveis no total. Pagina {1} de {2}");
 
             Add(
@@ -546,7 +546,7 @@ namespace MelatoninAccess
                 "Trang tiep theo",
                 "Page suivante",
                 "Nachte Seite",
-                "Pagina siguiente",
+                "Página siguiente",
                 "Proxima pagina");
 
             Add(
@@ -559,7 +559,7 @@ namespace MelatoninAccess
                 "Trang truoc",
                 "Page precedente",
                 "Vorherige Seite",
-                "Pagina anterior",
+                "Página anterior",
                 "Pagina anterior");
 
             Add(
@@ -572,7 +572,7 @@ namespace MelatoninAccess
                 "Trang {0} tren {1}",
                 "Page {0} sur {1}",
                 "Seite {0} von {1}",
-                "Pagina {0} de {1}",
+                "Página {0} de {1}",
                 "Pagina {0} de {1}");
 
             Add(
@@ -598,7 +598,7 @@ namespace MelatoninAccess
                 "Menu thanh tich",
                 "Menu des succes",
                 "Erfolge-Menue",
-                "Menu de logros",
+                "Menú de logros",
                 "Menu de conquistas");
 
             Add(
@@ -676,7 +676,7 @@ namespace MelatoninAccess
                 "Menu che do",
                 "Menu de mode",
                 "Modus-Menue",
-                "Menu de modo",
+                "Menú de modo",
                 "Menu de modo");
 
             Add(
@@ -689,7 +689,7 @@ namespace MelatoninAccess
                 "Giac mo ve {0}",
                 "Reve de {0}",
                 "Traum ueber {0}",
-                "Sueno sobre {0}",
+                "Sueño sobre {0}",
                 "Sonho sobre {0}");
 
             Add(
@@ -741,7 +741,7 @@ namespace MelatoninAccess
                 "Dich chuyen bang ngoac vuong da bi tat vi phim Hanh dong dang gan vao ngoac vuong. Hay dung F9 va F10 de dich chuyen.",
                 "La teleportation avec crochets est desactivee car l'action est assignee aux crochets. Utilisez F9 et F10.",
                 "Klammer-Teleport ist deaktiviert, weil Aktion auf Klammern gebunden ist. Nutze F9 und F10.",
-                "La teletransportacion con corchetes esta desactivada porque Accion usa corchetes. Usa F9 y F10.",
+                "La teletransportación con corchetes está desactivada porque Acción usa corchetes. Usa F9 y F10.",
                 "O teleporte com colchetes foi desativado porque a Acao esta vinculada a colchetes. Use F9 e F10.");
 
             Add(
@@ -1053,7 +1053,7 @@ namespace MelatoninAccess
                 "Cum {0}, o nhip {1}, phach {2}. Trong.",
                 "Phrase {0}, mesure {1}, temps {2}. Vide.",
                 "Phrase {0}, Takt {1}, Schlag {2}. Leer.",
-                "Frase {0}, compas {1}, tiempo {2}. Vacio.",
+                "Frase {0}, compás {1}, tiempo {2}. Vacío.",
                 "Frase {0}, compasso {1}, batida {2}. Vazio.");
 
             Add(
@@ -1066,7 +1066,7 @@ namespace MelatoninAccess
                 "Cum {0}, o nhip {1}, phach {2}. {3}.",
                 "Phrase {0}, mesure {1}, temps {2}. {3}.",
                 "Phrase {0}, Takt {1}, Schlag {2}. {3}.",
-                "Frase {0}, compas {1}, tiempo {2}. {3}.",
+                "Frase {0}, compás {1}, tiempo {2}. {3}.",
                 "Frase {0}, compasso {1}, batida {2}. {3}.");
 
             Add(
@@ -1105,7 +1105,7 @@ namespace MelatoninAccess
                 "Chon cong cu",
                 "Selection d'outil",
                 "Werkzeugauswahl",
-                "Seleccion de herramienta",
+                "Selección de herramienta",
                 "Selecao de ferramenta");
 
             Add(
@@ -1118,7 +1118,7 @@ namespace MelatoninAccess
                 "Menu nang cao",
                 "Menu avance",
                 "Erweitertes Menue",
-                "Menu avanzado",
+                "Menú avanzado",
                 "Menu avancado");
 
             Add(
@@ -1144,7 +1144,7 @@ namespace MelatoninAccess
                 "Trang {0}",
                 "Page {0}",
                 "Seite {0}",
-                "Pagina {0}",
+                "Página {0}",
                 "Pagina {0}");
 
             Add(
@@ -1222,7 +1222,7 @@ namespace MelatoninAccess
                 "Nhan {0} theo nhip. Bat dau va dung lai sau am thanh lo xo.",
                 "Appuyez sur {0} en rythme. Commencez et arretez apres le son du ressort.",
                 "Druecke {0} im Rhythmus. Nach dem Federgeraeusch starten und stoppen.",
-                "Pulsa {0} al ritmo. Empieza y detente despues del sonido del resorte.",
+                "Pulsa {0} al ritmo. Empieza y detente después del sonido del resorte.",
                 "Pressione {0} no ritmo. Comece e pare apos o som da mola.");
 
             Add(
@@ -1235,7 +1235,7 @@ namespace MelatoninAccess
                 "Dung lai sau am thanh nhay. Tiep tuc sau rung.",
                 "Arretez apres le son du saut. Reprenez apres la vibration.",
                 "Nach dem Sprunggeraeusch stoppen. Nach der Vibration weitermachen.",
-                "Detente despues del sonido de salto. Continua despues de la vibracion.",
+                "Detente después del sonido de salto. Continúa después de la vibración.",
                 "Pare apos o som do salto. Continue apos a vibracao.");
 
             Add(
@@ -1248,34 +1248,60 @@ namespace MelatoninAccess
                 "Nhan {0} ba lan sau rung doi.",
                 "Appuyez sur {0} trois fois apres la double vibration.",
                 "Nach doppelter Vibration {0} dreimal druecken.",
-                "Pulsa {0} tres veces despues de la doble vibracion.",
+                "Pulsa {0} tres veces después de la doble vibración.",
                 "Pressione {0} tres vezes apos a vibracao dupla.");
 
             Add(
                 "cue_tech_every_two_beats",
-                "Press {0} every 2 beats.",
-                "每2拍按一次 {0}。",
-                "每2拍按一次 {0}。",
-                "{0} を2拍ごとに押す。",
-                "2박자마다 {0}를 누르세요.",
-                "Nhan {0} moi 2 nhip.",
-                "Appuyez sur {0} tous les 2 temps.",
-                "Druecke {0} alle 2 Schlaege.",
-                "Pulsa {0} cada 2 pulsos.",
-                "Pressione {0} a cada 2 tempos.");
+                "After the high cue, press {0} on the next beat.",
+                "听到高音提示后，在下一拍按 {0}。",
+                "聽到高音提示後，在下一拍按 {0}。",
+                "高い合図の後、次の拍で {0} を押す。",
+                "높은 신호 후 다음 박자에 {0}를 누르세요.",
+                "Sau tin hieu am cao, nhan {0} o nhip tiep theo.",
+                "Apres le signal aigu, appuyez sur {0} au temps suivant.",
+                "Nach dem hohen Signal {0} auf dem naechsten Schlag druecken.",
+                "Tras la señal aguda, pulsa {0} en el siguiente pulso.",
+                "Apos o sinal agudo, pressione {0} no proximo tempo.");
 
             Add(
                 "cue_tech_next_three_beats",
-                "Press {0} on the next 3 beats.",
-                "接下来3拍都按 {0}。",
-                "接下來3拍都按 {0}。",
-                "次の3拍で {0} を押す。",
-                "다음 3박자에서 {0}를 누르세요.",
-                "Nhan {0} o 3 nhip tiep theo.",
-                "Appuyez sur {0} pendant les 3 temps suivants.",
-                "Druecke {0} in den naechsten 3 Schlaegen.",
-                "Pulsa {0} en los proximos 3 pulsos.",
-                "Pressione {0} nos proximos 3 tempos.");
+                "After the high cue, press {0} on the next 3 beats.",
+                "听到高音提示后，在接下来的3拍按 {0}。",
+                "聽到高音提示後，在接下來的3拍按 {0}。",
+                "高い合図の後、次の3拍で {0} を押す。",
+                "높은 신호 후 다음 3박자에 {0}를 누르세요.",
+                "Sau tin hieu am cao, nhan {0} o 3 nhip tiep theo.",
+                "Apres le signal aigu, appuyez sur {0} pendant les 3 temps suivants.",
+                "Nach dem hohen Signal {0} auf den naechsten 3 Schlaegen druecken.",
+                "Tras la señal aguda, pulsa {0} en los siguientes 3 pulsos.",
+                "Apos o sinal agudo, pressione {0} nos proximos 3 tempos.");
+
+            Add(
+                "cue_time_portal_gap_hold_release",
+                "After the portal buzz in the gap, hold {0} and release on the next cue.",
+                "在空档里的传送门嗡鸣后，按住 {0}，并在下一次提示时松开。",
+                "在空檔裡的傳送門嗡鳴後，按住 {0}，並在下一次提示時鬆開。",
+                "ポータルのブーン音の後、間で {0} を長押しし、次の合図で離す。",
+                "빈 구간의 포털 윙 소리 후 {0}를 길게 누르고 다음 신호에서 떼세요.",
+                "Sau tieng u cua cong dich chuyen trong khoang trong, giu {0} va tha o tin hieu tiep theo.",
+                "Apres le bourdonnement du portail dans le blanc, maintenez {0} puis relachez au signal suivant.",
+                "Nach dem Portal-Summen in der Luecke {0} halten und beim naechsten Signal loslassen.",
+                "Tras el zumbido del portal en el silencio, mantén {0} y suelta en la siguiente señal.",
+                "Apos o zumbido do portal na pausa, segure {0} e solte no proximo sinal.");
+
+            Add(
+                "cue_time_sixth_seventh_hold_release",
+                "On the sixth cue, hold {0}. Release on the seventh cue.",
+                "在第六个提示时按住 {0}。在第七个提示时松开。",
+                "在第六個提示時按住 {0}。在第七個提示時鬆開。",
+                "6つ目の合図で {0} を長押し。7つ目の合図で離す。",
+                "여섯 번째 신호에 {0}를 길게 누르고, 일곱 번째 신호에 떼세요.",
+                "O tin hieu thu sau, giu {0}. Tha o tin hieu thu bay.",
+                "Au sixieme signal, maintenez {0}. Relachez au septieme signal.",
+                "Beim sechsten Signal {0} halten. Beim siebten Signal loslassen.",
+                "En la sexta señal, mantén {0}. Suelta en la séptima señal.",
+                "No sexto sinal, segure {0}. Solte no setimo sinal.");
 
             Add(
                 "cue_nature_water_press_thrice",
@@ -1300,7 +1326,7 @@ namespace MelatoninAccess
                 "Nhan {0} ba lan theo tin hieu lech nhip.",
                 "Appuyez sur {0} trois fois sur le repere contretemps.",
                 "{0} beim Offbeat-Signal dreimal druecken.",
-                "Pulsa {0} tres veces con la senal de contratiempo.",
+                "Pulsa {0} tres veces con la señal de contratiempo.",
                 "Pressione {0} tres vezes no sinal de contratempo.");
 
             Add(
@@ -1326,7 +1352,7 @@ namespace MelatoninAccess
                 "Giu {0}. Tha sau {1}.",
                 "Maintenez {0}. Relachez apres {1}.",
                 "{0} halten. Nach {1} loslassen.",
-                "Mantener {0}. Soltar despues de {1}.",
+                "Mantén {0}. Suelta después de {1}.",
                 "Segure {0}. Solte apos {1}.");
 
             Add(
@@ -1482,7 +1508,7 @@ namespace MelatoninAccess
                 "Nhan {0} o nhip thu 7.",
                 "Appuyez sur {0} au septieme temps.",
                 "Druecke {0} beim siebten Schlag.",
-                "Pulsa {0} en el septimo pulso.",
+                "Pulsa {0} en el séptimo pulso.",
                 "Pressione {0} no setimo tempo.");
 
             Add(
@@ -1521,7 +1547,7 @@ namespace MelatoninAccess
                 "Lam theo cac tin hieu mau.",
                 "Suivez les reperes de motif.",
                 "Folge den Muster-Hinweisen.",
-                "Sigue las senales de patron.",
+                "Sigue las señales de patrón.",
                 "Siga os sinais de padrao.");
 
             Add(
@@ -1560,7 +1586,7 @@ namespace MelatoninAccess
                 "Vuot trai sau tin hieu dai.",
                 "Glissez a gauche apres le long signal.",
                 "Nach dem langen Signal nach links wischen.",
-                "Desliza a la izquierda despues de la senal larga.",
+                "Desliza a la izquierda después de la señal larga.",
                 "Deslize para a esquerda apos o sinal longo.");
 
             Add(
@@ -1573,7 +1599,7 @@ namespace MelatoninAccess
                 "Vuot phai sau tin hieu dai.",
                 "Glissez a droite apres le long signal.",
                 "Nach dem langen Signal nach rechts wischen.",
-                "Desliza a la derecha despues de la senal larga.",
+                "Desliza a la derecha después de la señal larga.",
                 "Deslize para a direita apos o sinal longo.");
 
             Add(
@@ -1677,7 +1703,7 @@ namespace MelatoninAccess
                 "Tro giup man hinh tieu de. Nhan {0} de bat dau. Nhan {1} de doi ngon ngu.",
                 "Aide ecran titre. Appuyez sur {0} pour commencer. Appuyez sur {1} pour changer la langue.",
                 "Titelbildschirm-Hilfe. Druecke {0} zum Starten. Druecke {1} fuer die Sprache.",
-                "Ayuda de pantalla de titulo. Pulsa {0} para empezar. Pulsa {1} para cambiar idioma.",
+                "Ayuda de pantalla de título. Pulsa {0} para empezar. Pulsa {1} para cambiar idioma.",
                 "Ajuda da tela inicial. Pressione {0} para comecar. Pressione {1} para mudar o idioma.");
 
             Add(
@@ -1690,7 +1716,7 @@ namespace MelatoninAccess
                 "Tro giup menu. Dung Len va Xuong de di chuyen. Nhan {0} de chon. Nhan {1} de quay lai.",
                 "Aide menu. Utilisez Haut et Bas pour bouger. Appuyez sur {0} pour choisir. Appuyez sur {1} pour retour.",
                 "Menue-Hilfe. Mit Hoch und Runter bewegen. Druecke {0} zum Waehlen. Druecke {1} zum Zurueckgehen.",
-                "Ayuda de menu. Usa Arriba y Abajo para moverte. Pulsa {0} para seleccionar. Pulsa {1} para volver.",
+                "Ayuda de menú. Usa Arriba y Abajo para moverte. Pulsa {0} para seleccionar. Pulsa {1} para volver.",
                 "Ajuda de menu. Use Cima e Baixo para mover. Pressione {0} para selecionar. Pressione {1} para voltar.");
 
             Add(
@@ -1716,7 +1742,7 @@ namespace MelatoninAccess
                 "Tro giup menu che do. Dung Len va Xuong de chon che do. Nhan {0} de bat dau. Nhan {1} de dong menu nay.",
                 "Aide menu de mode. Utilisez Haut et Bas pour choisir un mode. Appuyez sur {0} pour lancer. Appuyez sur {1} pour fermer ce menu.",
                 "Modusmenue-Hilfe. Mit Hoch und Runter Modus waehlen. Druecke {0} zum Starten. Druecke {1}, um dieses Menue zu schliessen.",
-                "Ayuda del menu de modo. Usa Arriba y Abajo para elegir modo. Pulsa {0} para iniciar. Pulsa {1} para cerrar este menu.",
+                "Ayuda del menú de modo. Usa Arriba y Abajo para elegir modo. Pulsa {0} para iniciar. Pulsa {1} para cerrar este menú.",
                 "Ajuda do menu de modo. Use Cima e Baixo para escolher o modo. Pressione {0} para iniciar. Pressione {1} para fechar este menu.");
 
             Add(
@@ -1729,7 +1755,7 @@ namespace MelatoninAccess
                 "Tro giup ket qua. Dung Len va Xuong de chon tuy chon. Nhan {0} de xac nhan. Nhan {1} de quay lai.",
                 "Aide resultats. Utilisez Haut et Bas pour choisir une option. Appuyez sur {0} pour confirmer. Appuyez sur {1} pour retour.",
                 "Ergebnis-Hilfe. Mit Hoch und Runter Option waehlen. Druecke {0} zum Bestaetigen. Druecke {1} zum Zurueckgehen.",
-                "Ayuda de resultados. Usa Arriba y Abajo para elegir una opcion. Pulsa {0} para confirmar. Pulsa {1} para volver.",
+                "Ayuda de resultados. Usa Arriba y Abajo para elegir una opción. Pulsa {0} para confirmar. Pulsa {1} para volver.",
                 "Ajuda de resultados. Use Cima e Baixo para escolher uma opcao. Pressione {0} para confirmar. Pressione {1} para voltar.");
 
             Add(
@@ -1742,7 +1768,7 @@ namespace MelatoninAccess
                 "Tro giup choi game. Theo cue theo ngu canh va nhan hanh dong duoc doc. Nhan {0} de tam dung.",
                 "Aide gameplay. Suivez les reperes contextuels et appuyez sur les actions annoncees. Appuyez sur {0} pour pause.",
                 "Gameplay-Hilfe. Folge den kontextbezogenen Hinweisen und druecke die angesagten Aktionen. Druecke {0} zum Pausieren.",
-                "Ayuda de juego. Sigue las senales contextuales y pulsa las acciones anunciadas. Pulsa {0} para pausar.",
+                "Ayuda de juego. Sigue las señales contextuales y pulsa las acciones anunciadas. Pulsa {0} para pausar.",
                 "Ajuda de jogo. Siga as dicas contextuais e pressione as acoes anunciadas. Pressione {0} para pausar.");
 
             Add(
@@ -1755,7 +1781,7 @@ namespace MelatoninAccess
                 "Tro giup trinh sua. Dung phim mui ten de di tren timeline. Nhan {0} de dat hoac chon. Nhan {1} de huy.",
                 "Aide editeur. Utilisez les fleches pour bouger sur la timeline. Appuyez sur {0} pour placer ou choisir. Appuyez sur {1} pour annuler.",
                 "Editor-Hilfe. Nutze Pfeiltasten zum Bewegen in der Timeline. Druecke {0} zum Platzieren oder Auswaehlen. Druecke {1} zum Abbrechen.",
-                "Ayuda del editor. Usa flechas para moverte por la linea de tiempo. Pulsa {0} para colocar o seleccionar. Pulsa {1} para cancelar.",
+                "Ayuda del editor. Usa flechas para moverte por la línea de tiempo. Pulsa {0} para colocar o seleccionar. Pulsa {1} para cancelar.",
                 "Ajuda do editor. Use as setas para mover na linha do tempo. Pressione {0} para colocar ou selecionar. Pressione {1} para cancelar.");
 
             Add(
@@ -1781,7 +1807,7 @@ namespace MelatoninAccess
                 "Che do luyen tap",
                 "Mode entrainement",
                 "Uebungsmodus",
-                "Modo practica",
+                "Modo práctica",
                 "Modo pratica");
 
             Add(
@@ -1794,7 +1820,7 @@ namespace MelatoninAccess
                 "Che do luyen tap da bat dau.",
                 "Mode entrainement demarre.",
                 "Uebungsmodus gestartet.",
-                "Modo practica iniciado.",
+                "Modo práctica iniciado.",
                 "Modo pratica iniciado.");
 
             Add(
@@ -1807,7 +1833,7 @@ namespace MelatoninAccess
                 "Che do tinh diem",
                 "Mode score",
                 "Punktemodus",
-                "Modo puntuacion",
+                "Modo puntuación",
                 "Modo pontuacao");
 
             Add(
@@ -1820,7 +1846,7 @@ namespace MelatoninAccess
                 "Che do tinh diem da bat dau.",
                 "Mode score demarre.",
                 "Punktemodus gestartet.",
-                "Modo puntuacion iniciado.",
+                "Modo puntuación iniciado.",
                 "Modo pontuacao iniciado.");
 
             Add(
@@ -1833,8 +1859,8 @@ namespace MelatoninAccess
                 "Che do kho",
                 "Mode difficile",
                 "Schwerer Modus",
-                "Modo dificil",
-                "Modo dificil");
+                "Modo difícil",
+                "Modo difícil");
 
             Add(
                 "mode_score_remix",
@@ -1846,7 +1872,7 @@ namespace MelatoninAccess
                 "Che do tinh diem remix",
                 "Mode score remix",
                 "Punktemodus Remix",
-                "Modo puntuacion remix",
+                "Modo puntuación remix",
                 "Modo pontuacao remix");
 
             Add(
@@ -1859,8 +1885,8 @@ namespace MelatoninAccess
                 "Che do kho remix",
                 "Mode difficile remix",
                 "Schwerer Modus Remix",
-                "Modo dificil remix",
-                "Modo dificil remix");
+                "Modo difícil remix",
+                "Modo difícil remix");
 
             Add(
                 "mode_tutorial",
@@ -1911,7 +1937,7 @@ namespace MelatoninAccess
                 "Theo cue theo ngu canh va giu dung nhip.",
                 "Suivez les reperes contextuels et restez en rythme.",
                 "Folge den kontextbezogenen Hinweisen und bleibe im Takt.",
-                "Sigue las senales contextuales y manten el ritmo.",
+                "Sigue las señales contextuales y mantén el ritmo.",
                 "Siga as dicas contextuais e mantenha o tempo.");
 
             Add(
@@ -1924,7 +1950,7 @@ namespace MelatoninAccess
                 "Hoc mau nhip va thoi diem. Nhan {0} de bo qua.",
                 "Apprenez le rythme et le timing. Appuyez sur {0} pour passer.",
                 "Lerne Muster und Timing. Druecke {0}, um zu ueberspringen.",
-                "Aprende el patron y el tiempo. Pulsa {0} para omitir.",
+                "Aprende el patrón y el tiempo. Pulsa {0} para omitir.",
                 "Aprenda o padrao e o tempo. Pressione {0} para pular.");
 
             Add(
@@ -1937,7 +1963,7 @@ namespace MelatoninAccess
                 "Tang diem bang cach nhan dung theo nhip.",
                 "Gagnez des points en entrant vos actions dans le rythme.",
                 "Baue Punkte auf, indem du Aktionen im Takt eingibst.",
-                "Gana puntuacion marcando acciones a tiempo.",
+                "Gana puntuación marcando acciones a tiempo.",
                 "Aumente a pontuacao acertando as acoes no ritmo.");
 
             Add(
@@ -1950,7 +1976,7 @@ namespace MelatoninAccess
                 "Giu do chinh xac voi cac mau kho hon.",
                 "Gardez une bonne precision sur des patterns plus exigeants.",
                 "Halte Genauigkeit bei strengeren Mustern.",
-                "Manten la precision en patrones mas exigentes.",
+                "Mantén la precisión en patrones más exigentes.",
                 "Mantenha a precisao em padroes mais exigentes.");
 
             Add(
@@ -1963,7 +1989,7 @@ namespace MelatoninAccess
                 "Lam theo huong dan de hoc co che.",
                 "Suivez les instructions pour apprendre les mecaniques.",
                 "Folge den Anweisungen, um die Mechanik zu lernen.",
-                "Sigue las instrucciones para aprender mecanicas.",
+                "Sigue las instrucciones para aprender mecánicas.",
                 "Siga as instrucoes para aprender as mecanicas.");
 
             Add(
@@ -1989,7 +2015,7 @@ namespace MelatoninAccess
                 "Choi va danh gia man cong dong nay.",
                 "Jouez et evaluez ce niveau communautaire.",
                 "Spiele und bewerte dieses Community-Level.",
-                "Juega y evalua este nivel de la comunidad.",
+                "Juega y evalúa este nivel de la comunidad.",
                 "Jogue e avalie este nivel da comunidade.");
 
             Add(
@@ -2145,7 +2171,7 @@ namespace MelatoninAccess
                 "Bi khoa. Dat it nhat 2 sao o moi giac mo trong dem nay de vuot qua.",
                 "Verrouille. Obtenez au moins 2 etoiles dans chaque reve de cette nuit pour valider.",
                 "Gesperrt. Hole in jedem Traum dieser Nacht mindestens 2 Sterne, um zu bestehen.",
-                "Bloqueado. Consigue al menos 2 estrellas en cada sueno de esta noche para completar.",
+                "Bloqueado. Consigue al menos 2 estrellas en cada sueño de esta noche para completar.",
                 "Bloqueado. Consiga pelo menos 2 estrelas em cada sonho desta noite para passar.");
         }
     }
