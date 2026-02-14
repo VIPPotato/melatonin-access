@@ -25,6 +25,7 @@ Desktop.ini
 
 # Release artifacts are generated locally
 release/
+artifacts
 
 # Local IDE settings
 .idea/

@@ -256,3 +256,9 @@
 - Outro timeline implementation:
   - `Chapter.ExitingToNextChapter()` coroutine, chapter-specific branches for chapter 1-5.
   - References: `decompiled/Chapter.cs:319-451`.
+
+## Cutscene Asset Extraction Notes
+- Unity asset files under `Melatonin_Data` contain exportable `AnimationClip`, `AudioClip`, `Sprite`, and `Texture2D` objects that can be extracted with `scripts/extract_unity_assets.py`.
+- In this build, many object names are stripped/empty, so exported file names are primarily identified by source file + `pathId` (with sample names preserved where available, especially for `AudioClip`).
+- `MonoBehaviour` typetree decoding is partial: many objects fail with truncated/short payload errors, but a subset is readable and includes script pointer metadata (`m_Script.m_PathID`), useful for targeted follow-up mapping.
+- Baseline full extraction output path: `artifacts/asset-extract` (metadata index: `artifacts/asset-extract/assets.jsonl`, summary: `artifacts/asset-extract/summary.json`).

@@ -116,6 +116,17 @@ namespace NAMESPACE
         }
 
         /// <summary>
+        /// Queued announcement - waits for current speech to finish before speaking.
+        /// Use for additional info after a main announcement.
+        /// Internally calls Tolk_Output(text, false).
+        /// </summary>
+        /// <param name="text">Text to speak after current speech finishes</param>
+        public static void SayQueued(string text)
+        {
+            Say(text, false);
+        }
+
+        /// <summary>
         /// Stops current speech immediately.
         /// </summary>
         public static void Stop()

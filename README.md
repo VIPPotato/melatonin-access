@@ -91,7 +91,7 @@ The project is configured to auto-copy `MelatoninAccess.dll` to your game `Mods`
 Create release ZIP (mod + required screen-reader DLLs only):
 
 ```powershell
-pwsh -File .\scripts\Build-ReleasePackage.ps1 -Version "v1.0.4"
+pwsh -File .\scripts\Build-ReleasePackage.ps1 -Version "v1.1"
 ```
 
 Package contents:
@@ -107,7 +107,7 @@ The release ZIP intentionally excludes development docs/tools (for example chang
 
 1. Install MelonLoader for Melatonin:
    - https://github.com/LavaGang/MelonLoader.Installer/releases
-2. Download `MelatoninAccess-v1.0.4.zip`.
+2. Download `MelatoninAccess-v1.1.zip`.
 3. Extract/copy all files from the ZIP into your Melatonin game folder (the folder with `Melatonin.exe`).
 4. Confirm these files exist:
     - `<Melatonin folder>/Mods/MelatoninAccess.dll`
@@ -187,6 +187,32 @@ pwsh -File .\scripts\Test-CutsceneAdPipeline.ps1 -ValidateLocKeys -LocPath .\Loc
 
 Reference format and workflow:
 - `docs/cutscene-ad-pipeline.md`
+
+## Unity Asset Extraction (CLI)
+
+Extract Unity assets directly from `Melatonin_Data` using UnityPy:
+
+```powershell
+python .\scripts\extract_unity_assets.py --output-dir .\artifacts\asset-extract
+```
+
+Useful options:
+
+```powershell
+# Fast smoke test (export only a few assets per type)
+python .\scripts\extract_unity_assets.py --output-dir .\artifacts\asset-extract-smoke --max-per-type 5
+
+# Metadata only (no binary export)
+python .\scripts\extract_unity_assets.py --output-dir .\artifacts\asset-index-only --metadata-only
+
+# Include MonoBehaviour typetree exports (partial, build-dependent)
+python .\scripts\extract_unity_assets.py --output-dir .\artifacts\asset-extract-mb --types AudioClip,AnimationClip,Sprite,Texture2D,TextAsset,MonoBehaviour
+```
+
+Outputs:
+- `assets.jsonl`: one record per indexed object (source file, type, path id, exported files, status).
+- `summary.json`: aggregate counts by type and source file.
+- `errors.log`: file-level load issues (if any).
 
 ## Requirements
 

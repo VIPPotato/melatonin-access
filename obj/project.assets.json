@@ -418,13 +418,13 @@
     "C:\\Users\\hacke\\.nuget\\packages\\": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "restore": {
-      "projectUniqueName": "D:\\Documents\\projects\\games\\melatonin access\\MelatoninAccess.csproj",
+      "projectUniqueName": "D:\\Documents\\projects\\games\\melatonin\\MelatoninAccess.csproj",
       "projectName": "MelatoninAccess",
-      "projectPath": "D:\\Documents\\projects\\games\\melatonin access\\MelatoninAccess.csproj",
+      "projectPath": "D:\\Documents\\projects\\games\\melatonin\\MelatoninAccess.csproj",
       "packagesPath": "C:\\Users\\hacke\\.nuget\\packages\\",
-      "outputPath": "D:\\Documents\\projects\\games\\melatonin access\\obj\\",
+      "outputPath": "D:\\Documents\\projects\\games\\melatonin\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\hacke\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -463,7 +463,7 @@
             "autoReferenced": true
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.417\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\8.0.418\\RuntimeIdentifierGraph.json"
       }
     }
   }
