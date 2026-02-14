@@ -12,7 +12,11 @@ $projectRoot = Split-Path -Parent $PSScriptRoot
 $modDll = Join-Path $projectRoot "bin\$Configuration\net472\MelatoninAccess.dll"
 $tolkDll = Join-Path $projectRoot "libs\x86\Tolk.dll"
 $nvdaDll = Join-Path $projectRoot "libs\x86\nvdaControllerClient32.dll"
-$loaderCfg = Join-Path $projectRoot "UserData\Loader.cfg"
+$loaderCfgCandidates = @(
+    (Join-Path $projectRoot "UserConfig\Loader.cfg"),
+    (Join-Path $projectRoot "UserData\Loader.cfg")
+)
+$loaderCfg = $loaderCfgCandidates | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1
 $locQaScript = Join-Path $projectRoot "scripts\Test-LocalizationQA.ps1"
 
 if (-not (Test-Path -LiteralPath $modDll)) {
@@ -31,8 +35,11 @@ if (-not (Test-Path -LiteralPath $nvdaDll)) {
     exit 1
 }
 
-if (-not (Test-Path -LiteralPath $loaderCfg)) {
-    Write-Host "ERROR: Loader config not found: $loaderCfg"
+if ([string]::IsNullOrWhiteSpace($loaderCfg)) {
+    Write-Host "ERROR: Loader config not found. Checked:"
+    foreach ($candidate in $loaderCfgCandidates) {
+        Write-Host "- $candidate"
+    }
     exit 1
 }
 
@@ -53,7 +60,7 @@ if (-not $SkipLocalizationQa.IsPresent) {
 $releaseDir = Join-Path $projectRoot "release"
 $stageDir = Join-Path $releaseDir "MelatoninAccess-$Version"
 $modsDir = Join-Path $stageDir "Mods"
-$userDataDir = Join-Path $stageDir "UserData"
+$userConfigDir = Join-Path $stageDir "UserConfig"
 $zipPath = Join-Path $releaseDir "MelatoninAccess-$Version.zip"
 
 if (Test-Path -LiteralPath $stageDir) {
@@ -61,12 +68,12 @@ if (Test-Path -LiteralPath $stageDir) {
 }
 
 New-Item -ItemType Directory -Path $modsDir -Force | Out-Null
-New-Item -ItemType Directory -Path $userDataDir -Force | Out-Null
+New-Item -ItemType Directory -Path $userConfigDir -Force | Out-Null
 
 Copy-Item -LiteralPath $modDll -Destination (Join-Path $modsDir "MelatoninAccess.dll") -Force
 Copy-Item -LiteralPath $tolkDll -Destination (Join-Path $stageDir "Tolk.dll") -Force
 Copy-Item -LiteralPath $nvdaDll -Destination (Join-Path $stageDir "nvdaControllerClient32.dll") -Force
-Copy-Item -LiteralPath $loaderCfg -Destination (Join-Path $userDataDir "Loader.cfg") -Force
+Copy-Item -LiteralPath $loaderCfg -Destination (Join-Path $userConfigDir "Loader.cfg") -Force
 
 if (Test-Path -LiteralPath $zipPath) {
     Remove-Item -LiteralPath $zipPath -Force
