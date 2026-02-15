@@ -7,32 +7,32 @@
     {
       "atSeconds": 0.0,
       "durationSeconds": 1.2,
-      "textKey": "ad_transition_from_dream"
+      "textKey": "ad_ch2_outro_transition_room"
     },
     {
       "atSeconds": 1.3,
       "durationSeconds": 2.8,
-      "textKey": "ad_border_fades"
+      "textKey": "ad_ch2_outro_border_clears"
     },
     {
       "atSeconds": 4.8,
       "durationSeconds": 2.2,
-      "textKey": "ad_character_wakes"
+      "textKey": "ad_ch2_outro_wake_first"
     },
     {
       "atSeconds": 7.9,
       "durationSeconds": 1.4,
-      "textKey": "ad_character_wakes_again"
+      "textKey": "ad_ch2_outro_wake_second"
     },
     {
       "atSeconds": 9.4,
       "durationSeconds": 1.4,
-      "textKey": "ad_screen_fades_black"
+      "textKey": "ad_ch2_outro_fade_black"
     },
     {
       "atSeconds": 11.4,
       "durationSeconds": 1.2,
-      "textKey": "ad_next_chapter_loads"
+      "textKey": "ad_ch2_outro_load_next"
     }
   ]
 }
