@@ -732,6 +732,32 @@ namespace MelatoninAccess
                 "Estrelas do mapa: {0}. Faltam {1} para passar.");
 
             Add(
+                "map_transient_controls_unlocked",
+                "Map controls unlocked.",
+                "地图控制已解锁。",
+                "地圖控制已解鎖。",
+                "マップ操作が有効になりました。",
+                "맵 조작이 활성화되었습니다.",
+                "Dieu khien ban do da mo khoa.",
+                "Les controles de la carte sont disponibles.",
+                "Kartensteuerung ist jetzt freigeschaltet.",
+                "Los controles del mapa se activaron.",
+                "Os controles do mapa foram liberados.");
+
+            Add(
+                "map_transient_controls_unlocked_mirrored",
+                "Map controls unlocked. Map starts mirrored.",
+                "地图控制已解锁。地图以镜像状态开始。",
+                "地圖控制已解鎖。地圖以鏡像狀態開始。",
+                "マップ操作が有効になりました。開始時は左右反転です。",
+                "맵 조작이 활성화되었습니다. 맵은 좌우 반전으로 시작합니다.",
+                "Dieu khien ban do da mo khoa. Ban do bat dau voi che do dao nguoc.",
+                "Les controles de la carte sont disponibles. La carte commence en miroir.",
+                "Kartensteuerung ist jetzt freigeschaltet. Die Karte startet gespiegelt.",
+                "Los controles del mapa se activaron. El mapa inicia en espejo.",
+                "Os controles do mapa foram liberados. O mapa inicia espelhado.");
+
+            Add(
                 "teleport_conflict_hint",
                 "Bracket teleport is disabled because Action is bound to brackets. Use F9 and F10 for teleport.",
                 "由于操作键绑定到方括号，方括号传送已禁用。请使用 F9 和 F10 传送。",

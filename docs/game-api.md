@@ -211,6 +211,7 @@
 - `Dream_time` tutorial can be split into two contextual hold/release hints by queue signature:
   - `QueueHoldReleaseWindow(2, 3, isHalfBeatAddedToHold: true)` -> portal-gap buzz instruction (`hold on cue, release on next cue`)
   - `QueueHoldReleaseWindow(1, 2, isHalfBeatAddedToHold: true)` -> late-section sixth/seventh cue instruction
+- `QueueHoldReleaseWindow(1, 2, isHalfBeatAddedToHold: true)` appears in multiple teaching sections (`sequences[1]` and `sequences[3]` paths), so mods should gate narration to the later section rather than first match.
 - `Dream_future` supports an additional one-time `TriggerSong()` primer line ("follow patterns") while keeping directional/up queue callouts.
 - `Dream_past` queue windows repeat frequently; one-shot-per-duration hints (1 beat, half beat, 2 beats) reduce tutorial spam while preserving all unique timing hints.
 - References: `decompiled/Dream_followers.cs:140-190`, `decompiled/Dream_time.cs:157-315`, `decompiled/Dream_space.cs:130-226`, `decompiled/Dream_desires.cs:105-140`, `decompiled/Dream_future.cs:98-148`, `decompiled/Dream_past.cs:98-159`.
