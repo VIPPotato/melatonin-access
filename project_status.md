@@ -1,7 +1,7 @@
 # Project Status
 
 **Current Phase**: Testing & Polish
-**Last Update**: 2026-02-14
+**Last Update**: 2026-02-15
 
 ## Completed
 - [x] **Core System**: `ScreenReader` (Tolk), `MelatoninAccess` (MelonLoader Mod).
@@ -75,6 +75,7 @@
 - [x] **v1.1 Release Asset Uploaded (2026-02-14)**: Built package via `scripts/Build-ReleasePackage.ps1` workflow, adjusted staged config folder to `UserConfig`, repacked `release/MelatoninAccess-v1.1.zip`, and uploaded it to GitHub release `v1.1` with expected layout (`Mods/MelatoninAccess.dll`, `UserConfig/Loader.cfg`, root `Tolk.dll`, root `nvdaControllerClient32.dll`).
 - [x] **GitHub Auto-Release Packaging Workflow (2026-02-14)**: Added `.github/workflows/release-package.yml` to build and upload the release ZIP on `v*` tag pushes (Windows runner, `Release` build, existing `Build-ReleasePackage.ps1`), and updated local packaging script/docs to standardize `UserConfig/Loader.cfg` output.
 - [x] **Cutscene AD First-Pass Authoring (2026-02-14)**: Filled all `cutscene-ad/scripts/chapter_*_{intro,outro}.json` with concise first-pass timestamp/text-key entries (including map transition events like map music start, control unlock, and mirrored-map start), added matching localization keys in `Loc.cs`, and verified with `Test-CutsceneAdPipeline.ps1 -StrictCoverage -RequireEntries -ValidateLocKeys` (0 errors, 0 warnings).
+- [x] **Cutscene AD Runtime + Packaging Wiring (2026-02-15)**: Added `CutsceneAdHandler` runtime playback (scene/cutscene-state detection, timed cue dispatch through `Loc`/`ScreenReader`), initialized it from `Main`, updated build/package flows to ship `Mods\cutscene-ad` automatically, and documented runtime API hooks and package layout updates in `docs/game-api.md` and `README.md`.
 - [x] **v1.1 Contextual Cues Pass 1 (2026-02-12)**: Added scene-specific `Dream_dating` swipe cue narration (left/right + long-countdown variants), added one-time `Dream_dating` intro guidance on song start, localized new cue keys for all supported languages, and documented cue timing patterns in `docs/game-api.md`.
 - [x] **v1.1 Contextual Cues Pass 2 (2026-02-12)**: Added controller mirrors for utility hotkeys (`View` -> map stars/F1 equivalent, `L3` -> rhythm cues/F2 equivalent, `R3` -> menu positions/F3 equivalent), replaced noisy `Dream_tech` per-hit prompts with phase-level guidance and selective rapid-double callouts, added `Dream_followers` phase-3 pre-brief 2 beats early, and updated map dream-name formatting to prefer live UI text when available before localization fallback.
 - [x] **v1.1 Contextual Cues Pass 3 (2026-02-12)**: Applied the `melatonin tutorials.txt` cue requirements to the listed dreams only (`followers`, `dating`, `time`, `space`, `desires`, `nature`, `mind`, `past`, `future`), including hold/release duration narration, camera-sound-specific `Dream_past` hold guidance, and `Dream_future` directional overrides (`Press Up`, short `Left right`). Added missing localization key coverage and documented decompiled mapping details in `docs/game-api.md` and `todo.md`.

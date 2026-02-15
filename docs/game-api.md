@@ -257,6 +257,12 @@
   - `Chapter.ExitingToNextChapter()` coroutine, chapter-specific branches for chapter 1-5.
   - References: `decompiled/Chapter.cs:319-451`.
 
+## Cutscene Runtime Detection
+- `Chapter.dir.CheckIsCutsceneIntro()` and `Chapter.dir.CheckIsCutsceneOutro()` expose active chapter transition state.
+- `SceneMonitor.mgr.GetActiveSceneName()` returns active scene names like `Chapter_1` through `Chapter_5` during intro/outro playback.
+- For data-driven cutscene AD, combine `sceneName + cutsceneType` (intro/outro) as a stable lookup key.
+- References: `decompiled/Chapter.cs:568-575`, `decompiled/SceneMonitor.cs:73-76`.
+
 ## Cutscene Asset Extraction Notes
 - Unity asset files under `Melatonin_Data` contain exportable `AnimationClip`, `AudioClip`, `Sprite`, and `Texture2D` objects that can be extracted with `scripts/extract_unity_assets.py`.
 - In this build, many object names are stripped/empty, so exported file names are primarily identified by source file + `pathId` (with sample names preserved where available, especially for `AudioClip`).

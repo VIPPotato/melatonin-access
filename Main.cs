@@ -17,6 +17,7 @@ namespace MelatoninAccess
             ScreenReader.Initialize();
             Loc.Initialize();
             ModConfig.Initialize();
+            CutsceneAdHandler.Initialize();
             DebugMode = ModConfig.DebugModeEnabled;
 
             // Menu & Options
@@ -131,6 +132,8 @@ namespace MelatoninAccess
 
         public override void OnUpdate()
         {
+            CutsceneAdHandler.Update();
+
             bool rhythmTogglePressed =
                 (Keyboard.current != null && Keyboard.current.f2Key.wasPressedThisFrame) ||
                 (Gamepad.current != null && Gamepad.current.leftStickButton.wasPressedThisFrame);
