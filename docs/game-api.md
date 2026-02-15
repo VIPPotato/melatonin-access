@@ -212,6 +212,9 @@
   - `QueueHoldReleaseWindow(2, 3, isHalfBeatAddedToHold: true)` -> portal-gap buzz instruction (`hold on cue, release on next cue`)
   - `QueueHoldReleaseWindow(1, 2, isHalfBeatAddedToHold: true)` -> late-section sixth/seventh cue instruction
 - `QueueHoldReleaseWindow(1, 2, isHalfBeatAddedToHold: true)` appears in multiple teaching sections (`sequences[1]` and `sequences[3]` paths), so mods should gate narration to the later section rather than first match.
+- Practical gate for `Dream_time` final teaching:
+  - Read `Dream.sequences` (private float array on `Dream`) and treat `sequences[3] > 0` as the final teaching segment.
+  - Speak sixth/seventh guidance only when that segment is active; suppress the same signature in earlier `sequences[1]`.
 - `Dream_future` supports an additional one-time `TriggerSong()` primer line ("follow patterns") while keeping directional/up queue callouts.
 - `Dream_past` queue windows repeat frequently; one-shot-per-duration hints (1 beat, half beat, 2 beats) reduce tutorial spam while preserving all unique timing hints.
 - References: `decompiled/Dream_followers.cs:140-190`, `decompiled/Dream_time.cs:157-315`, `decompiled/Dream_space.cs:130-226`, `decompiled/Dream_desires.cs:105-140`, `decompiled/Dream_future.cs:98-148`, `decompiled/Dream_past.cs:98-159`.
@@ -262,6 +265,9 @@
 - `Chapter.dir.CheckIsCutsceneIntro()` and `Chapter.dir.CheckIsCutsceneOutro()` expose active chapter transition state.
 - `SceneMonitor.mgr.GetActiveSceneName()` returns active scene names like `Chapter_1` through `Chapter_5` during intro/outro playback.
 - For data-driven cutscene AD, combine `sceneName + cutsceneType` (intro/outro) as a stable lookup key.
+- Intro timing caveat:
+  - `Chapter.EnteringWithIntro()` sets `isCutsceneIntro = false` before `Map.env.Activate()` (after `SetComposition("transitionFromCentered")` and ~1.35s wait).
+  - Any intro AD cue placed after that flag flip is skipped by runtime cutscene-state checks, so map-transient cues must be timed before the intro flag clears.
 - References: `decompiled/Chapter.cs:568-575`, `decompiled/SceneMonitor.cs:73-76`.
 
 ## Cutscene Asset Extraction Notes

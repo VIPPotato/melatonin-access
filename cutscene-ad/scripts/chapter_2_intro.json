@@ -20,18 +20,18 @@
       "textKey": "ad_ch2_intro_fade_black_sleep"
     },
     {
-      "atSeconds": 16.9,
-      "durationSeconds": 1.8,
+      "atSeconds": 16.0,
+      "durationSeconds": 1.3,
       "textKey": "ad_ch2_intro_map_recenters"
     },
     {
-      "atSeconds": 18.8,
-      "durationSeconds": 1.3,
+      "atSeconds": 17.6,
+      "durationSeconds": 0.8,
       "textKey": "ad_ch2_intro_map_music_starts"
     },
     {
-      "atSeconds": 20.7,
-      "durationSeconds": 1.4,
+      "atSeconds": 18.8,
+      "durationSeconds": 0.9,
       "textKey": "ad_ch2_intro_map_controls_unlock"
     }
   ]

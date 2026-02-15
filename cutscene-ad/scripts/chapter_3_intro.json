@@ -21,17 +21,17 @@
     },
     {
       "atSeconds": 15.0,
-      "durationSeconds": 2.6,
+      "durationSeconds": 2.0,
       "textKey": "ad_ch3_intro_room_returns_sleeping"
     },
     {
-      "atSeconds": 18.4,
-      "durationSeconds": 1.3,
+      "atSeconds": 17.1,
+      "durationSeconds": 0.6,
       "textKey": "ad_ch3_intro_map_music_starts"
     },
     {
-      "atSeconds": 19.8,
-      "durationSeconds": 1.4,
+      "atSeconds": 17.8,
+      "durationSeconds": 0.7,
       "textKey": "ad_ch3_intro_map_controls_unlock"
     }
   ]
