@@ -542,6 +542,14 @@ namespace MelatoninAccess
 
             if (isSixthSeventhCue)
             {
+                // This signature appears in an earlier teaching pass too.
+                // Gate it to the final teaching section so the hint lands when intended.
+                int phrase = GetPhraseSafe();
+                if (phrase > 0 && phrase < 3)
+                {
+                    return true;
+                }
+
                 if (!_timeSixthSeventhPromptSpoken)
                 {
                     _timeSixthSeventhPromptSpoken = true;
