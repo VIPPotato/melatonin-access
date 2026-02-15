@@ -31,6 +31,8 @@ namespace MelatoninAccess
         private static bool _techPhaseTwoPromptSpoken;
         private static bool _timePortalGapPromptSpoken;
         private static bool _timeSixthSeventhPromptSpoken;
+        private static int _timeSixthSeventhSectionCount;
+        private static float _timeSixthSeventhSectionTime = -10f;
         private static bool _pastOneBeatHintSpoken;
         private static bool _pastHalfBeatHintSpoken;
         private static bool _pastTwoBeatHintSpoken;
@@ -542,10 +544,16 @@ namespace MelatoninAccess
 
             if (isSixthSeventhCue)
             {
-                // This signature appears in an earlier teaching pass too.
-                // Gate it to the final teaching section so the hint lands when intended.
-                int phrase = GetPhraseSafe();
-                if (phrase > 0 && phrase < 3)
+                float now = Time.unscaledTime;
+                if (now - _timeSixthSeventhSectionTime > 3f)
+                {
+                    _timeSixthSeventhSectionTime = now;
+                    _timeSixthSeventhSectionCount++;
+                }
+
+                // This signature appears in multiple teaching sections.
+                // Keep the hint for the last section (second distinct section hit).
+                if (_timeSixthSeventhSectionCount < 2)
                 {
                     return true;
                 }
@@ -612,6 +620,8 @@ namespace MelatoninAccess
                 _techPhaseTwoPromptSpoken = false;
                 _timePortalGapPromptSpoken = false;
                 _timeSixthSeventhPromptSpoken = false;
+                _timeSixthSeventhSectionCount = 0;
+                _timeSixthSeventhSectionTime = -10f;
                 _pastOneBeatHintSpoken = false;
                 _pastHalfBeatHintSpoken = false;
                 _pastTwoBeatHintSpoken = false;
