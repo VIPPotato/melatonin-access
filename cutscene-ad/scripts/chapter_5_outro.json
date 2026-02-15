@@ -7,32 +7,32 @@
     {
       "atSeconds": 0.0,
       "durationSeconds": 1.6,
-      "textKey": "ad_transition_from_dream"
+      "textKey": "ad_ch5_outro_transition_room"
     },
     {
       "atSeconds": 2.0,
       "durationSeconds": 5.5,
-      "textKey": "ad_camera_moves_to_window"
+      "textKey": "ad_ch5_outro_camera_to_window"
     },
     {
       "atSeconds": 7.8,
       "durationSeconds": 1.6,
-      "textKey": "ad_window_fills_view"
+      "textKey": "ad_ch5_outro_window_fills_view"
     },
     {
       "atSeconds": 9.6,
       "durationSeconds": 2.4,
-      "textKey": "ad_character_looks_out_window"
+      "textKey": "ad_ch5_outro_looks_out_window"
     },
     {
       "atSeconds": 12.5,
       "durationSeconds": 4.0,
-      "textKey": "ad_screen_fades_black"
+      "textKey": "ad_ch5_outro_final_fade_black"
     },
     {
       "atSeconds": 20.5,
       "durationSeconds": 1.3,
-      "textKey": "ad_credits_begin"
+      "textKey": "ad_ch5_outro_credits_begin"
     }
   ]
 }

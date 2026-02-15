@@ -7,32 +7,32 @@
     {
       "atSeconds": 0.0,
       "durationSeconds": 3.5,
-      "textKey": "ad_title_card_shown"
+      "textKey": "ad_ch3_intro_title_card"
     },
     {
       "atSeconds": 7.9,
       "durationSeconds": 3.8,
-      "textKey": "ad_camera_drifts_wider"
+      "textKey": "ad_ch3_intro_room_widens"
     },
     {
       "atSeconds": 12.9,
       "durationSeconds": 1.8,
-      "textKey": "ad_screen_fades_black"
+      "textKey": "ad_ch3_intro_crossfade_black"
     },
     {
       "atSeconds": 15.0,
       "durationSeconds": 2.6,
-      "textKey": "ad_room_returns_character_asleep"
+      "textKey": "ad_ch3_intro_room_returns_sleeping"
     },
     {
       "atSeconds": 18.4,
       "durationSeconds": 1.3,
-      "textKey": "ad_map_music_starts"
+      "textKey": "ad_ch3_intro_map_music_starts"
     },
     {
       "atSeconds": 19.8,
       "durationSeconds": 1.4,
-      "textKey": "ad_map_controls_unlock"
+      "textKey": "ad_ch3_intro_map_controls_unlock"
     }
   ]
 }
