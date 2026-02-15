@@ -152,6 +152,7 @@ namespace MelatoninAccess
                 SetLoadFailure("Manifest not found.");
                 return;
             }
+            MelonLogger.Msg($"[{HandlerName}] Using manifest: {manifestPath}");
 
             if (!CutsceneAdPipeline.TryLoadManifest(manifestPath, out CutsceneAdManifest manifest, out string manifestError))
             {
@@ -165,6 +166,7 @@ namespace MelatoninAccess
                 SetLoadFailure("Manifest has no cutscene entries.");
                 return;
             }
+            MelonLogger.Msg($"[{HandlerName}] Manifest entries: {manifest.cutscenes.Length}");
 
             foreach (CutsceneAdCutsceneRef cutsceneRef in manifest.cutscenes)
             {

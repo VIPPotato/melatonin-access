@@ -6,7 +6,7 @@ using UnityEngine;
 namespace MelatoninAccess
 {
     [Serializable]
-    internal sealed class CutsceneAdManifest
+    public sealed class CutsceneAdManifest
     {
         public int schemaVersion = 1;
 
@@ -14,7 +14,7 @@ namespace MelatoninAccess
     }
 
     [Serializable]
-    internal sealed class CutsceneAdCutsceneRef
+    public sealed class CutsceneAdCutsceneRef
     {
         public string id = "";
 
@@ -28,7 +28,7 @@ namespace MelatoninAccess
     }
 
     [Serializable]
-    internal sealed class CutsceneAdScript
+    public sealed class CutsceneAdScript
     {
         public int schemaVersion = 1;
 
@@ -42,7 +42,7 @@ namespace MelatoninAccess
     }
 
     [Serializable]
-    internal sealed class CutsceneAdCue
+    public sealed class CutsceneAdCue
     {
         public float atSeconds = 0f;
 
