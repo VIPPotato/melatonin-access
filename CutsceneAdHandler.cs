@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using MelonLoader;
 using UnityEngine;
 
 namespace MelatoninAccess
@@ -18,7 +19,10 @@ namespace MelatoninAccess
         private static CutsceneAdScript _activeScript;
         private static float _activeCutsceneStartTime = -1f;
         private static int _nextCueIndex;
+        private static float _nextLoadAttemptTime;
         private static float _lastUnavailableLogTime = -10f;
+        private static string _lastLoadError = "";
+        private static string _lastReportedLoadError = "";
 
         internal static void Initialize()
         {
@@ -57,11 +61,26 @@ namespace MelatoninAccess
 
             if (!_scriptsLoaded)
             {
+                float now = Time.unscaledTime;
+                if (now >= _nextLoadAttemptTime)
+                {
+                    LoadScripts();
+                    _nextLoadAttemptTime = now + 5f;
+                }
+
+                if (_scriptsLoaded)
+                {
+                    return;
+                }
+
                 float nowUnavailable = Time.unscaledTime;
                 if (nowUnavailable - _lastUnavailableLogTime >= 5f)
                 {
                     _lastUnavailableLogTime = nowUnavailable;
-                    DebugLogger.Log(LogCategory.Handler, HandlerName, "Cutscene AD scripts are not loaded.");
+                    string suffix = string.IsNullOrWhiteSpace(_lastLoadError)
+                        ? ""
+                        : $" Last error: {_lastLoadError}";
+                    DebugLogger.Log(LogCategory.Handler, HandlerName, $"Cutscene AD scripts are not loaded.{suffix}");
                 }
                 return;
             }
@@ -125,24 +144,25 @@ namespace MelatoninAccess
         {
             _scriptsByCutsceneKey.Clear();
             _scriptsLoaded = false;
+            _lastLoadError = "";
 
             string manifestPath = ResolveManifestPath();
             if (string.IsNullOrWhiteSpace(manifestPath))
             {
-                DebugLogger.Log(LogCategory.Handler, HandlerName, "Cutscene AD manifest not found.");
+                SetLoadFailure("Manifest not found.");
                 return;
             }
 
             if (!CutsceneAdPipeline.TryLoadManifest(manifestPath, out CutsceneAdManifest manifest, out string manifestError))
             {
-                DebugLogger.Log(LogCategory.Handler, HandlerName, $"Manifest load failed: {manifestError}");
+                SetLoadFailure($"Manifest load failed: {manifestError}");
                 return;
             }
 
             string manifestDir = Path.GetDirectoryName(manifestPath) ?? "";
             if (manifest.cutscenes == null || manifest.cutscenes.Length == 0)
             {
-                DebugLogger.Log(LogCategory.Handler, HandlerName, "Manifest has no cutscene entries.");
+                SetLoadFailure("Manifest has no cutscene entries.");
                 return;
             }
 
@@ -179,10 +199,15 @@ namespace MelatoninAccess
             }
 
             _scriptsLoaded = _scriptsByCutsceneKey.Count > 0;
-            DebugLogger.Log(
-                LogCategory.Handler,
-                HandlerName,
-                $"Cutscene AD scripts loaded: {_scriptsByCutsceneKey.Count}.");
+            if (!_scriptsLoaded)
+            {
+                SetLoadFailure("Manifest loaded but no valid scripts were available.");
+                return;
+            }
+
+            _lastReportedLoadError = "";
+            MelonLogger.Msg($"[{HandlerName}] Loaded {_scriptsByCutsceneKey.Count} cutscene scripts.");
+            DebugLogger.Log(LogCategory.Handler, HandlerName, $"Cutscene AD scripts loaded: {_scriptsByCutsceneKey.Count}.");
         }
 
         private static void StartCutscene(string cutsceneKey)
@@ -223,6 +248,7 @@ namespace MelatoninAccess
 
             string gameRoot = ResolveGameRootDirectory();
             string cwd = Directory.GetCurrentDirectory();
+            string appBaseDir = AppDomain.CurrentDomain.BaseDirectory ?? "";
 
             string[] candidates =
             {
@@ -230,6 +256,9 @@ namespace MelatoninAccess
                 Path.Combine(assemblyParent, "cutscene-ad", "manifest.json"),
                 Path.Combine(gameRoot, "Mods", "cutscene-ad", "manifest.json"),
                 Path.Combine(gameRoot, "cutscene-ad", "manifest.json"),
+                Path.Combine(appBaseDir, "Mods", "cutscene-ad", "manifest.json"),
+                Path.Combine(appBaseDir, "cutscene-ad", "manifest.json"),
+                Path.Combine(cwd, "Mods", "cutscene-ad", "manifest.json"),
                 Path.Combine(cwd, "cutscene-ad", "manifest.json")
             };
 
@@ -241,6 +270,17 @@ namespace MelatoninAccess
             }
 
             return "";
+        }
+
+        private static void SetLoadFailure(string reason)
+        {
+            _lastLoadError = reason ?? "Unknown error.";
+            if (!string.Equals(_lastReportedLoadError, _lastLoadError, StringComparison.Ordinal))
+            {
+                _lastReportedLoadError = _lastLoadError;
+                MelonLogger.Warning($"[{HandlerName}] {_lastLoadError}");
+            }
+            DebugLogger.Log(LogCategory.Handler, HandlerName, $"Cutscene AD load failure: {_lastLoadError}");
         }
 
         private static string GetActiveSceneName()

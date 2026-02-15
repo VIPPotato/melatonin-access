@@ -17,8 +17,8 @@ namespace MelatoninAccess
             ScreenReader.Initialize();
             Loc.Initialize();
             ModConfig.Initialize();
-            CutsceneAdHandler.Initialize();
             DebugMode = ModConfig.DebugModeEnabled;
+            CutsceneAdHandler.Initialize();
 
             // Menu & Options
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(MenuHandler.MenuTitle_Activate_Patch));
