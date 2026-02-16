@@ -31,7 +31,7 @@ namespace MelatoninAccess
         private static bool _techPhaseTwoPromptSpoken;
         private static bool _timePortalGapPromptSpoken;
         private static bool _timeSixthSeventhPromptSpoken;
-        private static int _timeSixthSeventhCueSeenCount;
+        private static int _lastDreamTimeSequenceCode = -1;
         private static bool _pastOneBeatHintSpoken;
         private static bool _pastHalfBeatHintSpoken;
         private static bool _pastTwoBeatHintSpoken;
@@ -106,6 +106,26 @@ namespace MelatoninAccess
                     if (TryAnnounceHoldReleaseOverride(numBeatsTilHold, numBeatsTilRelease, isHalfBeatAddedToHold, isHalfBeatAddedToRelease)) return;
                     ScreenReader.Say(Loc.Get("cue_hold_action", GetActionPrompt()), true);
                 }
+            }
+        }
+
+        [HarmonyPatch(typeof(Dream), "StartSequenceDown")]
+        public static class Dream_StartSequenceDown_Patch
+        {
+            public static void Postfix(int codeNum)
+            {
+                if (!string.Equals(GetActiveSceneName(), "Dream_time", StringComparison.OrdinalIgnoreCase)) return;
+                _lastDreamTimeSequenceCode = codeNum;
+            }
+        }
+
+        [HarmonyPatch(typeof(Dream), "StartSequenceUp")]
+        public static class Dream_StartSequenceUp_Patch
+        {
+            public static void Postfix(int codeNum)
+            {
+                if (!string.Equals(GetActiveSceneName(), "Dream_time", StringComparison.OrdinalIgnoreCase)) return;
+                _lastDreamTimeSequenceCode = codeNum;
             }
         }
 
@@ -527,9 +547,9 @@ namespace MelatoninAccess
 
             if (isPortalGapCue)
             {
-                // Keep sixth/seventh guidance for the later break by waiting until
-                // the repeated sixth/seventh signature has been observed enough times.
-                if (!_timeSixthSeventhPromptSpoken && _timeSixthSeventhCueSeenCount >= 4)
+                // In Dream_time practice, code 4 is the final section trigger.
+                // Speak sixth/seventh guidance on the portal-gap break right before that section.
+                if (!_timeSixthSeventhPromptSpoken && _lastDreamTimeSequenceCode == 4)
                 {
                     _timeSixthSeventhPromptSpoken = true;
                     ScreenReader.Say(Loc.Get("cue_time_sixth_seventh_hold_release", actionPrompt), true);
@@ -552,7 +572,6 @@ namespace MelatoninAccess
 
             if (isSixthSeventhCue)
             {
-                _timeSixthSeventhCueSeenCount++;
                 return true;
             }
 
@@ -610,7 +629,7 @@ namespace MelatoninAccess
                 _techPhaseTwoPromptSpoken = false;
                 _timePortalGapPromptSpoken = false;
                 _timeSixthSeventhPromptSpoken = false;
-                _timeSixthSeventhCueSeenCount = 0;
+                _lastDreamTimeSequenceCode = -1;
                 _pastOneBeatHintSpoken = false;
                 _pastHalfBeatHintSpoken = false;
                 _pastTwoBeatHintSpoken = false;

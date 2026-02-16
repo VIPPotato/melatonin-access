@@ -213,8 +213,9 @@
   - `QueueHoldReleaseWindow(1, 2, isHalfBeatAddedToHold: true)` -> late-section sixth/seventh cue instruction
 - `QueueHoldReleaseWindow(1, 2, isHalfBeatAddedToHold: true)` appears in multiple teaching sections (`sequences[1]` and `sequences[3]` paths), so mods should gate narration to the later section rather than first match.
 - Practical gate for `Dream_time` final teaching:
-  - Track repeated `(hold 1, release 2, half-hold)` sightings and delay the spoken sixth/seventh hint until a later break trigger (`QueueHoldReleaseWindow(2, 3, half-hold)`), after enough repeats have been seen.
-  - This avoids firing inside earlier teaching segments where the same signature appears.
+  - Track `Dream.StartSequenceDown/Up(int codeNum)` for scene `Dream_time` and remember the latest `codeNum`.
+  - Treat `codeNum == 4` as the final-section transition cue and speak sixth/seventh guidance on the next portal-gap break (`QueueHoldReleaseWindow(2, 3, half-hold)`).
+  - This keeps the hint out of earlier repeated sections where `QueueHoldReleaseWindow(1, 2, half-hold)` appears multiple times.
 - `Dream_future` supports an additional one-time `TriggerSong()` primer line ("follow patterns") while keeping directional/up queue callouts.
 - `Dream_past` queue windows repeat frequently; one-shot-per-duration hints (1 beat, half beat, 2 beats) reduce tutorial spam while preserving all unique timing hints.
 - References: `decompiled/Dream_followers.cs:140-190`, `decompiled/Dream_time.cs:157-315`, `decompiled/Dream_space.cs:130-226`, `decompiled/Dream_desires.cs:105-140`, `decompiled/Dream_future.cs:98-148`, `decompiled/Dream_past.cs:98-159`.
