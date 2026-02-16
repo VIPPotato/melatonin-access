@@ -16,22 +16,22 @@
     },
     {
       "atSeconds": 5.0,
-      "durationSeconds": 1.6,
+      "durationSeconds": 1.1,
       "textKey": "ad_ch3_outro_static_flicker"
     },
     {
-      "atSeconds": 6.8,
-      "durationSeconds": 1.8,
+      "atSeconds": 8.1,
+      "durationSeconds": 1.5,
       "textKey": "ad_ch3_outro_wake_after_static"
     },
     {
-      "atSeconds": 8.9,
-      "durationSeconds": 1.4,
+      "atSeconds": 10.6,
+      "durationSeconds": 1.0,
       "textKey": "ad_ch3_outro_fade_black"
     },
     {
-      "atSeconds": 11.0,
-      "durationSeconds": 1.2,
+      "atSeconds": 12.4,
+      "durationSeconds": 0.9,
       "textKey": "ad_ch3_outro_load_next"
     }
   ]

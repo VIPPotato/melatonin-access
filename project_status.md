@@ -1,7 +1,7 @@
 # Project Status
 
 **Current Phase**: Testing & Polish
-**Last Update**: 2026-02-15
+**Last Update**: 2026-02-16
 
 ## Completed
 - [x] **Core System**: `ScreenReader` (Tolk), `MelatoninAccess` (MelonLoader Mod).
@@ -83,6 +83,7 @@
 - [x] **Dream_time Sixth/Seventh Hint Timing Fix (2026-02-15)**: Moved `cue_time_sixth_seventh_hold_release` out of early teaching by gating the `(hold 1, release 2, half-hold)` signature to the final teaching section in `RhythmHandler`.
 - [x] **Dream_time Final-Section Hint + Map Transient Runtime Announce (2026-02-15)**: Updated `Dream_time` sixth/seventh cue gating to trigger on the later repeated section match (instead of first match), and added runtime map transient announcements (`map controls unlocked`, including mirrored-map variant) from `McMap` enabled-state transitions.
 - [x] **Dream_time Final-Section Sequence Gate + Map Transient AD Retime (2026-02-15)**: Replaced `Dream_time` sixth/seventh heuristic timing with sequence-index gating (`Dream.sequences[3]` final teaching segment) so the line no longer fires in phase 2; retimed chapter intro cutscene map cues to fire before `isCutsceneIntro` clears; replaced generic `controls unlocked` wording with map-transient phrasing in runtime/map cutscene AD keys.
+- [x] **Dream_time Late-Break Hint Gate + Night 3 Outro Spacing (2026-02-16)**: Reworked `Dream_time` sixth/seventh hint timing to trigger only after repeated `(hold 1, release 2, half-hold)` sightings and then speak on a later portal-gap break (instead of early teaching), and spread `Chapter_3` outro cutscene AD timings to reduce back-to-back speech overlap.
 - [x] **v1.1 Contextual Cues Pass 1 (2026-02-12)**: Added scene-specific `Dream_dating` swipe cue narration (left/right + long-countdown variants), added one-time `Dream_dating` intro guidance on song start, localized new cue keys for all supported languages, and documented cue timing patterns in `docs/game-api.md`.
 - [x] **v1.1 Contextual Cues Pass 2 (2026-02-12)**: Added controller mirrors for utility hotkeys (`View` -> map stars/F1 equivalent, `L3` -> rhythm cues/F2 equivalent, `R3` -> menu positions/F3 equivalent), replaced noisy `Dream_tech` per-hit prompts with phase-level guidance and selective rapid-double callouts, added `Dream_followers` phase-3 pre-brief 2 beats early, and updated map dream-name formatting to prefer live UI text when available before localization fallback.
 - [x] **v1.1 Contextual Cues Pass 3 (2026-02-12)**: Applied the `melatonin tutorials.txt` cue requirements to the listed dreams only (`followers`, `dating`, `time`, `space`, `desires`, `nature`, `mind`, `past`, `future`), including hold/release duration narration, camera-sound-specific `Dream_past` hold guidance, and `Dream_future` directional overrides (`Press Up`, short `Left right`). Added missing localization key coverage and documented decompiled mapping details in `docs/game-api.md` and `todo.md`.
