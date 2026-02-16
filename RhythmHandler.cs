@@ -31,6 +31,7 @@ namespace MelatoninAccess
         private static bool _techPhaseTwoPromptSpoken;
         private static bool _timePortalGapPromptSpoken;
         private static bool _timeSixthSeventhPromptSpoken;
+        private static int _timeSixthSeventhCueSeenCount;
         private static bool _pastOneBeatHintSpoken;
         private static bool _pastHalfBeatHintSpoken;
         private static bool _pastTwoBeatHintSpoken;
@@ -518,7 +519,6 @@ namespace MelatoninAccess
 
         private static bool TryAnnounceTimeHoldCue(string actionPrompt, int numBeatsTilHold, int numBeatsTilRelease, bool isHalfBeatAddedToHold, bool isHalfBeatAddedToRelease)
         {
-            int timeSequenceIndex = GetActiveTimeSequenceIndex();
             bool isPortalGapCue =
                 numBeatsTilHold == 2 &&
                 numBeatsTilRelease == 3 &&
@@ -527,15 +527,12 @@ namespace MelatoninAccess
 
             if (isPortalGapCue)
             {
-                // Sequence index 3 is the final teaching segment in Dream_time.
-                // Speak the sixth/seventh cue hint at that segment boundary instead of inside phase 2.
-                if (timeSequenceIndex == 3)
+                // Keep sixth/seventh guidance for the later break by waiting until
+                // the repeated sixth/seventh signature has been observed enough times.
+                if (!_timeSixthSeventhPromptSpoken && _timeSixthSeventhCueSeenCount >= 4)
                 {
-                    if (!_timeSixthSeventhPromptSpoken)
-                    {
-                        _timeSixthSeventhPromptSpoken = true;
-                        ScreenReader.Say(Loc.Get("cue_time_sixth_seventh_hold_release", actionPrompt), true);
-                    }
+                    _timeSixthSeventhPromptSpoken = true;
+                    ScreenReader.Say(Loc.Get("cue_time_sixth_seventh_hold_release", actionPrompt), true);
                     return true;
                 }
 
@@ -555,14 +552,7 @@ namespace MelatoninAccess
 
             if (isSixthSeventhCue)
             {
-                bool shouldSpeakSixthSeventh =
-                    !_timeSixthSeventhPromptSpoken &&
-                    (timeSequenceIndex < 0 || timeSequenceIndex == 3);
-                if (shouldSpeakSixthSeventh)
-                {
-                    _timeSixthSeventhPromptSpoken = true;
-                    ScreenReader.Say(Loc.Get("cue_time_sixth_seventh_hold_release", actionPrompt), true);
-                }
+                _timeSixthSeventhCueSeenCount++;
                 return true;
             }
 
@@ -620,6 +610,7 @@ namespace MelatoninAccess
                 _techPhaseTwoPromptSpoken = false;
                 _timePortalGapPromptSpoken = false;
                 _timeSixthSeventhPromptSpoken = false;
+                _timeSixthSeventhCueSeenCount = 0;
                 _pastOneBeatHintSpoken = false;
                 _pastHalfBeatHintSpoken = false;
                 _pastTwoBeatHintSpoken = false;
@@ -693,31 +684,6 @@ namespace MelatoninAccess
             {
                 return -1;
             }
-        }
-
-        private static int GetActiveTimeSequenceIndex()
-        {
-            if (Dream.dir == null) return -1;
-            try
-            {
-                float[] sequences = Traverse.Create(Dream.dir).Field("sequences").GetValue<float[]>();
-                if (sequences == null || sequences.Length == 0) return -1;
-
-                int max = Math.Min(4, sequences.Length);
-                for (int i = 0; i < max; i++)
-                {
-                    if (sequences[i] > 0f)
-                    {
-                        return i;
-                    }
-                }
-            }
-            catch
-            {
-                return -1;
-            }
-
-            return -1;
         }
 
         private static string GetActionPrompt()
