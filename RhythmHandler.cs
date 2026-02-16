@@ -31,7 +31,6 @@ namespace MelatoninAccess
         private static bool _techPhaseTwoPromptSpoken;
         private static bool _timePortalGapPromptSpoken;
         private static bool _timeSixthSeventhPromptSpoken;
-        private static int _lastDreamTimeSequenceCode = -1;
         private static bool _pastOneBeatHintSpoken;
         private static bool _pastHalfBeatHintSpoken;
         private static bool _pastTwoBeatHintSpoken;
@@ -106,26 +105,6 @@ namespace MelatoninAccess
                     if (TryAnnounceHoldReleaseOverride(numBeatsTilHold, numBeatsTilRelease, isHalfBeatAddedToHold, isHalfBeatAddedToRelease)) return;
                     ScreenReader.Say(Loc.Get("cue_hold_action", GetActionPrompt()), true);
                 }
-            }
-        }
-
-        [HarmonyPatch(typeof(Dream), "StartSequenceDown")]
-        public static class Dream_StartSequenceDown_Patch
-        {
-            public static void Postfix(int codeNum)
-            {
-                if (!string.Equals(GetActiveSceneName(), "Dream_time", StringComparison.OrdinalIgnoreCase)) return;
-                _lastDreamTimeSequenceCode = codeNum;
-            }
-        }
-
-        [HarmonyPatch(typeof(Dream), "StartSequenceUp")]
-        public static class Dream_StartSequenceUp_Patch
-        {
-            public static void Postfix(int codeNum)
-            {
-                if (!string.Equals(GetActiveSceneName(), "Dream_time", StringComparison.OrdinalIgnoreCase)) return;
-                _lastDreamTimeSequenceCode = codeNum;
             }
         }
 
@@ -547,9 +526,8 @@ namespace MelatoninAccess
 
             if (isPortalGapCue)
             {
-                // In Dream_time practice, code 4 is the final section trigger.
-                // Speak sixth/seventh guidance on the portal-gap break right before that section.
-                if (!_timeSixthSeventhPromptSpoken && _lastDreamTimeSequenceCode == 4)
+                // Speak this only near the end of Dream_time so it lands just before the last phase.
+                if (!_timeSixthSeventhPromptSpoken && ShouldSpeakLateDreamTimeHint())
                 {
                     _timeSixthSeventhPromptSpoken = true;
                     ScreenReader.Say(Loc.Get("cue_time_sixth_seventh_hold_release", actionPrompt), true);
@@ -594,6 +572,20 @@ namespace MelatoninAccess
             return true;
         }
 
+        private static bool ShouldSpeakLateDreamTimeHint()
+        {
+            // Song progress is stable across practice attempts and cleanly indicates when the
+            // final teaching segment is approaching. Keep this late to avoid phase-2 timing.
+            float progress = GetSongProgressSafe();
+            if (progress >= 0f)
+            {
+                return progress >= 0.68f;
+            }
+
+            // Fallback when progress lookup fails.
+            return GetPhraseSafe() >= 3;
+        }
+
         private static bool IsDuplicateQueueCue(string sceneName, int numBeatsTilHit, bool isHalfBeatAdded)
         {
             float now = Time.unscaledTime;
@@ -629,7 +621,6 @@ namespace MelatoninAccess
                 _techPhaseTwoPromptSpoken = false;
                 _timePortalGapPromptSpoken = false;
                 _timeSixthSeventhPromptSpoken = false;
-                _lastDreamTimeSequenceCode = -1;
                 _pastOneBeatHintSpoken = false;
                 _pastHalfBeatHintSpoken = false;
                 _pastTwoBeatHintSpoken = false;
@@ -702,6 +693,19 @@ namespace MelatoninAccess
             catch
             {
                 return -1;
+            }
+        }
+
+        private static float GetSongProgressSafe()
+        {
+            if (Dream.dir == null) return -1f;
+            try
+            {
+                return Traverse.Create(Dream.dir).Method("GetSongProgress").GetValue<float>();
+            }
+            catch
+            {
+                return -1f;
             }
         }
 
