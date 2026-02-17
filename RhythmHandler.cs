@@ -526,6 +526,14 @@ namespace MelatoninAccess
 
             if (isPortalGapCue)
             {
+                // Speak this only near the end of Dream_time so it lands just before the last phase.
+                if (!_timeSixthSeventhPromptSpoken && ShouldSpeakLateDreamTimeHint())
+                {
+                    _timeSixthSeventhPromptSpoken = true;
+                    ScreenReader.Say(Loc.Get("cue_time_sixth_seventh_hold_release", actionPrompt), true);
+                    return true;
+                }
+
                 if (!_timePortalGapPromptSpoken)
                 {
                     _timePortalGapPromptSpoken = true;
@@ -542,11 +550,6 @@ namespace MelatoninAccess
 
             if (isSixthSeventhCue)
             {
-                if (!_timeSixthSeventhPromptSpoken)
-                {
-                    _timeSixthSeventhPromptSpoken = true;
-                    ScreenReader.Say(Loc.Get("cue_time_sixth_seventh_hold_release", actionPrompt), true);
-                }
                 return true;
             }
 
@@ -567,6 +570,20 @@ namespace MelatoninAccess
             _lastTechDoubleCueTime = now;
             ScreenReader.Say(Loc.Get("cue_press_action_twice", actionPrompt), true);
             return true;
+        }
+
+        private static bool ShouldSpeakLateDreamTimeHint()
+        {
+            // Song progress is stable across practice attempts and cleanly indicates when the
+            // final teaching segment is approaching. Keep this late to avoid phase-2 timing.
+            float progress = GetSongProgressSafe();
+            if (progress >= 0f)
+            {
+                return progress >= 0.68f;
+            }
+
+            // Fallback when progress lookup fails.
+            return GetPhraseSafe() >= 3;
         }
 
         private static bool IsDuplicateQueueCue(string sceneName, int numBeatsTilHit, bool isHalfBeatAdded)
@@ -676,6 +693,19 @@ namespace MelatoninAccess
             catch
             {
                 return -1;
+            }
+        }
+
+        private static float GetSongProgressSafe()
+        {
+            if (Dream.dir == null) return -1f;
+            try
+            {
+                return Traverse.Create(Dream.dir).Method("GetSongProgress").GetValue<float>();
+            }
+            catch
+            {
+                return -1f;
             }
         }
 

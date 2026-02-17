@@ -27,6 +27,9 @@ namespace MelatoninAccess
         private static bool _wasGamepadNextDown;
         private static string _lastLandmarkAnnouncement = "";
         private static float _lastLandmarkAnnouncementTime = -10f;
+        private static bool _hasMapEnabledSnapshot;
+        private static bool _lastMapEnabledState;
+        private static string _lastMapSceneName = "";
 
         // --- Landmark & Mode Menu ---
 
@@ -153,6 +156,7 @@ namespace MelatoninAccess
         {
             public static void Postfix(McMap __instance)
             {
+                TryAnnounceMapTransientState(__instance);
                 bool assistAllowed = IsMapNavigationAssistAllowed(__instance);
 
                 bool f1Pressed = Keyboard.current != null && Keyboard.current.f1Key.wasPressedThisFrame;
@@ -197,6 +201,35 @@ namespace MelatoninAccess
                     MapTeleporter.TeleportToNext(__instance);
                 }
             }
+        }
+
+        private static void TryAnnounceMapTransientState(McMap map)
+        {
+            if (map == null) return;
+
+            string sceneName = SceneMonitor.mgr != null ? SceneMonitor.mgr.GetActiveSceneName() ?? "" : "";
+            bool sceneChanged = !string.Equals(sceneName, _lastMapSceneName, StringComparison.OrdinalIgnoreCase);
+            if (sceneChanged)
+            {
+                _hasMapEnabledSnapshot = false;
+                _lastMapSceneName = sceneName;
+            }
+
+            bool isEnabled = Traverse.Create(map).Field("isEnabled").GetValue<bool>();
+            if (!_hasMapEnabledSnapshot)
+            {
+                _lastMapEnabledState = isEnabled;
+                _hasMapEnabledSnapshot = true;
+                return;
+            }
+
+            bool becameEnabled = !_lastMapEnabledState && isEnabled;
+            _lastMapEnabledState = isEnabled;
+            if (!becameEnabled) return;
+
+            bool isMirrored = Traverse.Create(map).Field("isWakeMirrored").GetValue<bool>();
+            string key = isMirrored ? "map_transient_controls_unlocked_mirrored" : "map_transient_controls_unlocked";
+            ScreenReader.Say(Loc.Get(key), true);
         }
 
         private static bool IsMapNavigationAssistAllowed(McMap map)

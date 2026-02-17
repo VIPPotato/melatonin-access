@@ -3,5 +3,36 @@
   "id": "chapter_3_intro",
   "sceneName": "Chapter_3",
   "cutsceneType": "intro",
-  "entries": []
+  "entries": [
+    {
+      "atSeconds": 0.0,
+      "durationSeconds": 3.5,
+      "textKey": "ad_ch3_intro_title_card"
+    },
+    {
+      "atSeconds": 7.9,
+      "durationSeconds": 3.8,
+      "textKey": "ad_ch3_intro_room_widens"
+    },
+    {
+      "atSeconds": 12.9,
+      "durationSeconds": 1.8,
+      "textKey": "ad_ch3_intro_crossfade_black"
+    },
+    {
+      "atSeconds": 15.0,
+      "durationSeconds": 2.0,
+      "textKey": "ad_ch3_intro_room_returns_sleeping"
+    },
+    {
+      "atSeconds": 17.1,
+      "durationSeconds": 0.6,
+      "textKey": "ad_ch3_intro_map_music_starts"
+    },
+    {
+      "atSeconds": 17.8,
+      "durationSeconds": 0.7,
+      "textKey": "ad_ch3_intro_map_controls_unlock"
+    }
+  ]
 }

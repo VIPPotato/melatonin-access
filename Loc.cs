@@ -732,6 +732,32 @@ namespace MelatoninAccess
                 "Estrelas do mapa: {0}. Faltam {1} para passar.");
 
             Add(
+                "map_transient_controls_unlocked",
+                "Map settles into view.",
+                "Map settles into view.",
+                "Map settles into view.",
+                "Map settles into view.",
+                "Map settles into view.",
+                "Map settles into view.",
+                "Map settles into view.",
+                "Map settles into view.",
+                "Map settles into view.",
+                "Map settles into view.");
+
+            Add(
+                "map_transient_controls_unlocked_mirrored",
+                "Map settles into view mirrored. Left and right are swapped.",
+                "Map settles into view mirrored. Left and right are swapped.",
+                "Map settles into view mirrored. Left and right are swapped.",
+                "Map settles into view mirrored. Left and right are swapped.",
+                "Map settles into view mirrored. Left and right are swapped.",
+                "Map settles into view mirrored. Left and right are swapped.",
+                "Map settles into view mirrored. Left and right are swapped.",
+                "Map settles into view mirrored. Left and right are swapped.",
+                "Map settles into view mirrored. Left and right are swapped.",
+                "Map settles into view mirrored. Left and right are swapped.");
+
+            Add(
                 "teleport_conflict_hint",
                 "Bracket teleport is disabled because Action is bound to brackets. Use F9 and F10 for teleport.",
                 "由于操作键绑定到方括号，方括号传送已禁用。请使用 F9 和 F10 传送。",
@@ -2017,6 +2043,747 @@ namespace MelatoninAccess
                 "Spiele und bewerte dieses Community-Level.",
                 "Juega y evalúa este nivel de la comunidad.",
                 "Jogue e avalie este nivel da comunidade.");
+            Add(
+                "ad_ch1_intro_title_card",
+                "Title card: Night One.",
+                "Title card: Night One.",
+                "Title card: Night One.",
+                "Title card: Night One.",
+                "Title card: Night One.",
+                "Title card: Night One.",
+                "Title card: Night One.",
+                "Title card: Night One.",
+                "Title card: Night One.",
+                "Title card: Night One.");
+
+            Add(
+                "ad_ch1_intro_room_widens",
+                "Bedroom widens. They lounge awake with a laptop.",
+                "Bedroom widens. They lounge awake with a laptop.",
+                "Bedroom widens. They lounge awake with a laptop.",
+                "Bedroom widens. They lounge awake with a laptop.",
+                "Bedroom widens. They lounge awake with a laptop.",
+                "Bedroom widens. They lounge awake with a laptop.",
+                "Bedroom widens. They lounge awake with a laptop.",
+                "Bedroom widens. They lounge awake with a laptop.",
+                "Bedroom widens. They lounge awake with a laptop.",
+                "Bedroom widens. They lounge awake with a laptop.");
+
+            Add(
+                "ad_ch1_intro_fade_black",
+                "Brief fade to black.",
+                "Brief fade to black.",
+                "Brief fade to black.",
+                "Brief fade to black.",
+                "Brief fade to black.",
+                "Brief fade to black.",
+                "Brief fade to black.",
+                "Brief fade to black.",
+                "Brief fade to black.",
+                "Brief fade to black.");
+
+            Add(
+                "ad_ch1_intro_map_recenters",
+                "View pulls back from the bed to the chapter map.",
+                "View pulls back from the bed to the chapter map.",
+                "View pulls back from the bed to the chapter map.",
+                "View pulls back from the bed to the chapter map.",
+                "View pulls back from the bed to the chapter map.",
+                "View pulls back from the bed to the chapter map.",
+                "View pulls back from the bed to the chapter map.",
+                "View pulls back from the bed to the chapter map.",
+                "View pulls back from the bed to the chapter map.",
+                "View pulls back from the bed to the chapter map.");
+
+            Add(
+                "ad_ch1_intro_map_music_starts",
+                "Map theme starts.",
+                "Map theme starts.",
+                "Map theme starts.",
+                "Map theme starts.",
+                "Map theme starts.",
+                "Map theme starts.",
+                "Map theme starts.",
+                "Map theme starts.",
+                "Map theme starts.",
+                "Map theme starts.");
+
+            Add(
+                "ad_ch1_intro_map_controls_unlock",
+                "Map settles on Night One. First routes are ready.",
+                "Map settles on Night One. First routes are ready.",
+                "Map settles on Night One. First routes are ready.",
+                "Map settles on Night One. First routes are ready.",
+                "Map settles on Night One. First routes are ready.",
+                "Map settles on Night One. First routes are ready.",
+                "Map settles on Night One. First routes are ready.",
+                "Map settles on Night One. First routes are ready.",
+                "Map settles on Night One. First routes are ready.",
+                "Map settles on Night One. First routes are ready.");
+
+            Add(
+                "ad_ch2_intro_title_card",
+                "Title card: Night Two.",
+                "Title card: Night Two.",
+                "Title card: Night Two.",
+                "Title card: Night Two.",
+                "Title card: Night Two.",
+                "Title card: Night Two.",
+                "Title card: Night Two.",
+                "Title card: Night Two.",
+                "Title card: Night Two.",
+                "Title card: Night Two.");
+
+            Add(
+                "ad_ch2_intro_room_widens",
+                "Bedroom widens. They wake and look around.",
+                "Bedroom widens. They wake and look around.",
+                "Bedroom widens. They wake and look around.",
+                "Bedroom widens. They wake and look around.",
+                "Bedroom widens. They wake and look around.",
+                "Bedroom widens. They wake and look around.",
+                "Bedroom widens. They wake and look around.",
+                "Bedroom widens. They wake and look around.",
+                "Bedroom widens. They wake and look around.",
+                "Bedroom widens. They wake and look around.");
+
+            Add(
+                "ad_ch2_intro_fade_black_sleep",
+                "Screen darkens; they settle back to sleep.",
+                "Screen darkens; they settle back to sleep.",
+                "Screen darkens; they settle back to sleep.",
+                "Screen darkens; they settle back to sleep.",
+                "Screen darkens; they settle back to sleep.",
+                "Screen darkens; they settle back to sleep.",
+                "Screen darkens; they settle back to sleep.",
+                "Screen darkens; they settle back to sleep.",
+                "Screen darkens; they settle back to sleep.",
+                "Screen darkens; they settle back to sleep.");
+
+            Add(
+                "ad_ch2_intro_map_recenters",
+                "Camera recenters onto the chapter map.",
+                "Camera recenters onto the chapter map.",
+                "Camera recenters onto the chapter map.",
+                "Camera recenters onto the chapter map.",
+                "Camera recenters onto the chapter map.",
+                "Camera recenters onto the chapter map.",
+                "Camera recenters onto the chapter map.",
+                "Camera recenters onto the chapter map.",
+                "Camera recenters onto the chapter map.",
+                "Camera recenters onto the chapter map.");
+
+            Add(
+                "ad_ch2_intro_map_music_starts",
+                "Map theme returns.",
+                "Map theme returns.",
+                "Map theme returns.",
+                "Map theme returns.",
+                "Map theme returns.",
+                "Map theme returns.",
+                "Map theme returns.",
+                "Map theme returns.",
+                "Map theme returns.",
+                "Map theme returns.");
+
+            Add(
+                "ad_ch2_intro_map_controls_unlock",
+                "Map settles on Night Two.",
+                "Map settles on Night Two.",
+                "Map settles on Night Two.",
+                "Map settles on Night Two.",
+                "Map settles on Night Two.",
+                "Map settles on Night Two.",
+                "Map settles on Night Two.",
+                "Map settles on Night Two.",
+                "Map settles on Night Two.",
+                "Map settles on Night Two.");
+
+            Add(
+                "ad_ch3_intro_title_card",
+                "Title card: Night Three.",
+                "Title card: Night Three.",
+                "Title card: Night Three.",
+                "Title card: Night Three.",
+                "Title card: Night Three.",
+                "Title card: Night Three.",
+                "Title card: Night Three.",
+                "Title card: Night Three.",
+                "Title card: Night Three.",
+                "Title card: Night Three.");
+
+            Add(
+                "ad_ch3_intro_room_widens",
+                "Room widens in low ambience.",
+                "Room widens in low ambience.",
+                "Room widens in low ambience.",
+                "Room widens in low ambience.",
+                "Room widens in low ambience.",
+                "Room widens in low ambience.",
+                "Room widens in low ambience.",
+                "Room widens in low ambience.",
+                "Room widens in low ambience.",
+                "Room widens in low ambience.");
+
+            Add(
+                "ad_ch3_intro_crossfade_black",
+                "Slow cross-fade to black.",
+                "Slow cross-fade to black.",
+                "Slow cross-fade to black.",
+                "Slow cross-fade to black.",
+                "Slow cross-fade to black.",
+                "Slow cross-fade to black.",
+                "Slow cross-fade to black.",
+                "Slow cross-fade to black.",
+                "Slow cross-fade to black.",
+                "Slow cross-fade to black.");
+
+            Add(
+                "ad_ch3_intro_room_returns_sleeping",
+                "Room fades back with them asleep.",
+                "Room fades back with them asleep.",
+                "Room fades back with them asleep.",
+                "Room fades back with them asleep.",
+                "Room fades back with them asleep.",
+                "Room fades back with them asleep.",
+                "Room fades back with them asleep.",
+                "Room fades back with them asleep.",
+                "Room fades back with them asleep.",
+                "Room fades back with them asleep.");
+
+            Add(
+                "ad_ch3_intro_map_music_starts",
+                "Map theme starts under the room tone.",
+                "Map theme starts under the room tone.",
+                "Map theme starts under the room tone.",
+                "Map theme starts under the room tone.",
+                "Map theme starts under the room tone.",
+                "Map theme starts under the room tone.",
+                "Map theme starts under the room tone.",
+                "Map theme starts under the room tone.",
+                "Map theme starts under the room tone.",
+                "Map theme starts under the room tone.");
+
+            Add(
+                "ad_ch3_intro_map_controls_unlock",
+                "Map settles on Night Three.",
+                "Map settles on Night Three.",
+                "Map settles on Night Three.",
+                "Map settles on Night Three.",
+                "Map settles on Night Three.",
+                "Map settles on Night Three.",
+                "Map settles on Night Three.",
+                "Map settles on Night Three.",
+                "Map settles on Night Three.",
+                "Map settles on Night Three.");
+
+            Add(
+                "ad_ch4_intro_title_card",
+                "Title card: Night Four.",
+                "Title card: Night Four.",
+                "Title card: Night Four.",
+                "Title card: Night Four.",
+                "Title card: Night Four.",
+                "Title card: Night Four.",
+                "Title card: Night Four.",
+                "Title card: Night Four.",
+                "Title card: Night Four.",
+                "Title card: Night Four.");
+
+            Add(
+                "ad_ch4_intro_room_widens",
+                "Room opens in a closer, quiet view.",
+                "Room opens in a closer, quiet view.",
+                "Room opens in a closer, quiet view.",
+                "Room opens in a closer, quiet view.",
+                "Room opens in a closer, quiet view.",
+                "Room opens in a closer, quiet view.",
+                "Room opens in a closer, quiet view.",
+                "Room opens in a closer, quiet view.",
+                "Room opens in a closer, quiet view.",
+                "Room opens in a closer, quiet view.");
+
+            Add(
+                "ad_ch4_intro_sleep_trigger",
+                "They slump and drop into sleep.",
+                "They slump and drop into sleep.",
+                "They slump and drop into sleep.",
+                "They slump and drop into sleep.",
+                "They slump and drop into sleep.",
+                "They slump and drop into sleep.",
+                "They slump and drop into sleep.",
+                "They slump and drop into sleep.",
+                "They slump and drop into sleep.",
+                "They slump and drop into sleep.");
+
+            Add(
+                "ad_ch4_intro_map_recenters",
+                "Camera recenters on the chapter map.",
+                "Camera recenters on the chapter map.",
+                "Camera recenters on the chapter map.",
+                "Camera recenters on the chapter map.",
+                "Camera recenters on the chapter map.",
+                "Camera recenters on the chapter map.",
+                "Camera recenters on the chapter map.",
+                "Camera recenters on the chapter map.",
+                "Camera recenters on the chapter map.",
+                "Camera recenters on the chapter map.");
+
+            Add(
+                "ad_ch4_intro_map_music_starts",
+                "Map theme begins.",
+                "Map theme begins.",
+                "Map theme begins.",
+                "Map theme begins.",
+                "Map theme begins.",
+                "Map theme begins.",
+                "Map theme begins.",
+                "Map theme begins.",
+                "Map theme begins.",
+                "Map theme begins.");
+
+            Add(
+                "ad_ch4_intro_map_controls_unlock_mirrored",
+                "Map settles on Night Four, mirrored left to right.",
+                "Map settles on Night Four, mirrored left to right.",
+                "Map settles on Night Four, mirrored left to right.",
+                "Map settles on Night Four, mirrored left to right.",
+                "Map settles on Night Four, mirrored left to right.",
+                "Map settles on Night Four, mirrored left to right.",
+                "Map settles on Night Four, mirrored left to right.",
+                "Map settles on Night Four, mirrored left to right.",
+                "Map settles on Night Four, mirrored left to right.",
+                "Map settles on Night Four, mirrored left to right.");
+
+            Add(
+                "ad_ch5_intro_title_card",
+                "Title card: Night Five.",
+                "Title card: Night Five.",
+                "Title card: Night Five.",
+                "Title card: Night Five.",
+                "Title card: Night Five.",
+                "Title card: Night Five.",
+                "Title card: Night Five.",
+                "Title card: Night Five.",
+                "Title card: Night Five.",
+                "Title card: Night Five.");
+
+            Add(
+                "ad_ch5_intro_room_widens",
+                "Room widens. They remain asleep under dim light.",
+                "Room widens. They remain asleep under dim light.",
+                "Room widens. They remain asleep under dim light.",
+                "Room widens. They remain asleep under dim light.",
+                "Room widens. They remain asleep under dim light.",
+                "Room widens. They remain asleep under dim light.",
+                "Room widens. They remain asleep under dim light.",
+                "Room widens. They remain asleep under dim light.",
+                "Room widens. They remain asleep under dim light.",
+                "Room widens. They remain asleep under dim light.");
+
+            Add(
+                "ad_ch5_intro_map_recenters",
+                "Camera recenters from bed to the final map.",
+                "Camera recenters from bed to the final map.",
+                "Camera recenters from bed to the final map.",
+                "Camera recenters from bed to the final map.",
+                "Camera recenters from bed to the final map.",
+                "Camera recenters from bed to the final map.",
+                "Camera recenters from bed to the final map.",
+                "Camera recenters from bed to the final map.",
+                "Camera recenters from bed to the final map.",
+                "Camera recenters from bed to the final map.");
+
+            Add(
+                "ad_ch5_intro_map_music_starts",
+                "Map theme begins.",
+                "Map theme begins.",
+                "Map theme begins.",
+                "Map theme begins.",
+                "Map theme begins.",
+                "Map theme begins.",
+                "Map theme begins.",
+                "Map theme begins.",
+                "Map theme begins.",
+                "Map theme begins.");
+
+            Add(
+                "ad_ch5_intro_map_controls_unlock",
+                "Map settles on Night Five.",
+                "Map settles on Night Five.",
+                "Map settles on Night Five.",
+                "Map settles on Night Five.",
+                "Map settles on Night Five.",
+                "Map settles on Night Five.",
+                "Map settles on Night Five.",
+                "Map settles on Night Five.",
+                "Map settles on Night Five.",
+                "Map settles on Night Five.");
+
+            Add(
+                "ad_ch1_outro_transition_room",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.");
+
+            Add(
+                "ad_ch1_outro_border_clears",
+                "Feather border clears and the room sharpens.",
+                "Feather border clears and the room sharpens.",
+                "Feather border clears and the room sharpens.",
+                "Feather border clears and the room sharpens.",
+                "Feather border clears and the room sharpens.",
+                "Feather border clears and the room sharpens.",
+                "Feather border clears and the room sharpens.",
+                "Feather border clears and the room sharpens.",
+                "Feather border clears and the room sharpens.",
+                "Feather border clears and the room sharpens.");
+
+            Add(
+                "ad_ch1_outro_wake",
+                "They wake and sit up.",
+                "They wake and sit up.",
+                "They wake and sit up.",
+                "They wake and sit up.",
+                "They wake and sit up.",
+                "They wake and sit up.",
+                "They wake and sit up.",
+                "They wake and sit up.",
+                "They wake and sit up.",
+                "They wake and sit up.");
+
+            Add(
+                "ad_ch1_outro_fade_black",
+                "Quick fade to black.",
+                "Quick fade to black.",
+                "Quick fade to black.",
+                "Quick fade to black.",
+                "Quick fade to black.",
+                "Quick fade to black.",
+                "Quick fade to black.",
+                "Quick fade to black.",
+                "Quick fade to black.",
+                "Quick fade to black.");
+
+            Add(
+                "ad_ch1_outro_load_next",
+                "Loading Night Two.",
+                "Loading Night Two.",
+                "Loading Night Two.",
+                "Loading Night Two.",
+                "Loading Night Two.",
+                "Loading Night Two.",
+                "Loading Night Two.",
+                "Loading Night Two.",
+                "Loading Night Two.",
+                "Loading Night Two.");
+
+            Add(
+                "ad_ch2_outro_transition_room",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.");
+
+            Add(
+                "ad_ch2_outro_border_clears",
+                "Feather border clears; the room holds steady.",
+                "Feather border clears; the room holds steady.",
+                "Feather border clears; the room holds steady.",
+                "Feather border clears; the room holds steady.",
+                "Feather border clears; the room holds steady.",
+                "Feather border clears; the room holds steady.",
+                "Feather border clears; the room holds steady.",
+                "Feather border clears; the room holds steady.",
+                "Feather border clears; the room holds steady.",
+                "Feather border clears; the room holds steady.");
+
+            Add(
+                "ad_ch2_outro_wake_first",
+                "First wake motion starts.",
+                "First wake motion starts.",
+                "First wake motion starts.",
+                "First wake motion starts.",
+                "First wake motion starts.",
+                "First wake motion starts.",
+                "First wake motion starts.",
+                "First wake motion starts.",
+                "First wake motion starts.",
+                "First wake motion starts.");
+
+            Add(
+                "ad_ch2_outro_wake_second",
+                "Second wake motion snaps them fully alert.",
+                "Second wake motion snaps them fully alert.",
+                "Second wake motion snaps them fully alert.",
+                "Second wake motion snaps them fully alert.",
+                "Second wake motion snaps them fully alert.",
+                "Second wake motion snaps them fully alert.",
+                "Second wake motion snaps them fully alert.",
+                "Second wake motion snaps them fully alert.",
+                "Second wake motion snaps them fully alert.",
+                "Second wake motion snaps them fully alert.");
+
+            Add(
+                "ad_ch2_outro_fade_black",
+                "Fade to black.",
+                "Fade to black.",
+                "Fade to black.",
+                "Fade to black.",
+                "Fade to black.",
+                "Fade to black.",
+                "Fade to black.",
+                "Fade to black.",
+                "Fade to black.",
+                "Fade to black.");
+
+            Add(
+                "ad_ch2_outro_load_next",
+                "Loading Night Three.",
+                "Loading Night Three.",
+                "Loading Night Three.",
+                "Loading Night Three.",
+                "Loading Night Three.",
+                "Loading Night Three.",
+                "Loading Night Three.",
+                "Loading Night Three.",
+                "Loading Night Three.",
+                "Loading Night Three.");
+
+            Add(
+                "ad_ch3_outro_transition_room",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.");
+
+            Add(
+                "ad_ch3_outro_border_clears",
+                "Feather border clears; room detail returns.",
+                "Feather border clears; room detail returns.",
+                "Feather border clears; room detail returns.",
+                "Feather border clears; room detail returns.",
+                "Feather border clears; room detail returns.",
+                "Feather border clears; room detail returns.",
+                "Feather border clears; room detail returns.",
+                "Feather border clears; room detail returns.",
+                "Feather border clears; room detail returns.",
+                "Feather border clears; room detail returns.");
+
+            Add(
+                "ad_ch3_outro_static_flicker",
+                "A burst of static cuts through the room.",
+                "A burst of static cuts through the room.",
+                "A burst of static cuts through the room.",
+                "A burst of static cuts through the room.",
+                "A burst of static cuts through the room.",
+                "A burst of static cuts through the room.",
+                "A burst of static cuts through the room.",
+                "A burst of static cuts through the room.",
+                "A burst of static cuts through the room.",
+                "A burst of static cuts through the room.");
+
+            Add(
+                "ad_ch3_outro_wake_after_static",
+                "After the glitch, they wake.",
+                "After the glitch, they wake.",
+                "After the glitch, they wake.",
+                "After the glitch, they wake.",
+                "After the glitch, they wake.",
+                "After the glitch, they wake.",
+                "After the glitch, they wake.",
+                "After the glitch, they wake.",
+                "After the glitch, they wake.",
+                "After the glitch, they wake.");
+
+            Add(
+                "ad_ch3_outro_fade_black",
+                "Fade to black.",
+                "Fade to black.",
+                "Fade to black.",
+                "Fade to black.",
+                "Fade to black.",
+                "Fade to black.",
+                "Fade to black.",
+                "Fade to black.",
+                "Fade to black.",
+                "Fade to black.");
+
+            Add(
+                "ad_ch3_outro_load_next",
+                "Loading Night Four.",
+                "Loading Night Four.",
+                "Loading Night Four.",
+                "Loading Night Four.",
+                "Loading Night Four.",
+                "Loading Night Four.",
+                "Loading Night Four.",
+                "Loading Night Four.",
+                "Loading Night Four.",
+                "Loading Night Four.");
+
+            Add(
+                "ad_ch4_outro_transition_room",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.",
+                "Transition closes from dream to bedroom.");
+
+            Add(
+                "ad_ch4_outro_settles_sleep",
+                "They sink deeper into sleep.",
+                "They sink deeper into sleep.",
+                "They sink deeper into sleep.",
+                "They sink deeper into sleep.",
+                "They sink deeper into sleep.",
+                "They sink deeper into sleep.",
+                "They sink deeper into sleep.",
+                "They sink deeper into sleep.",
+                "They sink deeper into sleep.",
+                "They sink deeper into sleep.");
+
+            Add(
+                "ad_ch4_outro_border_clears",
+                "Feather border drops away to a still room.",
+                "Feather border drops away to a still room.",
+                "Feather border drops away to a still room.",
+                "Feather border drops away to a still room.",
+                "Feather border drops away to a still room.",
+                "Feather border drops away to a still room.",
+                "Feather border drops away to a still room.",
+                "Feather border drops away to a still room.",
+                "Feather border drops away to a still room.",
+                "Feather border drops away to a still room.");
+
+            Add(
+                "ad_ch4_outro_long_fade_black",
+                "Long fade to black as audio fades out.",
+                "Long fade to black as audio fades out.",
+                "Long fade to black as audio fades out.",
+                "Long fade to black as audio fades out.",
+                "Long fade to black as audio fades out.",
+                "Long fade to black as audio fades out.",
+                "Long fade to black as audio fades out.",
+                "Long fade to black as audio fades out.",
+                "Long fade to black as audio fades out.",
+                "Long fade to black as audio fades out.");
+
+            Add(
+                "ad_ch4_outro_load_next",
+                "Loading Night Five.",
+                "Loading Night Five.",
+                "Loading Night Five.",
+                "Loading Night Five.",
+                "Loading Night Five.",
+                "Loading Night Five.",
+                "Loading Night Five.",
+                "Loading Night Five.",
+                "Loading Night Five.",
+                "Loading Night Five.");
+
+            Add(
+                "ad_ch5_outro_transition_room",
+                "Transition returns to the bedroom.",
+                "Transition returns to the bedroom.",
+                "Transition returns to the bedroom.",
+                "Transition returns to the bedroom.",
+                "Transition returns to the bedroom.",
+                "Transition returns to the bedroom.",
+                "Transition returns to the bedroom.",
+                "Transition returns to the bedroom.",
+                "Transition returns to the bedroom.",
+                "Transition returns to the bedroom.");
+
+            Add(
+                "ad_ch5_outro_camera_to_window",
+                "Camera glides from bed toward the window.",
+                "Camera glides from bed toward the window.",
+                "Camera glides from bed toward the window.",
+                "Camera glides from bed toward the window.",
+                "Camera glides from bed toward the window.",
+                "Camera glides from bed toward the window.",
+                "Camera glides from bed toward the window.",
+                "Camera glides from bed toward the window.",
+                "Camera glides from bed toward the window.",
+                "Camera glides from bed toward the window.");
+
+            Add(
+                "ad_ch5_outro_window_fills_view",
+                "The window fills most of the view.",
+                "The window fills most of the view.",
+                "The window fills most of the view.",
+                "The window fills most of the view.",
+                "The window fills most of the view.",
+                "The window fills most of the view.",
+                "The window fills most of the view.",
+                "The window fills most of the view.",
+                "The window fills most of the view.",
+                "The window fills most of the view.");
+
+            Add(
+                "ad_ch5_outro_looks_out_window",
+                "They look outward, holding still.",
+                "They look outward, holding still.",
+                "They look outward, holding still.",
+                "They look outward, holding still.",
+                "They look outward, holding still.",
+                "They look outward, holding still.",
+                "They look outward, holding still.",
+                "They look outward, holding still.",
+                "They look outward, holding still.",
+                "They look outward, holding still.");
+
+            Add(
+                "ad_ch5_outro_final_fade_black",
+                "Long final fade to black.",
+                "Long final fade to black.",
+                "Long final fade to black.",
+                "Long final fade to black.",
+                "Long final fade to black.",
+                "Long final fade to black.",
+                "Long final fade to black.",
+                "Long final fade to black.",
+                "Long final fade to black.",
+                "Long final fade to black.");
+
+            Add(
+                "ad_ch5_outro_credits_begin",
+                "Credits begin.",
+                "Credits begin.",
+                "Credits begin.",
+                "Credits begin.",
+                "Credits begin.",
+                "Credits begin.",
+                "Credits begin.",
+                "Credits begin.",
+                "Credits begin.",
+                "Credits begin.");
+
 
             Add(
                 "cue_left",
@@ -2176,3 +2943,4 @@ namespace MelatoninAccess
         }
     }
 }
+

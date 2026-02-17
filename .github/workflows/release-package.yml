@@ -1,0 +1,41 @@
+name: Build And Publish Release Package
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build-package:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Restore
+        run: dotnet restore MelatoninAccess.csproj
+
+      - name: Build
+        run: dotnet build MelatoninAccess.csproj -c Release --no-restore
+
+      - name: Build Release ZIP
+        shell: pwsh
+        run: pwsh -File .\scripts\Build-ReleasePackage.ps1 -Version "${{ github.ref_name }}" -Configuration "Release"
+
+      - name: Upload ZIP To GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          files: release/MelatoninAccess-${{ github.ref_name }}.zip
+          overwrite_files: true
+          fail_on_unmatched_files: true
+          generate_release_notes: true
