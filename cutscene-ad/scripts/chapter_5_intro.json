@@ -3,5 +3,31 @@
   "id": "chapter_5_intro",
   "sceneName": "Chapter_5",
   "cutsceneType": "intro",
-  "entries": []
+  "entries": [
+    {
+      "atSeconds": 0.0,
+      "durationSeconds": 3.5,
+      "textKey": "ad_ch5_intro_title_card"
+    },
+    {
+      "atSeconds": 7.9,
+      "durationSeconds": 2.8,
+      "textKey": "ad_ch5_intro_room_widens"
+    },
+    {
+      "atSeconds": 11.4,
+      "durationSeconds": 1.0,
+      "textKey": "ad_ch5_intro_map_recenters"
+    },
+    {
+      "atSeconds": 12.6,
+      "durationSeconds": 0.6,
+      "textKey": "ad_ch5_intro_map_music_starts"
+    },
+    {
+      "atSeconds": 13.3,
+      "durationSeconds": 0.5,
+      "textKey": "ad_ch5_intro_map_controls_unlock"
+    }
+  ]
 }

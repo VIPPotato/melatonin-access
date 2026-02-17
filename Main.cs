@@ -18,6 +18,7 @@ namespace MelatoninAccess
             Loc.Initialize();
             ModConfig.Initialize();
             DebugMode = ModConfig.DebugModeEnabled;
+            CutsceneAdHandler.Initialize();
 
             // Menu & Options
             HarmonyLib.Harmony.CreateAndPatchAll(typeof(MenuHandler.MenuTitle_Activate_Patch));
@@ -131,6 +132,8 @@ namespace MelatoninAccess
 
         public override void OnUpdate()
         {
+            CutsceneAdHandler.Update();
+
             bool rhythmTogglePressed =
                 (Keyboard.current != null && Keyboard.current.f2Key.wasPressedThisFrame) ||
                 (Gamepad.current != null && Gamepad.current.leftStickButton.wasPressedThisFrame);

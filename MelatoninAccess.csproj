@@ -52,4 +52,14 @@
   <Target Name="CopyToMods" AfterTargets="Build" Condition="Exists('$(ModsPath)')">
     <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ModsPath)" SkipUnchangedFiles="true" />
   </Target>
+
+  <Target Name="CopyCutsceneAdToMods" AfterTargets="Build" Condition="Exists('$(ModsPath)') and Exists('$(MSBuildProjectDirectory)\cutscene-ad')">
+    <ItemGroup>
+      <CutsceneAdFiles Include="$(MSBuildProjectDirectory)\cutscene-ad\**\*.*" />
+    </ItemGroup>
+    <Copy
+      SourceFiles="@(CutsceneAdFiles)"
+      DestinationFiles="@(CutsceneAdFiles->'$(ModsPath)\cutscene-ad\%(RecursiveDir)%(Filename)%(Extension)')"
+      SkipUnchangedFiles="true" />
+  </Target>
 </Project>

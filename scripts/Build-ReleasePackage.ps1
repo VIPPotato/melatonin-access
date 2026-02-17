@@ -1,8 +1,9 @@
 param(
-    [string]$Version = "v1.0.4",
+    [string]$Version = "v1.1",
     [string]$Configuration = "Debug",
     [switch]$KeepStage,
-    [switch]$SkipLocalizationQa
+    [switch]$SkipLocalizationQa,
+    [switch]$SkipCutsceneQa
 )
 
 Set-StrictMode -Version Latest
@@ -12,8 +13,14 @@ $projectRoot = Split-Path -Parent $PSScriptRoot
 $modDll = Join-Path $projectRoot "bin\$Configuration\net472\MelatoninAccess.dll"
 $tolkDll = Join-Path $projectRoot "libs\x86\Tolk.dll"
 $nvdaDll = Join-Path $projectRoot "libs\x86\nvdaControllerClient32.dll"
-$loaderCfg = Join-Path $projectRoot "UserData\Loader.cfg"
+$cutsceneAdDir = Join-Path $projectRoot "cutscene-ad"
+$loaderCfgCandidates = @(
+    (Join-Path $projectRoot "UserConfig\Loader.cfg"),
+    (Join-Path $projectRoot "UserData\Loader.cfg")
+)
+$loaderCfg = $loaderCfgCandidates | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1
 $locQaScript = Join-Path $projectRoot "scripts\Test-LocalizationQA.ps1"
+$cutsceneQaScript = Join-Path $projectRoot "scripts\Test-CutsceneAdPipeline.ps1"
 
 if (-not (Test-Path -LiteralPath $modDll)) {
     Write-Host "ERROR: Mod DLL not found: $modDll"
@@ -31,8 +38,16 @@ if (-not (Test-Path -LiteralPath $nvdaDll)) {
     exit 1
 }
 
-if (-not (Test-Path -LiteralPath $loaderCfg)) {
-    Write-Host "ERROR: Loader config not found: $loaderCfg"
+if (-not (Test-Path -LiteralPath $cutsceneAdDir)) {
+    Write-Host "ERROR: Cutscene AD folder not found: $cutsceneAdDir"
+    exit 1
+}
+
+if ([string]::IsNullOrWhiteSpace($loaderCfg)) {
+    Write-Host "ERROR: Loader config not found. Checked:"
+    foreach ($candidate in $loaderCfgCandidates) {
+        Write-Host "- $candidate"
+    }
     exit 1
 }
 
@@ -50,10 +65,29 @@ if (-not $SkipLocalizationQa.IsPresent) {
     }
 }
 
+if (-not $SkipCutsceneQa.IsPresent) {
+    if (-not (Test-Path -LiteralPath $cutsceneQaScript)) {
+        Write-Host "ERROR: Cutscene QA script not found: $cutsceneQaScript"
+        exit 1
+    }
+
+    Write-Host "Running cutscene AD QA check..."
+    & $cutsceneQaScript `
+        -ManifestPath (Join-Path $projectRoot "cutscene-ad\manifest.json") `
+        -StrictCoverage `
+        -RequireEntries `
+        -ValidateLocKeys `
+        -LocPath (Join-Path $projectRoot "Loc.cs")
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "ERROR: Cutscene AD QA check failed."
+        exit $LASTEXITCODE
+    }
+}
+
 $releaseDir = Join-Path $projectRoot "release"
 $stageDir = Join-Path $releaseDir "MelatoninAccess-$Version"
 $modsDir = Join-Path $stageDir "Mods"
-$userDataDir = Join-Path $stageDir "UserData"
+$userConfigDir = Join-Path $stageDir "UserConfig"
 $zipPath = Join-Path $releaseDir "MelatoninAccess-$Version.zip"
 
 if (Test-Path -LiteralPath $stageDir) {
@@ -61,12 +95,13 @@ if (Test-Path -LiteralPath $stageDir) {
 }
 
 New-Item -ItemType Directory -Path $modsDir -Force | Out-Null
-New-Item -ItemType Directory -Path $userDataDir -Force | Out-Null
+New-Item -ItemType Directory -Path $userConfigDir -Force | Out-Null
 
 Copy-Item -LiteralPath $modDll -Destination (Join-Path $modsDir "MelatoninAccess.dll") -Force
+Copy-Item -LiteralPath $cutsceneAdDir -Destination (Join-Path $modsDir "cutscene-ad") -Recurse -Force
 Copy-Item -LiteralPath $tolkDll -Destination (Join-Path $stageDir "Tolk.dll") -Force
 Copy-Item -LiteralPath $nvdaDll -Destination (Join-Path $stageDir "nvdaControllerClient32.dll") -Force
-Copy-Item -LiteralPath $loaderCfg -Destination (Join-Path $userDataDir "Loader.cfg") -Force
+Copy-Item -LiteralPath $loaderCfg -Destination (Join-Path $userConfigDir "Loader.cfg") -Force
 
 if (Test-Path -LiteralPath $zipPath) {
     Remove-Item -LiteralPath $zipPath -Force

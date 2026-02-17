@@ -84,7 +84,7 @@ Settings are stored in `UserData/MelonPreferences.cfg` under category `Melatonin
 dotnet build MelatoninAccess.csproj
 ```
 
-The project is configured to auto-copy `MelatoninAccess.dll` to your game `Mods` folder after build when `ModsPath` is valid in `MelatoninAccess.csproj`.
+The project is configured to auto-copy `MelatoninAccess.dll` and the `cutscene-ad` data folder to your game `Mods` folder after build when `ModsPath` is valid in `MelatoninAccess.csproj`.
 
 ## Release Package
 
@@ -97,9 +97,11 @@ pwsh -File .\scripts\Build-ReleasePackage.ps1 -Version "v1.1"
 Package contents:
 
 - `Mods/MelatoninAccess.dll`
+- `Mods/cutscene-ad/manifest.json`
+- `Mods/cutscene-ad/scripts/*.json`
 - `Tolk.dll`
 - `nvdaControllerClient32.dll`
-- `UserData/Loader.cfg` (bundled from maintainer install; includes hidden-console setting)
+- `UserConfig/Loader.cfg` (bundled from maintainer install; includes hidden-console setting)
 
 The release ZIP intentionally excludes development docs/tools (for example changelog files and regression test scripts).
 
@@ -110,15 +112,21 @@ The release ZIP intentionally excludes development docs/tools (for example chang
 2. Download `MelatoninAccess-v1.1.zip`.
 3. Extract/copy all files from the ZIP into your Melatonin game folder (the folder with `Melatonin.exe`).
 4. Confirm these files exist:
-    - `<Melatonin folder>/Mods/MelatoninAccess.dll`
-    - `<Melatonin folder>/Tolk.dll`
-    - `<Melatonin folder>/nvdaControllerClient32.dll`
-    - `<Melatonin folder>/UserData/Loader.cfg`
+     - `<Melatonin folder>/Mods/MelatoninAccess.dll`
+     - `<Melatonin folder>/Mods/cutscene-ad/manifest.json`
+     - `<Melatonin folder>/Tolk.dll`
+     - `<Melatonin folder>/nvdaControllerClient32.dll`
+     - `<Melatonin folder>/UserConfig/Loader.cfg`
 5. Start the game and confirm you hear the mod loaded announcement.
 
 Important:
 
 - `Tolk.dll` and `nvdaControllerClient32.dll` must be in the main game folder, not in `Mods`.
+
+## GitHub Release Packaging
+
+- A GitHub Actions workflow builds and uploads the release ZIP automatically when a tag like `v1.2` is pushed.
+- The uploaded ZIP uses the same layout as local packaging (`Mods`, `UserConfig`, root dependency DLLs, and `Mods/cutscene-ad` timing data).
 
 ## Install (From Source Build)
 
@@ -129,9 +137,10 @@ dotnet build MelatoninAccess.csproj
 ```
 
 2. If auto-copy is not configured, copy:
-   - `bin/Debug/net472/MelatoninAccess.dll` to `<Melatonin folder>/Mods/`
-   - `libs/x86/Tolk.dll` to `<Melatonin folder>/`
-   - `libs/x86/nvdaControllerClient32.dll` to `<Melatonin folder>/`
+    - `bin/Debug/net472/MelatoninAccess.dll` to `<Melatonin folder>/Mods/`
+    - `cutscene-ad/` to `<Melatonin folder>/Mods/cutscene-ad/`
+    - `libs/x86/Tolk.dll` to `<Melatonin folder>/`
+    - `libs/x86/nvdaControllerClient32.dll` to `<Melatonin folder>/`
 
 ## Support
 
@@ -184,6 +193,8 @@ Strict/authoring options:
 pwsh -File .\scripts\Test-CutsceneAdPipeline.ps1 -StrictCoverage -RequireEntries
 pwsh -File .\scripts\Test-CutsceneAdPipeline.ps1 -ValidateLocKeys -LocPath .\Loc.cs
 ```
+
+This check runs automatically during release packaging (`scripts/Build-ReleasePackage.ps1`) unless you pass `-SkipCutsceneQa`.
 
 Reference format and workflow:
 - `docs/cutscene-ad-pipeline.md`
