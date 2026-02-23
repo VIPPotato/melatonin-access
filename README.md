@@ -6,7 +6,7 @@ Screen-reader accessibility mod for **Melatonin** (MelonLoader).
 
 - Spoken menu navigation and option state announcements.
 - Contextual tutorial/gameplay cue announcements in gameplay.
-- Practice/score mode start announcements when gameplay begins.
+- Score-mode start announcements when gameplay begins.
 - Tutorial/dialog and popup reading.
 - World map navigation support, including fast landmark teleport.
 - Full level editor accessibility narration (cursor, tools, advanced menu, timeline tabs).
@@ -71,6 +71,7 @@ Settings are stored in `UserData/MelonPreferences.cfg` under category `Melatonin
 
 - `AnnounceMapHotspots` (default `true`): map arrival and teleport destination/star lines.
 - `AnnounceRhythmCues` (default `true`): contextual tutorial/gameplay cues (action, direction, and hold/release guidance).
+  - Note: the config key name is legacy (`RhythmCues`) but it controls contextual cues.
   - Can be toggled in-game with `F2`.
 - `AnnounceMenuPositions` (default `true`): menu position context (`1 of N`) across supported menus.
   - Can be toggled in-game with `F3`.
@@ -80,7 +81,7 @@ Settings are stored in `UserData/MelonPreferences.cfg` under category `Melatonin
 
 ## Build
 
-```bash
+```powershell
 dotnet build MelatoninAccess.csproj
 ```
 
@@ -132,7 +133,7 @@ Important:
 
 1. Build:
 
-```bash
+```powershell
 dotnet build MelatoninAccess.csproj
 ```
 
