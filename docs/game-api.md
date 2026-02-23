@@ -1,17 +1,19 @@
 # Melatonin Game API
 
-## Overview
+## 1.1 Structure Overview (Tier 1)
 - **Engine:** Unity 2020.2.3f1
 - **Mod Loader:** MelonLoader
 
-## Singleton Access Points
+### Singleton Access Points
 - `Interface.env`: Main UI entry point.
 - `ControlHandler.mgr`: Input management (Unity Input System).
 - `SaveManager.mgr`: Game settings, localization, save data.
 - `SceneMonitor.mgr`: Scene tracking.
 - `TutorialWorld.env`: Tutorial specific management.
 
-## Game Key Bindings
+## 1.2 Input System (Tier 1)
+
+### Game Key Bindings
 - **Movement/Menu Navigation**: Arrow keys or WASD (configurable).
 - **Action/Select**: Space (default, rebindable).
 - **Cancel/Back**: Escape or R (default, rebindable).
@@ -23,11 +25,11 @@
 - **Gameplay**: Space, Arrow keys, WASD, and others depending on level.
 - **Action-key token source**: `SaveManager.mgr.GetActionKey()` returns tokens written by `ControlHandler.GetKeyFromKeyControl` (`SPACE`, `ENTER`, letters, `[`, `]`, `PERIOD`, `SLASH`, etc.), useful for spoken prompt localization.
 
-## Safe Mod Keys
+### Safe Mod Keys
 - `F1` - `F12`: Unused by the game.
 - `0` - `9`: Unused by the game.
 
-## UI System
+## 1.3 UI System (Tier 1)
 - **Base Class**: `Wrapper` -> `Custom` -> `MonoBehaviour`.
 - **Interface**: `Interface.env` manages submenus.
 - **Menus**: `Submenu` contains a list of `Menu` objects.
@@ -38,7 +40,7 @@
   - `LangMenu.title` and `AchievementsMenu.title` are live localized UI fragments and should be preferred for spoken menu titles over mod-owned title strings.
   - References: `decompiled/LangMenu.cs:16`, `decompiled/AchievementsMenu.cs:18`.
 
-## DialogBox Hooks
+### DialogBox Hooks
 - `DialogBox.Show()` can present dialog content immediately (without `Activate()`), so accessibility hooks should include `Show` plus text/state changes.
 - `DialogBox.Activate()` and `DialogBox.ActivateDelayed()` control panel transitions and optional speaker SFX but do not inherently guarantee new text state assignment.
 - `DialogBox.SetDialogState()` / `ChangeDialogState()` update localized dialog text states; many dream scripts call these before or around activation.
@@ -46,12 +48,12 @@
 - `DialogBox` also exposes a `label` (`textboxFragment`) that can carry additional context (for example, speaker/context tags) when rendered.
 - References: `decompiled/DialogBox.cs:47-87`, `decompiled/DialogBox.cs:188-248`, `decompiled/Dream_tutorial.cs:28-44`, `decompiled/Dream_tutorial.cs:198-210`, `decompiled/Dream_tutorial.cs:295-311`.
 
-## Game Mechanics
+## 1.6 Game Mechanics (Tier 2)
 - Rhythm-based gameplay.
 - Different worlds/dreams represented by `[Name]World` classes.
 - Tutorial: `Dream_tutorial` class and `TutorialWorld.env`.
 
-## Dream GameMode Mapping
+### Dream GameMode Mapping
 - `Dream.gameMode` values used at level start (`Dream.Start()`):
   - `0`: Practice (`SideLabel.ShowAsPractice`, no score meter).
   - `1`: Score mode.
@@ -63,7 +65,7 @@
   - `7`: Community/downloaded level mode.
 - References: `decompiled/Dream.cs:159-203`, `decompiled/Dream.cs:1698-1700`.
 
-## Tutorial Analysis
+## 1.10 Tutorial Analysis (Tier 3)
 - **Scene/entry point**: Tutorial runs in `Dream_tutorial`.
   - Start path: `Option` functions call `Interface.env.ExitTo("Dream_tutorial")` with `Dream.SetGameMode(5)`.
   - References: `decompiled/Option.cs:870`, `decompiled/Option.cs:993`.
@@ -89,12 +91,12 @@
   - This transition point is suitable for one-time spoken timing hints like "press on second beat" before the first hit window sequence begins.
   - References: `decompiled/Dream_tutorial.cs:212-219`, `decompiled/Dream_tutorial.cs:466-517`.
 
-## Event Hooks
+## 1.8 Event System / Harmony Patch Points (Tier 2)
 - `Menu.Next()` / `Menu.Prev()`: Good for announcing menu navigation.
 - `Option.Enable()`: Called when an option is highlighted.
 - `Submenu.Activate()`: Called when a menu opens.
 
-## Language API Notes
+## 1.5 Localization System (Tier 1)
 - `SaveManager.GetLang()` returns current language index (`playerData.lang`).
 - `SaveManager.mgr.SetLang(int)` updates language from `LangMenu.Select()`.
 - Current project assumes index mapping:
@@ -110,7 +112,7 @@
   - `9` Portuguese
 - References: `decompiled/SaveManager.cs:978-986`, `decompiled/LangMenu.cs:137-144`, `decompiled/LangMenu.cs:255-317`.
 
-## Editor-Specific Hooks
+### Editor-Specific Hooks
 - `AdvancedMenu`:
   - Open/close: `Activate()`, `Deactivate()`.
   - Navigation: `NextRow()`, `PrevRow()`, `SwapTab()`.
@@ -121,7 +123,9 @@
 - `LvlEditor.Update()` routes all editor input through these methods, so patching them is safer than patching raw input.
 - References: `decompiled/AdvancedMenu.cs`, `decompiled/TimelineTabs.cs`, `decompiled/LvlEditor.cs:182-337`.
 
-## Lock-State Logic
+## 1.7 Status and Feedback Systems (Tier 2)
+
+### Lock-State Logic
 - **Map mode locks** (in `Landmark.Update()`):
   - Option index `1`: requires `starScore > 0` or remix landmark.
   - Option index `2`: requires `starScore >= 2`.
@@ -133,30 +137,30 @@
   - In `Results.Update()`, selecting locked paths only plays blocked SFX.
 - References: `decompiled/Landmark.cs:64-87`, `decompiled/ModeMenu.cs:179-220`, `decompiled/StageEndMenu.cs:78-177`, `decompiled/Results.cs:182-214`.
 
-## Achievement Lock Detection
+### Achievement Lock Detection
 - `AchievementsMenu.Activate()` always sets title/description text for rows 5-13, even when still locked.
 - Locked state is represented by `CheevoRow.checkmark` sprite state: `0` locked, `1` checked/unlocked (`CheevoRow.Check()` sets state `1`).
 - Accessibility lock announcements should not rely only on title text (`?????`) because that pattern only covers early story achievements.
 - References: `decompiled/AchievementsMenu.cs:74-160`, `decompiled/CheevoRow.cs:57-60`, `decompiled/spriteFragment.cs:100-173`.
 
-## Calibration Timing Feedback
+### Calibration Timing Feedback
 - `PingBar.StopTimer()` computes timing from `timer - 0.11667f` (center of timing window) and places the marker accordingly.
 - This delta can be converted to milliseconds for spoken "early/late" calibration feedback.
 - References: `decompiled/PingBar.cs:109-123`.
 
-## Map Input Availability
+### Map Input Availability
 - `McMap` movement input is controlled by private `isEnabled`, set to `true` only after `McMap.Introducing()` completes.
 - During chapter intro/outro transitions, map visuals can be present while navigation should remain blocked (`Chapter.CheckIsCutsceneIntro/Outro()`).
 - References: `decompiled/McMap.cs:372-387`, `decompiled/McMap.cs:412-424`, `decompiled/Chapter.cs:101-245`, `decompiled/Chapter.cs:319-451`, `decompiled/Chapter.cs:568-575`.
 
-## Credits Flow
+### Credits Flow
 - Credits sequence is driven by `Creditor.Starting()`:
   - `Credits.Show()` -> logo transitions -> `Credits.ScrollList()` -> exit to title.
 - Scroll duration is exposed by `Credits.GetScrollDuration()` and the actual list animation is `lister.TriggerAnim("scroll")`.
 - Opening a pause/submenu during credits does not reset the internal credits list state; mods can pause/resume narration safely instead of restarting from the top.
 - References: `decompiled/Creditor.cs:18-39`, `decompiled/Credits.cs:102-126`.
 
-## Community Menu Row Layout
+### Community Menu Row Layout
 - `CommunityMenu.LevelRows[0]` is a banner row (`ActivateAsBanner`) and does not expose level metadata text fields.
 - Downloaded level rows start at index `1` and are populated by `ConfigingRows()` with title/author/tags.
 - `NextPage()` / `PrevPage()` reset `highlightNum` to `0` first, then repopulate rows asynchronously through `ConfigContent()`.
