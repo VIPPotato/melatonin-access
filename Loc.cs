@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 using MelonLoader;
 using UnityEngine;
 
@@ -169,23 +170,39 @@ namespace MelatoninAccess
             try
             {
                 string json = File.ReadAllText(filePath);
-                LocalizationFile file = JsonUtility.FromJson<LocalizationFile>(json);
-                if (file == null)
+                if (!string.IsNullOrEmpty(json) && json[0] == '\uFEFF')
                 {
-                    MelonLogger.Warning($"[{HandlerName}] Failed to parse localization JSON: {filePath}");
-                    return 0;
+                    json = json.Substring(1);
+                }
+
+                LocalizationFile file = JsonUtility.FromJson<LocalizationFile>(json);
+
+                if (file == null || file.entries == null || file.entries.Length == 0)
+                {
+                    if (!TryParseLocalizationFallback(json, out LocalizationFile fallbackFile, out string fallbackError))
+                    {
+                        if (file == null)
+                        {
+                            MelonLogger.Warning(
+                                $"[{HandlerName}] Failed to parse localization JSON: {filePath}. Fallback parser error: {fallbackError}");
+                        }
+                        else
+                        {
+                            MelonLogger.Warning(
+                                $"[{HandlerName}] No localization entries found in {filePath}. Fallback parser error: {fallbackError}");
+                        }
+
+                        return 0;
+                    }
+
+                    file = fallbackFile;
+                    MelonLogger.Warning($"[{HandlerName}] JsonUtility returned empty localization data for {filePath}. Using fallback parser.");
                 }
 
                 if (file.schemaVersion != LocalizationSchemaVersion)
                 {
                     MelonLogger.Warning(
                         $"[{HandlerName}] Unexpected schema version in {filePath}: {file.schemaVersion} (expected {LocalizationSchemaVersion}).");
-                }
-
-                if (file.entries == null || file.entries.Length == 0)
-                {
-                    MelonLogger.Warning($"[{HandlerName}] No localization entries found in {filePath}");
-                    return 0;
                 }
 
                 int loaded = 0;
@@ -207,6 +224,67 @@ namespace MelatoninAccess
             {
                 MelonLogger.Warning($"[{HandlerName}] Failed to load localization file {filePath}: {ex.Message}");
                 return 0;
+            }
+        }
+
+        private static bool TryParseLocalizationFallback(string json, out LocalizationFile file, out string error)
+        {
+            file = null;
+            error = "";
+
+            if (string.IsNullOrWhiteSpace(json))
+            {
+                error = "Localization JSON is empty.";
+                return false;
+            }
+
+            MatchCollection matches = Regex.Matches(
+                json,
+                "\\{\\s*\"key\"\\s*:\\s*\"(?<key>(?:\\\\.|[^\"\\\\])*)\"\\s*,\\s*\"value\"\\s*:\\s*\"(?<value>(?:\\\\.|[^\"\\\\])*)\"\\s*\\}",
+                RegexOptions.Singleline);
+
+            if (matches.Count == 0)
+            {
+                error = "No localization key/value entries were found.";
+                return false;
+            }
+
+            var entries = new LocalizationEntry[matches.Count];
+            for (int i = 0; i < matches.Count; i++)
+            {
+                string key = DecodeJsonString(matches[i].Groups["key"].Value);
+                string value = DecodeJsonString(matches[i].Groups["value"].Value);
+                entries[i] = new LocalizationEntry
+                {
+                    key = key,
+                    value = value
+                };
+            }
+
+            file = new LocalizationFile
+            {
+                schemaVersion = LocalizationSchemaVersion,
+                language = "",
+                entries = entries
+            };
+
+            return true;
+        }
+
+        private static string DecodeJsonString(string text)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                return "";
+            }
+
+            try
+            {
+                return Regex.Unescape(text);
+            }
+            catch
+            {
+                return text;
             }
         }
 
