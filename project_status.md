@@ -21,6 +21,7 @@
 - [x] **Cutscene AD Multilingual Localization (2026-02-23)**: Localized all `ad_*` cutscene description lines into zh-Hans, zh-Hant, ja, ko, vi, fr, de, es, and pt JSON files so cutscene narration no longer falls back to English in non-English game languages.
 - [x] **Localization Runtime Fallback Fix (2026-02-23)**: Fixed startup regression where `JsonUtility` returned empty localization arrays at runtime by adding UTF-8 BOM stripping and a deterministic fallback parser for `localization/loc.*.json`, restoring key loading and preventing spoken key IDs.
 - [x] **Localization Startup Log Noise Reduction (2026-02-23)**: Replaced per-language fallback warnings with one startup summary line in `Loc` when fallback parsing is used, while keeping detailed fallback-language output gated behind debug logging.
+- [x] **Chinese Localization Import + Local Log Ignore (2026-02-23)**: Imported tester-provided zh-Hans localization updates (`localization/loc.zh-Hans.json`) after QA validation, and added `[Ll]atest.log` to `.gitignore` to keep shared root log files out of commits.
 - [x] **Tutorial Extraction (2026-02-09)**: Extracted tutorial/help text and flow context into `docs/tutorial-texts.md`; updated `docs/game-api.md` with tutorial start path, skip behavior, and text-source notes. Deep asset pass recovered additional gameplay instruction lines from `Melatonin_Data\level0` (metronome, timing circle, score mode readiness, and auto-restart behavior).
 - [x] **Duplicate Announcement Reduction (2026-02-09)**: Added targeted debounce for dialog text (`DialogueHandler`), language/start screen (`StartScreenHandler`), and map mode menu (`MapHandler`), plus stronger whitespace/time normalization in `ScreenReader`. Build succeeded and DLL auto-copied to game `Mods` folder.
 - [x] **Duplicate Announcement Reduction Pass 2 (2026-02-09)**: Removed additional duplicate bursts in `AchievementsHandler` and `ExtraMenusHandler` (community next/prev page and calibration activation/description) with short cooldown-based dedupe. Build succeeded and deployed.
@@ -172,6 +173,7 @@
 - **Post-Release Validation**: Monitor issues/feedback from `v1.0.4` and collect any remaining edge cases from real-world play sessions.
 
 ## Session Notes
+- [2026-02-23] Reviewed tester-provided `Latest.log`: it reflects an older pre-fallback DLL build where localization loaded `0` entries; current branch has fallback loader fix and quiet fallback summary logging. Imported tester zh-Hans strings and validated localization/cutscene QA.
 - [2026-02-23] Reduced localization startup log spam: fallback parser now reports one concise summary line instead of one warning per language file.
 - [2026-02-23] Investigated log regression showing `Loc` loading zero JSON entries; added BOM-safe file read and fallback key/value parser in `Loc.cs`, rebuilt, and regenerated local `v1.2` package.
 - [2026-02-23] Completed non-English localization pass for all cutscene AD keys (`ad_*`) in JSON localization assets; localization QA and cutscene pipeline validation both pass.

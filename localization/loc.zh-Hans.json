@@ -4,11 +4,11 @@
   "entries": [
     {
       "key": "mod_loaded",
-      "value": "Melatonin Access 模组已加载。"
+      "value": "Melatonin 无障碍mod已启用。"
     },
     {
       "key": "mod_active_help",
-      "value": "Melatonin Access 已启用。使用方向键浏览菜单。"
+      "value": "Melatonin 无障碍mod已启用。使用方向键浏览菜单。"
     },
     {
       "key": "debug_enabled",
@@ -20,11 +20,11 @@
     },
     {
       "key": "rhythm_cues_enabled",
-      "value": "上下文教程提示已启用。"
+      "value": "节奏教学提示已启用。"
     },
     {
       "key": "rhythm_cues_disabled",
-      "value": "上下文教程提示已禁用。"
+      "value": "节奏教学提示已禁用。"
     },
     {
       "key": "menu_positions_enabled",
@@ -220,7 +220,7 @@
     },
     {
       "key": "dream_name_followers",
-      "value": "关注者"
+      "value": "关注"
     },
     {
       "key": "dream_name_food",
@@ -240,7 +240,7 @@
     },
     {
       "key": "dream_name_mind",
-      "value": "心灵"
+      "value": "思想"
     },
     {
       "key": "dream_name_money",
@@ -352,7 +352,7 @@
     },
     {
       "key": "cue_tech_every_two_beats",
-      "value": "听到高音提示后，在下一拍按 {0}。"
+      "value": "听到提示音效后，在下一拍按 {0}。"
     },
     {
       "key": "cue_tech_next_three_beats",
@@ -360,7 +360,7 @@
     },
     {
       "key": "cue_time_portal_gap_hold_release",
-      "value": "在空档里的传送门嗡鸣后，按住 {0}，并在下一次提示时松开。"
+      "value": "听到传送门嗡鸣后等待半拍按住 {0}，按住半拍后松手。"
     },
     {
       "key": "cue_time_sixth_seventh_hold_release",
