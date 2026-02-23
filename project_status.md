@@ -173,6 +173,7 @@
 - **Post-Release Validation**: Monitor issues/feedback from `v1.0.4` and collect any remaining edge cases from real-world play sessions.
 
 ## Session Notes
+- [2026-02-23] Cleaned `todo.md` backlog: removed stale v1.1-era items and archived notes, keeping only current active and deferred tasks.
 - [2026-02-23] Reviewed tester-provided `Latest.log`: it reflects an older pre-fallback DLL build where localization loaded `0` entries; current branch has fallback loader fix and quiet fallback summary logging. Imported tester zh-Hans strings and validated localization/cutscene QA.
 - [2026-02-23] Reduced localization startup log spam: fallback parser now reports one concise summary line instead of one warning per language file.
 - [2026-02-23] Investigated log regression showing `Loc` loading zero JSON entries; added BOM-safe file read and fallback key/value parser in `Loc.cs`, rebuilt, and regenerated local `v1.2` package.
