@@ -148,19 +148,33 @@ namespace MelatoninAccess
             }
 
             int totalLoaded = 0;
+            var fallbackLanguages = new List<string>();
             for (int langIndex = 0; langIndex < LanguageCodes.Length; langIndex++)
             {
                 string languageCode = LanguageCodes[langIndex];
                 string filePath = Path.Combine(localizationDir, $"loc.{languageCode}.json");
-                int loadedForLanguage = LoadLanguageFile(langIndex, languageCode, filePath);
+                int loadedForLanguage = LoadLanguageFile(langIndex, languageCode, filePath, out bool usedFallbackParser);
                 totalLoaded += loadedForLanguage;
+                if (usedFallbackParser)
+                {
+                    fallbackLanguages.Add(languageCode);
+                }
             }
 
             MelonLogger.Msg($"[{HandlerName}] Loaded {totalLoaded} localization entries from JSON.");
+            if (fallbackLanguages.Count > 0)
+            {
+                MelonLogger.Msg($"[{HandlerName}] Localization JSON fallback parser active for {fallbackLanguages.Count} language file(s).");
+                DebugLogger.Log(
+                    LogCategory.Handler,
+                    HandlerName,
+                    $"Fallback parser languages: {string.Join(", ", fallbackLanguages)}");
+            }
         }
 
-        private static int LoadLanguageFile(int langIndex, string languageCode, string filePath)
+        private static int LoadLanguageFile(int langIndex, string languageCode, string filePath, out bool usedFallbackParser)
         {
+            usedFallbackParser = false;
             if (!File.Exists(filePath))
             {
                 MelonLogger.Warning($"[{HandlerName}] Missing localization file for {languageCode}: {filePath}");
@@ -196,7 +210,7 @@ namespace MelatoninAccess
                     }
 
                     file = fallbackFile;
-                    MelonLogger.Warning($"[{HandlerName}] JsonUtility returned empty localization data for {filePath}. Using fallback parser.");
+                    usedFallbackParser = true;
                 }
 
                 if (file.schemaVersion != LocalizationSchemaVersion)
