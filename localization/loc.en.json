@@ -1,0 +1,866 @@
+{
+  "schemaVersion": 1,
+  "language": "en",
+  "entries": [
+    {
+      "key": "mod_loaded",
+      "value": "Melatonin Access mod loaded."
+    },
+    {
+      "key": "mod_active_help",
+      "value": "Melatonin Access is active. Use arrow keys to navigate menus."
+    },
+    {
+      "key": "debug_enabled",
+      "value": "Debug mode enabled."
+    },
+    {
+      "key": "debug_disabled",
+      "value": "Debug mode disabled."
+    },
+    {
+      "key": "rhythm_cues_enabled",
+      "value": "Contextual tutorial cues enabled."
+    },
+    {
+      "key": "rhythm_cues_disabled",
+      "value": "Contextual tutorial cues disabled."
+    },
+    {
+      "key": "menu_positions_enabled",
+      "value": "Menu position announcements enabled."
+    },
+    {
+      "key": "menu_positions_disabled",
+      "value": "Menu position announcements disabled."
+    },
+    {
+      "key": "intro_welcome",
+      "value": "Press {0} to begin. Press {1} to change language."
+    },
+    {
+      "key": "language_selected",
+      "value": "Language selected."
+    },
+    {
+      "key": "language_menu",
+      "value": "Language menu"
+    },
+    {
+      "key": "credits_title",
+      "value": "Credits"
+    },
+    {
+      "key": "menu_suffix",
+      "value": "{0} menu"
+    },
+    {
+      "key": "order_of",
+      "value": "{0} of {1}"
+    },
+    {
+      "key": "chapter_locked",
+      "value": "Chapter {0} locked"
+    },
+    {
+      "key": "option_with_slider",
+      "value": "{0} slider {1}"
+    },
+    {
+      "key": "slider_value",
+      "value": "Slider {0}"
+    },
+    {
+      "key": "action_key_current_binding",
+      "value": "{0}, currently bound to {1}."
+    },
+    {
+      "key": "state_on",
+      "value": "On"
+    },
+    {
+      "key": "state_off",
+      "value": "Off"
+    },
+    {
+      "key": "fullscreen",
+      "value": "Fullscreen"
+    },
+    {
+      "key": "windowed",
+      "value": "Windowed"
+    },
+    {
+      "key": "calibration_tool_intro",
+      "value": "Calibration tool. Adjust offset to match the beat."
+    },
+    {
+      "key": "calibration_offset",
+      "value": "Offset {0}"
+    },
+    {
+      "key": "calibration_timing_on_time",
+      "value": "On time."
+    },
+    {
+      "key": "calibration_timing_early_ms",
+      "value": "Early by {0} ms."
+    },
+    {
+      "key": "calibration_timing_late_ms",
+      "value": "Late by {0} ms."
+    },
+    {
+      "key": "downloaded_levels_loading",
+      "value": "Downloaded Levels. Loading..."
+    },
+    {
+      "key": "downloaded_levels_page_total",
+      "value": "{0} levels total. Page {1} of {2}"
+    },
+    {
+      "key": "downloaded_levels_total",
+      "value": "{0} levels total."
+    },
+    {
+      "key": "next_page",
+      "value": "Next page"
+    },
+    {
+      "key": "previous_page",
+      "value": "Previous page"
+    },
+    {
+      "key": "page_of",
+      "value": "Page {0} of {1}"
+    },
+    {
+      "key": "item_of",
+      "value": "{0}, item {1} of {2}"
+    },
+    {
+      "key": "achievements_menu",
+      "value": "Achievements menu"
+    },
+    {
+      "key": "locked_achievement",
+      "value": "Locked achievement. {0} of {1}"
+    },
+    {
+      "key": "locked_achievement_plain",
+      "value": "Locked achievement."
+    },
+    {
+      "key": "achievement_with_desc",
+      "value": "{0}: {1}. {2} of {3}"
+    },
+    {
+      "key": "achievement_with_desc_plain",
+      "value": "{0}: {1}."
+    },
+    {
+      "key": "arrived_at",
+      "value": "Arrived at {0}"
+    },
+    {
+      "key": "mode_menu",
+      "value": "Mode menu"
+    },
+    {
+      "key": "dream_about_level",
+      "value": "Dream about {0}"
+    },
+    {
+      "key": "teleport_arrived_stars",
+      "value": "{0}. {1} stars."
+    },
+    {
+      "key": "teleport_arrived_one_star",
+      "value": "{0}. {1} star."
+    },
+    {
+      "key": "map_progress_status",
+      "value": "Map stars: {0}. Need {1} more to pass."
+    },
+    {
+      "key": "map_transient_controls_unlocked",
+      "value": "Map settles into view."
+    },
+    {
+      "key": "map_transient_controls_unlocked_mirrored",
+      "value": "Map settles into view mirrored. Left and right are swapped."
+    },
+    {
+      "key": "teleport_conflict_hint",
+      "value": "Bracket teleport is disabled because Action is bound to brackets. Use F9 and F10 for teleport."
+    },
+    {
+      "key": "unknown_level",
+      "value": "Unknown level"
+    },
+    {
+      "key": "dream_name_career",
+      "value": "Career"
+    },
+    {
+      "key": "dream_name_dating",
+      "value": "Dating"
+    },
+    {
+      "key": "dream_name_desires",
+      "value": "Desires"
+    },
+    {
+      "key": "dream_name_exercise",
+      "value": "Exercise"
+    },
+    {
+      "key": "dream_name_final",
+      "value": "Final"
+    },
+    {
+      "key": "dream_name_followers",
+      "value": "Followers"
+    },
+    {
+      "key": "dream_name_food",
+      "value": "Food"
+    },
+    {
+      "key": "dream_name_future",
+      "value": "Future"
+    },
+    {
+      "key": "dream_name_indulgence",
+      "value": "Indulgence"
+    },
+    {
+      "key": "dream_name_meditation",
+      "value": "Meditation"
+    },
+    {
+      "key": "dream_name_mind",
+      "value": "Mind"
+    },
+    {
+      "key": "dream_name_money",
+      "value": "Money"
+    },
+    {
+      "key": "dream_name_nature",
+      "value": "Nature"
+    },
+    {
+      "key": "dream_name_past",
+      "value": "Past"
+    },
+    {
+      "key": "dream_name_pressure",
+      "value": "Pressure"
+    },
+    {
+      "key": "dream_name_setbacks",
+      "value": "Setbacks"
+    },
+    {
+      "key": "dream_name_shopping",
+      "value": "Shopping"
+    },
+    {
+      "key": "dream_name_space",
+      "value": "Space"
+    },
+    {
+      "key": "dream_name_stress",
+      "value": "Stress"
+    },
+    {
+      "key": "dream_name_tech",
+      "value": "Tech"
+    },
+    {
+      "key": "dream_name_time",
+      "value": "Time"
+    },
+    {
+      "key": "dream_name_tutorial",
+      "value": "Tutorial"
+    },
+    {
+      "key": "editor_cursor_empty",
+      "value": "Phrase {0}, Bar {1}, Beat {2}. Empty."
+    },
+    {
+      "key": "editor_cursor_content",
+      "value": "Phrase {0}, Bar {1}, Beat {2}. {3}."
+    },
+    {
+      "key": "editor_placed",
+      "value": "Placed {0}"
+    },
+    {
+      "key": "editor_removed",
+      "value": "Removed"
+    },
+    {
+      "key": "editor_tool_select",
+      "value": "Tool select"
+    },
+    {
+      "key": "advanced_menu",
+      "value": "Advanced menu"
+    },
+    {
+      "key": "editor_ready",
+      "value": "Level editor ready"
+    },
+    {
+      "key": "editor_page",
+      "value": "Page {0}"
+    },
+    {
+      "key": "tutorial_skip_prompt",
+      "value": "Tutorial. Press {0} to skip."
+    },
+    {
+      "key": "tutorial_label",
+      "value": "Tutorial."
+    },
+    {
+      "key": "cue_space",
+      "value": "Space"
+    },
+    {
+      "key": "cue_press_action",
+      "value": "Press {0}"
+    },
+    {
+      "key": "cue_press_action_twice",
+      "value": "Press {0} twice"
+    },
+    {
+      "key": "cue_followers_phase_one_start_stop",
+      "value": "Press {0} to the rhythm. Start and stop after the spring sound."
+    },
+    {
+      "key": "cue_followers_phase_two_resume_after_vibration",
+      "value": "Stop after the jump sound. Continue after vibration."
+    },
+    {
+      "key": "cue_followers_phase_three_press_thrice",
+      "value": "Press {0} three times after double vibration."
+    },
+    {
+      "key": "cue_tech_every_two_beats",
+      "value": "After the high cue, press {0} on the next beat."
+    },
+    {
+      "key": "cue_tech_next_three_beats",
+      "value": "After the high cue, press {0} on the next 3 beats."
+    },
+    {
+      "key": "cue_time_portal_gap_hold_release",
+      "value": "After the portal buzz in the gap, hold {0} and release on the next cue."
+    },
+    {
+      "key": "cue_time_sixth_seventh_hold_release",
+      "value": "On the sixth cue, hold {0}. Release on the seventh cue."
+    },
+    {
+      "key": "cue_nature_water_press_thrice",
+      "value": "Press {0} three times."
+    },
+    {
+      "key": "cue_mind_triple_offbeat",
+      "value": "Press {0} three times on the off-beat cue."
+    },
+    {
+      "key": "cue_press_up",
+      "value": "Up"
+    },
+    {
+      "key": "cue_hold_release_duration",
+      "value": "Hold {0}. Release after {1}."
+    },
+    {
+      "key": "cue_hold_release_on_beat",
+      "value": "Hold {0}. Release on beat {1}."
+    },
+    {
+      "key": "duration_half_beat",
+      "value": "half a beat"
+    },
+    {
+      "key": "duration_one_beat",
+      "value": "1 beat"
+    },
+    {
+      "key": "duration_n_beats",
+      "value": "{0} beats"
+    },
+    {
+      "key": "cue_past_camera_first_sound",
+      "value": "Hold {0} for 1 beat."
+    },
+    {
+      "key": "cue_past_camera_second_sound",
+      "value": "Hold {0} for half a beat."
+    },
+    {
+      "key": "cue_past_camera_third_sound",
+      "value": "Hold {0} for 2 beats."
+    },
+    {
+      "key": "cue_tutorial_press_second_beat",
+      "value": "Press {0} on the second beat."
+    },
+    {
+      "key": "cue_food_press_third_beat",
+      "value": "Press {0} on the third beat."
+    },
+    {
+      "key": "cue_food_press_fifth_beat",
+      "value": "Press {0} on the fifth beat."
+    },
+    {
+      "key": "cue_food_press_fourth_beat",
+      "value": "Press {0} on the fourth beat."
+    },
+    {
+      "key": "cue_food_press_seventh_beat",
+      "value": "Press {0} on the seventh beat."
+    },
+    {
+      "key": "cue_shopping_repeat_patterns",
+      "value": "Repeat the audio cue patterns with {0}."
+    },
+    {
+      "key": "cue_dating_follow_swipes",
+      "value": "Swipe left or right on the cue at the fourth beat."
+    },
+    {
+      "key": "cue_future_follow_patterns",
+      "value": "Follow the pattern cues."
+    },
+    {
+      "key": "cue_swipe_left",
+      "value": "Swipe left on the fourth beat."
+    },
+    {
+      "key": "cue_swipe_right",
+      "value": "Swipe right on the fourth beat."
+    },
+    {
+      "key": "cue_swipe_left_long",
+      "value": "Swipe left after the long cue."
+    },
+    {
+      "key": "cue_swipe_right_long",
+      "value": "Swipe right after the long cue."
+    },
+    {
+      "key": "cue_hold_action",
+      "value": "Hold {0}"
+    },
+    {
+      "key": "key_enter",
+      "value": "Enter"
+    },
+    {
+      "key": "key_period",
+      "value": "Period"
+    },
+    {
+      "key": "key_slash",
+      "value": "Slash"
+    },
+    {
+      "key": "key_tab",
+      "value": "Tab"
+    },
+    {
+      "key": "key_escape",
+      "value": "Escape"
+    },
+    {
+      "key": "key_start",
+      "value": "Start"
+    },
+    {
+      "key": "help_title_screen",
+      "value": "Title screen help. Press {0} to begin. Press {1} to change language."
+    },
+    {
+      "key": "help_menu",
+      "value": "Menu help. Use Up and Down to move. Press {0} to select. Press {1} to go back."
+    },
+    {
+      "key": "help_map",
+      "value": "Map help. Use [ and ] or F9 and F10 to move between levels. Press {0} to open the selected level. Press F1 or View on controller for map stars."
+    },
+    {
+      "key": "help_mode_menu",
+      "value": "Mode menu help. Use Up and Down to choose mode. Press {0} to start. Press {1} to close this menu."
+    },
+    {
+      "key": "help_results",
+      "value": "Results help. Use Up and Down to choose an option. Press {0} to confirm. Press {1} to go back."
+    },
+    {
+      "key": "help_gameplay",
+      "value": "Gameplay help. Follow contextual cues and press the announced actions. Press {0} to pause."
+    },
+    {
+      "key": "help_editor",
+      "value": "Editor help. Use arrows to move in the timeline. Press {0} to place or select. Press {1} to cancel."
+    },
+    {
+      "key": "level_briefing_line",
+      "value": "{0}. {1}. {2}"
+    },
+    {
+      "key": "mode_practice",
+      "value": "Practice mode"
+    },
+    {
+      "key": "practice_mode_started",
+      "value": "Practice mode started."
+    },
+    {
+      "key": "mode_score",
+      "value": "Score mode"
+    },
+    {
+      "key": "score_mode_started",
+      "value": "Score mode started."
+    },
+    {
+      "key": "mode_hard",
+      "value": "Hard mode"
+    },
+    {
+      "key": "mode_score_remix",
+      "value": "Score mode remix"
+    },
+    {
+      "key": "mode_hard_remix",
+      "value": "Hard mode remix"
+    },
+    {
+      "key": "mode_tutorial",
+      "value": "Tutorial mode"
+    },
+    {
+      "key": "mode_editor_test",
+      "value": "Editor test mode"
+    },
+    {
+      "key": "mode_community",
+      "value": "Community mode"
+    },
+    {
+      "key": "objective_default",
+      "value": "Follow contextual cues and stay on beat."
+    },
+    {
+      "key": "objective_practice",
+      "value": "Learn the pattern and timing. Press {0} to skip."
+    },
+    {
+      "key": "objective_score",
+      "value": "Build score by timing actions on beat."
+    },
+    {
+      "key": "objective_hard",
+      "value": "Maintain accuracy on tighter patterns."
+    },
+    {
+      "key": "objective_tutorial",
+      "value": "Follow instructions to learn mechanics."
+    },
+    {
+      "key": "objective_editor_test",
+      "value": "Test your chart timing and flow."
+    },
+    {
+      "key": "objective_community",
+      "value": "Play and evaluate this community level."
+    },
+    {
+      "key": "ad_ch1_intro_title_card",
+      "value": "Title card: Night One."
+    },
+    {
+      "key": "ad_ch1_intro_room_widens",
+      "value": "Bedroom widens. They lounge awake with a laptop."
+    },
+    {
+      "key": "ad_ch1_intro_fade_black",
+      "value": "Brief fade to black."
+    },
+    {
+      "key": "ad_ch1_intro_map_recenters",
+      "value": "View pulls back from the bed to the chapter map."
+    },
+    {
+      "key": "ad_ch1_intro_map_music_starts",
+      "value": "Map theme starts."
+    },
+    {
+      "key": "ad_ch1_intro_map_controls_unlock",
+      "value": "Map settles on Night One. First routes are ready."
+    },
+    {
+      "key": "ad_ch2_intro_title_card",
+      "value": "Title card: Night Two."
+    },
+    {
+      "key": "ad_ch2_intro_room_widens",
+      "value": "Bedroom widens. They wake and look around."
+    },
+    {
+      "key": "ad_ch2_intro_fade_black_sleep",
+      "value": "Screen darkens; they settle back to sleep."
+    },
+    {
+      "key": "ad_ch2_intro_map_recenters",
+      "value": "Camera recenters onto the chapter map."
+    },
+    {
+      "key": "ad_ch2_intro_map_music_starts",
+      "value": "Map theme returns."
+    },
+    {
+      "key": "ad_ch2_intro_map_controls_unlock",
+      "value": "Map settles on Night Two."
+    },
+    {
+      "key": "ad_ch3_intro_title_card",
+      "value": "Title card: Night Three."
+    },
+    {
+      "key": "ad_ch3_intro_room_widens",
+      "value": "Room widens in low ambience."
+    },
+    {
+      "key": "ad_ch3_intro_crossfade_black",
+      "value": "Slow cross-fade to black."
+    },
+    {
+      "key": "ad_ch3_intro_room_returns_sleeping",
+      "value": "Room fades back with them asleep."
+    },
+    {
+      "key": "ad_ch3_intro_map_music_starts",
+      "value": "Map theme starts under the room tone."
+    },
+    {
+      "key": "ad_ch3_intro_map_controls_unlock",
+      "value": "Map settles on Night Three."
+    },
+    {
+      "key": "ad_ch4_intro_title_card",
+      "value": "Title card: Night Four."
+    },
+    {
+      "key": "ad_ch4_intro_room_widens",
+      "value": "Room opens in a closer, quiet view."
+    },
+    {
+      "key": "ad_ch4_intro_sleep_trigger",
+      "value": "They slump and drop into sleep."
+    },
+    {
+      "key": "ad_ch4_intro_map_recenters",
+      "value": "Camera recenters on the chapter map."
+    },
+    {
+      "key": "ad_ch4_intro_map_music_starts",
+      "value": "Map theme begins."
+    },
+    {
+      "key": "ad_ch4_intro_map_controls_unlock_mirrored",
+      "value": "Map settles on Night Four, mirrored left to right."
+    },
+    {
+      "key": "ad_ch5_intro_title_card",
+      "value": "Title card: Night Five."
+    },
+    {
+      "key": "ad_ch5_intro_room_widens",
+      "value": "Room widens. They remain asleep under dim light."
+    },
+    {
+      "key": "ad_ch5_intro_map_recenters",
+      "value": "Camera recenters from bed to the final map."
+    },
+    {
+      "key": "ad_ch5_intro_map_music_starts",
+      "value": "Map theme begins."
+    },
+    {
+      "key": "ad_ch5_intro_map_controls_unlock",
+      "value": "Map settles on Night Five."
+    },
+    {
+      "key": "ad_ch1_outro_transition_room",
+      "value": "Transition closes from dream to bedroom."
+    },
+    {
+      "key": "ad_ch1_outro_border_clears",
+      "value": "Feather border clears and the room sharpens."
+    },
+    {
+      "key": "ad_ch1_outro_wake",
+      "value": "They wake and sit up."
+    },
+    {
+      "key": "ad_ch1_outro_fade_black",
+      "value": "Quick fade to black."
+    },
+    {
+      "key": "ad_ch1_outro_load_next",
+      "value": "Loading Night Two."
+    },
+    {
+      "key": "ad_ch2_outro_transition_room",
+      "value": "Transition closes from dream to bedroom."
+    },
+    {
+      "key": "ad_ch2_outro_border_clears",
+      "value": "Feather border clears; the room holds steady."
+    },
+    {
+      "key": "ad_ch2_outro_wake_first",
+      "value": "First wake motion starts."
+    },
+    {
+      "key": "ad_ch2_outro_wake_second",
+      "value": "Second wake motion snaps them fully alert."
+    },
+    {
+      "key": "ad_ch2_outro_fade_black",
+      "value": "Fade to black."
+    },
+    {
+      "key": "ad_ch2_outro_load_next",
+      "value": "Loading Night Three."
+    },
+    {
+      "key": "ad_ch3_outro_transition_room",
+      "value": "Transition closes from dream to bedroom."
+    },
+    {
+      "key": "ad_ch3_outro_border_clears",
+      "value": "Feather border clears; room detail returns."
+    },
+    {
+      "key": "ad_ch3_outro_static_flicker",
+      "value": "A burst of static cuts through the room."
+    },
+    {
+      "key": "ad_ch3_outro_wake_after_static",
+      "value": "After the glitch, they wake."
+    },
+    {
+      "key": "ad_ch3_outro_fade_black",
+      "value": "Fade to black."
+    },
+    {
+      "key": "ad_ch3_outro_load_next",
+      "value": "Loading Night Four."
+    },
+    {
+      "key": "ad_ch4_outro_transition_room",
+      "value": "Transition closes from dream to bedroom."
+    },
+    {
+      "key": "ad_ch4_outro_settles_sleep",
+      "value": "They sink deeper into sleep."
+    },
+    {
+      "key": "ad_ch4_outro_border_clears",
+      "value": "Feather border drops away to a still room."
+    },
+    {
+      "key": "ad_ch4_outro_long_fade_black",
+      "value": "Long fade to black as audio fades out."
+    },
+    {
+      "key": "ad_ch4_outro_load_next",
+      "value": "Loading Night Five."
+    },
+    {
+      "key": "ad_ch5_outro_transition_room",
+      "value": "Transition returns to the bedroom."
+    },
+    {
+      "key": "ad_ch5_outro_camera_to_window",
+      "value": "Camera glides from bed toward the window."
+    },
+    {
+      "key": "ad_ch5_outro_window_fills_view",
+      "value": "The window fills most of the view."
+    },
+    {
+      "key": "ad_ch5_outro_looks_out_window",
+      "value": "They look outward, holding still."
+    },
+    {
+      "key": "ad_ch5_outro_final_fade_black",
+      "value": "Long final fade to black."
+    },
+    {
+      "key": "ad_ch5_outro_credits_begin",
+      "value": "Credits begin."
+    },
+    {
+      "key": "cue_left",
+      "value": "Left"
+    },
+    {
+      "key": "cue_right",
+      "value": "Right"
+    },
+    {
+      "key": "cue_both",
+      "value": "Both"
+    },
+    {
+      "key": "cue_left_right_short",
+      "value": "Left right"
+    },
+    {
+      "key": "cue_hold",
+      "value": "Hold"
+    },
+    {
+      "key": "results_stats",
+      "value": "Perfect: {0}, Late: {1}, Early: {2}, Miss: {3}."
+    },
+    {
+      "key": "stage_end_position",
+      "value": "{0}, {1} of {2}"
+    },
+    {
+      "key": "locked_requires_one_star",
+      "value": "Locked. Requires at least 1 star."
+    },
+    {
+      "key": "locked_requires_two_stars",
+      "value": "Locked. Requires 2 stars."
+    },
+    {
+      "key": "locked_requires_full_game",
+      "value": "Locked. Requires full game."
+    },
+    {
+      "key": "locked_requires_two_stars_full_game",
+      "value": "Locked. Requires 2 stars and full game."
+    },
+    {
+      "key": "locked_requires_two_stars_each_dream",
+      "value": "Locked. Get at least 2 stars in each dream on this night to pass."
+    }
+  ]
+}

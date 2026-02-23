@@ -1,0 +1,866 @@
+{
+  "schemaVersion": 1,
+  "language": "zh-Hant",
+  "entries": [
+    {
+      "key": "mod_loaded",
+      "value": "Melatonin Access 模組已載入。"
+    },
+    {
+      "key": "mod_active_help",
+      "value": "Melatonin Access 已啟用。使用方向鍵瀏覽選單。"
+    },
+    {
+      "key": "debug_enabled",
+      "value": "偵錯模式已啟用。"
+    },
+    {
+      "key": "debug_disabled",
+      "value": "偵錯模式已停用。"
+    },
+    {
+      "key": "rhythm_cues_enabled",
+      "value": "上下文教學提示已啟用。"
+    },
+    {
+      "key": "rhythm_cues_disabled",
+      "value": "上下文教學提示已停用。"
+    },
+    {
+      "key": "menu_positions_enabled",
+      "value": "選單位置播報已啟用。"
+    },
+    {
+      "key": "menu_positions_disabled",
+      "value": "選單位置播報已停用。"
+    },
+    {
+      "key": "intro_welcome",
+      "value": "按 {0} 開始。按 {1} 更改語言。"
+    },
+    {
+      "key": "language_selected",
+      "value": "已選擇語言。"
+    },
+    {
+      "key": "language_menu",
+      "value": "語言選單"
+    },
+    {
+      "key": "credits_title",
+      "value": "製作人員"
+    },
+    {
+      "key": "menu_suffix",
+      "value": "{0} 選單"
+    },
+    {
+      "key": "order_of",
+      "value": "第 {0}/{1} 項"
+    },
+    {
+      "key": "chapter_locked",
+      "value": "第 {0} 章已鎖定"
+    },
+    {
+      "key": "option_with_slider",
+      "value": "{0} 滑桿 {1}"
+    },
+    {
+      "key": "slider_value",
+      "value": "滑桿 {0}"
+    },
+    {
+      "key": "action_key_current_binding",
+      "value": "{0}，目前綁定為 {1}。"
+    },
+    {
+      "key": "state_on",
+      "value": "開"
+    },
+    {
+      "key": "state_off",
+      "value": "關"
+    },
+    {
+      "key": "fullscreen",
+      "value": "全螢幕"
+    },
+    {
+      "key": "windowed",
+      "value": "視窗"
+    },
+    {
+      "key": "calibration_tool_intro",
+      "value": "校準工具。調整偏移以對齊節拍。"
+    },
+    {
+      "key": "calibration_offset",
+      "value": "偏移 {0}"
+    },
+    {
+      "key": "calibration_timing_on_time",
+      "value": "時機準確。"
+    },
+    {
+      "key": "calibration_timing_early_ms",
+      "value": "提前了 {0} 毫秒。"
+    },
+    {
+      "key": "calibration_timing_late_ms",
+      "value": "慢了 {0} 毫秒。"
+    },
+    {
+      "key": "downloaded_levels_loading",
+      "value": "已下載關卡。正在載入..."
+    },
+    {
+      "key": "downloaded_levels_page_total",
+      "value": "共 {0} 個關卡。第 {1}/{2} 頁"
+    },
+    {
+      "key": "downloaded_levels_total",
+      "value": "共 {0} 個關卡。"
+    },
+    {
+      "key": "next_page",
+      "value": "下一頁"
+    },
+    {
+      "key": "previous_page",
+      "value": "上一頁"
+    },
+    {
+      "key": "page_of",
+      "value": "第 {0}/{1} 頁"
+    },
+    {
+      "key": "item_of",
+      "value": "{0}，第 {1}/{2} 項"
+    },
+    {
+      "key": "achievements_menu",
+      "value": "成就選單"
+    },
+    {
+      "key": "locked_achievement",
+      "value": "未解鎖成就。第 {0}/{1} 項"
+    },
+    {
+      "key": "locked_achievement_plain",
+      "value": "未解鎖成就。"
+    },
+    {
+      "key": "achievement_with_desc",
+      "value": "{0}：{1}。第 {2}/{3} 項"
+    },
+    {
+      "key": "achievement_with_desc_plain",
+      "value": "{0}：{1}。"
+    },
+    {
+      "key": "arrived_at",
+      "value": "到達 {0}"
+    },
+    {
+      "key": "mode_menu",
+      "value": "模式選單"
+    },
+    {
+      "key": "dream_about_level",
+      "value": "夢見{0}"
+    },
+    {
+      "key": "teleport_arrived_stars",
+      "value": "{0}。{1} 星。"
+    },
+    {
+      "key": "teleport_arrived_one_star",
+      "value": "{0}。{1} 星。"
+    },
+    {
+      "key": "map_progress_status",
+      "value": "地圖星星：{0}。還需要 {1} 顆才能通過。"
+    },
+    {
+      "key": "map_transient_controls_unlocked",
+      "value": "Map settles into view."
+    },
+    {
+      "key": "map_transient_controls_unlocked_mirrored",
+      "value": "Map settles into view mirrored. Left and right are swapped."
+    },
+    {
+      "key": "teleport_conflict_hint",
+      "value": "由於操作鍵綁定到中括號，中括號傳送已停用。請使用 F9 與 F10 傳送。"
+    },
+    {
+      "key": "unknown_level",
+      "value": "未知關卡"
+    },
+    {
+      "key": "dream_name_career",
+      "value": "事業"
+    },
+    {
+      "key": "dream_name_dating",
+      "value": "約會"
+    },
+    {
+      "key": "dream_name_desires",
+      "value": "慾望"
+    },
+    {
+      "key": "dream_name_exercise",
+      "value": "運動"
+    },
+    {
+      "key": "dream_name_final",
+      "value": "最終"
+    },
+    {
+      "key": "dream_name_followers",
+      "value": "關注者"
+    },
+    {
+      "key": "dream_name_food",
+      "value": "食物"
+    },
+    {
+      "key": "dream_name_future",
+      "value": "未來"
+    },
+    {
+      "key": "dream_name_indulgence",
+      "value": "放縱"
+    },
+    {
+      "key": "dream_name_meditation",
+      "value": "冥想"
+    },
+    {
+      "key": "dream_name_mind",
+      "value": "心靈"
+    },
+    {
+      "key": "dream_name_money",
+      "value": "金錢"
+    },
+    {
+      "key": "dream_name_nature",
+      "value": "自然"
+    },
+    {
+      "key": "dream_name_past",
+      "value": "過去"
+    },
+    {
+      "key": "dream_name_pressure",
+      "value": "壓力"
+    },
+    {
+      "key": "dream_name_setbacks",
+      "value": "挫折"
+    },
+    {
+      "key": "dream_name_shopping",
+      "value": "購物"
+    },
+    {
+      "key": "dream_name_space",
+      "value": "太空"
+    },
+    {
+      "key": "dream_name_stress",
+      "value": "壓力"
+    },
+    {
+      "key": "dream_name_tech",
+      "value": "科技"
+    },
+    {
+      "key": "dream_name_time",
+      "value": "時間"
+    },
+    {
+      "key": "dream_name_tutorial",
+      "value": "教學"
+    },
+    {
+      "key": "editor_cursor_empty",
+      "value": "樂句 {0}，小節 {1}，節拍 {2}。空白。"
+    },
+    {
+      "key": "editor_cursor_content",
+      "value": "樂句 {0}，小節 {1}，節拍 {2}。{3}。"
+    },
+    {
+      "key": "editor_placed",
+      "value": "已放置 {0}"
+    },
+    {
+      "key": "editor_removed",
+      "value": "已移除"
+    },
+    {
+      "key": "editor_tool_select",
+      "value": "工具選擇"
+    },
+    {
+      "key": "advanced_menu",
+      "value": "進階選單"
+    },
+    {
+      "key": "editor_ready",
+      "value": "關卡編輯器已就緒"
+    },
+    {
+      "key": "editor_page",
+      "value": "頁面 {0}"
+    },
+    {
+      "key": "tutorial_skip_prompt",
+      "value": "教學。按 {0} 可跳過。"
+    },
+    {
+      "key": "tutorial_label",
+      "value": "教學。"
+    },
+    {
+      "key": "cue_space",
+      "value": "空白鍵"
+    },
+    {
+      "key": "cue_press_action",
+      "value": "按 {0}"
+    },
+    {
+      "key": "cue_press_action_twice",
+      "value": "按 {0} 兩次"
+    },
+    {
+      "key": "cue_followers_phase_one_start_stop",
+      "value": "跟著節奏按 {0}。在彈簧聲音後開始和停止。"
+    },
+    {
+      "key": "cue_followers_phase_two_resume_after_vibration",
+      "value": "在跳躍聲音後停止。在震動後繼續。"
+    },
+    {
+      "key": "cue_followers_phase_three_press_thrice",
+      "value": "雙震動後按 {0} 三次。"
+    },
+    {
+      "key": "cue_tech_every_two_beats",
+      "value": "聽到高音提示後，在下一拍按 {0}。"
+    },
+    {
+      "key": "cue_tech_next_three_beats",
+      "value": "聽到高音提示後，在接下來的3拍按 {0}。"
+    },
+    {
+      "key": "cue_time_portal_gap_hold_release",
+      "value": "在空檔裡的傳送門嗡鳴後，按住 {0}，並在下一次提示時鬆開。"
+    },
+    {
+      "key": "cue_time_sixth_seventh_hold_release",
+      "value": "在第六個提示時按住 {0}。在第七個提示時鬆開。"
+    },
+    {
+      "key": "cue_nature_water_press_thrice",
+      "value": "按 {0} 三次。"
+    },
+    {
+      "key": "cue_mind_triple_offbeat",
+      "value": "在切分拍提示時按 {0} 三次。"
+    },
+    {
+      "key": "cue_press_up",
+      "value": "上"
+    },
+    {
+      "key": "cue_hold_release_duration",
+      "value": "按住 {0}。在 {1} 後鬆開。"
+    },
+    {
+      "key": "cue_hold_release_on_beat",
+      "value": "按住 {0}。在第 {1} 拍鬆開。"
+    },
+    {
+      "key": "duration_half_beat",
+      "value": "半拍"
+    },
+    {
+      "key": "duration_one_beat",
+      "value": "1拍"
+    },
+    {
+      "key": "duration_n_beats",
+      "value": "{0}拍"
+    },
+    {
+      "key": "cue_past_camera_first_sound",
+      "value": "按住 {0} 1拍。"
+    },
+    {
+      "key": "cue_past_camera_second_sound",
+      "value": "按住 {0} 半拍。"
+    },
+    {
+      "key": "cue_past_camera_third_sound",
+      "value": "按住 {0} 2拍。"
+    },
+    {
+      "key": "cue_tutorial_press_second_beat",
+      "value": "在第2拍按 {0}。"
+    },
+    {
+      "key": "cue_food_press_third_beat",
+      "value": "在第3拍按 {0}。"
+    },
+    {
+      "key": "cue_food_press_fifth_beat",
+      "value": "在第5拍按 {0}。"
+    },
+    {
+      "key": "cue_food_press_fourth_beat",
+      "value": "在第4拍按 {0}。"
+    },
+    {
+      "key": "cue_food_press_seventh_beat",
+      "value": "在第7拍按 {0}。"
+    },
+    {
+      "key": "cue_shopping_repeat_patterns",
+      "value": "用 {0} 重複音訊提示節奏。"
+    },
+    {
+      "key": "cue_dating_follow_swipes",
+      "value": "在第4拍按提示向左或向右滑動。"
+    },
+    {
+      "key": "cue_future_follow_patterns",
+      "value": "跟隨圖案提示。"
+    },
+    {
+      "key": "cue_swipe_left",
+      "value": "在第4拍向左滑動。"
+    },
+    {
+      "key": "cue_swipe_right",
+      "value": "在第4拍向右滑動。"
+    },
+    {
+      "key": "cue_swipe_left_long",
+      "value": "在長提示後向左滑動。"
+    },
+    {
+      "key": "cue_swipe_right_long",
+      "value": "在長提示後向右滑動。"
+    },
+    {
+      "key": "cue_hold_action",
+      "value": "按住 {0}"
+    },
+    {
+      "key": "key_enter",
+      "value": "Enter"
+    },
+    {
+      "key": "key_period",
+      "value": "句點"
+    },
+    {
+      "key": "key_slash",
+      "value": "斜線"
+    },
+    {
+      "key": "key_tab",
+      "value": "Tab"
+    },
+    {
+      "key": "key_escape",
+      "value": "Esc"
+    },
+    {
+      "key": "key_start",
+      "value": "開始鍵"
+    },
+    {
+      "key": "help_title_screen",
+      "value": "標題畫面說明。按 {0} 開始。按 {1} 更改語言。"
+    },
+    {
+      "key": "help_menu",
+      "value": "選單說明。使用上下方向移動。按 {0} 選擇。按 {1} 返回。"
+    },
+    {
+      "key": "help_map",
+      "value": "地圖說明。使用 [ 和 ] 或 F9 與 F10 在關卡間移動。按 {0} 開啟所選關卡。按 F1 或手把 View 鍵播報地圖星星。"
+    },
+    {
+      "key": "help_mode_menu",
+      "value": "模式選單說明。使用上下方向選擇模式。按 {0} 開始。按 {1} 關閉此選單。"
+    },
+    {
+      "key": "help_results",
+      "value": "結果畫面說明。使用上下方向選擇選項。按 {0} 確認。按 {1} 返回。"
+    },
+    {
+      "key": "help_gameplay",
+      "value": "遊戲說明。跟隨上下文提示並按語音播報的動作鍵。按 {0} 暫停。"
+    },
+    {
+      "key": "help_editor",
+      "value": "編輯器說明。使用方向鍵在時間軸上移動。按 {0} 放置或選擇。按 {1} 取消。"
+    },
+    {
+      "key": "level_briefing_line",
+      "value": "{0}。{1}。{2}"
+    },
+    {
+      "key": "mode_practice",
+      "value": "練習模式"
+    },
+    {
+      "key": "practice_mode_started",
+      "value": "練習模式已開始。"
+    },
+    {
+      "key": "mode_score",
+      "value": "計分模式"
+    },
+    {
+      "key": "score_mode_started",
+      "value": "計分模式已開始。"
+    },
+    {
+      "key": "mode_hard",
+      "value": "困難模式"
+    },
+    {
+      "key": "mode_score_remix",
+      "value": "計分混音模式"
+    },
+    {
+      "key": "mode_hard_remix",
+      "value": "困難混音模式"
+    },
+    {
+      "key": "mode_tutorial",
+      "value": "教學模式"
+    },
+    {
+      "key": "mode_editor_test",
+      "value": "編輯器測試模式"
+    },
+    {
+      "key": "mode_community",
+      "value": "社群模式"
+    },
+    {
+      "key": "objective_default",
+      "value": "跟隨上下文提示並保持節拍。"
+    },
+    {
+      "key": "objective_practice",
+      "value": "學習節奏與時機。按 {0} 可跳過。"
+    },
+    {
+      "key": "objective_score",
+      "value": "在節拍上精準操作以提高分數。"
+    },
+    {
+      "key": "objective_hard",
+      "value": "在更緊湊的節奏中保持準確。"
+    },
+    {
+      "key": "objective_tutorial",
+      "value": "按照說明學習機制。"
+    },
+    {
+      "key": "objective_editor_test",
+      "value": "測試你的譜面節奏與流程。"
+    },
+    {
+      "key": "objective_community",
+      "value": "遊玩並評價此社群關卡。"
+    },
+    {
+      "key": "ad_ch1_intro_title_card",
+      "value": "Title card: Night One."
+    },
+    {
+      "key": "ad_ch1_intro_room_widens",
+      "value": "Bedroom widens. They lounge awake with a laptop."
+    },
+    {
+      "key": "ad_ch1_intro_fade_black",
+      "value": "Brief fade to black."
+    },
+    {
+      "key": "ad_ch1_intro_map_recenters",
+      "value": "View pulls back from the bed to the chapter map."
+    },
+    {
+      "key": "ad_ch1_intro_map_music_starts",
+      "value": "Map theme starts."
+    },
+    {
+      "key": "ad_ch1_intro_map_controls_unlock",
+      "value": "Map settles on Night One. First routes are ready."
+    },
+    {
+      "key": "ad_ch2_intro_title_card",
+      "value": "Title card: Night Two."
+    },
+    {
+      "key": "ad_ch2_intro_room_widens",
+      "value": "Bedroom widens. They wake and look around."
+    },
+    {
+      "key": "ad_ch2_intro_fade_black_sleep",
+      "value": "Screen darkens; they settle back to sleep."
+    },
+    {
+      "key": "ad_ch2_intro_map_recenters",
+      "value": "Camera recenters onto the chapter map."
+    },
+    {
+      "key": "ad_ch2_intro_map_music_starts",
+      "value": "Map theme returns."
+    },
+    {
+      "key": "ad_ch2_intro_map_controls_unlock",
+      "value": "Map settles on Night Two."
+    },
+    {
+      "key": "ad_ch3_intro_title_card",
+      "value": "Title card: Night Three."
+    },
+    {
+      "key": "ad_ch3_intro_room_widens",
+      "value": "Room widens in low ambience."
+    },
+    {
+      "key": "ad_ch3_intro_crossfade_black",
+      "value": "Slow cross-fade to black."
+    },
+    {
+      "key": "ad_ch3_intro_room_returns_sleeping",
+      "value": "Room fades back with them asleep."
+    },
+    {
+      "key": "ad_ch3_intro_map_music_starts",
+      "value": "Map theme starts under the room tone."
+    },
+    {
+      "key": "ad_ch3_intro_map_controls_unlock",
+      "value": "Map settles on Night Three."
+    },
+    {
+      "key": "ad_ch4_intro_title_card",
+      "value": "Title card: Night Four."
+    },
+    {
+      "key": "ad_ch4_intro_room_widens",
+      "value": "Room opens in a closer, quiet view."
+    },
+    {
+      "key": "ad_ch4_intro_sleep_trigger",
+      "value": "They slump and drop into sleep."
+    },
+    {
+      "key": "ad_ch4_intro_map_recenters",
+      "value": "Camera recenters on the chapter map."
+    },
+    {
+      "key": "ad_ch4_intro_map_music_starts",
+      "value": "Map theme begins."
+    },
+    {
+      "key": "ad_ch4_intro_map_controls_unlock_mirrored",
+      "value": "Map settles on Night Four, mirrored left to right."
+    },
+    {
+      "key": "ad_ch5_intro_title_card",
+      "value": "Title card: Night Five."
+    },
+    {
+      "key": "ad_ch5_intro_room_widens",
+      "value": "Room widens. They remain asleep under dim light."
+    },
+    {
+      "key": "ad_ch5_intro_map_recenters",
+      "value": "Camera recenters from bed to the final map."
+    },
+    {
+      "key": "ad_ch5_intro_map_music_starts",
+      "value": "Map theme begins."
+    },
+    {
+      "key": "ad_ch5_intro_map_controls_unlock",
+      "value": "Map settles on Night Five."
+    },
+    {
+      "key": "ad_ch1_outro_transition_room",
+      "value": "Transition closes from dream to bedroom."
+    },
+    {
+      "key": "ad_ch1_outro_border_clears",
+      "value": "Feather border clears and the room sharpens."
+    },
+    {
+      "key": "ad_ch1_outro_wake",
+      "value": "They wake and sit up."
+    },
+    {
+      "key": "ad_ch1_outro_fade_black",
+      "value": "Quick fade to black."
+    },
+    {
+      "key": "ad_ch1_outro_load_next",
+      "value": "Loading Night Two."
+    },
+    {
+      "key": "ad_ch2_outro_transition_room",
+      "value": "Transition closes from dream to bedroom."
+    },
+    {
+      "key": "ad_ch2_outro_border_clears",
+      "value": "Feather border clears; the room holds steady."
+    },
+    {
+      "key": "ad_ch2_outro_wake_first",
+      "value": "First wake motion starts."
+    },
+    {
+      "key": "ad_ch2_outro_wake_second",
+      "value": "Second wake motion snaps them fully alert."
+    },
+    {
+      "key": "ad_ch2_outro_fade_black",
+      "value": "Fade to black."
+    },
+    {
+      "key": "ad_ch2_outro_load_next",
+      "value": "Loading Night Three."
+    },
+    {
+      "key": "ad_ch3_outro_transition_room",
+      "value": "Transition closes from dream to bedroom."
+    },
+    {
+      "key": "ad_ch3_outro_border_clears",
+      "value": "Feather border clears; room detail returns."
+    },
+    {
+      "key": "ad_ch3_outro_static_flicker",
+      "value": "A burst of static cuts through the room."
+    },
+    {
+      "key": "ad_ch3_outro_wake_after_static",
+      "value": "After the glitch, they wake."
+    },
+    {
+      "key": "ad_ch3_outro_fade_black",
+      "value": "Fade to black."
+    },
+    {
+      "key": "ad_ch3_outro_load_next",
+      "value": "Loading Night Four."
+    },
+    {
+      "key": "ad_ch4_outro_transition_room",
+      "value": "Transition closes from dream to bedroom."
+    },
+    {
+      "key": "ad_ch4_outro_settles_sleep",
+      "value": "They sink deeper into sleep."
+    },
+    {
+      "key": "ad_ch4_outro_border_clears",
+      "value": "Feather border drops away to a still room."
+    },
+    {
+      "key": "ad_ch4_outro_long_fade_black",
+      "value": "Long fade to black as audio fades out."
+    },
+    {
+      "key": "ad_ch4_outro_load_next",
+      "value": "Loading Night Five."
+    },
+    {
+      "key": "ad_ch5_outro_transition_room",
+      "value": "Transition returns to the bedroom."
+    },
+    {
+      "key": "ad_ch5_outro_camera_to_window",
+      "value": "Camera glides from bed toward the window."
+    },
+    {
+      "key": "ad_ch5_outro_window_fills_view",
+      "value": "The window fills most of the view."
+    },
+    {
+      "key": "ad_ch5_outro_looks_out_window",
+      "value": "They look outward, holding still."
+    },
+    {
+      "key": "ad_ch5_outro_final_fade_black",
+      "value": "Long final fade to black."
+    },
+    {
+      "key": "ad_ch5_outro_credits_begin",
+      "value": "Credits begin."
+    },
+    {
+      "key": "cue_left",
+      "value": "左"
+    },
+    {
+      "key": "cue_right",
+      "value": "右"
+    },
+    {
+      "key": "cue_both",
+      "value": "雙鍵"
+    },
+    {
+      "key": "cue_left_right_short",
+      "value": "左右"
+    },
+    {
+      "key": "cue_hold",
+      "value": "按住"
+    },
+    {
+      "key": "results_stats",
+      "value": "完美：{0}，偏晚：{1}，偏早：{2}，失誤：{3}。"
+    },
+    {
+      "key": "stage_end_position",
+      "value": "{0}，第 {1}/{2} 項"
+    },
+    {
+      "key": "locked_requires_one_star",
+      "value": "已鎖定。至少需要 1 星。"
+    },
+    {
+      "key": "locked_requires_two_stars",
+      "value": "已鎖定。需要 2 星。"
+    },
+    {
+      "key": "locked_requires_full_game",
+      "value": "已鎖定。需要完整版遊戲。"
+    },
+    {
+      "key": "locked_requires_two_stars_full_game",
+      "value": "已鎖定。需要 2 星與完整版遊戲。"
+    },
+    {
+      "key": "locked_requires_two_stars_each_dream",
+      "value": "已鎖定。本夜每個夢境至少獲得 2 顆星才能通過。"
+    }
+  ]
+}

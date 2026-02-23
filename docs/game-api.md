@@ -110,6 +110,7 @@
   - `7` German
   - `8` Spanish
   - `9` Portuguese
+- Mod-owned spoken strings are loaded at runtime from JSON assets in `Mods/localization/loc.<lang>.json` via `Loc.Initialize()` and fall back to English key values when a localized key is missing.
 - References: `decompiled/SaveManager.cs:978-986`, `decompiled/LangMenu.cs:137-144`, `decompiled/LangMenu.cs:255-317`.
 
 ### Editor-Specific Hooks

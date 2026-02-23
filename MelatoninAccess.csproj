@@ -62,4 +62,14 @@
       DestinationFiles="@(CutsceneAdFiles->'$(ModsPath)\cutscene-ad\%(RecursiveDir)%(Filename)%(Extension)')"
       SkipUnchangedFiles="true" />
   </Target>
+
+  <Target Name="CopyLocalizationToMods" AfterTargets="Build" Condition="Exists('$(ModsPath)') and Exists('$(MSBuildProjectDirectory)\localization')">
+    <ItemGroup>
+      <LocalizationFiles Include="$(MSBuildProjectDirectory)\localization\**\*.*" />
+    </ItemGroup>
+    <Copy
+      SourceFiles="@(LocalizationFiles)"
+      DestinationFiles="@(LocalizationFiles->'$(ModsPath)\localization\%(RecursiveDir)%(Filename)%(Extension)')"
+      SkipUnchangedFiles="true" />
+  </Target>
 </Project>
