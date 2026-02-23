@@ -96,6 +96,39 @@
 - [x] **v1.1 Release Polish Pack 1 (2026-02-12)**: Added missing `Dream_food` 7th-beat practice cue coverage, added gameplay-start announcements for Practice and Score modes (`TriggerSong`), and completed terminology cleanup for user-facing wording from "rhythm cues" to "contextual cues" in help/objective strings and config comments. Updated `docs/game-api.md`, `README.md`, and `todo.md`.
 - [x] **Backlog Cleanup (2026-02-12)**: Simplified `todo.md` to keep only actionable `v1.1` items, moved audio-description work explicitly under deferred `v1.2`, and removed stale template tasks that are already implemented or not applicable (for example `Dream_food` jump/shoot split at queue level).
 
+## Codebase Analysis Progress
+
+### GATE: Tier 1 MUST be complete before Phase 2 (Framework)!
+
+- [x] 1.1 Structure overview (namespaces, singletons) → documented in game-api.md
+- [x] 1.2 Input system — ALL game key bindings documented in game-api.md "Game Key Bindings"
+- [x] 1.2 Input system — Safe mod keys identified and listed in game-api.md "Safe Mod Keys"
+- [x] 1.3 UI system (base classes, text access patterns, Reflection needed?)
+- [x] 1.4 State management decision → documented in "Architecture Decisions" below
+- [x] 1.5 Localization: game's language system analyzed (multilingual project)
+
+### GATE: Relevant Tier 2 items MUST be done before implementing each feature!
+
+- [x] 1.6 Game mechanics (analyzed as needed per feature)
+- [x] 1.7 Status/feedback systems
+- [x] 1.8 Event system / Harmony patch points
+- [x] 1.9 Results documented in `docs/game-api.md`
+- [x] 1.10 Tutorial analysis (when relevant)
+
+## Game Key Bindings (Original)
+
+- Arrow keys / WASD: movement and menu navigation (configurable)
+- Space: Action/Select by default (rebindable)
+- Escape or R: Cancel/Back (rebindable)
+- Escape or controller Start: Pause
+- Controller utility buttons (Unity Input System): `View/Back`, `L3`, `R3`
+- Gameplay uses additional per-dream timing inputs (documented under `docs/game-api.md`)
+
+## Architecture Decisions
+
+- **State management approach:** Scene-aware handler ownership and per-handler gating are used; `AccessStateManager` is not currently used in this project.
+- **Reasoning:** Existing handlers are stable with localized responsibility, Harmony hook boundaries, and explicit scene/game-mode checks; no unresolved shared-input conflicts currently require a central state manager.
+
 ## Next Steps
 - **Focused Playtest**: Validate end-to-end flow for map mode locks, stage-end locks, advanced menu/timeline narration, and credits scrolling narration.
 - **Language Spot Check**: Switch each in-game language and verify key mod-only lines (debug toggles, map lock reasons, teleport conflict hint, results summary) are spoken correctly.
