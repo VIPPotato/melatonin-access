@@ -18,6 +18,7 @@
 - [x] **README Terminology Consistency Pass (2026-02-23)**: Aligned README wording with current behavior (`score mode started` only; practice-start line removed), clarified `AnnounceRhythmCues` as a legacy key naming contextual cues, and switched build command code blocks to PowerShell examples.
 - [x] **Template Docs + State Manager Assets Sync (2026-02-23)**: Synced updated template docs (`setup-guide`, `ACCESSIBILITY_MODDING_GUIDE`, `state-management-guide`, `project_status` template) and added `templates/AccessStateManager.cs.template` from the refreshed template pack.
 - [x] **Localization JSON Externalization (2026-02-23)**: Migrated all mod translatable strings from hardcoded `Loc.cs` entries to external `localization/loc.<lang>.json` files (all 10 game languages), refactored `Loc` runtime loading/path resolution to JSON assets, updated localization/cutscene QA scripts to validate JSON sources, and updated build/release packaging to ship `Mods/localization`.
+- [x] **Cutscene AD Multilingual Localization (2026-02-23)**: Localized all `ad_*` cutscene description lines into zh-Hans, zh-Hant, ja, ko, vi, fr, de, es, and pt JSON files so cutscene narration no longer falls back to English in non-English game languages.
 - [x] **Tutorial Extraction (2026-02-09)**: Extracted tutorial/help text and flow context into `docs/tutorial-texts.md`; updated `docs/game-api.md` with tutorial start path, skip behavior, and text-source notes. Deep asset pass recovered additional gameplay instruction lines from `Melatonin_Data\level0` (metronome, timing circle, score mode readiness, and auto-restart behavior).
 - [x] **Duplicate Announcement Reduction (2026-02-09)**: Added targeted debounce for dialog text (`DialogueHandler`), language/start screen (`StartScreenHandler`), and map mode menu (`MapHandler`), plus stronger whitespace/time normalization in `ScreenReader`. Build succeeded and DLL auto-copied to game `Mods` folder.
 - [x] **Duplicate Announcement Reduction Pass 2 (2026-02-09)**: Removed additional duplicate bursts in `AchievementsHandler` and `ExtraMenusHandler` (community next/prev page and calibration activation/description) with short cooldown-based dedupe. Build succeeded and deployed.
@@ -169,6 +170,7 @@
 - **Post-Release Validation**: Monitor issues/feedback from `v1.0.4` and collect any remaining edge cases from real-world play sessions.
 
 ## Session Notes
+- [2026-02-23] Completed non-English localization pass for all cutscene AD keys (`ad_*`) in JSON localization assets; localization QA and cutscene pipeline validation both pass.
 - [2026-02-23] Replaced hardcoded localization tables in `Loc.cs` with JSON-backed data files under `localization/`; release packaging and QA now validate/copy `Mods/localization` assets directly.
 - [2026-02-13] Reviewed `Loc.cs` zh-Hans/zh-Hant localization entries for naturalness; documented awkward contextual-cue wording, key-labels, the map progress summary, and duplicate dream names for follow-up with the user.
 - [2026-02-13] Reviewed `Loc.cs` FR/DE/ES/PT strings for naturalness, highlighted missing accents and garbled phrases, and captured a focused list of keys to clean up.

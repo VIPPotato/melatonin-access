@@ -588,231 +588,231 @@
     },
     {
       "key": "ad_ch1_intro_title_card",
-      "value": "Title card: Night One."
+      "value": "타이틀 카드: 첫 번째 밤."
     },
     {
       "key": "ad_ch1_intro_room_widens",
-      "value": "Bedroom widens. They lounge awake with a laptop."
+      "value": "침실 화면이 넓어지고, 그는 노트북을 둔 채 깨어 있다."
     },
     {
       "key": "ad_ch1_intro_fade_black",
-      "value": "Brief fade to black."
+      "value": "짧게 암전된다."
     },
     {
       "key": "ad_ch1_intro_map_recenters",
-      "value": "View pulls back from the bed to the chapter map."
+      "value": "시점이 침대에서 뒤로 빠지며 챕터 맵으로 이동한다."
     },
     {
       "key": "ad_ch1_intro_map_music_starts",
-      "value": "Map theme starts."
+      "value": "맵 테마가 시작된다."
     },
     {
       "key": "ad_ch1_intro_map_controls_unlock",
-      "value": "Map settles on Night One. First routes are ready."
+      "value": "맵이 첫 번째 밤에 자리 잡는다. 첫 경로들이 준비됐다."
     },
     {
       "key": "ad_ch2_intro_title_card",
-      "value": "Title card: Night Two."
+      "value": "타이틀 카드: 두 번째 밤."
     },
     {
       "key": "ad_ch2_intro_room_widens",
-      "value": "Bedroom widens. They wake and look around."
+      "value": "침실 화면이 넓어지고, 그는 깨어 주변을 둘러본다."
     },
     {
       "key": "ad_ch2_intro_fade_black_sleep",
-      "value": "Screen darkens; they settle back to sleep."
+      "value": "화면이 어두워지고 그는 다시 잠에 든다."
     },
     {
       "key": "ad_ch2_intro_map_recenters",
-      "value": "Camera recenters onto the chapter map."
+      "value": "카메라 중심이 챕터 맵으로 돌아온다."
     },
     {
       "key": "ad_ch2_intro_map_music_starts",
-      "value": "Map theme returns."
+      "value": "맵 테마가 다시 시작된다."
     },
     {
       "key": "ad_ch2_intro_map_controls_unlock",
-      "value": "Map settles on Night Two."
+      "value": "맵이 두 번째 밤에 자리 잡는다."
     },
     {
       "key": "ad_ch3_intro_title_card",
-      "value": "Title card: Night Three."
+      "value": "타이틀 카드: 세 번째 밤."
     },
     {
       "key": "ad_ch3_intro_room_widens",
-      "value": "Room widens in low ambience."
+      "value": "낮은 앰비언스 속에서 방 화면이 넓어진다."
     },
     {
       "key": "ad_ch3_intro_crossfade_black",
-      "value": "Slow cross-fade to black."
+      "value": "천천히 크로스페이드로 암전된다."
     },
     {
       "key": "ad_ch3_intro_room_returns_sleeping",
-      "value": "Room fades back with them asleep."
+      "value": "방 화면이 다시 나타나고 그는 잠들어 있다."
     },
     {
       "key": "ad_ch3_intro_map_music_starts",
-      "value": "Map theme starts under the room tone."
+      "value": "방의 잔향 위로 맵 테마가 시작된다."
     },
     {
       "key": "ad_ch3_intro_map_controls_unlock",
-      "value": "Map settles on Night Three."
+      "value": "맵이 세 번째 밤에 자리 잡는다."
     },
     {
       "key": "ad_ch4_intro_title_card",
-      "value": "Title card: Night Four."
+      "value": "타이틀 카드: 네 번째 밤."
     },
     {
       "key": "ad_ch4_intro_room_widens",
-      "value": "Room opens in a closer, quiet view."
+      "value": "방이 더 가까운 고요한 시점으로 열린다."
     },
     {
       "key": "ad_ch4_intro_sleep_trigger",
-      "value": "They slump and drop into sleep."
+      "value": "그는 몸이 축 처지며 잠에 빠진다."
     },
     {
       "key": "ad_ch4_intro_map_recenters",
-      "value": "Camera recenters on the chapter map."
+      "value": "카메라 중심이 챕터 맵으로 돌아온다."
     },
     {
       "key": "ad_ch4_intro_map_music_starts",
-      "value": "Map theme begins."
+      "value": "맵 테마가 시작된다."
     },
     {
       "key": "ad_ch4_intro_map_controls_unlock_mirrored",
-      "value": "Map settles on Night Four, mirrored left to right."
+      "value": "맵이 네 번째 밤에 자리 잡고 좌우가 반전된다."
     },
     {
       "key": "ad_ch5_intro_title_card",
-      "value": "Title card: Night Five."
+      "value": "타이틀 카드: 다섯 번째 밤."
     },
     {
       "key": "ad_ch5_intro_room_widens",
-      "value": "Room widens. They remain asleep under dim light."
+      "value": "방 화면이 넓어지고, 그는 어두운 불빛 아래 잠든 채 있다."
     },
     {
       "key": "ad_ch5_intro_map_recenters",
-      "value": "Camera recenters from bed to the final map."
+      "value": "카메라 중심이 침대에서 마지막 맵으로 옮겨진다."
     },
     {
       "key": "ad_ch5_intro_map_music_starts",
-      "value": "Map theme begins."
+      "value": "맵 테마가 시작된다."
     },
     {
       "key": "ad_ch5_intro_map_controls_unlock",
-      "value": "Map settles on Night Five."
+      "value": "맵이 다섯 번째 밤에 자리 잡는다."
     },
     {
       "key": "ad_ch1_outro_transition_room",
-      "value": "Transition closes from dream to bedroom."
+      "value": "전환이 꿈에서 침실로 닫히며 넘어간다."
     },
     {
       "key": "ad_ch1_outro_border_clears",
-      "value": "Feather border clears and the room sharpens."
+      "value": "흐린 테두리가 걷히고 방이 선명해진다."
     },
     {
       "key": "ad_ch1_outro_wake",
-      "value": "They wake and sit up."
+      "value": "그는 깨어나 몸을 일으켜 앉는다."
     },
     {
       "key": "ad_ch1_outro_fade_black",
-      "value": "Quick fade to black."
+      "value": "빠르게 암전된다."
     },
     {
       "key": "ad_ch1_outro_load_next",
-      "value": "Loading Night Two."
+      "value": "두 번째 밤을 불러오는 중."
     },
     {
       "key": "ad_ch2_outro_transition_room",
-      "value": "Transition closes from dream to bedroom."
+      "value": "전환이 꿈에서 침실로 닫히며 넘어간다."
     },
     {
       "key": "ad_ch2_outro_border_clears",
-      "value": "Feather border clears; the room holds steady."
+      "value": "흐린 테두리가 걷히고 방 장면이 안정된다."
     },
     {
       "key": "ad_ch2_outro_wake_first",
-      "value": "First wake motion starts."
+      "value": "첫 번째 기상 동작이 시작된다."
     },
     {
       "key": "ad_ch2_outro_wake_second",
-      "value": "Second wake motion snaps them fully alert."
+      "value": "두 번째 기상 동작에서 완전히 깨어난다."
     },
     {
       "key": "ad_ch2_outro_fade_black",
-      "value": "Fade to black."
+      "value": "암전된다."
     },
     {
       "key": "ad_ch2_outro_load_next",
-      "value": "Loading Night Three."
+      "value": "세 번째 밤을 불러오는 중."
     },
     {
       "key": "ad_ch3_outro_transition_room",
-      "value": "Transition closes from dream to bedroom."
+      "value": "전환이 꿈에서 침실로 닫히며 넘어간다."
     },
     {
       "key": "ad_ch3_outro_border_clears",
-      "value": "Feather border clears; room detail returns."
+      "value": "흐린 테두리가 걷히고 방의 디테일이 돌아온다."
     },
     {
       "key": "ad_ch3_outro_static_flicker",
-      "value": "A burst of static cuts through the room."
+      "value": "강한 정적이 방 안을 가른다."
     },
     {
       "key": "ad_ch3_outro_wake_after_static",
-      "value": "After the glitch, they wake."
+      "value": "글리치가 지나간 뒤, 그는 깨어난다."
     },
     {
       "key": "ad_ch3_outro_fade_black",
-      "value": "Fade to black."
+      "value": "암전된다."
     },
     {
       "key": "ad_ch3_outro_load_next",
-      "value": "Loading Night Four."
+      "value": "네 번째 밤을 불러오는 중."
     },
     {
       "key": "ad_ch4_outro_transition_room",
-      "value": "Transition closes from dream to bedroom."
+      "value": "전환이 꿈에서 침실로 닫히며 넘어간다."
     },
     {
       "key": "ad_ch4_outro_settles_sleep",
-      "value": "They sink deeper into sleep."
+      "value": "그는 더 깊은 잠으로 빠져든다."
     },
     {
       "key": "ad_ch4_outro_border_clears",
-      "value": "Feather border drops away to a still room."
+      "value": "흐린 테두리가 사라지고 고요한 방만 남는다."
     },
     {
       "key": "ad_ch4_outro_long_fade_black",
-      "value": "Long fade to black as audio fades out."
+      "value": "오디오가 페이드아웃되며 화면도 길게 암전된다."
     },
     {
       "key": "ad_ch4_outro_load_next",
-      "value": "Loading Night Five."
+      "value": "다섯 번째 밤을 불러오는 중."
     },
     {
       "key": "ad_ch5_outro_transition_room",
-      "value": "Transition returns to the bedroom."
+      "value": "전환이 침실로 돌아온다."
     },
     {
       "key": "ad_ch5_outro_camera_to_window",
-      "value": "Camera glides from bed toward the window."
+      "value": "카메라가 침대에서 창문 쪽으로 미끄러진다."
     },
     {
       "key": "ad_ch5_outro_window_fills_view",
-      "value": "The window fills most of the view."
+      "value": "창문이 화면 대부분을 채운다."
     },
     {
       "key": "ad_ch5_outro_looks_out_window",
-      "value": "They look outward, holding still."
+      "value": "그는 바깥을 바라보며 가만히 있다."
     },
     {
       "key": "ad_ch5_outro_final_fade_black",
-      "value": "Long final fade to black."
+      "value": "마지막으로 길게 암전된다."
     },
     {
       "key": "ad_ch5_outro_credits_begin",
-      "value": "Credits begin."
+      "value": "크레딧이 시작된다."
     },
     {
       "key": "cue_left",

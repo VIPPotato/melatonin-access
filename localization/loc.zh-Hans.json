@@ -588,231 +588,231 @@
     },
     {
       "key": "ad_ch1_intro_title_card",
-      "value": "Title card: Night One."
+      "value": "标题卡：第一夜。"
     },
     {
       "key": "ad_ch1_intro_room_widens",
-      "value": "Bedroom widens. They lounge awake with a laptop."
+      "value": "卧室画面拉开。他醒着，倚着笔记本电脑。"
     },
     {
       "key": "ad_ch1_intro_fade_black",
-      "value": "Brief fade to black."
+      "value": "短暂淡出至黑屏。"
     },
     {
       "key": "ad_ch1_intro_map_recenters",
-      "value": "View pulls back from the bed to the chapter map."
+      "value": "视角从床边拉远到章节地图。"
     },
     {
       "key": "ad_ch1_intro_map_music_starts",
-      "value": "Map theme starts."
+      "value": "地图主题音乐开始。"
     },
     {
       "key": "ad_ch1_intro_map_controls_unlock",
-      "value": "Map settles on Night One. First routes are ready."
+      "value": "地图停在第一夜。首条路线已准备好。"
     },
     {
       "key": "ad_ch2_intro_title_card",
-      "value": "Title card: Night Two."
+      "value": "标题卡：第二夜。"
     },
     {
       "key": "ad_ch2_intro_room_widens",
-      "value": "Bedroom widens. They wake and look around."
+      "value": "卧室画面拉开。他醒来并环顾四周。"
     },
     {
       "key": "ad_ch2_intro_fade_black_sleep",
-      "value": "Screen darkens; they settle back to sleep."
+      "value": "画面变暗；他重新沉入睡眠。"
     },
     {
       "key": "ad_ch2_intro_map_recenters",
-      "value": "Camera recenters onto the chapter map."
+      "value": "镜头重新居中到章节地图。"
     },
     {
       "key": "ad_ch2_intro_map_music_starts",
-      "value": "Map theme returns."
+      "value": "地图主题音乐回归。"
     },
     {
       "key": "ad_ch2_intro_map_controls_unlock",
-      "value": "Map settles on Night Two."
+      "value": "地图停在第二夜。"
     },
     {
       "key": "ad_ch3_intro_title_card",
-      "value": "Title card: Night Three."
+      "value": "标题卡：第三夜。"
     },
     {
       "key": "ad_ch3_intro_room_widens",
-      "value": "Room widens in low ambience."
+      "value": "房间在低沉环境音中拉开。"
     },
     {
       "key": "ad_ch3_intro_crossfade_black",
-      "value": "Slow cross-fade to black."
+      "value": "缓慢交叉淡出至黑屏。"
     },
     {
       "key": "ad_ch3_intro_room_returns_sleeping",
-      "value": "Room fades back with them asleep."
+      "value": "房间画面淡入，他已睡着。"
     },
     {
       "key": "ad_ch3_intro_map_music_starts",
-      "value": "Map theme starts under the room tone."
+      "value": "房间环境音下，地图主题音乐开始。"
     },
     {
       "key": "ad_ch3_intro_map_controls_unlock",
-      "value": "Map settles on Night Three."
+      "value": "地图停在第三夜。"
     },
     {
       "key": "ad_ch4_intro_title_card",
-      "value": "Title card: Night Four."
+      "value": "标题卡：第四夜。"
     },
     {
       "key": "ad_ch4_intro_room_widens",
-      "value": "Room opens in a closer, quiet view."
+      "value": "房间以更近、更安静的视角展开。"
     },
     {
       "key": "ad_ch4_intro_sleep_trigger",
-      "value": "They slump and drop into sleep."
+      "value": "他身子一沉，坠入睡眠。"
     },
     {
       "key": "ad_ch4_intro_map_recenters",
-      "value": "Camera recenters on the chapter map."
+      "value": "镜头重新居中到章节地图。"
     },
     {
       "key": "ad_ch4_intro_map_music_starts",
-      "value": "Map theme begins."
+      "value": "地图主题音乐开始。"
     },
     {
       "key": "ad_ch4_intro_map_controls_unlock_mirrored",
-      "value": "Map settles on Night Four, mirrored left to right."
+      "value": "地图停在第四夜，左右镜像。"
     },
     {
       "key": "ad_ch5_intro_title_card",
-      "value": "Title card: Night Five."
+      "value": "标题卡：第五夜。"
     },
     {
       "key": "ad_ch5_intro_room_widens",
-      "value": "Room widens. They remain asleep under dim light."
+      "value": "房间画面拉开。他在昏暗灯光下仍在熟睡。"
     },
     {
       "key": "ad_ch5_intro_map_recenters",
-      "value": "Camera recenters from bed to the final map."
+      "value": "镜头从床边重新居中到最终地图。"
     },
     {
       "key": "ad_ch5_intro_map_music_starts",
-      "value": "Map theme begins."
+      "value": "地图主题音乐开始。"
     },
     {
       "key": "ad_ch5_intro_map_controls_unlock",
-      "value": "Map settles on Night Five."
+      "value": "地图停在第五夜。"
     },
     {
       "key": "ad_ch1_outro_transition_room",
-      "value": "Transition closes from dream to bedroom."
+      "value": "转场从梦境收束回卧室。"
     },
     {
       "key": "ad_ch1_outro_border_clears",
-      "value": "Feather border clears and the room sharpens."
+      "value": "羽化边框消失，房间画面变得清晰。"
     },
     {
       "key": "ad_ch1_outro_wake",
-      "value": "They wake and sit up."
+      "value": "他醒来并坐起身。"
     },
     {
       "key": "ad_ch1_outro_fade_black",
-      "value": "Quick fade to black."
+      "value": "快速淡出至黑屏。"
     },
     {
       "key": "ad_ch1_outro_load_next",
-      "value": "Loading Night Two."
+      "value": "正在加载第二夜。"
     },
     {
       "key": "ad_ch2_outro_transition_room",
-      "value": "Transition closes from dream to bedroom."
+      "value": "转场从梦境收束回卧室。"
     },
     {
       "key": "ad_ch2_outro_border_clears",
-      "value": "Feather border clears; the room holds steady."
+      "value": "羽化边框消失；房间画面保持稳定。"
     },
     {
       "key": "ad_ch2_outro_wake_first",
-      "value": "First wake motion starts."
+      "value": "第一次苏醒动作开始。"
     },
     {
       "key": "ad_ch2_outro_wake_second",
-      "value": "Second wake motion snaps them fully alert."
+      "value": "第二次苏醒动作让他彻底清醒。"
     },
     {
       "key": "ad_ch2_outro_fade_black",
-      "value": "Fade to black."
+      "value": "淡出至黑屏。"
     },
     {
       "key": "ad_ch2_outro_load_next",
-      "value": "Loading Night Three."
+      "value": "正在加载第三夜。"
     },
     {
       "key": "ad_ch3_outro_transition_room",
-      "value": "Transition closes from dream to bedroom."
+      "value": "转场从梦境收束回卧室。"
     },
     {
       "key": "ad_ch3_outro_border_clears",
-      "value": "Feather border clears; room detail returns."
+      "value": "羽化边框消失；房间细节恢复。"
     },
     {
       "key": "ad_ch3_outro_static_flicker",
-      "value": "A burst of static cuts through the room."
+      "value": "一阵静电噪声划过房间。"
     },
     {
       "key": "ad_ch3_outro_wake_after_static",
-      "value": "After the glitch, they wake."
+      "value": "故障闪过后，他醒来。"
     },
     {
       "key": "ad_ch3_outro_fade_black",
-      "value": "Fade to black."
+      "value": "淡出至黑屏。"
     },
     {
       "key": "ad_ch3_outro_load_next",
-      "value": "Loading Night Four."
+      "value": "正在加载第四夜。"
     },
     {
       "key": "ad_ch4_outro_transition_room",
-      "value": "Transition closes from dream to bedroom."
+      "value": "转场从梦境收束回卧室。"
     },
     {
       "key": "ad_ch4_outro_settles_sleep",
-      "value": "They sink deeper into sleep."
+      "value": "他沉入更深的睡眠。"
     },
     {
       "key": "ad_ch4_outro_border_clears",
-      "value": "Feather border drops away to a still room."
+      "value": "羽化边框退去，留下静止的房间。"
     },
     {
       "key": "ad_ch4_outro_long_fade_black",
-      "value": "Long fade to black as audio fades out."
+      "value": "随着音频淡出，画面长时间淡出至黑屏。"
     },
     {
       "key": "ad_ch4_outro_load_next",
-      "value": "Loading Night Five."
+      "value": "正在加载第五夜。"
     },
     {
       "key": "ad_ch5_outro_transition_room",
-      "value": "Transition returns to the bedroom."
+      "value": "转场回到卧室。"
     },
     {
       "key": "ad_ch5_outro_camera_to_window",
-      "value": "Camera glides from bed toward the window."
+      "value": "镜头从床边滑向窗户。"
     },
     {
       "key": "ad_ch5_outro_window_fills_view",
-      "value": "The window fills most of the view."
+      "value": "窗户占据了画面的大部分。"
     },
     {
       "key": "ad_ch5_outro_looks_out_window",
-      "value": "They look outward, holding still."
+      "value": "他望向窗外，静静不动。"
     },
     {
       "key": "ad_ch5_outro_final_fade_black",
-      "value": "Long final fade to black."
+      "value": "最后长时间淡出至黑屏。"
     },
     {
       "key": "ad_ch5_outro_credits_begin",
-      "value": "Credits begin."
+      "value": "制作人员名单开始滚动。"
     },
     {
       "key": "cue_left",

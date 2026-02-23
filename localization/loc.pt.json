@@ -588,231 +588,231 @@
     },
     {
       "key": "ad_ch1_intro_title_card",
-      "value": "Title card: Night One."
+      "value": "Cartela de título: Noite Um."
     },
     {
       "key": "ad_ch1_intro_room_widens",
-      "value": "Bedroom widens. They lounge awake with a laptop."
+      "value": "A cena do quarto se amplia. Ele está acordado com um notebook."
     },
     {
       "key": "ad_ch1_intro_fade_black",
-      "value": "Brief fade to black."
+      "value": "Breve transição para preto."
     },
     {
       "key": "ad_ch1_intro_map_recenters",
-      "value": "View pulls back from the bed to the chapter map."
+      "value": "A visão recua da cama para o mapa do capítulo."
     },
     {
       "key": "ad_ch1_intro_map_music_starts",
-      "value": "Map theme starts."
+      "value": "O tema do mapa começa."
     },
     {
       "key": "ad_ch1_intro_map_controls_unlock",
-      "value": "Map settles on Night One. First routes are ready."
+      "value": "O mapa se estabiliza na Noite Um. As primeiras rotas estão prontas."
     },
     {
       "key": "ad_ch2_intro_title_card",
-      "value": "Title card: Night Two."
+      "value": "Cartela de título: Noite Dois."
     },
     {
       "key": "ad_ch2_intro_room_widens",
-      "value": "Bedroom widens. They wake and look around."
+      "value": "A cena do quarto se amplia. Ele acorda e olha ao redor."
     },
     {
       "key": "ad_ch2_intro_fade_black_sleep",
-      "value": "Screen darkens; they settle back to sleep."
+      "value": "A tela escurece; ele volta a adormecer."
     },
     {
       "key": "ad_ch2_intro_map_recenters",
-      "value": "Camera recenters onto the chapter map."
+      "value": "A câmera se recentraliza no mapa do capítulo."
     },
     {
       "key": "ad_ch2_intro_map_music_starts",
-      "value": "Map theme returns."
+      "value": "O tema do mapa retorna."
     },
     {
       "key": "ad_ch2_intro_map_controls_unlock",
-      "value": "Map settles on Night Two."
+      "value": "O mapa se estabiliza na Noite Dois."
     },
     {
       "key": "ad_ch3_intro_title_card",
-      "value": "Title card: Night Three."
+      "value": "Cartela de título: Noite Três."
     },
     {
       "key": "ad_ch3_intro_room_widens",
-      "value": "Room widens in low ambience."
+      "value": "O quarto se amplia em uma ambiência baixa."
     },
     {
       "key": "ad_ch3_intro_crossfade_black",
-      "value": "Slow cross-fade to black."
+      "value": "Lenta transição em fade para preto."
     },
     {
       "key": "ad_ch3_intro_room_returns_sleeping",
-      "value": "Room fades back with them asleep."
+      "value": "O quarto retorna em fade, e ele está dormindo."
     },
     {
       "key": "ad_ch3_intro_map_music_starts",
-      "value": "Map theme starts under the room tone."
+      "value": "O tema do mapa começa sob a ambiência do quarto."
     },
     {
       "key": "ad_ch3_intro_map_controls_unlock",
-      "value": "Map settles on Night Three."
+      "value": "O mapa se estabiliza na Noite Três."
     },
     {
       "key": "ad_ch4_intro_title_card",
-      "value": "Title card: Night Four."
+      "value": "Cartela de título: Noite Quatro."
     },
     {
       "key": "ad_ch4_intro_room_widens",
-      "value": "Room opens in a closer, quiet view."
+      "value": "O quarto se abre em uma visão mais próxima e silenciosa."
     },
     {
       "key": "ad_ch4_intro_sleep_trigger",
-      "value": "They slump and drop into sleep."
+      "value": "Ele se entrega e cai no sono."
     },
     {
       "key": "ad_ch4_intro_map_recenters",
-      "value": "Camera recenters on the chapter map."
+      "value": "A câmera se recentraliza no mapa do capítulo."
     },
     {
       "key": "ad_ch4_intro_map_music_starts",
-      "value": "Map theme begins."
+      "value": "O tema do mapa começa."
     },
     {
       "key": "ad_ch4_intro_map_controls_unlock_mirrored",
-      "value": "Map settles on Night Four, mirrored left to right."
+      "value": "O mapa se estabiliza na Noite Quatro, espelhado da esquerda para a direita."
     },
     {
       "key": "ad_ch5_intro_title_card",
-      "value": "Title card: Night Five."
+      "value": "Cartela de título: Noite Cinco."
     },
     {
       "key": "ad_ch5_intro_room_widens",
-      "value": "Room widens. They remain asleep under dim light."
+      "value": "O quarto se amplia. Ele permanece dormindo sob luz fraca."
     },
     {
       "key": "ad_ch5_intro_map_recenters",
-      "value": "Camera recenters from bed to the final map."
+      "value": "A câmera se recentraliza da cama para o mapa final."
     },
     {
       "key": "ad_ch5_intro_map_music_starts",
-      "value": "Map theme begins."
+      "value": "O tema do mapa começa."
     },
     {
       "key": "ad_ch5_intro_map_controls_unlock",
-      "value": "Map settles on Night Five."
+      "value": "O mapa se estabiliza na Noite Cinco."
     },
     {
       "key": "ad_ch1_outro_transition_room",
-      "value": "Transition closes from dream to bedroom."
+      "value": "A transição se fecha do sonho para o quarto."
     },
     {
       "key": "ad_ch1_outro_border_clears",
-      "value": "Feather border clears and the room sharpens."
+      "value": "A borda suave desaparece e o quarto fica nítido."
     },
     {
       "key": "ad_ch1_outro_wake",
-      "value": "They wake and sit up."
+      "value": "Ele acorda e se senta."
     },
     {
       "key": "ad_ch1_outro_fade_black",
-      "value": "Quick fade to black."
+      "value": "Fade rápido para preto."
     },
     {
       "key": "ad_ch1_outro_load_next",
-      "value": "Loading Night Two."
+      "value": "Carregando Noite Dois."
     },
     {
       "key": "ad_ch2_outro_transition_room",
-      "value": "Transition closes from dream to bedroom."
+      "value": "A transição se fecha do sonho para o quarto."
     },
     {
       "key": "ad_ch2_outro_border_clears",
-      "value": "Feather border clears; the room holds steady."
+      "value": "A borda suave se desfaz; o quarto permanece estável."
     },
     {
       "key": "ad_ch2_outro_wake_first",
-      "value": "First wake motion starts."
+      "value": "Começa o primeiro movimento de despertar."
     },
     {
       "key": "ad_ch2_outro_wake_second",
-      "value": "Second wake motion snaps them fully alert."
+      "value": "O segundo movimento de despertar o deixa totalmente alerta."
     },
     {
       "key": "ad_ch2_outro_fade_black",
-      "value": "Fade to black."
+      "value": "Fade para preto."
     },
     {
       "key": "ad_ch2_outro_load_next",
-      "value": "Loading Night Three."
+      "value": "Carregando Noite Três."
     },
     {
       "key": "ad_ch3_outro_transition_room",
-      "value": "Transition closes from dream to bedroom."
+      "value": "A transição se fecha do sonho para o quarto."
     },
     {
       "key": "ad_ch3_outro_border_clears",
-      "value": "Feather border clears; room detail returns."
+      "value": "A borda suave se desfaz; os detalhes do quarto voltam."
     },
     {
       "key": "ad_ch3_outro_static_flicker",
-      "value": "A burst of static cuts through the room."
+      "value": "Uma rajada de estática corta o quarto."
     },
     {
       "key": "ad_ch3_outro_wake_after_static",
-      "value": "After the glitch, they wake."
+      "value": "Após a falha visual, ele acorda."
     },
     {
       "key": "ad_ch3_outro_fade_black",
-      "value": "Fade to black."
+      "value": "Fade para preto."
     },
     {
       "key": "ad_ch3_outro_load_next",
-      "value": "Loading Night Four."
+      "value": "Carregando Noite Quatro."
     },
     {
       "key": "ad_ch4_outro_transition_room",
-      "value": "Transition closes from dream to bedroom."
+      "value": "A transição se fecha do sonho para o quarto."
     },
     {
       "key": "ad_ch4_outro_settles_sleep",
-      "value": "They sink deeper into sleep."
+      "value": "Ele mergulha em um sono mais profundo."
     },
     {
       "key": "ad_ch4_outro_border_clears",
-      "value": "Feather border drops away to a still room."
+      "value": "A borda suave desaparece e resta um quarto imóvel."
     },
     {
       "key": "ad_ch4_outro_long_fade_black",
-      "value": "Long fade to black as audio fades out."
+      "value": "Fade longo para preto enquanto o áudio diminui."
     },
     {
       "key": "ad_ch4_outro_load_next",
-      "value": "Loading Night Five."
+      "value": "Carregando Noite Cinco."
     },
     {
       "key": "ad_ch5_outro_transition_room",
-      "value": "Transition returns to the bedroom."
+      "value": "A transição retorna ao quarto."
     },
     {
       "key": "ad_ch5_outro_camera_to_window",
-      "value": "Camera glides from bed toward the window."
+      "value": "A câmera desliza da cama em direção à janela."
     },
     {
       "key": "ad_ch5_outro_window_fills_view",
-      "value": "The window fills most of the view."
+      "value": "A janela ocupa a maior parte da visão."
     },
     {
       "key": "ad_ch5_outro_looks_out_window",
-      "value": "They look outward, holding still."
+      "value": "Ele olha para fora, imóvel."
     },
     {
       "key": "ad_ch5_outro_final_fade_black",
-      "value": "Long final fade to black."
+      "value": "Fade final longo para preto."
     },
     {
       "key": "ad_ch5_outro_credits_begin",
-      "value": "Credits begin."
+      "value": "Os créditos começam."
     },
     {
       "key": "cue_left",

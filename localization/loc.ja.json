@@ -588,231 +588,231 @@
     },
     {
       "key": "ad_ch1_intro_title_card",
-      "value": "Title card: Night One."
+      "value": "タイトルカード: ナイト1。"
     },
     {
       "key": "ad_ch1_intro_room_widens",
-      "value": "Bedroom widens. They lounge awake with a laptop."
+      "value": "寝室の視界が広がる。彼はノートPCを前に目を覚ましている。"
     },
     {
       "key": "ad_ch1_intro_fade_black",
-      "value": "Brief fade to black."
+      "value": "短く暗転。"
     },
     {
       "key": "ad_ch1_intro_map_recenters",
-      "value": "View pulls back from the bed to the chapter map."
+      "value": "視点がベッドから引いてチャプターマップへ移る。"
     },
     {
       "key": "ad_ch1_intro_map_music_starts",
-      "value": "Map theme starts."
+      "value": "マップテーマが始まる。"
     },
     {
       "key": "ad_ch1_intro_map_controls_unlock",
-      "value": "Map settles on Night One. First routes are ready."
+      "value": "マップはナイト1で落ち着く。最初のルートが使える。"
     },
     {
       "key": "ad_ch2_intro_title_card",
-      "value": "Title card: Night Two."
+      "value": "タイトルカード: ナイト2。"
     },
     {
       "key": "ad_ch2_intro_room_widens",
-      "value": "Bedroom widens. They wake and look around."
+      "value": "寝室の視界が広がる。彼は目を覚まし、周囲を見渡す。"
     },
     {
       "key": "ad_ch2_intro_fade_black_sleep",
-      "value": "Screen darkens; they settle back to sleep."
+      "value": "画面が暗くなり、彼は再び眠りにつく。"
     },
     {
       "key": "ad_ch2_intro_map_recenters",
-      "value": "Camera recenters onto the chapter map."
+      "value": "カメラがチャプターマップへ中心を戻す。"
     },
     {
       "key": "ad_ch2_intro_map_music_starts",
-      "value": "Map theme returns."
+      "value": "マップテーマが戻る。"
     },
     {
       "key": "ad_ch2_intro_map_controls_unlock",
-      "value": "Map settles on Night Two."
+      "value": "マップはナイト2で落ち着く。"
     },
     {
       "key": "ad_ch3_intro_title_card",
-      "value": "Title card: Night Three."
+      "value": "タイトルカード: ナイト3。"
     },
     {
       "key": "ad_ch3_intro_room_widens",
-      "value": "Room widens in low ambience."
+      "value": "低い環境音の中で、部屋の視界が広がる。"
     },
     {
       "key": "ad_ch3_intro_crossfade_black",
-      "value": "Slow cross-fade to black."
+      "value": "ゆっくりクロスフェードで暗転。"
     },
     {
       "key": "ad_ch3_intro_room_returns_sleeping",
-      "value": "Room fades back with them asleep."
+      "value": "部屋がフェードインし、彼は眠っている。"
     },
     {
       "key": "ad_ch3_intro_map_music_starts",
-      "value": "Map theme starts under the room tone."
+      "value": "部屋の環境音の下で、マップテーマが始まる。"
     },
     {
       "key": "ad_ch3_intro_map_controls_unlock",
-      "value": "Map settles on Night Three."
+      "value": "マップはナイト3で落ち着く。"
     },
     {
       "key": "ad_ch4_intro_title_card",
-      "value": "Title card: Night Four."
+      "value": "タイトルカード: ナイト4。"
     },
     {
       "key": "ad_ch4_intro_room_widens",
-      "value": "Room opens in a closer, quiet view."
+      "value": "部屋が近く静かな視点で開く。"
     },
     {
       "key": "ad_ch4_intro_sleep_trigger",
-      "value": "They slump and drop into sleep."
+      "value": "彼はうなだれ、そのまま眠りに落ちる。"
     },
     {
       "key": "ad_ch4_intro_map_recenters",
-      "value": "Camera recenters on the chapter map."
+      "value": "カメラがチャプターマップへ中心を戻す。"
     },
     {
       "key": "ad_ch4_intro_map_music_starts",
-      "value": "Map theme begins."
+      "value": "マップテーマが始まる。"
     },
     {
       "key": "ad_ch4_intro_map_controls_unlock_mirrored",
-      "value": "Map settles on Night Four, mirrored left to right."
+      "value": "マップはナイト4で落ち着き、左右が反転している。"
     },
     {
       "key": "ad_ch5_intro_title_card",
-      "value": "Title card: Night Five."
+      "value": "タイトルカード: ナイト5。"
     },
     {
       "key": "ad_ch5_intro_room_widens",
-      "value": "Room widens. They remain asleep under dim light."
+      "value": "部屋の視界が広がる。薄暗い光の下で彼は眠ったままだ。"
     },
     {
       "key": "ad_ch5_intro_map_recenters",
-      "value": "Camera recenters from bed to the final map."
+      "value": "カメラがベッドから最終マップへ中心を移す。"
     },
     {
       "key": "ad_ch5_intro_map_music_starts",
-      "value": "Map theme begins."
+      "value": "マップテーマが始まる。"
     },
     {
       "key": "ad_ch5_intro_map_controls_unlock",
-      "value": "Map settles on Night Five."
+      "value": "マップはナイト5で落ち着く。"
     },
     {
       "key": "ad_ch1_outro_transition_room",
-      "value": "Transition closes from dream to bedroom."
+      "value": "トランジションが夢から寝室へ閉じる。"
     },
     {
       "key": "ad_ch1_outro_border_clears",
-      "value": "Feather border clears and the room sharpens."
+      "value": "羽状の縁取りが消え、部屋の輪郭がはっきりする。"
     },
     {
       "key": "ad_ch1_outro_wake",
-      "value": "They wake and sit up."
+      "value": "彼は目を覚まし、身を起こす。"
     },
     {
       "key": "ad_ch1_outro_fade_black",
-      "value": "Quick fade to black."
+      "value": "素早く暗転。"
     },
     {
       "key": "ad_ch1_outro_load_next",
-      "value": "Loading Night Two."
+      "value": "ナイト2を読み込み中。"
     },
     {
       "key": "ad_ch2_outro_transition_room",
-      "value": "Transition closes from dream to bedroom."
+      "value": "トランジションが夢から寝室へ閉じる。"
     },
     {
       "key": "ad_ch2_outro_border_clears",
-      "value": "Feather border clears; the room holds steady."
+      "value": "羽状の縁取りが消え、部屋の画は安定する。"
     },
     {
       "key": "ad_ch2_outro_wake_first",
-      "value": "First wake motion starts."
+      "value": "最初の目覚め動作が始まる。"
     },
     {
       "key": "ad_ch2_outro_wake_second",
-      "value": "Second wake motion snaps them fully alert."
+      "value": "二度目の目覚め動作で、彼は完全に覚醒する。"
     },
     {
       "key": "ad_ch2_outro_fade_black",
-      "value": "Fade to black."
+      "value": "暗転。"
     },
     {
       "key": "ad_ch2_outro_load_next",
-      "value": "Loading Night Three."
+      "value": "ナイト3を読み込み中。"
     },
     {
       "key": "ad_ch3_outro_transition_room",
-      "value": "Transition closes from dream to bedroom."
+      "value": "トランジションが夢から寝室へ閉じる。"
     },
     {
       "key": "ad_ch3_outro_border_clears",
-      "value": "Feather border clears; room detail returns."
+      "value": "羽状の縁取りが消え、部屋の細部が戻る。"
     },
     {
       "key": "ad_ch3_outro_static_flicker",
-      "value": "A burst of static cuts through the room."
+      "value": "激しいノイズが部屋を走る。"
     },
     {
       "key": "ad_ch3_outro_wake_after_static",
-      "value": "After the glitch, they wake."
+      "value": "ノイズの後、彼は目を覚ます。"
     },
     {
       "key": "ad_ch3_outro_fade_black",
-      "value": "Fade to black."
+      "value": "暗転。"
     },
     {
       "key": "ad_ch3_outro_load_next",
-      "value": "Loading Night Four."
+      "value": "ナイト4を読み込み中。"
     },
     {
       "key": "ad_ch4_outro_transition_room",
-      "value": "Transition closes from dream to bedroom."
+      "value": "トランジションが夢から寝室へ閉じる。"
     },
     {
       "key": "ad_ch4_outro_settles_sleep",
-      "value": "They sink deeper into sleep."
+      "value": "彼はさらに深い眠りへ沈む。"
     },
     {
       "key": "ad_ch4_outro_border_clears",
-      "value": "Feather border drops away to a still room."
+      "value": "羽状の縁取りが落ち、静かな部屋だけが残る。"
     },
     {
       "key": "ad_ch4_outro_long_fade_black",
-      "value": "Long fade to black as audio fades out."
+      "value": "音がフェードアウトしながら、長く暗転する。"
     },
     {
       "key": "ad_ch4_outro_load_next",
-      "value": "Loading Night Five."
+      "value": "ナイト5を読み込み中。"
     },
     {
       "key": "ad_ch5_outro_transition_room",
-      "value": "Transition returns to the bedroom."
+      "value": "トランジションが寝室へ戻る。"
     },
     {
       "key": "ad_ch5_outro_camera_to_window",
-      "value": "Camera glides from bed toward the window."
+      "value": "カメラがベッドから窓へ滑る。"
     },
     {
       "key": "ad_ch5_outro_window_fills_view",
-      "value": "The window fills most of the view."
+      "value": "窓が画面の大半を占める。"
     },
     {
       "key": "ad_ch5_outro_looks_out_window",
-      "value": "They look outward, holding still."
+      "value": "彼は外を見つめ、じっとしている。"
     },
     {
       "key": "ad_ch5_outro_final_fade_black",
-      "value": "Long final fade to black."
+      "value": "最後に長く暗転する。"
     },
     {
       "key": "ad_ch5_outro_credits_begin",
-      "value": "Credits begin."
+      "value": "クレジットが始まる。"
     },
     {
       "key": "cue_left",

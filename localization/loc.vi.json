@@ -588,231 +588,231 @@
     },
     {
       "key": "ad_ch1_intro_title_card",
-      "value": "Title card: Night One."
+      "value": "Thẻ tiêu đề: Đêm Một."
     },
     {
       "key": "ad_ch1_intro_room_widens",
-      "value": "Bedroom widens. They lounge awake with a laptop."
+      "value": "Khung phòng ngủ mở rộng. Người ấy thức và tựa với laptop."
     },
     {
       "key": "ad_ch1_intro_fade_black",
-      "value": "Brief fade to black."
+      "value": "Màn hình tối đen trong chốc lát."
     },
     {
       "key": "ad_ch1_intro_map_recenters",
-      "value": "View pulls back from the bed to the chapter map."
+      "value": "Góc nhìn lùi từ giường ra bản đồ chương."
     },
     {
       "key": "ad_ch1_intro_map_music_starts",
-      "value": "Map theme starts."
+      "value": "Nhạc chủ đề bản đồ bắt đầu."
     },
     {
       "key": "ad_ch1_intro_map_controls_unlock",
-      "value": "Map settles on Night One. First routes are ready."
+      "value": "Bản đồ dừng lại ở Đêm Một. Các lộ trình đầu tiên đã sẵn sàng."
     },
     {
       "key": "ad_ch2_intro_title_card",
-      "value": "Title card: Night Two."
+      "value": "Thẻ tiêu đề: Đêm Hai."
     },
     {
       "key": "ad_ch2_intro_room_widens",
-      "value": "Bedroom widens. They wake and look around."
+      "value": "Khung phòng ngủ mở rộng. Người ấy tỉnh dậy và nhìn quanh."
     },
     {
       "key": "ad_ch2_intro_fade_black_sleep",
-      "value": "Screen darkens; they settle back to sleep."
+      "value": "Màn hình tối đi; người ấy lịm vào giấc ngủ trở lại."
     },
     {
       "key": "ad_ch2_intro_map_recenters",
-      "value": "Camera recenters onto the chapter map."
+      "value": "Camera căn giữa lại vào bản đồ chương."
     },
     {
       "key": "ad_ch2_intro_map_music_starts",
-      "value": "Map theme returns."
+      "value": "Nhạc chủ đề bản đồ trở lại."
     },
     {
       "key": "ad_ch2_intro_map_controls_unlock",
-      "value": "Map settles on Night Two."
+      "value": "Bản đồ dừng lại ở Đêm Hai."
     },
     {
       "key": "ad_ch3_intro_title_card",
-      "value": "Title card: Night Three."
+      "value": "Thẻ tiêu đề: Đêm Ba."
     },
     {
       "key": "ad_ch3_intro_room_widens",
-      "value": "Room widens in low ambience."
+      "value": "Khung phòng mở rộng trong âm nền trầm."
     },
     {
       "key": "ad_ch3_intro_crossfade_black",
-      "value": "Slow cross-fade to black."
+      "value": "Chuyển cảnh dần chuyển chậm về màn hình đen."
     },
     {
       "key": "ad_ch3_intro_room_returns_sleeping",
-      "value": "Room fades back with them asleep."
+      "value": "Khung phòng hiện ra lại khi người ấy đang ngủ."
     },
     {
       "key": "ad_ch3_intro_map_music_starts",
-      "value": "Map theme starts under the room tone."
+      "value": "Nhạc chủ đề bản đồ bắt đầu bên dưới âm nền của phòng."
     },
     {
       "key": "ad_ch3_intro_map_controls_unlock",
-      "value": "Map settles on Night Three."
+      "value": "Bản đồ dừng lại ở Đêm Ba."
     },
     {
       "key": "ad_ch4_intro_title_card",
-      "value": "Title card: Night Four."
+      "value": "Thẻ tiêu đề: Đêm Bốn."
     },
     {
       "key": "ad_ch4_intro_room_widens",
-      "value": "Room opens in a closer, quiet view."
+      "value": "Căn phòng mở ra ở góc nhìn gần hơn, yên tĩnh hơn."
     },
     {
       "key": "ad_ch4_intro_sleep_trigger",
-      "value": "They slump and drop into sleep."
+      "value": "Người ấy gục xuống và rơi vào giấc ngủ."
     },
     {
       "key": "ad_ch4_intro_map_recenters",
-      "value": "Camera recenters on the chapter map."
+      "value": "Camera căn giữa lại vào bản đồ chương."
     },
     {
       "key": "ad_ch4_intro_map_music_starts",
-      "value": "Map theme begins."
+      "value": "Nhạc chủ đề bản đồ bắt đầu."
     },
     {
       "key": "ad_ch4_intro_map_controls_unlock_mirrored",
-      "value": "Map settles on Night Four, mirrored left to right."
+      "value": "Bản đồ dừng lại ở Đêm Bốn, đảo ngược trái-phải."
     },
     {
       "key": "ad_ch5_intro_title_card",
-      "value": "Title card: Night Five."
+      "value": "Thẻ tiêu đề: Đêm Năm."
     },
     {
       "key": "ad_ch5_intro_room_widens",
-      "value": "Room widens. They remain asleep under dim light."
+      "value": "Khung phòng mở rộng. Người ấy vẫn ngủ dưới ánh đèn mờ."
     },
     {
       "key": "ad_ch5_intro_map_recenters",
-      "value": "Camera recenters from bed to the final map."
+      "value": "Camera căn giữa lại từ giường sang bản đồ cuối."
     },
     {
       "key": "ad_ch5_intro_map_music_starts",
-      "value": "Map theme begins."
+      "value": "Nhạc chủ đề bản đồ bắt đầu."
     },
     {
       "key": "ad_ch5_intro_map_controls_unlock",
-      "value": "Map settles on Night Five."
+      "value": "Bản đồ dừng lại ở Đêm Năm."
     },
     {
       "key": "ad_ch1_outro_transition_room",
-      "value": "Transition closes from dream to bedroom."
+      "value": "Cảnh chuyển đóng lại từ giấc mơ về phòng ngủ."
     },
     {
       "key": "ad_ch1_outro_border_clears",
-      "value": "Feather border clears and the room sharpens."
+      "value": "Viền mờ biến mất, căn phòng trở nên rõ nét."
     },
     {
       "key": "ad_ch1_outro_wake",
-      "value": "They wake and sit up."
+      "value": "Người ấy tỉnh dậy và ngồi dậy."
     },
     {
       "key": "ad_ch1_outro_fade_black",
-      "value": "Quick fade to black."
+      "value": "Màn hình nhanh chóng tối đen."
     },
     {
       "key": "ad_ch1_outro_load_next",
-      "value": "Loading Night Two."
+      "value": "Đang tải Đêm Hai."
     },
     {
       "key": "ad_ch2_outro_transition_room",
-      "value": "Transition closes from dream to bedroom."
+      "value": "Cảnh chuyển đóng lại từ giấc mơ về phòng ngủ."
     },
     {
       "key": "ad_ch2_outro_border_clears",
-      "value": "Feather border clears; the room holds steady."
+      "value": "Viền mờ biến mất; khung phòng ổn định."
     },
     {
       "key": "ad_ch2_outro_wake_first",
-      "value": "First wake motion starts."
+      "value": "Cử động tỉnh giấc đầu tiên bắt đầu."
     },
     {
       "key": "ad_ch2_outro_wake_second",
-      "value": "Second wake motion snaps them fully alert."
+      "value": "Cử động tỉnh giấc thứ hai khiến người ấy tỉnh hẳn."
     },
     {
       "key": "ad_ch2_outro_fade_black",
-      "value": "Fade to black."
+      "value": "Màn hình tối đen."
     },
     {
       "key": "ad_ch2_outro_load_next",
-      "value": "Loading Night Three."
+      "value": "Đang tải Đêm Ba."
     },
     {
       "key": "ad_ch3_outro_transition_room",
-      "value": "Transition closes from dream to bedroom."
+      "value": "Cảnh chuyển đóng lại từ giấc mơ về phòng ngủ."
     },
     {
       "key": "ad_ch3_outro_border_clears",
-      "value": "Feather border clears; room detail returns."
+      "value": "Viền mờ biến mất; chi tiết căn phòng trở lại."
     },
     {
       "key": "ad_ch3_outro_static_flicker",
-      "value": "A burst of static cuts through the room."
+      "value": "Một đợt nhiễu tĩnh điện cắt ngang căn phòng."
     },
     {
       "key": "ad_ch3_outro_wake_after_static",
-      "value": "After the glitch, they wake."
+      "value": "Sau lỗi hình ảnh, người ấy tỉnh dậy."
     },
     {
       "key": "ad_ch3_outro_fade_black",
-      "value": "Fade to black."
+      "value": "Màn hình tối đen."
     },
     {
       "key": "ad_ch3_outro_load_next",
-      "value": "Loading Night Four."
+      "value": "Đang tải Đêm Bốn."
     },
     {
       "key": "ad_ch4_outro_transition_room",
-      "value": "Transition closes from dream to bedroom."
+      "value": "Cảnh chuyển đóng lại từ giấc mơ về phòng ngủ."
     },
     {
       "key": "ad_ch4_outro_settles_sleep",
-      "value": "They sink deeper into sleep."
+      "value": "Người ấy chìm vào giấc ngủ sâu hơn."
     },
     {
       "key": "ad_ch4_outro_border_clears",
-      "value": "Feather border drops away to a still room."
+      "value": "Viền mờ rơi đi, để lại căn phòng tĩnh lặng."
     },
     {
       "key": "ad_ch4_outro_long_fade_black",
-      "value": "Long fade to black as audio fades out."
+      "value": "Âm thanh dần tắt, màn hình tối đen trong khoảng lâu."
     },
     {
       "key": "ad_ch4_outro_load_next",
-      "value": "Loading Night Five."
+      "value": "Đang tải Đêm Năm."
     },
     {
       "key": "ad_ch5_outro_transition_room",
-      "value": "Transition returns to the bedroom."
+      "value": "Cảnh chuyển trở về phòng ngủ."
     },
     {
       "key": "ad_ch5_outro_camera_to_window",
-      "value": "Camera glides from bed toward the window."
+      "value": "Camera lướt từ giường về phía cửa sổ."
     },
     {
       "key": "ad_ch5_outro_window_fills_view",
-      "value": "The window fills most of the view."
+      "value": "Cửa sổ chiếm phần lớn khung hình."
     },
     {
       "key": "ad_ch5_outro_looks_out_window",
-      "value": "They look outward, holding still."
+      "value": "Người ấy nhìn ra ngoài và đứng yên."
     },
     {
       "key": "ad_ch5_outro_final_fade_black",
-      "value": "Long final fade to black."
+      "value": "Lần cuối cùng, màn hình tối đen trong khoảng lâu."
     },
     {
       "key": "ad_ch5_outro_credits_begin",
-      "value": "Credits begin."
+      "value": "Phần credit bắt đầu."
     },
     {
       "key": "cue_left",
