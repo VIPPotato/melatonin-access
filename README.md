@@ -85,7 +85,7 @@ Settings are stored in `UserData/MelonPreferences.cfg` under category `Melatonin
 dotnet build MelatoninAccess.csproj
 ```
 
-The project is configured to auto-copy `MelatoninAccess.dll` and the `cutscene-ad` data folder to your game `Mods` folder after build when `ModsPath` is valid in `MelatoninAccess.csproj`.
+The project is configured to auto-copy `MelatoninAccess.dll`, the `cutscene-ad` data folder, and the `localization` JSON folder to your game `Mods` folder after build when `ModsPath` is valid in `MelatoninAccess.csproj`.
 
 ## Release Package
 
@@ -100,6 +100,7 @@ Package contents:
 - `Mods/MelatoninAccess.dll`
 - `Mods/cutscene-ad/manifest.json`
 - `Mods/cutscene-ad/scripts/*.json`
+- `Mods/localization/loc.<lang>.json`
 - `Tolk.dll`
 - `nvdaControllerClient32.dll`
 - `UserConfig/Loader.cfg` (bundled from maintainer install; includes hidden-console setting)
@@ -115,6 +116,7 @@ The release ZIP intentionally excludes development docs/tools (for example chang
 4. Confirm these files exist:
      - `<Melatonin folder>/Mods/MelatoninAccess.dll`
      - `<Melatonin folder>/Mods/cutscene-ad/manifest.json`
+     - `<Melatonin folder>/Mods/localization/loc.en.json`
      - `<Melatonin folder>/Tolk.dll`
      - `<Melatonin folder>/nvdaControllerClient32.dll`
      - `<Melatonin folder>/UserConfig/Loader.cfg`
@@ -140,6 +142,7 @@ dotnet build MelatoninAccess.csproj
 2. If auto-copy is not configured, copy:
     - `bin/Debug/net472/MelatoninAccess.dll` to `<Melatonin folder>/Mods/`
     - `cutscene-ad/` to `<Melatonin folder>/Mods/cutscene-ad/`
+    - `localization/` to `<Melatonin folder>/Mods/localization/`
     - `libs/x86/Tolk.dll` to `<Melatonin folder>/`
     - `libs/x86/nvdaControllerClient32.dll` to `<Melatonin folder>/`
 
@@ -172,7 +175,7 @@ pwsh -File .\scripts\Test-SpeechRegression.ps1 -RequiredPattern "Tutorial\. Pres
 
 ## Localization QA Check
 
-Validate that all `Loc.cs` keys have complete language coverage and matching placeholders:
+Validate that all `localization/loc.<lang>.json` files have complete language coverage and matching placeholders:
 
 ```powershell
 pwsh -File .\scripts\Test-LocalizationQA.ps1
@@ -192,7 +195,7 @@ Strict/authoring options:
 
 ```powershell
 pwsh -File .\scripts\Test-CutsceneAdPipeline.ps1 -StrictCoverage -RequireEntries
-pwsh -File .\scripts\Test-CutsceneAdPipeline.ps1 -ValidateLocKeys -LocPath .\Loc.cs
+pwsh -File .\scripts\Test-CutsceneAdPipeline.ps1 -ValidateLocKeys -LocalizationDir .\localization
 ```
 
 This check runs automatically during release packaging (`scripts/Build-ReleasePackage.ps1`) unless you pass `-SkipCutsceneQa`.

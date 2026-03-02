@@ -1,0 +1,866 @@
+{
+  "schemaVersion": 1,
+  "language": "es",
+  "entries": [
+    {
+      "key": "mod_loaded",
+      "value": "Mod Melatonin Access cargado."
+    },
+    {
+      "key": "mod_active_help",
+      "value": "Melatonin Access está activo. Usa las flechas para navegar por los menús."
+    },
+    {
+      "key": "debug_enabled",
+      "value": "Modo depuración activado."
+    },
+    {
+      "key": "debug_disabled",
+      "value": "Modo depuración desactivado."
+    },
+    {
+      "key": "rhythm_cues_enabled",
+      "value": "Indicaciones contextuales de tutorial activadas."
+    },
+    {
+      "key": "rhythm_cues_disabled",
+      "value": "Indicaciones contextuales de tutorial desactivadas."
+    },
+    {
+      "key": "menu_positions_enabled",
+      "value": "Anuncios de posición de menú activados."
+    },
+    {
+      "key": "menu_positions_disabled",
+      "value": "Anuncios de posición de menú desactivados."
+    },
+    {
+      "key": "intro_welcome",
+      "value": "Pulsa {0} para comenzar. Pulsa {1} para cambiar el idioma."
+    },
+    {
+      "key": "language_selected",
+      "value": "Idioma seleccionado."
+    },
+    {
+      "key": "language_menu",
+      "value": "Menú de idioma"
+    },
+    {
+      "key": "credits_title",
+      "value": "Créditos"
+    },
+    {
+      "key": "menu_suffix",
+      "value": "Menú {0}"
+    },
+    {
+      "key": "order_of",
+      "value": "{0} de {1}"
+    },
+    {
+      "key": "chapter_locked",
+      "value": "Capítulo {0} bloqueado"
+    },
+    {
+      "key": "option_with_slider",
+      "value": "{0} deslizador {1}"
+    },
+    {
+      "key": "slider_value",
+      "value": "Deslizador {0}"
+    },
+    {
+      "key": "action_key_current_binding",
+      "value": "{0}, actualmente asignado a {1}."
+    },
+    {
+      "key": "state_on",
+      "value": "Activado"
+    },
+    {
+      "key": "state_off",
+      "value": "Desactivado"
+    },
+    {
+      "key": "fullscreen",
+      "value": "Pantalla completa"
+    },
+    {
+      "key": "windowed",
+      "value": "Ventana"
+    },
+    {
+      "key": "calibration_tool_intro",
+      "value": "Herramienta de calibración. Ajusta el desfase para coincidir con el ritmo."
+    },
+    {
+      "key": "calibration_offset",
+      "value": "Desfase {0}"
+    },
+    {
+      "key": "calibration_timing_on_time",
+      "value": "A tiempo."
+    },
+    {
+      "key": "calibration_timing_early_ms",
+      "value": "Temprano por {0} ms."
+    },
+    {
+      "key": "calibration_timing_late_ms",
+      "value": "Tarde por {0} ms."
+    },
+    {
+      "key": "downloaded_levels_loading",
+      "value": "Niveles descargados. Cargando..."
+    },
+    {
+      "key": "downloaded_levels_page_total",
+      "value": "{0} niveles en total. Página {1} de {2}"
+    },
+    {
+      "key": "downloaded_levels_total",
+      "value": "{0} niveles en total."
+    },
+    {
+      "key": "next_page",
+      "value": "Página siguiente"
+    },
+    {
+      "key": "previous_page",
+      "value": "Página anterior"
+    },
+    {
+      "key": "page_of",
+      "value": "Página {0} de {1}"
+    },
+    {
+      "key": "item_of",
+      "value": "{0}, elemento {1} de {2}"
+    },
+    {
+      "key": "achievements_menu",
+      "value": "Menú de logros"
+    },
+    {
+      "key": "locked_achievement",
+      "value": "Logro bloqueado. {0} de {1}"
+    },
+    {
+      "key": "locked_achievement_plain",
+      "value": "Logro bloqueado."
+    },
+    {
+      "key": "achievement_with_desc",
+      "value": "{0}: {1}. {2} de {3}"
+    },
+    {
+      "key": "achievement_with_desc_plain",
+      "value": "{0}: {1}."
+    },
+    {
+      "key": "arrived_at",
+      "value": "Llegaste a {0}"
+    },
+    {
+      "key": "mode_menu",
+      "value": "Menú de modo"
+    },
+    {
+      "key": "dream_about_level",
+      "value": "Sueño sobre {0}"
+    },
+    {
+      "key": "teleport_arrived_stars",
+      "value": "{0}. {1} estrellas."
+    },
+    {
+      "key": "teleport_arrived_one_star",
+      "value": "{0}. {1} estrella."
+    },
+    {
+      "key": "map_progress_status",
+      "value": "Estrellas del mapa: {0}. Faltan {1} para completar."
+    },
+    {
+      "key": "map_transient_controls_unlocked",
+      "value": "Map settles into view."
+    },
+    {
+      "key": "map_transient_controls_unlocked_mirrored",
+      "value": "Map settles into view mirrored. Left and right are swapped."
+    },
+    {
+      "key": "teleport_conflict_hint",
+      "value": "La teletransportación con corchetes está desactivada porque Acción usa corchetes. Usa F9 y F10."
+    },
+    {
+      "key": "unknown_level",
+      "value": "Nivel desconocido"
+    },
+    {
+      "key": "dream_name_career",
+      "value": "Carrera"
+    },
+    {
+      "key": "dream_name_dating",
+      "value": "Citas"
+    },
+    {
+      "key": "dream_name_desires",
+      "value": "Deseos"
+    },
+    {
+      "key": "dream_name_exercise",
+      "value": "Ejercicio"
+    },
+    {
+      "key": "dream_name_final",
+      "value": "Final"
+    },
+    {
+      "key": "dream_name_followers",
+      "value": "Seguidores"
+    },
+    {
+      "key": "dream_name_food",
+      "value": "Comida"
+    },
+    {
+      "key": "dream_name_future",
+      "value": "Futuro"
+    },
+    {
+      "key": "dream_name_indulgence",
+      "value": "Indulgencia"
+    },
+    {
+      "key": "dream_name_meditation",
+      "value": "Meditación"
+    },
+    {
+      "key": "dream_name_mind",
+      "value": "Mente"
+    },
+    {
+      "key": "dream_name_money",
+      "value": "Dinero"
+    },
+    {
+      "key": "dream_name_nature",
+      "value": "Naturaleza"
+    },
+    {
+      "key": "dream_name_past",
+      "value": "Pasado"
+    },
+    {
+      "key": "dream_name_pressure",
+      "value": "Presión"
+    },
+    {
+      "key": "dream_name_setbacks",
+      "value": "Reveses"
+    },
+    {
+      "key": "dream_name_shopping",
+      "value": "Compras"
+    },
+    {
+      "key": "dream_name_space",
+      "value": "Espacio"
+    },
+    {
+      "key": "dream_name_stress",
+      "value": "Estrés"
+    },
+    {
+      "key": "dream_name_tech",
+      "value": "Tecnología"
+    },
+    {
+      "key": "dream_name_time",
+      "value": "Tiempo"
+    },
+    {
+      "key": "dream_name_tutorial",
+      "value": "Tutorial"
+    },
+    {
+      "key": "editor_cursor_empty",
+      "value": "Frase {0}, compás {1}, tiempo {2}. Vacío."
+    },
+    {
+      "key": "editor_cursor_content",
+      "value": "Frase {0}, compás {1}, tiempo {2}. {3}."
+    },
+    {
+      "key": "editor_placed",
+      "value": "Colocado {0}"
+    },
+    {
+      "key": "editor_removed",
+      "value": "Eliminado"
+    },
+    {
+      "key": "editor_tool_select",
+      "value": "Selección de herramienta"
+    },
+    {
+      "key": "advanced_menu",
+      "value": "Menú avanzado"
+    },
+    {
+      "key": "editor_ready",
+      "value": "Editor de niveles listo"
+    },
+    {
+      "key": "editor_page",
+      "value": "Página {0}"
+    },
+    {
+      "key": "tutorial_skip_prompt",
+      "value": "Tutorial. Pulsa {0} para omitir."
+    },
+    {
+      "key": "tutorial_label",
+      "value": "Tutorial."
+    },
+    {
+      "key": "cue_space",
+      "value": "Espacio"
+    },
+    {
+      "key": "cue_press_action",
+      "value": "Pulsa {0}"
+    },
+    {
+      "key": "cue_press_action_twice",
+      "value": "Pulsa {0} dos veces"
+    },
+    {
+      "key": "cue_followers_phase_one_start_stop",
+      "value": "Pulsa {0} al ritmo. Empieza y detente después del sonido del resorte."
+    },
+    {
+      "key": "cue_followers_phase_two_resume_after_vibration",
+      "value": "Detente después del sonido de salto. Continúa después de la vibración."
+    },
+    {
+      "key": "cue_followers_phase_three_press_thrice",
+      "value": "Pulsa {0} tres veces después de la doble vibración."
+    },
+    {
+      "key": "cue_tech_every_two_beats",
+      "value": "Tras la señal aguda, pulsa {0} en el siguiente pulso."
+    },
+    {
+      "key": "cue_tech_next_three_beats",
+      "value": "Tras la señal aguda, pulsa {0} en los siguientes 3 pulsos."
+    },
+    {
+      "key": "cue_time_portal_gap_hold_release",
+      "value": "Tras el zumbido del portal en el silencio, mantén {0} y suelta en la siguiente señal."
+    },
+    {
+      "key": "cue_time_sixth_seventh_hold_release",
+      "value": "En la sexta señal, mantén {0}. Suelta en la séptima señal."
+    },
+    {
+      "key": "cue_nature_water_press_thrice",
+      "value": "Pulsa {0} tres veces."
+    },
+    {
+      "key": "cue_mind_triple_offbeat",
+      "value": "Pulsa {0} tres veces con la señal de contratiempo."
+    },
+    {
+      "key": "cue_press_up",
+      "value": "Arriba"
+    },
+    {
+      "key": "cue_hold_release_duration",
+      "value": "Mantén {0}. Suelta después de {1}."
+    },
+    {
+      "key": "cue_hold_release_on_beat",
+      "value": "Mantener {0}. Soltar en el pulso {1}."
+    },
+    {
+      "key": "duration_half_beat",
+      "value": "medio pulso"
+    },
+    {
+      "key": "duration_one_beat",
+      "value": "1 pulso"
+    },
+    {
+      "key": "duration_n_beats",
+      "value": "{0} pulsos"
+    },
+    {
+      "key": "cue_past_camera_first_sound",
+      "value": "Mantener {0} por 1 pulso."
+    },
+    {
+      "key": "cue_past_camera_second_sound",
+      "value": "Mantener {0} medio pulso."
+    },
+    {
+      "key": "cue_past_camera_third_sound",
+      "value": "Mantener {0} por 2 pulsos."
+    },
+    {
+      "key": "cue_tutorial_press_second_beat",
+      "value": "Pulsa {0} en el segundo pulso."
+    },
+    {
+      "key": "cue_food_press_third_beat",
+      "value": "Pulsa {0} en el tercer pulso."
+    },
+    {
+      "key": "cue_food_press_fifth_beat",
+      "value": "Pulsa {0} en el quinto pulso."
+    },
+    {
+      "key": "cue_food_press_fourth_beat",
+      "value": "Pulsa {0} en el cuarto pulso."
+    },
+    {
+      "key": "cue_food_press_seventh_beat",
+      "value": "Pulsa {0} en el séptimo pulso."
+    },
+    {
+      "key": "cue_shopping_repeat_patterns",
+      "value": "Repite los patrones de audio con {0}."
+    },
+    {
+      "key": "cue_dating_follow_swipes",
+      "value": "Desliza a la izquierda o derecha en el cuarto pulso."
+    },
+    {
+      "key": "cue_future_follow_patterns",
+      "value": "Sigue las señales de patrón."
+    },
+    {
+      "key": "cue_swipe_left",
+      "value": "Desliza a la izquierda en el cuarto pulso."
+    },
+    {
+      "key": "cue_swipe_right",
+      "value": "Desliza a la derecha en el cuarto pulso."
+    },
+    {
+      "key": "cue_swipe_left_long",
+      "value": "Desliza a la izquierda después de la señal larga."
+    },
+    {
+      "key": "cue_swipe_right_long",
+      "value": "Desliza a la derecha después de la señal larga."
+    },
+    {
+      "key": "cue_hold_action",
+      "value": "Mantener {0}"
+    },
+    {
+      "key": "key_enter",
+      "value": "Enter"
+    },
+    {
+      "key": "key_period",
+      "value": "Punto"
+    },
+    {
+      "key": "key_slash",
+      "value": "Barra"
+    },
+    {
+      "key": "key_tab",
+      "value": "Tab"
+    },
+    {
+      "key": "key_escape",
+      "value": "Esc"
+    },
+    {
+      "key": "key_start",
+      "value": "Start"
+    },
+    {
+      "key": "help_title_screen",
+      "value": "Ayuda de pantalla de título. Pulsa {0} para empezar. Pulsa {1} para cambiar idioma."
+    },
+    {
+      "key": "help_menu",
+      "value": "Ayuda de menú. Usa Arriba y Abajo para moverte. Pulsa {0} para seleccionar. Pulsa {1} para volver."
+    },
+    {
+      "key": "help_map",
+      "value": "Ayuda del mapa. Usa [ y ] o F9 y F10 para moverte entre niveles. Pulsa {0} para abrir el nivel seleccionado. Pulsa F1 o View en mando para las estrellas del mapa."
+    },
+    {
+      "key": "help_mode_menu",
+      "value": "Ayuda del menú de modo. Usa Arriba y Abajo para elegir modo. Pulsa {0} para iniciar. Pulsa {1} para cerrar este menú."
+    },
+    {
+      "key": "help_results",
+      "value": "Ayuda de resultados. Usa Arriba y Abajo para elegir una opción. Pulsa {0} para confirmar. Pulsa {1} para volver."
+    },
+    {
+      "key": "help_gameplay",
+      "value": "Ayuda de juego. Sigue las señales contextuales y pulsa las acciones anunciadas. Pulsa {0} para pausar."
+    },
+    {
+      "key": "help_editor",
+      "value": "Ayuda del editor. Usa flechas para moverte por la línea de tiempo. Pulsa {0} para colocar o seleccionar. Pulsa {1} para cancelar."
+    },
+    {
+      "key": "level_briefing_line",
+      "value": "{0}. {1}. {2}"
+    },
+    {
+      "key": "mode_practice",
+      "value": "Modo práctica"
+    },
+    {
+      "key": "practice_mode_started",
+      "value": "Modo práctica iniciado."
+    },
+    {
+      "key": "mode_score",
+      "value": "Modo puntuación"
+    },
+    {
+      "key": "score_mode_started",
+      "value": "Modo puntuación iniciado."
+    },
+    {
+      "key": "mode_hard",
+      "value": "Modo difícil"
+    },
+    {
+      "key": "mode_score_remix",
+      "value": "Modo puntuación remix"
+    },
+    {
+      "key": "mode_hard_remix",
+      "value": "Modo difícil remix"
+    },
+    {
+      "key": "mode_tutorial",
+      "value": "Modo tutorial"
+    },
+    {
+      "key": "mode_editor_test",
+      "value": "Modo prueba editor"
+    },
+    {
+      "key": "mode_community",
+      "value": "Modo comunidad"
+    },
+    {
+      "key": "objective_default",
+      "value": "Sigue las señales contextuales y mantén el ritmo."
+    },
+    {
+      "key": "objective_practice",
+      "value": "Aprende el patrón y el tiempo. Pulsa {0} para omitir."
+    },
+    {
+      "key": "objective_score",
+      "value": "Gana puntuación marcando acciones a tiempo."
+    },
+    {
+      "key": "objective_hard",
+      "value": "Mantén la precisión en patrones más exigentes."
+    },
+    {
+      "key": "objective_tutorial",
+      "value": "Sigue las instrucciones para aprender mecánicas."
+    },
+    {
+      "key": "objective_editor_test",
+      "value": "Prueba el timing y flujo de tu nivel."
+    },
+    {
+      "key": "objective_community",
+      "value": "Juega y evalúa este nivel de la comunidad."
+    },
+    {
+      "key": "ad_ch1_intro_title_card",
+      "value": "Tarjeta de título: Noche Uno."
+    },
+    {
+      "key": "ad_ch1_intro_room_widens",
+      "value": "La vista del dormitorio se abre. Está despierto con un portátil."
+    },
+    {
+      "key": "ad_ch1_intro_fade_black",
+      "value": "Breve fundido a negro."
+    },
+    {
+      "key": "ad_ch1_intro_map_recenters",
+      "value": "La vista se aleja de la cama hasta el mapa del capítulo."
+    },
+    {
+      "key": "ad_ch1_intro_map_music_starts",
+      "value": "Empieza el tema del mapa."
+    },
+    {
+      "key": "ad_ch1_intro_map_controls_unlock",
+      "value": "El mapa se estabiliza en Noche Uno. Las primeras rutas están listas."
+    },
+    {
+      "key": "ad_ch2_intro_title_card",
+      "value": "Tarjeta de título: Noche Dos."
+    },
+    {
+      "key": "ad_ch2_intro_room_widens",
+      "value": "La vista del dormitorio se abre. Se despierta y mira a su alrededor."
+    },
+    {
+      "key": "ad_ch2_intro_fade_black_sleep",
+      "value": "La pantalla se oscurece; vuelve a quedarse dormido."
+    },
+    {
+      "key": "ad_ch2_intro_map_recenters",
+      "value": "La cámara se recentra en el mapa del capítulo."
+    },
+    {
+      "key": "ad_ch2_intro_map_music_starts",
+      "value": "Regresa el tema del mapa."
+    },
+    {
+      "key": "ad_ch2_intro_map_controls_unlock",
+      "value": "El mapa se estabiliza en Noche Dos."
+    },
+    {
+      "key": "ad_ch3_intro_title_card",
+      "value": "Tarjeta de título: Noche Tres."
+    },
+    {
+      "key": "ad_ch3_intro_room_widens",
+      "value": "La habitación se amplía con una ambientación tenue."
+    },
+    {
+      "key": "ad_ch3_intro_crossfade_black",
+      "value": "Lento fundido encadenado a negro."
+    },
+    {
+      "key": "ad_ch3_intro_room_returns_sleeping",
+      "value": "La habitación vuelve en fundido y está dormido."
+    },
+    {
+      "key": "ad_ch3_intro_map_music_starts",
+      "value": "El tema del mapa empieza sobre el ambiente de la habitación."
+    },
+    {
+      "key": "ad_ch3_intro_map_controls_unlock",
+      "value": "El mapa se estabiliza en Noche Tres."
+    },
+    {
+      "key": "ad_ch4_intro_title_card",
+      "value": "Tarjeta de título: Noche Cuatro."
+    },
+    {
+      "key": "ad_ch4_intro_room_widens",
+      "value": "La habitación se abre en una vista más cercana y silenciosa."
+    },
+    {
+      "key": "ad_ch4_intro_sleep_trigger",
+      "value": "Se desploma y cae dormido."
+    },
+    {
+      "key": "ad_ch4_intro_map_recenters",
+      "value": "La cámara se recentra en el mapa del capítulo."
+    },
+    {
+      "key": "ad_ch4_intro_map_music_starts",
+      "value": "Comienza el tema del mapa."
+    },
+    {
+      "key": "ad_ch4_intro_map_controls_unlock_mirrored",
+      "value": "El mapa se estabiliza en Noche Cuatro, con inversión izquierda-derecha."
+    },
+    {
+      "key": "ad_ch5_intro_title_card",
+      "value": "Tarjeta de título: Noche Cinco."
+    },
+    {
+      "key": "ad_ch5_intro_room_widens",
+      "value": "La habitación se abre. Sigue dormido bajo una luz tenue."
+    },
+    {
+      "key": "ad_ch5_intro_map_recenters",
+      "value": "La cámara se recentra de la cama al mapa final."
+    },
+    {
+      "key": "ad_ch5_intro_map_music_starts",
+      "value": "Comienza el tema del mapa."
+    },
+    {
+      "key": "ad_ch5_intro_map_controls_unlock",
+      "value": "El mapa se estabiliza en Noche Cinco."
+    },
+    {
+      "key": "ad_ch1_outro_transition_room",
+      "value": "La transición se cierra del sueño al dormitorio."
+    },
+    {
+      "key": "ad_ch1_outro_border_clears",
+      "value": "El borde difuminado desaparece y la habitación se enfoca."
+    },
+    {
+      "key": "ad_ch1_outro_wake",
+      "value": "Despierta y se incorpora."
+    },
+    {
+      "key": "ad_ch1_outro_fade_black",
+      "value": "Fundido rápido a negro."
+    },
+    {
+      "key": "ad_ch1_outro_load_next",
+      "value": "Cargando Noche Dos."
+    },
+    {
+      "key": "ad_ch2_outro_transition_room",
+      "value": "La transición se cierra del sueño al dormitorio."
+    },
+    {
+      "key": "ad_ch2_outro_border_clears",
+      "value": "El borde difuminado se desvanece; la habitación se mantiene estable."
+    },
+    {
+      "key": "ad_ch2_outro_wake_first",
+      "value": "Comienza el primer movimiento de despertar."
+    },
+    {
+      "key": "ad_ch2_outro_wake_second",
+      "value": "El segundo movimiento de despertar lo deja completamente alerta."
+    },
+    {
+      "key": "ad_ch2_outro_fade_black",
+      "value": "Fundido a negro."
+    },
+    {
+      "key": "ad_ch2_outro_load_next",
+      "value": "Cargando Noche Tres."
+    },
+    {
+      "key": "ad_ch3_outro_transition_room",
+      "value": "La transición se cierra del sueño al dormitorio."
+    },
+    {
+      "key": "ad_ch3_outro_border_clears",
+      "value": "El borde difuminado se desvanece; vuelven los detalles de la habitación."
+    },
+    {
+      "key": "ad_ch3_outro_static_flicker",
+      "value": "Una ráfaga de estática atraviesa la habitación."
+    },
+    {
+      "key": "ad_ch3_outro_wake_after_static",
+      "value": "Tras el fallo visual, despierta."
+    },
+    {
+      "key": "ad_ch3_outro_fade_black",
+      "value": "Fundido a negro."
+    },
+    {
+      "key": "ad_ch3_outro_load_next",
+      "value": "Cargando Noche Cuatro."
+    },
+    {
+      "key": "ad_ch4_outro_transition_room",
+      "value": "La transición se cierra del sueño al dormitorio."
+    },
+    {
+      "key": "ad_ch4_outro_settles_sleep",
+      "value": "Se hunde en un sueño más profundo."
+    },
+    {
+      "key": "ad_ch4_outro_border_clears",
+      "value": "El borde difuminado cae y queda una habitación inmóvil."
+    },
+    {
+      "key": "ad_ch4_outro_long_fade_black",
+      "value": "Fundido largo a negro mientras el audio se desvanece."
+    },
+    {
+      "key": "ad_ch4_outro_load_next",
+      "value": "Cargando Noche Cinco."
+    },
+    {
+      "key": "ad_ch5_outro_transition_room",
+      "value": "La transición vuelve al dormitorio."
+    },
+    {
+      "key": "ad_ch5_outro_camera_to_window",
+      "value": "La cámara se desliza de la cama hacia la ventana."
+    },
+    {
+      "key": "ad_ch5_outro_window_fills_view",
+      "value": "La ventana ocupa la mayor parte de la vista."
+    },
+    {
+      "key": "ad_ch5_outro_looks_out_window",
+      "value": "Mira hacia afuera, inmóvil."
+    },
+    {
+      "key": "ad_ch5_outro_final_fade_black",
+      "value": "Fundido final largo a negro."
+    },
+    {
+      "key": "ad_ch5_outro_credits_begin",
+      "value": "Empiezan los créditos."
+    },
+    {
+      "key": "cue_left",
+      "value": "Izquierda"
+    },
+    {
+      "key": "cue_right",
+      "value": "Derecha"
+    },
+    {
+      "key": "cue_both",
+      "value": "Ambos"
+    },
+    {
+      "key": "cue_left_right_short",
+      "value": "Izquierda derecha"
+    },
+    {
+      "key": "cue_hold",
+      "value": "Mantener"
+    },
+    {
+      "key": "results_stats",
+      "value": "Perfecto: {0}, Tarde: {1}, Temprano: {2}, Fallo: {3}."
+    },
+    {
+      "key": "stage_end_position",
+      "value": "{0}, {1} de {2}"
+    },
+    {
+      "key": "locked_requires_one_star",
+      "value": "Bloqueado. Requiere al menos 1 estrella."
+    },
+    {
+      "key": "locked_requires_two_stars",
+      "value": "Bloqueado. Requiere 2 estrellas."
+    },
+    {
+      "key": "locked_requires_full_game",
+      "value": "Bloqueado. Requiere el juego completo."
+    },
+    {
+      "key": "locked_requires_two_stars_full_game",
+      "value": "Bloqueado. Requiere 2 estrellas y juego completo."
+    },
+    {
+      "key": "locked_requires_two_stars_each_dream",
+      "value": "Bloqueado. Consigue al menos 2 estrellas en cada sueño de esta noche para completar."
+    }
+  ]
+}

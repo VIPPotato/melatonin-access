@@ -14,6 +14,7 @@ $modDll = Join-Path $projectRoot "bin\$Configuration\net472\MelatoninAccess.dll"
 $tolkDll = Join-Path $projectRoot "libs\x86\Tolk.dll"
 $nvdaDll = Join-Path $projectRoot "libs\x86\nvdaControllerClient32.dll"
 $cutsceneAdDir = Join-Path $projectRoot "cutscene-ad"
+$localizationDir = Join-Path $projectRoot "localization"
 $loaderCfgCandidates = @(
     (Join-Path $projectRoot "UserConfig\Loader.cfg"),
     (Join-Path $projectRoot "UserData\Loader.cfg")
@@ -43,6 +44,11 @@ if (-not (Test-Path -LiteralPath $cutsceneAdDir)) {
     exit 1
 }
 
+if (-not (Test-Path -LiteralPath $localizationDir)) {
+    Write-Host "ERROR: Localization folder not found: $localizationDir"
+    exit 1
+}
+
 if ([string]::IsNullOrWhiteSpace($loaderCfg)) {
     Write-Host "ERROR: Loader config not found. Checked:"
     foreach ($candidate in $loaderCfgCandidates) {
@@ -58,7 +64,7 @@ if (-not $SkipLocalizationQa.IsPresent) {
     }
 
     Write-Host "Running localization QA check..."
-    & $locQaScript -LocPath (Join-Path $projectRoot "Loc.cs")
+    & $locQaScript -LocalizationDir $localizationDir
     if ($LASTEXITCODE -ne 0) {
         Write-Host "ERROR: Localization QA check failed."
         exit $LASTEXITCODE
@@ -77,7 +83,7 @@ if (-not $SkipCutsceneQa.IsPresent) {
         -StrictCoverage `
         -RequireEntries `
         -ValidateLocKeys `
-        -LocPath (Join-Path $projectRoot "Loc.cs")
+        -LocalizationDir $localizationDir
     if ($LASTEXITCODE -ne 0) {
         Write-Host "ERROR: Cutscene AD QA check failed."
         exit $LASTEXITCODE
@@ -99,6 +105,7 @@ New-Item -ItemType Directory -Path $userConfigDir -Force | Out-Null
 
 Copy-Item -LiteralPath $modDll -Destination (Join-Path $modsDir "MelatoninAccess.dll") -Force
 Copy-Item -LiteralPath $cutsceneAdDir -Destination (Join-Path $modsDir "cutscene-ad") -Recurse -Force
+Copy-Item -LiteralPath $localizationDir -Destination (Join-Path $modsDir "localization") -Recurse -Force
 Copy-Item -LiteralPath $tolkDll -Destination (Join-Path $stageDir "Tolk.dll") -Force
 Copy-Item -LiteralPath $nvdaDll -Destination (Join-Path $stageDir "nvdaControllerClient32.dll") -Force
 Copy-Item -LiteralPath $loaderCfg -Destination (Join-Path $userConfigDir "Loader.cfg") -Force

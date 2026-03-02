@@ -1,0 +1,866 @@
+{
+  "schemaVersion": 1,
+  "language": "vi",
+  "entries": [
+    {
+      "key": "mod_loaded",
+      "value": "Mod Melatonin Access da duoc tai."
+    },
+    {
+      "key": "mod_active_help",
+      "value": "Melatonin Access dang hoat dong. Dung phim mui ten de dieu huong menu."
+    },
+    {
+      "key": "debug_enabled",
+      "value": "Da bat che do giai loi."
+    },
+    {
+      "key": "debug_disabled",
+      "value": "Da tat che do giai loi."
+    },
+    {
+      "key": "rhythm_cues_enabled",
+      "value": "Da bat goi y huong dan theo ngu canh."
+    },
+    {
+      "key": "rhythm_cues_disabled",
+      "value": "Da tat goi y huong dan theo ngu canh."
+    },
+    {
+      "key": "menu_positions_enabled",
+      "value": "Da bat thong bao vi tri menu."
+    },
+    {
+      "key": "menu_positions_disabled",
+      "value": "Da tat thong bao vi tri menu."
+    },
+    {
+      "key": "intro_welcome",
+      "value": "Nhan {0} de bat dau. Nhan {1} de doi ngon ngu."
+    },
+    {
+      "key": "language_selected",
+      "value": "Da chon ngon ngu."
+    },
+    {
+      "key": "language_menu",
+      "value": "Menu ngon ngu"
+    },
+    {
+      "key": "credits_title",
+      "value": "Danh de"
+    },
+    {
+      "key": "menu_suffix",
+      "value": "Menu {0}"
+    },
+    {
+      "key": "order_of",
+      "value": "{0} tren {1}"
+    },
+    {
+      "key": "chapter_locked",
+      "value": "Chuong {0} da bi khoa"
+    },
+    {
+      "key": "option_with_slider",
+      "value": "{0} thanh truot {1}"
+    },
+    {
+      "key": "slider_value",
+      "value": "Thanh truot {0}"
+    },
+    {
+      "key": "action_key_current_binding",
+      "value": "{0}, hien dang gan voi {1}."
+    },
+    {
+      "key": "state_on",
+      "value": "Bat"
+    },
+    {
+      "key": "state_off",
+      "value": "Tat"
+    },
+    {
+      "key": "fullscreen",
+      "value": "Toan man hinh"
+    },
+    {
+      "key": "windowed",
+      "value": "Cua so"
+    },
+    {
+      "key": "calibration_tool_intro",
+      "value": "Cong cu hieu chinh. Dieu chinh do lech de khop nhip."
+    },
+    {
+      "key": "calibration_offset",
+      "value": "Do lech {0}"
+    },
+    {
+      "key": "calibration_timing_on_time",
+      "value": "Dung nhip."
+    },
+    {
+      "key": "calibration_timing_early_ms",
+      "value": "Som {0} ms."
+    },
+    {
+      "key": "calibration_timing_late_ms",
+      "value": "Tre {0} ms."
+    },
+    {
+      "key": "downloaded_levels_loading",
+      "value": "Cap da tai xuong. Dang tai..."
+    },
+    {
+      "key": "downloaded_levels_page_total",
+      "value": "Tong cong {0} cap. Trang {1} tren {2}"
+    },
+    {
+      "key": "downloaded_levels_total",
+      "value": "Tong cong {0} cap."
+    },
+    {
+      "key": "next_page",
+      "value": "Trang tiep theo"
+    },
+    {
+      "key": "previous_page",
+      "value": "Trang truoc"
+    },
+    {
+      "key": "page_of",
+      "value": "Trang {0} tren {1}"
+    },
+    {
+      "key": "item_of",
+      "value": "{0}, muc {1} tren {2}"
+    },
+    {
+      "key": "achievements_menu",
+      "value": "Menu thanh tich"
+    },
+    {
+      "key": "locked_achievement",
+      "value": "Thanh tich bi khoa. {0} tren {1}"
+    },
+    {
+      "key": "locked_achievement_plain",
+      "value": "Thanh tich bi khoa."
+    },
+    {
+      "key": "achievement_with_desc",
+      "value": "{0}: {1}. {2} tren {3}"
+    },
+    {
+      "key": "achievement_with_desc_plain",
+      "value": "{0}: {1}."
+    },
+    {
+      "key": "arrived_at",
+      "value": "Da den {0}"
+    },
+    {
+      "key": "mode_menu",
+      "value": "Menu che do"
+    },
+    {
+      "key": "dream_about_level",
+      "value": "Giac mo ve {0}"
+    },
+    {
+      "key": "teleport_arrived_stars",
+      "value": "{0}. {1} sao."
+    },
+    {
+      "key": "teleport_arrived_one_star",
+      "value": "{0}. {1} sao."
+    },
+    {
+      "key": "map_progress_status",
+      "value": "So sao ban do: {0}. Can them {1} sao de vuot qua."
+    },
+    {
+      "key": "map_transient_controls_unlocked",
+      "value": "Map settles into view."
+    },
+    {
+      "key": "map_transient_controls_unlocked_mirrored",
+      "value": "Map settles into view mirrored. Left and right are swapped."
+    },
+    {
+      "key": "teleport_conflict_hint",
+      "value": "Dich chuyen bang ngoac vuong da bi tat vi phim Hanh dong dang gan vao ngoac vuong. Hay dung F9 va F10 de dich chuyen."
+    },
+    {
+      "key": "unknown_level",
+      "value": "Cap do khong ro"
+    },
+    {
+      "key": "dream_name_career",
+      "value": "Su nghiep"
+    },
+    {
+      "key": "dream_name_dating",
+      "value": "Hen ho"
+    },
+    {
+      "key": "dream_name_desires",
+      "value": "Ham muon"
+    },
+    {
+      "key": "dream_name_exercise",
+      "value": "Tap luyen"
+    },
+    {
+      "key": "dream_name_final",
+      "value": "Cuoi cung"
+    },
+    {
+      "key": "dream_name_followers",
+      "value": "Nguoi theo doi"
+    },
+    {
+      "key": "dream_name_food",
+      "value": "Do an"
+    },
+    {
+      "key": "dream_name_future",
+      "value": "Tuong lai"
+    },
+    {
+      "key": "dream_name_indulgence",
+      "value": "Huong lac"
+    },
+    {
+      "key": "dream_name_meditation",
+      "value": "Thien"
+    },
+    {
+      "key": "dream_name_mind",
+      "value": "Tam tri"
+    },
+    {
+      "key": "dream_name_money",
+      "value": "Tien bac"
+    },
+    {
+      "key": "dream_name_nature",
+      "value": "Thien nhien"
+    },
+    {
+      "key": "dream_name_past",
+      "value": "Qua khu"
+    },
+    {
+      "key": "dream_name_pressure",
+      "value": "Ap luc"
+    },
+    {
+      "key": "dream_name_setbacks",
+      "value": "Tro ngai"
+    },
+    {
+      "key": "dream_name_shopping",
+      "value": "Mua sam"
+    },
+    {
+      "key": "dream_name_space",
+      "value": "Khong gian"
+    },
+    {
+      "key": "dream_name_stress",
+      "value": "Cang thang"
+    },
+    {
+      "key": "dream_name_tech",
+      "value": "Cong nghe"
+    },
+    {
+      "key": "dream_name_time",
+      "value": "Thoi gian"
+    },
+    {
+      "key": "dream_name_tutorial",
+      "value": "Huong dan"
+    },
+    {
+      "key": "editor_cursor_empty",
+      "value": "Cum {0}, o nhip {1}, phach {2}. Trong."
+    },
+    {
+      "key": "editor_cursor_content",
+      "value": "Cum {0}, o nhip {1}, phach {2}. {3}."
+    },
+    {
+      "key": "editor_placed",
+      "value": "Da dat {0}"
+    },
+    {
+      "key": "editor_removed",
+      "value": "Da xoa"
+    },
+    {
+      "key": "editor_tool_select",
+      "value": "Chon cong cu"
+    },
+    {
+      "key": "advanced_menu",
+      "value": "Menu nang cao"
+    },
+    {
+      "key": "editor_ready",
+      "value": "Trinh chinh sua cap da san sang"
+    },
+    {
+      "key": "editor_page",
+      "value": "Trang {0}"
+    },
+    {
+      "key": "tutorial_skip_prompt",
+      "value": "Huong dan. Nhan {0} de bo qua."
+    },
+    {
+      "key": "tutorial_label",
+      "value": "Huong dan."
+    },
+    {
+      "key": "cue_space",
+      "value": "Phim cach"
+    },
+    {
+      "key": "cue_press_action",
+      "value": "Nhan {0}"
+    },
+    {
+      "key": "cue_press_action_twice",
+      "value": "Nhan {0} hai lan"
+    },
+    {
+      "key": "cue_followers_phase_one_start_stop",
+      "value": "Nhan {0} theo nhip. Bat dau va dung lai sau am thanh lo xo."
+    },
+    {
+      "key": "cue_followers_phase_two_resume_after_vibration",
+      "value": "Dung lai sau am thanh nhay. Tiep tuc sau rung."
+    },
+    {
+      "key": "cue_followers_phase_three_press_thrice",
+      "value": "Nhan {0} ba lan sau rung doi."
+    },
+    {
+      "key": "cue_tech_every_two_beats",
+      "value": "Sau tin hieu am cao, nhan {0} o nhip tiep theo."
+    },
+    {
+      "key": "cue_tech_next_three_beats",
+      "value": "Sau tin hieu am cao, nhan {0} o 3 nhip tiep theo."
+    },
+    {
+      "key": "cue_time_portal_gap_hold_release",
+      "value": "Sau tieng u cua cong dich chuyen trong khoang trong, giu {0} va tha o tin hieu tiep theo."
+    },
+    {
+      "key": "cue_time_sixth_seventh_hold_release",
+      "value": "O tin hieu thu sau, giu {0}. Tha o tin hieu thu bay."
+    },
+    {
+      "key": "cue_nature_water_press_thrice",
+      "value": "Nhan {0} ba lan."
+    },
+    {
+      "key": "cue_mind_triple_offbeat",
+      "value": "Nhan {0} ba lan theo tin hieu lech nhip."
+    },
+    {
+      "key": "cue_press_up",
+      "value": "Len"
+    },
+    {
+      "key": "cue_hold_release_duration",
+      "value": "Giu {0}. Tha sau {1}."
+    },
+    {
+      "key": "cue_hold_release_on_beat",
+      "value": "Giu {0}. Tha o nhip {1}."
+    },
+    {
+      "key": "duration_half_beat",
+      "value": "nua nhip"
+    },
+    {
+      "key": "duration_one_beat",
+      "value": "1 nhip"
+    },
+    {
+      "key": "duration_n_beats",
+      "value": "{0} nhip"
+    },
+    {
+      "key": "cue_past_camera_first_sound",
+      "value": "Giu {0} 1 nhip."
+    },
+    {
+      "key": "cue_past_camera_second_sound",
+      "value": "Giu {0} nua nhip."
+    },
+    {
+      "key": "cue_past_camera_third_sound",
+      "value": "Giu {0} 2 nhip."
+    },
+    {
+      "key": "cue_tutorial_press_second_beat",
+      "value": "Nhan {0} o nhip thu 2."
+    },
+    {
+      "key": "cue_food_press_third_beat",
+      "value": "Nhan {0} o nhip thu 3."
+    },
+    {
+      "key": "cue_food_press_fifth_beat",
+      "value": "Nhan {0} o nhip thu 5."
+    },
+    {
+      "key": "cue_food_press_fourth_beat",
+      "value": "Nhan {0} o nhip thu 4."
+    },
+    {
+      "key": "cue_food_press_seventh_beat",
+      "value": "Nhan {0} o nhip thu 7."
+    },
+    {
+      "key": "cue_shopping_repeat_patterns",
+      "value": "Lap lai cac mau tin hieu am thanh bang {0}."
+    },
+    {
+      "key": "cue_dating_follow_swipes",
+      "value": "Vuot trai hoac phai theo tin hieu o nhip thu 4."
+    },
+    {
+      "key": "cue_future_follow_patterns",
+      "value": "Lam theo cac tin hieu mau."
+    },
+    {
+      "key": "cue_swipe_left",
+      "value": "Vuot trai o nhip thu 4."
+    },
+    {
+      "key": "cue_swipe_right",
+      "value": "Vuot phai o nhip thu 4."
+    },
+    {
+      "key": "cue_swipe_left_long",
+      "value": "Vuot trai sau tin hieu dai."
+    },
+    {
+      "key": "cue_swipe_right_long",
+      "value": "Vuot phai sau tin hieu dai."
+    },
+    {
+      "key": "cue_hold_action",
+      "value": "Giu {0}"
+    },
+    {
+      "key": "key_enter",
+      "value": "Enter"
+    },
+    {
+      "key": "key_period",
+      "value": "Dau cham"
+    },
+    {
+      "key": "key_slash",
+      "value": "Dau gach cheo"
+    },
+    {
+      "key": "key_tab",
+      "value": "Tab"
+    },
+    {
+      "key": "key_escape",
+      "value": "Esc"
+    },
+    {
+      "key": "key_start",
+      "value": "Start"
+    },
+    {
+      "key": "help_title_screen",
+      "value": "Tro giup man hinh tieu de. Nhan {0} de bat dau. Nhan {1} de doi ngon ngu."
+    },
+    {
+      "key": "help_menu",
+      "value": "Tro giup menu. Dung Len va Xuong de di chuyen. Nhan {0} de chon. Nhan {1} de quay lai."
+    },
+    {
+      "key": "help_map",
+      "value": "Tro giup ban do. Dung [ va ] hoac F9 va F10 de di giua cac man. Nhan {0} de mo man da chon. Nhan F1 hoac nut View tren tay cam de nghe sao ban do."
+    },
+    {
+      "key": "help_mode_menu",
+      "value": "Tro giup menu che do. Dung Len va Xuong de chon che do. Nhan {0} de bat dau. Nhan {1} de dong menu nay."
+    },
+    {
+      "key": "help_results",
+      "value": "Tro giup ket qua. Dung Len va Xuong de chon tuy chon. Nhan {0} de xac nhan. Nhan {1} de quay lai."
+    },
+    {
+      "key": "help_gameplay",
+      "value": "Tro giup choi game. Theo cue theo ngu canh va nhan hanh dong duoc doc. Nhan {0} de tam dung."
+    },
+    {
+      "key": "help_editor",
+      "value": "Tro giup trinh sua. Dung phim mui ten de di tren timeline. Nhan {0} de dat hoac chon. Nhan {1} de huy."
+    },
+    {
+      "key": "level_briefing_line",
+      "value": "{0}. {1}. {2}"
+    },
+    {
+      "key": "mode_practice",
+      "value": "Che do luyen tap"
+    },
+    {
+      "key": "practice_mode_started",
+      "value": "Che do luyen tap da bat dau."
+    },
+    {
+      "key": "mode_score",
+      "value": "Che do tinh diem"
+    },
+    {
+      "key": "score_mode_started",
+      "value": "Che do tinh diem da bat dau."
+    },
+    {
+      "key": "mode_hard",
+      "value": "Che do kho"
+    },
+    {
+      "key": "mode_score_remix",
+      "value": "Che do tinh diem remix"
+    },
+    {
+      "key": "mode_hard_remix",
+      "value": "Che do kho remix"
+    },
+    {
+      "key": "mode_tutorial",
+      "value": "Che do huong dan"
+    },
+    {
+      "key": "mode_editor_test",
+      "value": "Che do thu editor"
+    },
+    {
+      "key": "mode_community",
+      "value": "Che do cong dong"
+    },
+    {
+      "key": "objective_default",
+      "value": "Theo cue theo ngu canh va giu dung nhip."
+    },
+    {
+      "key": "objective_practice",
+      "value": "Hoc mau nhip va thoi diem. Nhan {0} de bo qua."
+    },
+    {
+      "key": "objective_score",
+      "value": "Tang diem bang cach nhan dung theo nhip."
+    },
+    {
+      "key": "objective_hard",
+      "value": "Giu do chinh xac voi cac mau kho hon."
+    },
+    {
+      "key": "objective_tutorial",
+      "value": "Lam theo huong dan de hoc co che."
+    },
+    {
+      "key": "objective_editor_test",
+      "value": "Thu timing va nhip chay cua ban chart."
+    },
+    {
+      "key": "objective_community",
+      "value": "Choi va danh gia man cong dong nay."
+    },
+    {
+      "key": "ad_ch1_intro_title_card",
+      "value": "Thẻ tiêu đề: Đêm Một."
+    },
+    {
+      "key": "ad_ch1_intro_room_widens",
+      "value": "Khung phòng ngủ mở rộng. Người ấy thức và tựa với laptop."
+    },
+    {
+      "key": "ad_ch1_intro_fade_black",
+      "value": "Màn hình tối đen trong chốc lát."
+    },
+    {
+      "key": "ad_ch1_intro_map_recenters",
+      "value": "Góc nhìn lùi từ giường ra bản đồ chương."
+    },
+    {
+      "key": "ad_ch1_intro_map_music_starts",
+      "value": "Nhạc chủ đề bản đồ bắt đầu."
+    },
+    {
+      "key": "ad_ch1_intro_map_controls_unlock",
+      "value": "Bản đồ dừng lại ở Đêm Một. Các lộ trình đầu tiên đã sẵn sàng."
+    },
+    {
+      "key": "ad_ch2_intro_title_card",
+      "value": "Thẻ tiêu đề: Đêm Hai."
+    },
+    {
+      "key": "ad_ch2_intro_room_widens",
+      "value": "Khung phòng ngủ mở rộng. Người ấy tỉnh dậy và nhìn quanh."
+    },
+    {
+      "key": "ad_ch2_intro_fade_black_sleep",
+      "value": "Màn hình tối đi; người ấy lịm vào giấc ngủ trở lại."
+    },
+    {
+      "key": "ad_ch2_intro_map_recenters",
+      "value": "Camera căn giữa lại vào bản đồ chương."
+    },
+    {
+      "key": "ad_ch2_intro_map_music_starts",
+      "value": "Nhạc chủ đề bản đồ trở lại."
+    },
+    {
+      "key": "ad_ch2_intro_map_controls_unlock",
+      "value": "Bản đồ dừng lại ở Đêm Hai."
+    },
+    {
+      "key": "ad_ch3_intro_title_card",
+      "value": "Thẻ tiêu đề: Đêm Ba."
+    },
+    {
+      "key": "ad_ch3_intro_room_widens",
+      "value": "Khung phòng mở rộng trong âm nền trầm."
+    },
+    {
+      "key": "ad_ch3_intro_crossfade_black",
+      "value": "Chuyển cảnh dần chuyển chậm về màn hình đen."
+    },
+    {
+      "key": "ad_ch3_intro_room_returns_sleeping",
+      "value": "Khung phòng hiện ra lại khi người ấy đang ngủ."
+    },
+    {
+      "key": "ad_ch3_intro_map_music_starts",
+      "value": "Nhạc chủ đề bản đồ bắt đầu bên dưới âm nền của phòng."
+    },
+    {
+      "key": "ad_ch3_intro_map_controls_unlock",
+      "value": "Bản đồ dừng lại ở Đêm Ba."
+    },
+    {
+      "key": "ad_ch4_intro_title_card",
+      "value": "Thẻ tiêu đề: Đêm Bốn."
+    },
+    {
+      "key": "ad_ch4_intro_room_widens",
+      "value": "Căn phòng mở ra ở góc nhìn gần hơn, yên tĩnh hơn."
+    },
+    {
+      "key": "ad_ch4_intro_sleep_trigger",
+      "value": "Người ấy gục xuống và rơi vào giấc ngủ."
+    },
+    {
+      "key": "ad_ch4_intro_map_recenters",
+      "value": "Camera căn giữa lại vào bản đồ chương."
+    },
+    {
+      "key": "ad_ch4_intro_map_music_starts",
+      "value": "Nhạc chủ đề bản đồ bắt đầu."
+    },
+    {
+      "key": "ad_ch4_intro_map_controls_unlock_mirrored",
+      "value": "Bản đồ dừng lại ở Đêm Bốn, đảo ngược trái-phải."
+    },
+    {
+      "key": "ad_ch5_intro_title_card",
+      "value": "Thẻ tiêu đề: Đêm Năm."
+    },
+    {
+      "key": "ad_ch5_intro_room_widens",
+      "value": "Khung phòng mở rộng. Người ấy vẫn ngủ dưới ánh đèn mờ."
+    },
+    {
+      "key": "ad_ch5_intro_map_recenters",
+      "value": "Camera căn giữa lại từ giường sang bản đồ cuối."
+    },
+    {
+      "key": "ad_ch5_intro_map_music_starts",
+      "value": "Nhạc chủ đề bản đồ bắt đầu."
+    },
+    {
+      "key": "ad_ch5_intro_map_controls_unlock",
+      "value": "Bản đồ dừng lại ở Đêm Năm."
+    },
+    {
+      "key": "ad_ch1_outro_transition_room",
+      "value": "Cảnh chuyển đóng lại từ giấc mơ về phòng ngủ."
+    },
+    {
+      "key": "ad_ch1_outro_border_clears",
+      "value": "Viền mờ biến mất, căn phòng trở nên rõ nét."
+    },
+    {
+      "key": "ad_ch1_outro_wake",
+      "value": "Người ấy tỉnh dậy và ngồi dậy."
+    },
+    {
+      "key": "ad_ch1_outro_fade_black",
+      "value": "Màn hình nhanh chóng tối đen."
+    },
+    {
+      "key": "ad_ch1_outro_load_next",
+      "value": "Đang tải Đêm Hai."
+    },
+    {
+      "key": "ad_ch2_outro_transition_room",
+      "value": "Cảnh chuyển đóng lại từ giấc mơ về phòng ngủ."
+    },
+    {
+      "key": "ad_ch2_outro_border_clears",
+      "value": "Viền mờ biến mất; khung phòng ổn định."
+    },
+    {
+      "key": "ad_ch2_outro_wake_first",
+      "value": "Cử động tỉnh giấc đầu tiên bắt đầu."
+    },
+    {
+      "key": "ad_ch2_outro_wake_second",
+      "value": "Cử động tỉnh giấc thứ hai khiến người ấy tỉnh hẳn."
+    },
+    {
+      "key": "ad_ch2_outro_fade_black",
+      "value": "Màn hình tối đen."
+    },
+    {
+      "key": "ad_ch2_outro_load_next",
+      "value": "Đang tải Đêm Ba."
+    },
+    {
+      "key": "ad_ch3_outro_transition_room",
+      "value": "Cảnh chuyển đóng lại từ giấc mơ về phòng ngủ."
+    },
+    {
+      "key": "ad_ch3_outro_border_clears",
+      "value": "Viền mờ biến mất; chi tiết căn phòng trở lại."
+    },
+    {
+      "key": "ad_ch3_outro_static_flicker",
+      "value": "Một đợt nhiễu tĩnh điện cắt ngang căn phòng."
+    },
+    {
+      "key": "ad_ch3_outro_wake_after_static",
+      "value": "Sau lỗi hình ảnh, người ấy tỉnh dậy."
+    },
+    {
+      "key": "ad_ch3_outro_fade_black",
+      "value": "Màn hình tối đen."
+    },
+    {
+      "key": "ad_ch3_outro_load_next",
+      "value": "Đang tải Đêm Bốn."
+    },
+    {
+      "key": "ad_ch4_outro_transition_room",
+      "value": "Cảnh chuyển đóng lại từ giấc mơ về phòng ngủ."
+    },
+    {
+      "key": "ad_ch4_outro_settles_sleep",
+      "value": "Người ấy chìm vào giấc ngủ sâu hơn."
+    },
+    {
+      "key": "ad_ch4_outro_border_clears",
+      "value": "Viền mờ rơi đi, để lại căn phòng tĩnh lặng."
+    },
+    {
+      "key": "ad_ch4_outro_long_fade_black",
+      "value": "Âm thanh dần tắt, màn hình tối đen trong khoảng lâu."
+    },
+    {
+      "key": "ad_ch4_outro_load_next",
+      "value": "Đang tải Đêm Năm."
+    },
+    {
+      "key": "ad_ch5_outro_transition_room",
+      "value": "Cảnh chuyển trở về phòng ngủ."
+    },
+    {
+      "key": "ad_ch5_outro_camera_to_window",
+      "value": "Camera lướt từ giường về phía cửa sổ."
+    },
+    {
+      "key": "ad_ch5_outro_window_fills_view",
+      "value": "Cửa sổ chiếm phần lớn khung hình."
+    },
+    {
+      "key": "ad_ch5_outro_looks_out_window",
+      "value": "Người ấy nhìn ra ngoài và đứng yên."
+    },
+    {
+      "key": "ad_ch5_outro_final_fade_black",
+      "value": "Lần cuối cùng, màn hình tối đen trong khoảng lâu."
+    },
+    {
+      "key": "ad_ch5_outro_credits_begin",
+      "value": "Phần credit bắt đầu."
+    },
+    {
+      "key": "cue_left",
+      "value": "Trai"
+    },
+    {
+      "key": "cue_right",
+      "value": "Phai"
+    },
+    {
+      "key": "cue_both",
+      "value": "Ca hai"
+    },
+    {
+      "key": "cue_left_right_short",
+      "value": "Trai phai"
+    },
+    {
+      "key": "cue_hold",
+      "value": "Giu"
+    },
+    {
+      "key": "results_stats",
+      "value": "Hoan hao: {0}, Tre: {1}, Som: {2}, Truot: {3}."
+    },
+    {
+      "key": "stage_end_position",
+      "value": "{0}, {1} tren {2}"
+    },
+    {
+      "key": "locked_requires_one_star",
+      "value": "Bi khoa. Can it nhat 1 sao."
+    },
+    {
+      "key": "locked_requires_two_stars",
+      "value": "Bi khoa. Can 2 sao."
+    },
+    {
+      "key": "locked_requires_full_game",
+      "value": "Bi khoa. Can ban day du cua tro choi."
+    },
+    {
+      "key": "locked_requires_two_stars_full_game",
+      "value": "Bi khoa. Can 2 sao va ban day du cua tro choi."
+    },
+    {
+      "key": "locked_requires_two_stars_each_dream",
+      "value": "Bi khoa. Dat it nhat 2 sao o moi giac mo trong dem nay de vuot qua."
+    }
+  ]
+}

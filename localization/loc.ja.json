@@ -1,0 +1,866 @@
+{
+  "schemaVersion": 1,
+  "language": "ja",
+  "entries": [
+    {
+      "key": "mod_loaded",
+      "value": "Melatonin Access mod を読み込みました。"
+    },
+    {
+      "key": "mod_active_help",
+      "value": "Melatonin Access は有効です。方向キーでメニューを移動します。"
+    },
+    {
+      "key": "debug_enabled",
+      "value": "デバッグモードを有効にしました。"
+    },
+    {
+      "key": "debug_disabled",
+      "value": "デバッグモードを無効にしました。"
+    },
+    {
+      "key": "rhythm_cues_enabled",
+      "value": "文脈チュートリアルキューを有効にしました。"
+    },
+    {
+      "key": "rhythm_cues_disabled",
+      "value": "文脈チュートリアルキューを無効にしました。"
+    },
+    {
+      "key": "menu_positions_enabled",
+      "value": "メニュー位置の読み上げを有効にしました。"
+    },
+    {
+      "key": "menu_positions_disabled",
+      "value": "メニュー位置の読み上げを無効にしました。"
+    },
+    {
+      "key": "intro_welcome",
+      "value": "{0} で開始。{1} で言語を変更します。"
+    },
+    {
+      "key": "language_selected",
+      "value": "言語を選択しました。"
+    },
+    {
+      "key": "language_menu",
+      "value": "言語メニュー"
+    },
+    {
+      "key": "credits_title",
+      "value": "クレジット"
+    },
+    {
+      "key": "menu_suffix",
+      "value": "{0} メニュー"
+    },
+    {
+      "key": "order_of",
+      "value": "{0}/{1}"
+    },
+    {
+      "key": "chapter_locked",
+      "value": "チャプター {0} はロックされています"
+    },
+    {
+      "key": "option_with_slider",
+      "value": "{0} スライダー {1}"
+    },
+    {
+      "key": "slider_value",
+      "value": "スライダー {0}"
+    },
+    {
+      "key": "action_key_current_binding",
+      "value": "{0}。現在の割り当ては {1} です。"
+    },
+    {
+      "key": "state_on",
+      "value": "オン"
+    },
+    {
+      "key": "state_off",
+      "value": "オフ"
+    },
+    {
+      "key": "fullscreen",
+      "value": "フルスクリーン"
+    },
+    {
+      "key": "windowed",
+      "value": "ウィンドウ"
+    },
+    {
+      "key": "calibration_tool_intro",
+      "value": "キャリブレーションツール。オフセットを調整してビートに合わせます。"
+    },
+    {
+      "key": "calibration_offset",
+      "value": "オフセット {0}"
+    },
+    {
+      "key": "calibration_timing_on_time",
+      "value": "タイミングは正確です。"
+    },
+    {
+      "key": "calibration_timing_early_ms",
+      "value": "{0} ミリ秒早いです。"
+    },
+    {
+      "key": "calibration_timing_late_ms",
+      "value": "{0} ミリ秒遅いです。"
+    },
+    {
+      "key": "downloaded_levels_loading",
+      "value": "ダウンロード済みレベル。読み込み中..."
+    },
+    {
+      "key": "downloaded_levels_page_total",
+      "value": "合計 {0} レベル。{1}/{2} ページ"
+    },
+    {
+      "key": "downloaded_levels_total",
+      "value": "合計 {0} レベル。"
+    },
+    {
+      "key": "next_page",
+      "value": "次のページ"
+    },
+    {
+      "key": "previous_page",
+      "value": "前のページ"
+    },
+    {
+      "key": "page_of",
+      "value": "{0}/{1} ページ"
+    },
+    {
+      "key": "item_of",
+      "value": "{0}、{1}/{2}"
+    },
+    {
+      "key": "achievements_menu",
+      "value": "実績メニュー"
+    },
+    {
+      "key": "locked_achievement",
+      "value": "未解除の実績。{0}/{1}"
+    },
+    {
+      "key": "locked_achievement_plain",
+      "value": "未解除の実績。"
+    },
+    {
+      "key": "achievement_with_desc",
+      "value": "{0}: {1}。{2}/{3}"
+    },
+    {
+      "key": "achievement_with_desc_plain",
+      "value": "{0}: {1}。"
+    },
+    {
+      "key": "arrived_at",
+      "value": "{0} に到着"
+    },
+    {
+      "key": "mode_menu",
+      "value": "モードメニュー"
+    },
+    {
+      "key": "dream_about_level",
+      "value": "{0} についての夢"
+    },
+    {
+      "key": "teleport_arrived_stars",
+      "value": "{0}。{1} スター。"
+    },
+    {
+      "key": "teleport_arrived_one_star",
+      "value": "{0}。{1} スター。"
+    },
+    {
+      "key": "map_progress_status",
+      "value": "マップのスター: {0}。クリアまであと {1}。"
+    },
+    {
+      "key": "map_transient_controls_unlocked",
+      "value": "Map settles into view."
+    },
+    {
+      "key": "map_transient_controls_unlocked_mirrored",
+      "value": "Map settles into view mirrored. Left and right are swapped."
+    },
+    {
+      "key": "teleport_conflict_hint",
+      "value": "アクションキーが角かっこに割り当てられているため、角かっこテレポートは無効です。F9 と F10 を使ってください。"
+    },
+    {
+      "key": "unknown_level",
+      "value": "不明なレベル"
+    },
+    {
+      "key": "dream_name_career",
+      "value": "キャリア"
+    },
+    {
+      "key": "dream_name_dating",
+      "value": "デート"
+    },
+    {
+      "key": "dream_name_desires",
+      "value": "欲望"
+    },
+    {
+      "key": "dream_name_exercise",
+      "value": "エクササイズ"
+    },
+    {
+      "key": "dream_name_final",
+      "value": "ファイナル"
+    },
+    {
+      "key": "dream_name_followers",
+      "value": "フォロワー"
+    },
+    {
+      "key": "dream_name_food",
+      "value": "フード"
+    },
+    {
+      "key": "dream_name_future",
+      "value": "未来"
+    },
+    {
+      "key": "dream_name_indulgence",
+      "value": "放縦"
+    },
+    {
+      "key": "dream_name_meditation",
+      "value": "瞑想"
+    },
+    {
+      "key": "dream_name_mind",
+      "value": "マインド"
+    },
+    {
+      "key": "dream_name_money",
+      "value": "お金"
+    },
+    {
+      "key": "dream_name_nature",
+      "value": "自然"
+    },
+    {
+      "key": "dream_name_past",
+      "value": "過去"
+    },
+    {
+      "key": "dream_name_pressure",
+      "value": "プレッシャー"
+    },
+    {
+      "key": "dream_name_setbacks",
+      "value": "挫折"
+    },
+    {
+      "key": "dream_name_shopping",
+      "value": "ショッピング"
+    },
+    {
+      "key": "dream_name_space",
+      "value": "宇宙"
+    },
+    {
+      "key": "dream_name_stress",
+      "value": "ストレス"
+    },
+    {
+      "key": "dream_name_tech",
+      "value": "テック"
+    },
+    {
+      "key": "dream_name_time",
+      "value": "時間"
+    },
+    {
+      "key": "dream_name_tutorial",
+      "value": "チュートリアル"
+    },
+    {
+      "key": "editor_cursor_empty",
+      "value": "フレーズ {0}、小節 {1}、拍 {2}。空です。"
+    },
+    {
+      "key": "editor_cursor_content",
+      "value": "フレーズ {0}、小節 {1}、拍 {2}。{3}。"
+    },
+    {
+      "key": "editor_placed",
+      "value": "{0} を配置しました"
+    },
+    {
+      "key": "editor_removed",
+      "value": "削除しました"
+    },
+    {
+      "key": "editor_tool_select",
+      "value": "ツール選択"
+    },
+    {
+      "key": "advanced_menu",
+      "value": "高度なメニュー"
+    },
+    {
+      "key": "editor_ready",
+      "value": "レベルエディター準備完了"
+    },
+    {
+      "key": "editor_page",
+      "value": "ページ {0}"
+    },
+    {
+      "key": "tutorial_skip_prompt",
+      "value": "チュートリアル。{0} でスキップします。"
+    },
+    {
+      "key": "tutorial_label",
+      "value": "チュートリアル。"
+    },
+    {
+      "key": "cue_space",
+      "value": "スペース"
+    },
+    {
+      "key": "cue_press_action",
+      "value": "{0} を押す"
+    },
+    {
+      "key": "cue_press_action_twice",
+      "value": "{0} を2回押す"
+    },
+    {
+      "key": "cue_followers_phase_one_start_stop",
+      "value": "リズムに合わせて {0} を押す。バネ音の後で開始と停止。"
+    },
+    {
+      "key": "cue_followers_phase_two_resume_after_vibration",
+      "value": "ジャンプ音の後で止まる。振動の後で再開。"
+    },
+    {
+      "key": "cue_followers_phase_three_press_thrice",
+      "value": "二重振動の後で {0} を3回押す。"
+    },
+    {
+      "key": "cue_tech_every_two_beats",
+      "value": "高い合図の後、次の拍で {0} を押す。"
+    },
+    {
+      "key": "cue_tech_next_three_beats",
+      "value": "高い合図の後、次の3拍で {0} を押す。"
+    },
+    {
+      "key": "cue_time_portal_gap_hold_release",
+      "value": "ポータルのブーン音の後、間で {0} を長押しし、次の合図で離す。"
+    },
+    {
+      "key": "cue_time_sixth_seventh_hold_release",
+      "value": "6つ目の合図で {0} を長押し。7つ目の合図で離す。"
+    },
+    {
+      "key": "cue_nature_water_press_thrice",
+      "value": "{0} を3回押す。"
+    },
+    {
+      "key": "cue_mind_triple_offbeat",
+      "value": "オフビートの合図で {0} を3回押す。"
+    },
+    {
+      "key": "cue_press_up",
+      "value": "上"
+    },
+    {
+      "key": "cue_hold_release_duration",
+      "value": "{0} を長押し。{1} 後に離す。"
+    },
+    {
+      "key": "cue_hold_release_on_beat",
+      "value": "{0} を長押し。{1}拍目で離す。"
+    },
+    {
+      "key": "duration_half_beat",
+      "value": "半拍"
+    },
+    {
+      "key": "duration_one_beat",
+      "value": "1拍"
+    },
+    {
+      "key": "duration_n_beats",
+      "value": "{0}拍"
+    },
+    {
+      "key": "cue_past_camera_first_sound",
+      "value": "{0} を1拍長押し。"
+    },
+    {
+      "key": "cue_past_camera_second_sound",
+      "value": "{0} を半拍長押し。"
+    },
+    {
+      "key": "cue_past_camera_third_sound",
+      "value": "{0} を2拍長押し。"
+    },
+    {
+      "key": "cue_tutorial_press_second_beat",
+      "value": "2拍目で {0} を押す。"
+    },
+    {
+      "key": "cue_food_press_third_beat",
+      "value": "3拍目で {0} を押す。"
+    },
+    {
+      "key": "cue_food_press_fifth_beat",
+      "value": "5拍目で {0} を押す。"
+    },
+    {
+      "key": "cue_food_press_fourth_beat",
+      "value": "4拍目で {0} を押す。"
+    },
+    {
+      "key": "cue_food_press_seventh_beat",
+      "value": "7拍目で {0} を押す。"
+    },
+    {
+      "key": "cue_shopping_repeat_patterns",
+      "value": "{0} で音のパターンを繰り返します。"
+    },
+    {
+      "key": "cue_dating_follow_swipes",
+      "value": "4拍目の合図で左または右にスワイプ。"
+    },
+    {
+      "key": "cue_future_follow_patterns",
+      "value": "パターンの合図に従う。"
+    },
+    {
+      "key": "cue_swipe_left",
+      "value": "4拍目で左にスワイプ。"
+    },
+    {
+      "key": "cue_swipe_right",
+      "value": "4拍目で右にスワイプ。"
+    },
+    {
+      "key": "cue_swipe_left_long",
+      "value": "長い合図の後で左にスワイプ。"
+    },
+    {
+      "key": "cue_swipe_right_long",
+      "value": "長い合図の後で右にスワイプ。"
+    },
+    {
+      "key": "cue_hold_action",
+      "value": "{0} を長押し"
+    },
+    {
+      "key": "key_enter",
+      "value": "エンター"
+    },
+    {
+      "key": "key_period",
+      "value": "ピリオド"
+    },
+    {
+      "key": "key_slash",
+      "value": "スラッシュ"
+    },
+    {
+      "key": "key_tab",
+      "value": "Tab"
+    },
+    {
+      "key": "key_escape",
+      "value": "Esc"
+    },
+    {
+      "key": "key_start",
+      "value": "スタート"
+    },
+    {
+      "key": "help_title_screen",
+      "value": "タイトル画面ヘルプ。{0} で開始。{1} で言語変更。"
+    },
+    {
+      "key": "help_menu",
+      "value": "メニューヘルプ。上下で移動。{0} で決定。{1} で戻る。"
+    },
+    {
+      "key": "help_map",
+      "value": "マップヘルプ。[ と ] または F9 と F10 でレベル間を移動。{0} で選択レベルを開く。F1 またはコントローラーのViewでマップスター。"
+    },
+    {
+      "key": "help_mode_menu",
+      "value": "モードメニューヘルプ。上下でモード選択。{0} で開始。{1} でこのメニューを閉じる。"
+    },
+    {
+      "key": "help_results",
+      "value": "リザルトヘルプ。上下で項目選択。{0} で決定。{1} で戻る。"
+    },
+    {
+      "key": "help_gameplay",
+      "value": "ゲームプレイヘルプ。文脈キューに従って指示された入力を押す。{0} で一時停止。"
+    },
+    {
+      "key": "help_editor",
+      "value": "エディターヘルプ。矢印キーでタイムラインを移動。{0} で配置または選択。{1} でキャンセル。"
+    },
+    {
+      "key": "level_briefing_line",
+      "value": "{0}。{1}。{2}"
+    },
+    {
+      "key": "mode_practice",
+      "value": "練習モード"
+    },
+    {
+      "key": "practice_mode_started",
+      "value": "練習モードを開始しました。"
+    },
+    {
+      "key": "mode_score",
+      "value": "スコアモード"
+    },
+    {
+      "key": "score_mode_started",
+      "value": "スコアモードを開始しました。"
+    },
+    {
+      "key": "mode_hard",
+      "value": "ハードモード"
+    },
+    {
+      "key": "mode_score_remix",
+      "value": "スコアリミックスモード"
+    },
+    {
+      "key": "mode_hard_remix",
+      "value": "ハードリミックスモード"
+    },
+    {
+      "key": "mode_tutorial",
+      "value": "チュートリアルモード"
+    },
+    {
+      "key": "mode_editor_test",
+      "value": "エディターテストモード"
+    },
+    {
+      "key": "mode_community",
+      "value": "コミュニティモード"
+    },
+    {
+      "key": "objective_default",
+      "value": "文脈キューに従ってビートを保ってください。"
+    },
+    {
+      "key": "objective_practice",
+      "value": "パターンとタイミングを学びます。{0} でスキップ。"
+    },
+    {
+      "key": "objective_score",
+      "value": "ビートに合わせた入力でスコアを伸ばします。"
+    },
+    {
+      "key": "objective_hard",
+      "value": "より厳しいパターンで精度を維持します。"
+    },
+    {
+      "key": "objective_tutorial",
+      "value": "指示に従って仕組みを学びます。"
+    },
+    {
+      "key": "objective_editor_test",
+      "value": "譜面のタイミングと流れをテストします。"
+    },
+    {
+      "key": "objective_community",
+      "value": "このコミュニティレベルをプレイして評価します。"
+    },
+    {
+      "key": "ad_ch1_intro_title_card",
+      "value": "タイトルカード: ナイト1。"
+    },
+    {
+      "key": "ad_ch1_intro_room_widens",
+      "value": "寝室の視界が広がる。彼はノートPCを前に目を覚ましている。"
+    },
+    {
+      "key": "ad_ch1_intro_fade_black",
+      "value": "短く暗転。"
+    },
+    {
+      "key": "ad_ch1_intro_map_recenters",
+      "value": "視点がベッドから引いてチャプターマップへ移る。"
+    },
+    {
+      "key": "ad_ch1_intro_map_music_starts",
+      "value": "マップテーマが始まる。"
+    },
+    {
+      "key": "ad_ch1_intro_map_controls_unlock",
+      "value": "マップはナイト1で落ち着く。最初のルートが使える。"
+    },
+    {
+      "key": "ad_ch2_intro_title_card",
+      "value": "タイトルカード: ナイト2。"
+    },
+    {
+      "key": "ad_ch2_intro_room_widens",
+      "value": "寝室の視界が広がる。彼は目を覚まし、周囲を見渡す。"
+    },
+    {
+      "key": "ad_ch2_intro_fade_black_sleep",
+      "value": "画面が暗くなり、彼は再び眠りにつく。"
+    },
+    {
+      "key": "ad_ch2_intro_map_recenters",
+      "value": "カメラがチャプターマップへ中心を戻す。"
+    },
+    {
+      "key": "ad_ch2_intro_map_music_starts",
+      "value": "マップテーマが戻る。"
+    },
+    {
+      "key": "ad_ch2_intro_map_controls_unlock",
+      "value": "マップはナイト2で落ち着く。"
+    },
+    {
+      "key": "ad_ch3_intro_title_card",
+      "value": "タイトルカード: ナイト3。"
+    },
+    {
+      "key": "ad_ch3_intro_room_widens",
+      "value": "低い環境音の中で、部屋の視界が広がる。"
+    },
+    {
+      "key": "ad_ch3_intro_crossfade_black",
+      "value": "ゆっくりクロスフェードで暗転。"
+    },
+    {
+      "key": "ad_ch3_intro_room_returns_sleeping",
+      "value": "部屋がフェードインし、彼は眠っている。"
+    },
+    {
+      "key": "ad_ch3_intro_map_music_starts",
+      "value": "部屋の環境音の下で、マップテーマが始まる。"
+    },
+    {
+      "key": "ad_ch3_intro_map_controls_unlock",
+      "value": "マップはナイト3で落ち着く。"
+    },
+    {
+      "key": "ad_ch4_intro_title_card",
+      "value": "タイトルカード: ナイト4。"
+    },
+    {
+      "key": "ad_ch4_intro_room_widens",
+      "value": "部屋が近く静かな視点で開く。"
+    },
+    {
+      "key": "ad_ch4_intro_sleep_trigger",
+      "value": "彼はうなだれ、そのまま眠りに落ちる。"
+    },
+    {
+      "key": "ad_ch4_intro_map_recenters",
+      "value": "カメラがチャプターマップへ中心を戻す。"
+    },
+    {
+      "key": "ad_ch4_intro_map_music_starts",
+      "value": "マップテーマが始まる。"
+    },
+    {
+      "key": "ad_ch4_intro_map_controls_unlock_mirrored",
+      "value": "マップはナイト4で落ち着き、左右が反転している。"
+    },
+    {
+      "key": "ad_ch5_intro_title_card",
+      "value": "タイトルカード: ナイト5。"
+    },
+    {
+      "key": "ad_ch5_intro_room_widens",
+      "value": "部屋の視界が広がる。薄暗い光の下で彼は眠ったままだ。"
+    },
+    {
+      "key": "ad_ch5_intro_map_recenters",
+      "value": "カメラがベッドから最終マップへ中心を移す。"
+    },
+    {
+      "key": "ad_ch5_intro_map_music_starts",
+      "value": "マップテーマが始まる。"
+    },
+    {
+      "key": "ad_ch5_intro_map_controls_unlock",
+      "value": "マップはナイト5で落ち着く。"
+    },
+    {
+      "key": "ad_ch1_outro_transition_room",
+      "value": "トランジションが夢から寝室へ閉じる。"
+    },
+    {
+      "key": "ad_ch1_outro_border_clears",
+      "value": "羽状の縁取りが消え、部屋の輪郭がはっきりする。"
+    },
+    {
+      "key": "ad_ch1_outro_wake",
+      "value": "彼は目を覚まし、身を起こす。"
+    },
+    {
+      "key": "ad_ch1_outro_fade_black",
+      "value": "素早く暗転。"
+    },
+    {
+      "key": "ad_ch1_outro_load_next",
+      "value": "ナイト2を読み込み中。"
+    },
+    {
+      "key": "ad_ch2_outro_transition_room",
+      "value": "トランジションが夢から寝室へ閉じる。"
+    },
+    {
+      "key": "ad_ch2_outro_border_clears",
+      "value": "羽状の縁取りが消え、部屋の画は安定する。"
+    },
+    {
+      "key": "ad_ch2_outro_wake_first",
+      "value": "最初の目覚め動作が始まる。"
+    },
+    {
+      "key": "ad_ch2_outro_wake_second",
+      "value": "二度目の目覚め動作で、彼は完全に覚醒する。"
+    },
+    {
+      "key": "ad_ch2_outro_fade_black",
+      "value": "暗転。"
+    },
+    {
+      "key": "ad_ch2_outro_load_next",
+      "value": "ナイト3を読み込み中。"
+    },
+    {
+      "key": "ad_ch3_outro_transition_room",
+      "value": "トランジションが夢から寝室へ閉じる。"
+    },
+    {
+      "key": "ad_ch3_outro_border_clears",
+      "value": "羽状の縁取りが消え、部屋の細部が戻る。"
+    },
+    {
+      "key": "ad_ch3_outro_static_flicker",
+      "value": "激しいノイズが部屋を走る。"
+    },
+    {
+      "key": "ad_ch3_outro_wake_after_static",
+      "value": "ノイズの後、彼は目を覚ます。"
+    },
+    {
+      "key": "ad_ch3_outro_fade_black",
+      "value": "暗転。"
+    },
+    {
+      "key": "ad_ch3_outro_load_next",
+      "value": "ナイト4を読み込み中。"
+    },
+    {
+      "key": "ad_ch4_outro_transition_room",
+      "value": "トランジションが夢から寝室へ閉じる。"
+    },
+    {
+      "key": "ad_ch4_outro_settles_sleep",
+      "value": "彼はさらに深い眠りへ沈む。"
+    },
+    {
+      "key": "ad_ch4_outro_border_clears",
+      "value": "羽状の縁取りが落ち、静かな部屋だけが残る。"
+    },
+    {
+      "key": "ad_ch4_outro_long_fade_black",
+      "value": "音がフェードアウトしながら、長く暗転する。"
+    },
+    {
+      "key": "ad_ch4_outro_load_next",
+      "value": "ナイト5を読み込み中。"
+    },
+    {
+      "key": "ad_ch5_outro_transition_room",
+      "value": "トランジションが寝室へ戻る。"
+    },
+    {
+      "key": "ad_ch5_outro_camera_to_window",
+      "value": "カメラがベッドから窓へ滑る。"
+    },
+    {
+      "key": "ad_ch5_outro_window_fills_view",
+      "value": "窓が画面の大半を占める。"
+    },
+    {
+      "key": "ad_ch5_outro_looks_out_window",
+      "value": "彼は外を見つめ、じっとしている。"
+    },
+    {
+      "key": "ad_ch5_outro_final_fade_black",
+      "value": "最後に長く暗転する。"
+    },
+    {
+      "key": "ad_ch5_outro_credits_begin",
+      "value": "クレジットが始まる。"
+    },
+    {
+      "key": "cue_left",
+      "value": "左"
+    },
+    {
+      "key": "cue_right",
+      "value": "右"
+    },
+    {
+      "key": "cue_both",
+      "value": "両方"
+    },
+    {
+      "key": "cue_left_right_short",
+      "value": "左右"
+    },
+    {
+      "key": "cue_hold",
+      "value": "ホールド"
+    },
+    {
+      "key": "results_stats",
+      "value": "Perfect: {0}, Late: {1}, Early: {2}, Miss: {3}。"
+    },
+    {
+      "key": "stage_end_position",
+      "value": "{0}、{1}/{2}"
+    },
+    {
+      "key": "locked_requires_one_star",
+      "value": "ロック中。少なくとも1つ星が必要です。"
+    },
+    {
+      "key": "locked_requires_two_stars",
+      "value": "ロック中。2つ星が必要です。"
+    },
+    {
+      "key": "locked_requires_full_game",
+      "value": "ロック中。製品版が必要です。"
+    },
+    {
+      "key": "locked_requires_two_stars_full_game",
+      "value": "ロック中。2つ星と製品版が必要です。"
+    },
+    {
+      "key": "locked_requires_two_stars_each_dream",
+      "value": "ロック中。この夜の各夢で少なくとも2つ星を獲得すると解放されます。"
+    }
+  ]
+}

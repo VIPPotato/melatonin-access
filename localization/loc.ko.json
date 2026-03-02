@@ -1,0 +1,866 @@
+{
+  "schemaVersion": 1,
+  "language": "ko",
+  "entries": [
+    {
+      "key": "mod_loaded",
+      "value": "Melatonin Access 모드가 로드되었습니다."
+    },
+    {
+      "key": "mod_active_help",
+      "value": "Melatonin Access가 활성화되었습니다. 방향키로 메뉴를 이동하세요."
+    },
+    {
+      "key": "debug_enabled",
+      "value": "디버그 모드가 켜졌습니다."
+    },
+    {
+      "key": "debug_disabled",
+      "value": "디버그 모드가 꺼졌습니다."
+    },
+    {
+      "key": "rhythm_cues_enabled",
+      "value": "상황별 튜토리얼 큐를 켰습니다."
+    },
+    {
+      "key": "rhythm_cues_disabled",
+      "value": "상황별 튜토리얼 큐를 껐습니다."
+    },
+    {
+      "key": "menu_positions_enabled",
+      "value": "메뉴 위치 안내를 켰습니다."
+    },
+    {
+      "key": "menu_positions_disabled",
+      "value": "메뉴 위치 안내를 껐습니다."
+    },
+    {
+      "key": "intro_welcome",
+      "value": "{0} 키로 시작하고 {1} 키로 언어를 변경하세요."
+    },
+    {
+      "key": "language_selected",
+      "value": "언어를 선택했습니다."
+    },
+    {
+      "key": "language_menu",
+      "value": "언어 메뉴"
+    },
+    {
+      "key": "credits_title",
+      "value": "크레딧"
+    },
+    {
+      "key": "menu_suffix",
+      "value": "{0} 메뉴"
+    },
+    {
+      "key": "order_of",
+      "value": "{0}/{1}"
+    },
+    {
+      "key": "chapter_locked",
+      "value": "{0} 장이 잠겨 있습니다"
+    },
+    {
+      "key": "option_with_slider",
+      "value": "{0} 슬라이더 {1}"
+    },
+    {
+      "key": "slider_value",
+      "value": "슬라이더 {0}"
+    },
+    {
+      "key": "action_key_current_binding",
+      "value": "{0}, 현재 {1}에 바인딩됨."
+    },
+    {
+      "key": "state_on",
+      "value": "켜짐"
+    },
+    {
+      "key": "state_off",
+      "value": "꺼짐"
+    },
+    {
+      "key": "fullscreen",
+      "value": "전체 화면"
+    },
+    {
+      "key": "windowed",
+      "value": "창 모드"
+    },
+    {
+      "key": "calibration_tool_intro",
+      "value": "보정 도구. 오프셋을 조정해 비트에 맞추세요."
+    },
+    {
+      "key": "calibration_offset",
+      "value": "오프셋 {0}"
+    },
+    {
+      "key": "calibration_timing_on_time",
+      "value": "타이밍이 정확합니다."
+    },
+    {
+      "key": "calibration_timing_early_ms",
+      "value": "{0}ms 빨랐습니다."
+    },
+    {
+      "key": "calibration_timing_late_ms",
+      "value": "{0}ms 늦었습니다."
+    },
+    {
+      "key": "downloaded_levels_loading",
+      "value": "다운로드된 레벨. 불러오는 중..."
+    },
+    {
+      "key": "downloaded_levels_page_total",
+      "value": "총 {0}개 레벨. {1}/{2} 페이지"
+    },
+    {
+      "key": "downloaded_levels_total",
+      "value": "총 {0}개 레벨."
+    },
+    {
+      "key": "next_page",
+      "value": "다음 페이지"
+    },
+    {
+      "key": "previous_page",
+      "value": "이전 페이지"
+    },
+    {
+      "key": "page_of",
+      "value": "{0}/{1} 페이지"
+    },
+    {
+      "key": "item_of",
+      "value": "{0}, {1}/{2}"
+    },
+    {
+      "key": "achievements_menu",
+      "value": "도전과제 메뉴"
+    },
+    {
+      "key": "locked_achievement",
+      "value": "잠긴 도전과제. {0}/{1}"
+    },
+    {
+      "key": "locked_achievement_plain",
+      "value": "잠긴 도전과제."
+    },
+    {
+      "key": "achievement_with_desc",
+      "value": "{0}: {1}. {2}/{3}"
+    },
+    {
+      "key": "achievement_with_desc_plain",
+      "value": "{0}: {1}."
+    },
+    {
+      "key": "arrived_at",
+      "value": "{0}에 도착"
+    },
+    {
+      "key": "mode_menu",
+      "value": "모드 메뉴"
+    },
+    {
+      "key": "dream_about_level",
+      "value": "{0}에 대한 꿈"
+    },
+    {
+      "key": "teleport_arrived_stars",
+      "value": "{0}. 별 {1}개."
+    },
+    {
+      "key": "teleport_arrived_one_star",
+      "value": "{0}. 별 {1}개."
+    },
+    {
+      "key": "map_progress_status",
+      "value": "맵 별: {0}. 통과까지 {1}개 더 필요합니다."
+    },
+    {
+      "key": "map_transient_controls_unlocked",
+      "value": "Map settles into view."
+    },
+    {
+      "key": "map_transient_controls_unlocked_mirrored",
+      "value": "Map settles into view mirrored. Left and right are swapped."
+    },
+    {
+      "key": "teleport_conflict_hint",
+      "value": "액션 키가 대괄호로 바인딩되어 대괄호 순간이동이 비활성화되었습니다. 순간이동은 F9/F10을 사용하세요."
+    },
+    {
+      "key": "unknown_level",
+      "value": "알 수 없는 레벨"
+    },
+    {
+      "key": "dream_name_career",
+      "value": "커리어"
+    },
+    {
+      "key": "dream_name_dating",
+      "value": "데이트"
+    },
+    {
+      "key": "dream_name_desires",
+      "value": "욕망"
+    },
+    {
+      "key": "dream_name_exercise",
+      "value": "운동"
+    },
+    {
+      "key": "dream_name_final",
+      "value": "파이널"
+    },
+    {
+      "key": "dream_name_followers",
+      "value": "팔로워"
+    },
+    {
+      "key": "dream_name_food",
+      "value": "음식"
+    },
+    {
+      "key": "dream_name_future",
+      "value": "미래"
+    },
+    {
+      "key": "dream_name_indulgence",
+      "value": "방종"
+    },
+    {
+      "key": "dream_name_meditation",
+      "value": "명상"
+    },
+    {
+      "key": "dream_name_mind",
+      "value": "마음"
+    },
+    {
+      "key": "dream_name_money",
+      "value": "돈"
+    },
+    {
+      "key": "dream_name_nature",
+      "value": "자연"
+    },
+    {
+      "key": "dream_name_past",
+      "value": "과거"
+    },
+    {
+      "key": "dream_name_pressure",
+      "value": "압박"
+    },
+    {
+      "key": "dream_name_setbacks",
+      "value": "좌절"
+    },
+    {
+      "key": "dream_name_shopping",
+      "value": "쇼핑"
+    },
+    {
+      "key": "dream_name_space",
+      "value": "우주"
+    },
+    {
+      "key": "dream_name_stress",
+      "value": "스트레스"
+    },
+    {
+      "key": "dream_name_tech",
+      "value": "테크"
+    },
+    {
+      "key": "dream_name_time",
+      "value": "시간"
+    },
+    {
+      "key": "dream_name_tutorial",
+      "value": "튜토리얼"
+    },
+    {
+      "key": "editor_cursor_empty",
+      "value": "프레이즈 {0}, 마디 {1}, 비트 {2}. 비어 있음."
+    },
+    {
+      "key": "editor_cursor_content",
+      "value": "프레이즈 {0}, 마디 {1}, 비트 {2}. {3}."
+    },
+    {
+      "key": "editor_placed",
+      "value": "{0} 배치됨"
+    },
+    {
+      "key": "editor_removed",
+      "value": "삭제됨"
+    },
+    {
+      "key": "editor_tool_select",
+      "value": "도구 선택"
+    },
+    {
+      "key": "advanced_menu",
+      "value": "고급 메뉴"
+    },
+    {
+      "key": "editor_ready",
+      "value": "레벨 에디터 준비 완료"
+    },
+    {
+      "key": "editor_page",
+      "value": "페이지 {0}"
+    },
+    {
+      "key": "tutorial_skip_prompt",
+      "value": "튜토리얼. {0} 키로 건너뛸 수 있습니다."
+    },
+    {
+      "key": "tutorial_label",
+      "value": "튜토리얼."
+    },
+    {
+      "key": "cue_space",
+      "value": "스페이스"
+    },
+    {
+      "key": "cue_press_action",
+      "value": "{0} 누르기"
+    },
+    {
+      "key": "cue_press_action_twice",
+      "value": "{0} 두 번 누르기"
+    },
+    {
+      "key": "cue_followers_phase_one_start_stop",
+      "value": "리듬에 맞춰 {0}를 누르세요. 스프링 소리 후 시작하고 멈추세요."
+    },
+    {
+      "key": "cue_followers_phase_two_resume_after_vibration",
+      "value": "점프 소리 후 멈추고 진동 후 다시 계속하세요."
+    },
+    {
+      "key": "cue_followers_phase_three_press_thrice",
+      "value": "이중 진동 후 {0}를 세 번 누르세요."
+    },
+    {
+      "key": "cue_tech_every_two_beats",
+      "value": "높은 신호 후 다음 박자에 {0}를 누르세요."
+    },
+    {
+      "key": "cue_tech_next_three_beats",
+      "value": "높은 신호 후 다음 3박자에 {0}를 누르세요."
+    },
+    {
+      "key": "cue_time_portal_gap_hold_release",
+      "value": "빈 구간의 포털 윙 소리 후 {0}를 길게 누르고 다음 신호에서 떼세요."
+    },
+    {
+      "key": "cue_time_sixth_seventh_hold_release",
+      "value": "여섯 번째 신호에 {0}를 길게 누르고, 일곱 번째 신호에 떼세요."
+    },
+    {
+      "key": "cue_nature_water_press_thrice",
+      "value": "{0}를 세 번 누르세요."
+    },
+    {
+      "key": "cue_mind_triple_offbeat",
+      "value": "엇박자 신호에 {0}를 세 번 누르세요."
+    },
+    {
+      "key": "cue_press_up",
+      "value": "위"
+    },
+    {
+      "key": "cue_hold_release_duration",
+      "value": "{0}를 길게 누르고 {1} 후에 떼세요."
+    },
+    {
+      "key": "cue_hold_release_on_beat",
+      "value": "{0}를 길게 누르고 {1}박자에 떼세요."
+    },
+    {
+      "key": "duration_half_beat",
+      "value": "반 박자"
+    },
+    {
+      "key": "duration_one_beat",
+      "value": "1박자"
+    },
+    {
+      "key": "duration_n_beats",
+      "value": "{0}박자"
+    },
+    {
+      "key": "cue_past_camera_first_sound",
+      "value": "{0}를 1박자 길게 누르세요."
+    },
+    {
+      "key": "cue_past_camera_second_sound",
+      "value": "{0}를 반 박자 길게 누르세요."
+    },
+    {
+      "key": "cue_past_camera_third_sound",
+      "value": "{0}를 2박자 길게 누르세요."
+    },
+    {
+      "key": "cue_tutorial_press_second_beat",
+      "value": "2번째 박자에 {0}를 누르세요."
+    },
+    {
+      "key": "cue_food_press_third_beat",
+      "value": "3번째 박자에 {0}를 누르세요."
+    },
+    {
+      "key": "cue_food_press_fifth_beat",
+      "value": "5번째 박자에 {0}를 누르세요."
+    },
+    {
+      "key": "cue_food_press_fourth_beat",
+      "value": "4번째 박자에 {0}를 누르세요."
+    },
+    {
+      "key": "cue_food_press_seventh_beat",
+      "value": "7번째 박자에 {0}를 누르세요."
+    },
+    {
+      "key": "cue_shopping_repeat_patterns",
+      "value": "{0}로 오디오 큐 패턴을 반복하세요."
+    },
+    {
+      "key": "cue_dating_follow_swipes",
+      "value": "4번째 박자 신호에서 왼쪽 또는 오른쪽으로 스와이프하세요."
+    },
+    {
+      "key": "cue_future_follow_patterns",
+      "value": "패턴 신호를 따라가세요."
+    },
+    {
+      "key": "cue_swipe_left",
+      "value": "4번째 박자에 왼쪽으로 스와이프."
+    },
+    {
+      "key": "cue_swipe_right",
+      "value": "4번째 박자에 오른쪽으로 스와이프."
+    },
+    {
+      "key": "cue_swipe_left_long",
+      "value": "긴 신호 후 왼쪽으로 스와이프하세요."
+    },
+    {
+      "key": "cue_swipe_right_long",
+      "value": "긴 신호 후 오른쪽으로 스와이프하세요."
+    },
+    {
+      "key": "cue_hold_action",
+      "value": "{0} 길게 누르기"
+    },
+    {
+      "key": "key_enter",
+      "value": "엔터"
+    },
+    {
+      "key": "key_period",
+      "value": "마침표"
+    },
+    {
+      "key": "key_slash",
+      "value": "슬래시"
+    },
+    {
+      "key": "key_tab",
+      "value": "Tab"
+    },
+    {
+      "key": "key_escape",
+      "value": "Esc"
+    },
+    {
+      "key": "key_start",
+      "value": "시작 버튼"
+    },
+    {
+      "key": "help_title_screen",
+      "value": "타이틀 화면 도움말. {0} 키로 시작하고 {1} 키로 언어를 변경합니다."
+    },
+    {
+      "key": "help_menu",
+      "value": "메뉴 도움말. 위아래로 이동하고 {0} 키로 선택합니다. {1} 키로 돌아갑니다."
+    },
+    {
+      "key": "help_map",
+      "value": "맵 도움말. [ 와 ] 또는 F9/F10으로 레벨 사이를 이동합니다. {0} 키로 선택한 레벨을 엽니다. F1 또는 컨트롤러 View 버튼으로 맵 별을 확인합니다."
+    },
+    {
+      "key": "help_mode_menu",
+      "value": "모드 메뉴 도움말. 위아래로 모드를 선택합니다. {0} 키로 시작하고 {1} 키로 이 메뉴를 닫습니다."
+    },
+    {
+      "key": "help_results",
+      "value": "결과 화면 도움말. 위아래로 옵션을 선택합니다. {0} 키로 확인하고 {1} 키로 돌아갑니다."
+    },
+    {
+      "key": "help_gameplay",
+      "value": "게임플레이 도움말. 상황별 큐를 따라 안내된 동작을 누르세요. {0} 키로 일시정지합니다."
+    },
+    {
+      "key": "help_editor",
+      "value": "에디터 도움말. 방향키로 타임라인을 이동합니다. {0} 키로 배치 또는 선택하고 {1} 키로 취소합니다."
+    },
+    {
+      "key": "level_briefing_line",
+      "value": "{0}. {1}. {2}"
+    },
+    {
+      "key": "mode_practice",
+      "value": "연습 모드"
+    },
+    {
+      "key": "practice_mode_started",
+      "value": "연습 모드가 시작되었습니다."
+    },
+    {
+      "key": "mode_score",
+      "value": "점수 모드"
+    },
+    {
+      "key": "score_mode_started",
+      "value": "점수 모드가 시작되었습니다."
+    },
+    {
+      "key": "mode_hard",
+      "value": "하드 모드"
+    },
+    {
+      "key": "mode_score_remix",
+      "value": "점수 리믹스 모드"
+    },
+    {
+      "key": "mode_hard_remix",
+      "value": "하드 리믹스 모드"
+    },
+    {
+      "key": "mode_tutorial",
+      "value": "튜토리얼 모드"
+    },
+    {
+      "key": "mode_editor_test",
+      "value": "에디터 테스트 모드"
+    },
+    {
+      "key": "mode_community",
+      "value": "커뮤니티 모드"
+    },
+    {
+      "key": "objective_default",
+      "value": "상황별 큐를 따라 비트를 유지하세요."
+    },
+    {
+      "key": "objective_practice",
+      "value": "패턴과 타이밍을 익히세요. {0} 키로 건너뛸 수 있습니다."
+    },
+    {
+      "key": "objective_score",
+      "value": "박자에 맞춘 입력으로 점수를 올리세요."
+    },
+    {
+      "key": "objective_hard",
+      "value": "더 촘촘한 패턴에서도 정확도를 유지하세요."
+    },
+    {
+      "key": "objective_tutorial",
+      "value": "안내에 따라 기본 조작을 익히세요."
+    },
+    {
+      "key": "objective_editor_test",
+      "value": "차트의 타이밍과 흐름을 테스트하세요."
+    },
+    {
+      "key": "objective_community",
+      "value": "커뮤니티 레벨을 플레이하고 평가하세요."
+    },
+    {
+      "key": "ad_ch1_intro_title_card",
+      "value": "타이틀 카드: 첫 번째 밤."
+    },
+    {
+      "key": "ad_ch1_intro_room_widens",
+      "value": "침실 화면이 넓어지고, 그는 노트북을 둔 채 깨어 있다."
+    },
+    {
+      "key": "ad_ch1_intro_fade_black",
+      "value": "짧게 암전된다."
+    },
+    {
+      "key": "ad_ch1_intro_map_recenters",
+      "value": "시점이 침대에서 뒤로 빠지며 챕터 맵으로 이동한다."
+    },
+    {
+      "key": "ad_ch1_intro_map_music_starts",
+      "value": "맵 테마가 시작된다."
+    },
+    {
+      "key": "ad_ch1_intro_map_controls_unlock",
+      "value": "맵이 첫 번째 밤에 자리 잡는다. 첫 경로들이 준비됐다."
+    },
+    {
+      "key": "ad_ch2_intro_title_card",
+      "value": "타이틀 카드: 두 번째 밤."
+    },
+    {
+      "key": "ad_ch2_intro_room_widens",
+      "value": "침실 화면이 넓어지고, 그는 깨어 주변을 둘러본다."
+    },
+    {
+      "key": "ad_ch2_intro_fade_black_sleep",
+      "value": "화면이 어두워지고 그는 다시 잠에 든다."
+    },
+    {
+      "key": "ad_ch2_intro_map_recenters",
+      "value": "카메라 중심이 챕터 맵으로 돌아온다."
+    },
+    {
+      "key": "ad_ch2_intro_map_music_starts",
+      "value": "맵 테마가 다시 시작된다."
+    },
+    {
+      "key": "ad_ch2_intro_map_controls_unlock",
+      "value": "맵이 두 번째 밤에 자리 잡는다."
+    },
+    {
+      "key": "ad_ch3_intro_title_card",
+      "value": "타이틀 카드: 세 번째 밤."
+    },
+    {
+      "key": "ad_ch3_intro_room_widens",
+      "value": "낮은 앰비언스 속에서 방 화면이 넓어진다."
+    },
+    {
+      "key": "ad_ch3_intro_crossfade_black",
+      "value": "천천히 크로스페이드로 암전된다."
+    },
+    {
+      "key": "ad_ch3_intro_room_returns_sleeping",
+      "value": "방 화면이 다시 나타나고 그는 잠들어 있다."
+    },
+    {
+      "key": "ad_ch3_intro_map_music_starts",
+      "value": "방의 잔향 위로 맵 테마가 시작된다."
+    },
+    {
+      "key": "ad_ch3_intro_map_controls_unlock",
+      "value": "맵이 세 번째 밤에 자리 잡는다."
+    },
+    {
+      "key": "ad_ch4_intro_title_card",
+      "value": "타이틀 카드: 네 번째 밤."
+    },
+    {
+      "key": "ad_ch4_intro_room_widens",
+      "value": "방이 더 가까운 고요한 시점으로 열린다."
+    },
+    {
+      "key": "ad_ch4_intro_sleep_trigger",
+      "value": "그는 몸이 축 처지며 잠에 빠진다."
+    },
+    {
+      "key": "ad_ch4_intro_map_recenters",
+      "value": "카메라 중심이 챕터 맵으로 돌아온다."
+    },
+    {
+      "key": "ad_ch4_intro_map_music_starts",
+      "value": "맵 테마가 시작된다."
+    },
+    {
+      "key": "ad_ch4_intro_map_controls_unlock_mirrored",
+      "value": "맵이 네 번째 밤에 자리 잡고 좌우가 반전된다."
+    },
+    {
+      "key": "ad_ch5_intro_title_card",
+      "value": "타이틀 카드: 다섯 번째 밤."
+    },
+    {
+      "key": "ad_ch5_intro_room_widens",
+      "value": "방 화면이 넓어지고, 그는 어두운 불빛 아래 잠든 채 있다."
+    },
+    {
+      "key": "ad_ch5_intro_map_recenters",
+      "value": "카메라 중심이 침대에서 마지막 맵으로 옮겨진다."
+    },
+    {
+      "key": "ad_ch5_intro_map_music_starts",
+      "value": "맵 테마가 시작된다."
+    },
+    {
+      "key": "ad_ch5_intro_map_controls_unlock",
+      "value": "맵이 다섯 번째 밤에 자리 잡는다."
+    },
+    {
+      "key": "ad_ch1_outro_transition_room",
+      "value": "전환이 꿈에서 침실로 닫히며 넘어간다."
+    },
+    {
+      "key": "ad_ch1_outro_border_clears",
+      "value": "흐린 테두리가 걷히고 방이 선명해진다."
+    },
+    {
+      "key": "ad_ch1_outro_wake",
+      "value": "그는 깨어나 몸을 일으켜 앉는다."
+    },
+    {
+      "key": "ad_ch1_outro_fade_black",
+      "value": "빠르게 암전된다."
+    },
+    {
+      "key": "ad_ch1_outro_load_next",
+      "value": "두 번째 밤을 불러오는 중."
+    },
+    {
+      "key": "ad_ch2_outro_transition_room",
+      "value": "전환이 꿈에서 침실로 닫히며 넘어간다."
+    },
+    {
+      "key": "ad_ch2_outro_border_clears",
+      "value": "흐린 테두리가 걷히고 방 장면이 안정된다."
+    },
+    {
+      "key": "ad_ch2_outro_wake_first",
+      "value": "첫 번째 기상 동작이 시작된다."
+    },
+    {
+      "key": "ad_ch2_outro_wake_second",
+      "value": "두 번째 기상 동작에서 완전히 깨어난다."
+    },
+    {
+      "key": "ad_ch2_outro_fade_black",
+      "value": "암전된다."
+    },
+    {
+      "key": "ad_ch2_outro_load_next",
+      "value": "세 번째 밤을 불러오는 중."
+    },
+    {
+      "key": "ad_ch3_outro_transition_room",
+      "value": "전환이 꿈에서 침실로 닫히며 넘어간다."
+    },
+    {
+      "key": "ad_ch3_outro_border_clears",
+      "value": "흐린 테두리가 걷히고 방의 디테일이 돌아온다."
+    },
+    {
+      "key": "ad_ch3_outro_static_flicker",
+      "value": "강한 정적이 방 안을 가른다."
+    },
+    {
+      "key": "ad_ch3_outro_wake_after_static",
+      "value": "글리치가 지나간 뒤, 그는 깨어난다."
+    },
+    {
+      "key": "ad_ch3_outro_fade_black",
+      "value": "암전된다."
+    },
+    {
+      "key": "ad_ch3_outro_load_next",
+      "value": "네 번째 밤을 불러오는 중."
+    },
+    {
+      "key": "ad_ch4_outro_transition_room",
+      "value": "전환이 꿈에서 침실로 닫히며 넘어간다."
+    },
+    {
+      "key": "ad_ch4_outro_settles_sleep",
+      "value": "그는 더 깊은 잠으로 빠져든다."
+    },
+    {
+      "key": "ad_ch4_outro_border_clears",
+      "value": "흐린 테두리가 사라지고 고요한 방만 남는다."
+    },
+    {
+      "key": "ad_ch4_outro_long_fade_black",
+      "value": "오디오가 페이드아웃되며 화면도 길게 암전된다."
+    },
+    {
+      "key": "ad_ch4_outro_load_next",
+      "value": "다섯 번째 밤을 불러오는 중."
+    },
+    {
+      "key": "ad_ch5_outro_transition_room",
+      "value": "전환이 침실로 돌아온다."
+    },
+    {
+      "key": "ad_ch5_outro_camera_to_window",
+      "value": "카메라가 침대에서 창문 쪽으로 미끄러진다."
+    },
+    {
+      "key": "ad_ch5_outro_window_fills_view",
+      "value": "창문이 화면 대부분을 채운다."
+    },
+    {
+      "key": "ad_ch5_outro_looks_out_window",
+      "value": "그는 바깥을 바라보며 가만히 있다."
+    },
+    {
+      "key": "ad_ch5_outro_final_fade_black",
+      "value": "마지막으로 길게 암전된다."
+    },
+    {
+      "key": "ad_ch5_outro_credits_begin",
+      "value": "크레딧이 시작된다."
+    },
+    {
+      "key": "cue_left",
+      "value": "왼쪽"
+    },
+    {
+      "key": "cue_right",
+      "value": "오른쪽"
+    },
+    {
+      "key": "cue_both",
+      "value": "양쪽"
+    },
+    {
+      "key": "cue_left_right_short",
+      "value": "좌우"
+    },
+    {
+      "key": "cue_hold",
+      "value": "홀드"
+    },
+    {
+      "key": "results_stats",
+      "value": "Perfect: {0}, Neujeum: {1}, Ppareum: {2}, Miss: {3}."
+    },
+    {
+      "key": "stage_end_position",
+      "value": "{0}, {1}/{2}"
+    },
+    {
+      "key": "locked_requires_one_star",
+      "value": "잠김. 최소 별 1개가 필요합니다."
+    },
+    {
+      "key": "locked_requires_two_stars",
+      "value": "잠김. 별 2개가 필요합니다."
+    },
+    {
+      "key": "locked_requires_full_game",
+      "value": "잠김. 정식 버전이 필요합니다."
+    },
+    {
+      "key": "locked_requires_two_stars_full_game",
+      "value": "잠김. 별 2개와 정식 버전이 필요합니다."
+    },
+    {
+      "key": "locked_requires_two_stars_each_dream",
+      "value": "잠김. 이 밤의 각 꿈에서 별 2개 이상을 얻어야 통과할 수 있습니다."
+    }
+  ]
+}

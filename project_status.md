@@ -1,7 +1,7 @@
 # Project Status
 
 **Current Phase**: Testing & Polish
-**Last Update**: 2026-02-23
+**Last Update**: 2026-03-02
 
 ## Completed
 - [x] **Core System**: `ScreenReader` (Tolk), `MelatoninAccess` (MelonLoader Mod).
@@ -17,6 +17,11 @@
 - [x] **Game API Heading Alignment (2026-02-23)**: Renamed core `docs/game-api.md` section headings to match the updated setup-template Phase 1 labels (`1.1` structure, `1.2` input, `1.3` UI, `1.5` localization, `1.7` status/feedback, `1.8` events, `1.10` tutorial) without changing documented findings.
 - [x] **README Terminology Consistency Pass (2026-02-23)**: Aligned README wording with current behavior (`score mode started` only; practice-start line removed), clarified `AnnounceRhythmCues` as a legacy key naming contextual cues, and switched build command code blocks to PowerShell examples.
 - [x] **Template Docs + State Manager Assets Sync (2026-02-23)**: Synced updated template docs (`setup-guide`, `ACCESSIBILITY_MODDING_GUIDE`, `state-management-guide`, `project_status` template) and added `templates/AccessStateManager.cs.template` from the refreshed template pack.
+- [x] **Localization JSON Externalization (2026-02-23)**: Migrated all mod translatable strings from hardcoded `Loc.cs` entries to external `localization/loc.<lang>.json` files (all 10 game languages), refactored `Loc` runtime loading/path resolution to JSON assets, updated localization/cutscene QA scripts to validate JSON sources, and updated build/release packaging to ship `Mods/localization`.
+- [x] **Cutscene AD Multilingual Localization (2026-02-23)**: Localized all `ad_*` cutscene description lines into zh-Hans, zh-Hant, ja, ko, vi, fr, de, es, and pt JSON files so cutscene narration no longer falls back to English in non-English game languages.
+- [x] **Localization Runtime Fallback Fix (2026-02-23)**: Fixed startup regression where `JsonUtility` returned empty localization arrays at runtime by adding UTF-8 BOM stripping and a deterministic fallback parser for `localization/loc.*.json`, restoring key loading and preventing spoken key IDs.
+- [x] **Localization Startup Log Noise Reduction (2026-02-23)**: Replaced per-language fallback warnings with one startup summary line in `Loc` when fallback parsing is used, while keeping detailed fallback-language output gated behind debug logging.
+- [x] **Chinese Localization Import + Local Log Ignore (2026-02-23)**: Imported tester-provided zh-Hans localization updates (`localization/loc.zh-Hans.json`) after QA validation, and added `[Ll]atest.log` to `.gitignore` to keep shared root log files out of commits.
 - [x] **Tutorial Extraction (2026-02-09)**: Extracted tutorial/help text and flow context into `docs/tutorial-texts.md`; updated `docs/game-api.md` with tutorial start path, skip behavior, and text-source notes. Deep asset pass recovered additional gameplay instruction lines from `Melatonin_Data\level0` (metronome, timing circle, score mode readiness, and auto-restart behavior).
 - [x] **Duplicate Announcement Reduction (2026-02-09)**: Added targeted debounce for dialog text (`DialogueHandler`), language/start screen (`StartScreenHandler`), and map mode menu (`MapHandler`), plus stronger whitespace/time normalization in `ScreenReader`. Build succeeded and DLL auto-copied to game `Mods` folder.
 - [x] **Duplicate Announcement Reduction Pass 2 (2026-02-09)**: Removed additional duplicate bursts in `AchievementsHandler` and `ExtraMenusHandler` (community next/prev page and calibration activation/description) with short cooldown-based dedupe. Build succeeded and deployed.
@@ -98,6 +103,7 @@
 - [x] **Level Editor Graduation (2026-02-12)**: Confirmed level editor accessibility is fully supported (no longer experimental), including cursor, tool, advanced menu, and timeline narration.
 - [x] **v1.1 Release Polish Pack 1 (2026-02-12)**: Added missing `Dream_food` 7th-beat practice cue coverage, added gameplay-start announcements for Practice and Score modes (`TriggerSong`), and completed terminology cleanup for user-facing wording from "rhythm cues" to "contextual cues" in help/objective strings and config comments. Updated `docs/game-api.md`, `README.md`, and `todo.md`.
 - [x] **Backlog Cleanup (2026-02-12)**: Simplified `todo.md` to keep only actionable `v1.1` items, moved audio-description work explicitly under deferred `v1.2`, and removed stale template tasks that are already implemented or not applicable (for example `Dream_food` jump/shoot split at queue level).
+- [x] **Repository History Sanitization (2026-03-02)**: Purged tracked `decompiled/` game-source dumps and historical `bin/obj/artifacts` build outputs from all branches/tags using `git filter-branch`, deleted rewrite backup refs, ran aggressive object pruning, and force-pushed rewritten branches/tags to GitHub.
 
 ## Codebase Analysis Progress
 
@@ -133,6 +139,7 @@
 - **Reasoning:** Existing handlers are stable with localized responsibility, Harmony hook boundaries, and explicit scene/game-mode checks; no unresolved shared-input conflicts currently require a central state manager.
 
 ## Next Steps
+- **GitHub Cache/GC Follow-up**: Open a GitHub Support request to run server-side garbage collection/cache cleanup for removed copyrighted/sensitive history after force-push.
 - **Focused Playtest**: Validate end-to-end flow for map mode locks, stage-end locks, advanced menu/timeline narration, and credits scrolling narration.
 - **Language Spot Check**: Switch each in-game language and verify key mod-only lines (debug toggles, map lock reasons, teleport conflict hint, results summary) are spoken correctly.
 - **Config Spot Check**: Toggle each new `MelonPreferences` setting and verify the targeted announcement group turns on/off without side effects.
@@ -168,6 +175,13 @@
 - **Post-Release Validation**: Monitor issues/feedback from `v1.0.4` and collect any remaining edge cases from real-world play sessions.
 
 ## Session Notes
+- [2026-03-02] Legal/risk cleanup: confirmed `decompiled/` and historical game DLL/build outputs were committed in early history; rewrote all branch/tag history, removed `refs/original` backups, expired reflogs, ran aggressive `git gc --prune=now`, force-pushed cleaned `master`/`cutscene-audiodescription-experiments` plus release tags, and removed temporary remote tag `pre-scrub-2026-03-02`.
+- [2026-02-23] Cleaned `todo.md` backlog: removed stale v1.1-era items and archived notes, keeping only current active and deferred tasks.
+- [2026-02-23] Reviewed tester-provided `Latest.log`: it reflects an older pre-fallback DLL build where localization loaded `0` entries; current branch has fallback loader fix and quiet fallback summary logging. Imported tester zh-Hans strings and validated localization/cutscene QA.
+- [2026-02-23] Reduced localization startup log spam: fallback parser now reports one concise summary line instead of one warning per language file.
+- [2026-02-23] Investigated log regression showing `Loc` loading zero JSON entries; added BOM-safe file read and fallback key/value parser in `Loc.cs`, rebuilt, and regenerated local `v1.2` package.
+- [2026-02-23] Completed non-English localization pass for all cutscene AD keys (`ad_*`) in JSON localization assets; localization QA and cutscene pipeline validation both pass.
+- [2026-02-23] Replaced hardcoded localization tables in `Loc.cs` with JSON-backed data files under `localization/`; release packaging and QA now validate/copy `Mods/localization` assets directly.
 - [2026-02-13] Reviewed `Loc.cs` zh-Hans/zh-Hant localization entries for naturalness; documented awkward contextual-cue wording, key-labels, the map progress summary, and duplicate dream names for follow-up with the user.
 - [2026-02-13] Reviewed `Loc.cs` FR/DE/ES/PT strings for naturalness, highlighted missing accents and garbled phrases, and captured a focused list of keys to clean up.
 - [2026-02-13] Reviewed JA/KO `Loc.cs` strings; only `results_stats` still reads in English/romanization so it needs localized words before release.

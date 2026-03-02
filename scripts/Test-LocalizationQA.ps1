@@ -1,13 +1,13 @@
 param(
-    [string]$LocPath = ".\Loc.cs",
+    [string]$LocalizationDir = ".\localization",
     [int]$ExpectedLanguageCount = 10
 )
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
-if (-not (Test-Path -LiteralPath $LocPath)) {
-    Write-Host "ERROR: Localization file not found: $LocPath"
+if (-not (Test-Path -LiteralPath $LocalizationDir -PathType Container)) {
+    Write-Host "ERROR: Localization directory not found: $LocalizationDir"
     exit 1
 }
 
@@ -17,15 +17,9 @@ if ($ExpectedLanguageCount -ne $languageNames.Count) {
     exit 1
 }
 
-function Unquote-CSharpString {
-    param([Parameter(Mandatory = $true)][string]$Quoted)
-    if ($Quoted.Length -lt 2) { return $Quoted }
-    $inner = $Quoted.Substring(1, $Quoted.Length - 2)
-    return [regex]::Unescape($inner)
-}
-
 function Get-PlaceholderIndexes {
     param([Parameter(Mandatory = $true)][string]$Text)
+
     $normalized = $Text -replace "\{\{", "" -replace "\}\}", ""
     $indexes = New-Object System.Collections.Generic.HashSet[string]
     foreach ($match in [regex]::Matches($normalized, "\{(\d+)(?:[^}]*)\}")) {
@@ -35,87 +29,117 @@ function Get-PlaceholderIndexes {
     return [string[]]@($indexes | Sort-Object)
 }
 
-$raw = Get-Content -LiteralPath $LocPath -Raw
-$addMatches = [regex]::Matches(
-    $raw,
-    "Add\s*\(\s*(?<args>.*?)\)\s*;",
-    [System.Text.RegularExpressions.RegexOptions]::Singleline
-)
-
-if ($addMatches.Count -eq 0) {
-    Write-Host "ERROR: No Add(...) localization entries were parsed from $LocPath"
-    exit 1
-}
-
 $errors = New-Object System.Collections.Generic.List[string]
 $warnings = New-Object System.Collections.Generic.List[string]
+$translationsByLang = @{}
 
-$entries = New-Object System.Collections.Generic.List[object]
-$seen = @{}
-
-for ($entryIndex = 0; $entryIndex -lt $addMatches.Count; $entryIndex++) {
-    $argsText = $addMatches[$entryIndex].Groups["args"].Value
-    $stringTokens = [regex]::Matches($argsText, '"(?:\\.|[^"\\])*"')
-    if ($stringTokens.Count -eq 0) {
+foreach ($lang in $languageNames) {
+    $path = Join-Path $LocalizationDir ("loc.{0}.json" -f $lang)
+    if (-not (Test-Path -LiteralPath $path -PathType Leaf)) {
+        $errors.Add("Missing localization file: $path")
         continue
     }
 
-    $values = New-Object System.Collections.Generic.List[string]
-    foreach ($token in $stringTokens) {
-        $values.Add((Unquote-CSharpString -Quoted $token.Value))
+    $parsed = $null
+    try {
+        $parsed = (Get-Content -LiteralPath $path -Raw) | ConvertFrom-Json -Depth 20
     }
-
-    $expectedArgCount = $ExpectedLanguageCount + 1
-    if ($values.Count -ne $expectedArgCount) {
-        $errors.Add("Entry $($entryIndex + 1) has $($values.Count) string args, expected $expectedArgCount.")
+    catch {
+        $errors.Add("Failed to parse localization JSON '$path': $($_.Exception.Message)")
         continue
     }
 
-    $key = $values[0]
-    if ($seen.ContainsKey($key)) {
-        $errors.Add("Duplicate localization key '$key' found at entries $($seen[$key]) and $($entryIndex + 1).")
-    }
-    else {
-        $seen[$key] = $entryIndex + 1
+    if ($null -eq $parsed) {
+        $errors.Add("Parsed localization JSON is null: $path")
+        continue
     }
 
-    $translations = @()
-    for ($i = 1; $i -lt $values.Count; $i++) {
-        $translations += $values[$i]
+    $entries = @($parsed.entries)
+    if ($entries.Count -eq 0) {
+        $errors.Add("Localization file has no entries: $path")
+        $translationsByLang[$lang] = @{}
+        continue
     }
 
-    for ($langIndex = 0; $langIndex -lt $translations.Count; $langIndex++) {
-        if ([string]::IsNullOrWhiteSpace($translations[$langIndex])) {
-            $warnings.Add("Key '$key' has empty translation for $($languageNames[$langIndex]).")
+    $map = @{}
+    for ($i = 0; $i -lt $entries.Count; $i++) {
+        $entry = $entries[$i]
+        if ($null -eq $entry) {
+            $warnings.Add("Null entry in '$path' at index $i.")
+            continue
         }
+
+        $key = [string]$entry.key
+        $value = [string]$entry.value
+        if ([string]::IsNullOrWhiteSpace($key)) {
+            $errors.Add("Entry $i in '$path' has empty key.")
+            continue
+        }
+
+        if ($map.ContainsKey($key)) {
+            $errors.Add("Duplicate key '$key' in '$path'.")
+            continue
+        }
+
+        if ([string]::IsNullOrWhiteSpace($value)) {
+            $warnings.Add("Key '$key' has empty translation in '$path'.")
+        }
+
+        $map[$key] = $value
     }
 
-    $entries.Add([pscustomobject]@{
-        Key          = $key
-        Translations = $translations
-    })
+    $translationsByLang[$lang] = $map
 }
 
-foreach ($entry in $entries) {
-    $referencePlaceholders = @(Get-PlaceholderIndexes -Text $entry.Translations[0])
-    for ($langIndex = 1; $langIndex -lt $entry.Translations.Count; $langIndex++) {
-        $langPlaceholders = @(Get-PlaceholderIndexes -Text $entry.Translations[$langIndex])
-        $placeholderDiff = @(Compare-Object -ReferenceObject $referencePlaceholders -DifferenceObject $langPlaceholders)
-        $hasDifferentCount = $referencePlaceholders.Count -ne $langPlaceholders.Count
-        $hasDifferentSet = $placeholderDiff.Count -gt 0
-        if ($hasDifferentCount -or $hasDifferentSet) {
-            $errors.Add(
-                ("Placeholder mismatch for key '{0}' in {1}. Expected [{2}] from en, got [{3}]." -f `
-                    $entry.Key, `
-                    $languageNames[$langIndex], `
-                    ($referencePlaceholders -join ", "), `
-                    ($langPlaceholders -join ", "))
-            )
+if (-not $translationsByLang.ContainsKey("en")) {
+    $errors.Add("English localization map could not be loaded.")
+}
+else {
+    $englishMap = $translationsByLang["en"]
+    $englishKeys = @($englishMap.Keys)
+
+    foreach ($lang in $languageNames) {
+        if ($lang -eq "en") { continue }
+        if (-not $translationsByLang.ContainsKey($lang)) { continue }
+
+        $langMap = $translationsByLang[$lang]
+
+        foreach ($key in $englishKeys) {
+            if (-not $langMap.ContainsKey($key)) {
+                $errors.Add("Missing key '$key' in language '$lang'.")
+                continue
+            }
+
+            $referencePlaceholders = @(Get-PlaceholderIndexes -Text ([string]$englishMap[$key]))
+            $langPlaceholders = @(Get-PlaceholderIndexes -Text ([string]$langMap[$key]))
+            $placeholderDiff = @(Compare-Object -ReferenceObject $referencePlaceholders -DifferenceObject $langPlaceholders)
+            $hasDifferentCount = $referencePlaceholders.Count -ne $langPlaceholders.Count
+            $hasDifferentSet = $placeholderDiff.Count -gt 0
+            if ($hasDifferentCount -or $hasDifferentSet) {
+                $errors.Add(
+                    ("Placeholder mismatch for key '{0}' in {1}. Expected [{2}] from en, got [{3}]." -f `
+                        $key, `
+                        $lang, `
+                        ($referencePlaceholders -join ", "), `
+                        ($langPlaceholders -join ", "))
+                )
+            }
+        }
+
+        foreach ($key in $langMap.Keys) {
+            if (-not $englishMap.ContainsKey($key)) {
+                $warnings.Add("Extra key '$key' exists in '$lang' but not in 'en'.")
+            }
         }
     }
 }
 
-Write-Host ("Localization keys parsed: {0}" -f $entries.Count)
+$parsedKeyCount = 0
+if ($translationsByLang.ContainsKey("en")) {
+    $parsedKeyCount = @($translationsByLang["en"].Keys).Count
+}
+
+Write-Host ("Localization keys parsed (en): {0}" -f $parsedKeyCount)
 Write-Host ("Errors: {0}" -f $errors.Count)
 Write-Host ("Warnings: {0}" -f $warnings.Count)
 

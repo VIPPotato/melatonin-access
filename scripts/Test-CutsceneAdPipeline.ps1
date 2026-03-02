@@ -3,7 +3,7 @@ param(
     [switch]$StrictCoverage,
     [switch]$RequireEntries,
     [switch]$ValidateLocKeys,
-    [string]$LocPath = ".\Loc.cs"
+    [string]$LocalizationDir = ".\localization"
 )
 
 Set-StrictMode -Version Latest
@@ -59,14 +59,27 @@ $cutsceneList = @($cutscenes)
 $seenIds = @{}
 
 if ($ValidateLocKeys.IsPresent) {
-    if (-not (Test-Path -LiteralPath $LocPath)) {
-        Add-Issue -List $errors -Message "Loc.cs not found: $LocPath"
+    $englishLocPath = Join-Path $LocalizationDir "loc.en.json"
+    if (-not (Test-Path -LiteralPath $englishLocPath -PathType Leaf)) {
+        Add-Issue -List $errors -Message "English localization file not found: $englishLocPath"
     }
     else {
-        $locRaw = Get-Content -LiteralPath $LocPath -Raw
-        $keyMatches = [regex]::Matches($locRaw, 'Add\(\s*"(?<key>[^"]+)"\s*,')
-        foreach ($match in $keyMatches) {
-            $locKeys.Add($match.Groups["key"].Value) | Out-Null
+        try {
+            $locJson = (Get-Content -LiteralPath $englishLocPath -Raw) | ConvertFrom-Json -Depth 20
+        }
+        catch {
+            Add-Issue -List $errors -Message "Failed to parse localization file '$englishLocPath': $($_.Exception.Message)"
+            $locJson = $null
+        }
+
+        if ($null -ne $locJson) {
+            $locEntries = @($locJson.entries)
+            foreach ($entry in $locEntries) {
+                $key = [string](Get-Prop -Object $entry -Name "key")
+                if (-not [string]::IsNullOrWhiteSpace($key)) {
+                    $locKeys.Add($key) | Out-Null
+                }
+            }
         }
     }
 }
@@ -186,7 +199,7 @@ for ($i = 0; $i -lt $cutsceneList.Count; $i++) {
             Add-Issue -List $errors -Message "Cutscene '$id' entry $entryIndex has empty textKey."
         }
         elseif ($ValidateLocKeys.IsPresent -and $locKeys.Count -gt 0 -and -not $locKeys.Contains($textKey)) {
-            $message = "Cutscene '$id' entry $entryIndex textKey not found in Loc.cs: '$textKey'."
+            $message = "Cutscene '$id' entry $entryIndex textKey not found in localization JSON: '$textKey'."
             if ($StrictCoverage.IsPresent) {
                 Add-Issue -List $errors -Message $message
             }
