@@ -1,7 +1,7 @@
 # Project Status
 
 **Current Phase**: Testing & Polish
-**Last Update**: 2026-02-23
+**Last Update**: 2026-03-02
 
 ## Completed
 - [x] **Core System**: `ScreenReader` (Tolk), `MelatoninAccess` (MelonLoader Mod).
@@ -103,6 +103,7 @@
 - [x] **Level Editor Graduation (2026-02-12)**: Confirmed level editor accessibility is fully supported (no longer experimental), including cursor, tool, advanced menu, and timeline narration.
 - [x] **v1.1 Release Polish Pack 1 (2026-02-12)**: Added missing `Dream_food` 7th-beat practice cue coverage, added gameplay-start announcements for Practice and Score modes (`TriggerSong`), and completed terminology cleanup for user-facing wording from "rhythm cues" to "contextual cues" in help/objective strings and config comments. Updated `docs/game-api.md`, `README.md`, and `todo.md`.
 - [x] **Backlog Cleanup (2026-02-12)**: Simplified `todo.md` to keep only actionable `v1.1` items, moved audio-description work explicitly under deferred `v1.2`, and removed stale template tasks that are already implemented or not applicable (for example `Dream_food` jump/shoot split at queue level).
+- [x] **Repository History Sanitization (2026-03-02)**: Purged tracked `decompiled/` game-source dumps and historical `bin/obj/artifacts` build outputs from all branches/tags using `git filter-branch`, deleted rewrite backup refs, ran aggressive object pruning, and force-pushed rewritten branches/tags to GitHub.
 
 ## Codebase Analysis Progress
 
@@ -138,6 +139,7 @@
 - **Reasoning:** Existing handlers are stable with localized responsibility, Harmony hook boundaries, and explicit scene/game-mode checks; no unresolved shared-input conflicts currently require a central state manager.
 
 ## Next Steps
+- **GitHub Cache/GC Follow-up**: Open a GitHub Support request to run server-side garbage collection/cache cleanup for removed copyrighted/sensitive history after force-push.
 - **Focused Playtest**: Validate end-to-end flow for map mode locks, stage-end locks, advanced menu/timeline narration, and credits scrolling narration.
 - **Language Spot Check**: Switch each in-game language and verify key mod-only lines (debug toggles, map lock reasons, teleport conflict hint, results summary) are spoken correctly.
 - **Config Spot Check**: Toggle each new `MelonPreferences` setting and verify the targeted announcement group turns on/off without side effects.
@@ -173,6 +175,7 @@
 - **Post-Release Validation**: Monitor issues/feedback from `v1.0.4` and collect any remaining edge cases from real-world play sessions.
 
 ## Session Notes
+- [2026-03-02] Legal/risk cleanup: confirmed `decompiled/` and historical game DLL/build outputs were committed in early history; rewrote all branch/tag history, removed `refs/original` backups, expired reflogs, ran aggressive `git gc --prune=now`, force-pushed cleaned `master`/`cutscene-audiodescription-experiments` plus release tags, and removed temporary remote tag `pre-scrub-2026-03-02`.
 - [2026-02-23] Cleaned `todo.md` backlog: removed stale v1.1-era items and archived notes, keeping only current active and deferred tasks.
 - [2026-02-23] Reviewed tester-provided `Latest.log`: it reflects an older pre-fallback DLL build where localization loaded `0` entries; current branch has fallback loader fix and quiet fallback summary logging. Imported tester zh-Hans strings and validated localization/cutscene QA.
 - [2026-02-23] Reduced localization startup log spam: fallback parser now reports one concise summary line instead of one warning per language file.
