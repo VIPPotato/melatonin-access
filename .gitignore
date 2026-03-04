@@ -1,4 +1,5 @@
-# Claude Code local settings
+# Local assistant settings
+.Codex/
 .claude/
 
 # Build output
@@ -19,15 +20,21 @@ Desktop.ini
 .vscode/
 *.user
 *.suo
+.idea/
+
 # MelonLoader output (don't commit game DLLs)
 *.dll
 !templates/**
 !libs/**/*.dll
 
-# Release artifacts are generated locally
+# Generated artifacts
 release/
-artifacts
+artifacts/
 
-# Local IDE settings
-.idea/
-.vscode/
+# Internal notes (not part of template)
+docs/Codex-md-improvements.md
+
+# Local files
+age-of-decadence-analyse.txt
+nul
+*.zip
