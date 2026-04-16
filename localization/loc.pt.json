@@ -12,11 +12,11 @@
     },
     {
       "key": "debug_enabled",
-      "value": "Modo de depuracao ativado."
+      "value": "Modo de depuração ativado."
     },
     {
       "key": "debug_disabled",
-      "value": "Modo de depuracao desativado."
+      "value": "Modo de depuração desativado."
     },
     {
       "key": "rhythm_cues_enabled",
@@ -28,11 +28,11 @@
     },
     {
       "key": "menu_positions_enabled",
-      "value": "Anuncios de posicao de menu ativados."
+      "value": "Anúncios de posição de menu ativados."
     },
     {
       "key": "menu_positions_disabled",
-      "value": "Anuncios de posicao de menu desativados."
+      "value": "Anúncios de posição de menu desativados."
     },
     {
       "key": "intro_welcome",
@@ -48,7 +48,7 @@
     },
     {
       "key": "credits_title",
-      "value": "Creditos"
+      "value": "Créditos"
     },
     {
       "key": "menu_suffix",
@@ -60,7 +60,7 @@
     },
     {
       "key": "chapter_locked",
-      "value": "Capitulo {0} bloqueado"
+      "value": "Capítulo {0} bloqueado"
     },
     {
       "key": "option_with_slider",
@@ -92,7 +92,7 @@
     },
     {
       "key": "calibration_tool_intro",
-      "value": "Ferramenta de calibracao. Ajuste o deslocamento para combinar com a batida."
+      "value": "Ferramenta de calibração. Ajuste o deslocamento para combinar com a batida."
     },
     {
       "key": "calibration_offset",
@@ -112,27 +112,27 @@
     },
     {
       "key": "downloaded_levels_loading",
-      "value": "Niveis baixados. Carregando..."
+      "value": "Níveis baixados. Carregando..."
     },
     {
       "key": "downloaded_levels_page_total",
-      "value": "{0} niveis no total. Pagina {1} de {2}"
+      "value": "{0} níveis no total. Página {1} de {2}"
     },
     {
       "key": "downloaded_levels_total",
-      "value": "{0} niveis no total."
+      "value": "{0} níveis no total."
     },
     {
       "key": "next_page",
-      "value": "Proxima pagina"
+      "value": "Próxima página"
     },
     {
       "key": "previous_page",
-      "value": "Pagina anterior"
+      "value": "Página anterior"
     },
     {
       "key": "page_of",
-      "value": "Pagina {0} de {1}"
+      "value": "Página {0} de {1}"
     },
     {
       "key": "item_of",
@@ -184,19 +184,19 @@
     },
     {
       "key": "map_transient_controls_unlocked",
-      "value": "Map settles into view."
+      "value": "O mapa aparece à vista."
     },
     {
       "key": "map_transient_controls_unlocked_mirrored",
-      "value": "Map settles into view mirrored. Left and right are swapped."
+      "value": "O mapa aparece espelhado. Esquerda e direita são trocadas."
     },
     {
       "key": "teleport_conflict_hint",
-      "value": "O teleporte com colchetes foi desativado porque a Acao esta vinculada a colchetes. Use F9 e F10."
+      "value": "O teleporte com colchetes foi desativado porque a Ação está vinculada a colchetes. Use F9 e F10."
     },
     {
       "key": "unknown_level",
-      "value": "Nivel desconhecido"
+      "value": "Nível desconhecido"
     },
     {
       "key": "dream_name_career",
@@ -212,7 +212,7 @@
     },
     {
       "key": "dream_name_exercise",
-      "value": "Exercicio"
+      "value": "Exercício"
     },
     {
       "key": "dream_name_final",
@@ -232,11 +232,11 @@
     },
     {
       "key": "dream_name_indulgence",
-      "value": "Indulgencia"
+      "value": "Indulgência"
     },
     {
       "key": "dream_name_meditation",
-      "value": "Meditacao"
+      "value": "Meditação"
     },
     {
       "key": "dream_name_mind",
@@ -256,7 +256,7 @@
     },
     {
       "key": "dream_name_pressure",
-      "value": "Pressao"
+      "value": "Pressão"
     },
     {
       "key": "dream_name_setbacks",
@@ -268,7 +268,7 @@
     },
     {
       "key": "dream_name_space",
-      "value": "Espaco"
+      "value": "Espaço"
     },
     {
       "key": "dream_name_stress",
@@ -304,19 +304,19 @@
     },
     {
       "key": "editor_tool_select",
-      "value": "Selecao de ferramenta"
+      "value": "Seleção de ferramenta"
     },
     {
       "key": "advanced_menu",
-      "value": "Menu avancado"
+      "value": "Menu avançado"
     },
     {
       "key": "editor_ready",
-      "value": "Editor de nivel pronto"
+      "value": "Editor de nível pronto"
     },
     {
       "key": "editor_page",
-      "value": "Pagina {0}"
+      "value": "Página {0}"
     },
     {
       "key": "tutorial_skip_prompt",
@@ -328,7 +328,7 @@
     },
     {
       "key": "cue_space",
-      "value": "Espaco"
+      "value": "Espaço"
     },
     {
       "key": "cue_press_action",
@@ -340,39 +340,39 @@
     },
     {
       "key": "cue_followers_phase_one_start_stop",
-      "value": "Pressione {0} no ritmo. Comece e pare apos o som da mola."
+      "value": "Pressione {0} no ritmo. Começe e pare após o som da mola."
     },
     {
       "key": "cue_followers_phase_two_resume_after_vibration",
-      "value": "Pare apos o som do salto. Continue apos a vibracao."
+      "value": "Pare após o som do salto. Continue após a vibração."
     },
     {
       "key": "cue_followers_phase_three_press_thrice",
-      "value": "Pressione {0} tres vezes apos a vibracao dupla."
+      "value": "Pressione {0} três vezes após a vibração dupla."
     },
     {
       "key": "cue_tech_every_two_beats",
-      "value": "Apos o sinal agudo, pressione {0} no proximo tempo."
+      "value": "Após o sinal agudo, pressione {0} no próximo tempo."
     },
     {
       "key": "cue_tech_next_three_beats",
-      "value": "Apos o sinal agudo, pressione {0} nos proximos 3 tempos."
+      "value": "Após o sinal agudo, pressione {0} nos próximos 3 tempos."
     },
     {
       "key": "cue_time_portal_gap_hold_release",
-      "value": "Apos o zumbido do portal na pausa, segure {0} e solte no proximo sinal."
+      "value": "Após o zumbido do portal na pausa, segure {0} e solte no próximo sinal."
     },
     {
       "key": "cue_time_sixth_seventh_hold_release",
-      "value": "No sexto sinal, segure {0}. Solte no setimo sinal."
+      "value": "No sexto sinal, segure {0}. Solte no sétimo sinal."
     },
     {
       "key": "cue_nature_water_press_thrice",
-      "value": "Pressione {0} tres vezes."
+      "value": "Pressione {0} três vezes."
     },
     {
       "key": "cue_mind_triple_offbeat",
-      "value": "Pressione {0} tres vezes no sinal de contratempo."
+      "value": "Pressione {0} três vezes no sinal de contratempo."
     },
     {
       "key": "cue_press_up",
@@ -380,7 +380,7 @@
     },
     {
       "key": "cue_hold_release_duration",
-      "value": "Segure {0}. Solte apos {1}."
+      "value": "Segure {0}. Solte após {1}."
     },
     {
       "key": "cue_hold_release_on_beat",
@@ -428,11 +428,11 @@
     },
     {
       "key": "cue_food_press_seventh_beat",
-      "value": "Pressione {0} no setimo tempo."
+      "value": "Pressione {0} no sétimo tempo."
     },
     {
       "key": "cue_shopping_repeat_patterns",
-      "value": "Repita os padroes de audio com {0}."
+      "value": "Repita os padrões de áudio com {0}."
     },
     {
       "key": "cue_dating_follow_swipes",
@@ -440,7 +440,7 @@
     },
     {
       "key": "cue_future_follow_patterns",
-      "value": "Siga os sinais de padrao."
+      "value": "Siga os sinais de padrão."
     },
     {
       "key": "cue_swipe_left",
@@ -452,11 +452,11 @@
     },
     {
       "key": "cue_swipe_left_long",
-      "value": "Deslize para a esquerda apos o sinal longo."
+      "value": "Deslize para a esquerda após o sinal longo."
     },
     {
       "key": "cue_swipe_right_long",
-      "value": "Deslize para a direita apos o sinal longo."
+      "value": "Deslize para a direita após o sinal longo."
     },
     {
       "key": "cue_hold_action",
@@ -488,15 +488,15 @@
     },
     {
       "key": "help_title_screen",
-      "value": "Ajuda da tela inicial. Pressione {0} para comecar. Pressione {1} para mudar o idioma."
+      "value": "Ajuda da tela inicial. Pressione {0} para começar. Pressione {1} para mudar o idioma."
     },
     {
       "key": "help_menu",
-      "value": "Ajuda de menu. Use Cima e Baixo para mover. Pressione {0} para selecionar. Pressione {1} para voltar."
+      "value": "Ajuda do menu. Use Cima e Baixo para mover. Pressione {0} para selecionar. Pressione {1} para voltar."
     },
     {
       "key": "help_map",
-      "value": "Ajuda do mapa. Use [ e ] ou F9 e F10 para mover entre niveis. Pressione {0} para abrir o nivel selecionado. Pressione F1 ou View no controle para as estrelas do mapa."
+      "value": "Ajuda do mapa. Use [ e ] ou F9 e F10 para mover entre níveis. Pressione {0} para abrir o nível selecionado. Pressione F1 ou View no controle para as estrelas do mapa."
     },
     {
       "key": "help_mode_menu",
@@ -504,11 +504,11 @@
     },
     {
       "key": "help_results",
-      "value": "Ajuda de resultados. Use Cima e Baixo para escolher uma opcao. Pressione {0} para confirmar. Pressione {1} para voltar."
+      "value": "Ajuda dos resultados. Use Cima e Baixo para escolher uma opção. Pressione {0} para confirmar. Pressione {1} para voltar."
     },
     {
       "key": "help_gameplay",
-      "value": "Ajuda de jogo. Siga as dicas contextuais e pressione as acoes anunciadas. Pressione {0} para pausar."
+      "value": "Ajuda do jogo. Siga as dicas contextuais e pressione as ações anunciadas. Pressione {0} para pausar."
     },
     {
       "key": "help_editor",
@@ -520,19 +520,19 @@
     },
     {
       "key": "mode_practice",
-      "value": "Modo pratica"
+      "value": "Modo prática"
     },
     {
       "key": "practice_mode_started",
-      "value": "Modo pratica iniciado."
+      "value": "Modo prática iniciado."
     },
     {
       "key": "mode_score",
-      "value": "Modo pontuacao"
+      "value": "Modo pontuação"
     },
     {
       "key": "score_mode_started",
-      "value": "Modo pontuacao iniciado."
+      "value": "Modo pontuação iniciado."
     },
     {
       "key": "mode_hard",
@@ -540,7 +540,7 @@
     },
     {
       "key": "mode_score_remix",
-      "value": "Modo pontuacao remix"
+      "value": "Modo pontuação remix"
     },
     {
       "key": "mode_hard_remix",
@@ -564,19 +564,19 @@
     },
     {
       "key": "objective_practice",
-      "value": "Aprenda o padrao e o tempo. Pressione {0} para pular."
+      "value": "Aprenda o padrão e o tempo. Pressione {0} para pular."
     },
     {
       "key": "objective_score",
-      "value": "Aumente a pontuacao acertando as acoes no ritmo."
+      "value": "Aumente a pontuação acertando as ações no ritmo."
     },
     {
       "key": "objective_hard",
-      "value": "Mantenha a precisao em padroes mais exigentes."
+      "value": "Mantenha a precisão em padrões mais exigentes."
     },
     {
       "key": "objective_tutorial",
-      "value": "Siga as instrucoes para aprender as mecanicas."
+      "value": "Siga as instruções para aprender as mecânicas."
     },
     {
       "key": "objective_editor_test",
@@ -584,11 +584,11 @@
     },
     {
       "key": "objective_community",
-      "value": "Jogue e avalie este nivel da comunidade."
+      "value": "Jogue e avalie este nível da comunidade."
     },
     {
       "key": "ad_ch1_intro_title_card",
-      "value": "Cartela de título: Noite Um."
+      "value": "Cartão de título: Noite Um."
     },
     {
       "key": "ad_ch1_intro_room_widens",
@@ -612,7 +612,7 @@
     },
     {
       "key": "ad_ch2_intro_title_card",
-      "value": "Cartela de título: Noite Dois."
+      "value": "Cartão de título: Noite Dois."
     },
     {
       "key": "ad_ch2_intro_room_widens",
@@ -620,7 +620,7 @@
     },
     {
       "key": "ad_ch2_intro_fade_black_sleep",
-      "value": "A tela escurece; ele volta a adormecer."
+      "value": "A tela escurece. Ele volta a dormir."
     },
     {
       "key": "ad_ch2_intro_map_recenters",
@@ -636,11 +636,11 @@
     },
     {
       "key": "ad_ch3_intro_title_card",
-      "value": "Cartela de título: Noite Três."
+      "value": "Cartão de título: Noite Três."
     },
     {
       "key": "ad_ch3_intro_room_widens",
-      "value": "O quarto se amplia em uma ambiência baixa."
+      "value": "O quarto se amplia em um ambiênte baixo."
     },
     {
       "key": "ad_ch3_intro_crossfade_black",
@@ -652,7 +652,7 @@
     },
     {
       "key": "ad_ch3_intro_map_music_starts",
-      "value": "O tema do mapa começa sob a ambiência do quarto."
+      "value": "O tema do mapa começa sob o ambiênte do quarto."
     },
     {
       "key": "ad_ch3_intro_map_controls_unlock",
@@ -660,7 +660,7 @@
     },
     {
       "key": "ad_ch4_intro_title_card",
-      "value": "Cartela de título: Noite Quatro."
+      "value": "Cartão de título: Noite Quatro."
     },
     {
       "key": "ad_ch4_intro_room_widens",
@@ -668,7 +668,7 @@
     },
     {
       "key": "ad_ch4_intro_sleep_trigger",
-      "value": "Ele se entrega e cai no sono."
+      "value": "Ele desaba e cai no sono."
     },
     {
       "key": "ad_ch4_intro_map_recenters",
@@ -684,7 +684,7 @@
     },
     {
       "key": "ad_ch5_intro_title_card",
-      "value": "Cartela de título: Noite Cinco."
+      "value": "Cartão de título: Noite Cinco."
     },
     {
       "key": "ad_ch5_intro_room_widens",
@@ -728,7 +728,7 @@
     },
     {
       "key": "ad_ch2_outro_border_clears",
-      "value": "A borda suave se desfaz; o quarto permanece estável."
+      "value": "A borda suave se desfaz. O quarto permanece estável."
     },
     {
       "key": "ad_ch2_outro_wake_first",
@@ -752,7 +752,7 @@
     },
     {
       "key": "ad_ch3_outro_border_clears",
-      "value": "A borda suave se desfaz; os detalhes do quarto voltam."
+      "value": "A borda suave se desfaz. Os detalhes do quarto voltam."
     },
     {
       "key": "ad_ch3_outro_static_flicker",
@@ -828,7 +828,7 @@
     },
     {
       "key": "cue_left_right_short",
-      "value": "Izquierda derecha"
+      "value": "Esquerda direita"
     },
     {
       "key": "cue_hold",
