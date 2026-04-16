@@ -1,58 +1,61 @@
 # Melatonin Access
 
-Screen-reader accessibility mod for **Melatonin** (MelonLoader).
+Screen-reader accessibility mod for **Melatonin** using **MelonLoader**.
 
-## What This Mod Adds
+## Quick Install
+
+1. Install MelonLoader for Melatonin:
+   https://github.com/LavaGang/MelonLoader.Installer/releases
+2. Download the latest release ZIP, for example `MelatoninAccess-v1.2.0.zip`.
+3. Open the ZIP, press `Ctrl+A`, press `Ctrl+C`, then paste everything into your Melatonin folder, the folder that contains `Melatonin.exe`.
+4. Confirm these files exist after pasting:
+   - `Mods/MelatoninAccess.dll`
+   - `Mods/cutscene-ad/manifest.json`
+   - `Mods/localization/loc.en.json`
+   - `Tolk.dll`
+   - `nvdaControllerClient32.dll`
+   - `UserData/Loader.cfg`
+5. Start the game and confirm you hear the mod loaded announcement.
+
+Important:
+- `Tolk.dll` and `nvdaControllerClient32.dll` must stay in the main game folder beside `Melatonin.exe`, not inside `Mods`.
+- `cutscene-ad` and `localization` must stay inside the `Mods` folder.
+
+## What It Adds
 
 - Spoken menu navigation and option state announcements.
-- Contextual tutorial/gameplay cue announcements in gameplay.
-- Score-mode start announcements when gameplay begins.
-- Tutorial/dialog and popup reading.
-- World map navigation support, including fast landmark teleport.
-- Full level editor accessibility narration (cursor, tools, advanced menu, timeline tabs).
-- Results and stage-end option announcements, including lock-state reasons.
-- Credits roll narration while entries scroll.
-- Localization for mod-generated messages across all game-supported languages.
-- Optional toggles for announcement groups via `MelonPreferences`.
-- A regression-check script for validating speech logs after playtests.
+- Contextual tutorial and gameplay cue announcements.
+- Tutorial, dialog, and popup reading.
+- Map navigation support, including fast landmark teleport.
+- Results and stage-end announcements, including lock reasons.
+- Credits narration while entries scroll.
+- Full level editor narration, including cursor, tools, advanced menu, and timeline tabs.
+- Mod-generated speech in all game-supported languages.
+- Toggleable announcement groups through `MelonPreferences`.
 
-## Navigation and Controls
+## Main Controls
 
-- Title/start screen:
-  - Press Action (default `Space`) to begin.
-  - Press language key (default `Tab`) to change language.
-- General menu navigation:
-  - Move with `Up`/`Down`.
-  - Confirm with Action (default `Space`).
-  - Cancel/back with Cancel (default `Esc`).
-- Map navigation:
-  - Keyboard: `[` and `]` jump to previous/next landmark.
-  - Keyboard fallback: if Action is bound to brackets, use `F9` (previous) and `F10` (next).
-  - Gamepad: `Action Left` / `Action Right` (commonly `LB` / `RB`) jump between landmarks.
-  - Press `F1` to hear map/chapter star summary (`total stars collected` and `stars still needed to pass`).
-  - Open mode menu with Action, then choose mode with `Up`/`Down` and confirm with Action.
-- Results/stage-end menu:
-  - Move with `Up`/`Down`.
-  - Confirm with Action.
-
-Example flow:
-- Use `[` or `]` to pick a nearby map landmark.
-- Press `Up`/`Down` to choose the mode.
-- Press Action to start.
+- Title screen: press Action to begin. Press the language key, default `Tab`, to change language.
+- Menus: `Up` and `Down` move, Action confirms, Cancel goes back.
+- Map: `[` and `]` jump between landmarks.
+- Map fallback: if Action is bound to `[` or `]`, use `F9` for previous and `F10` for next.
+- Gamepad map jump: use `Action Left` and `Action Right`, commonly `LB` and `RB`.
+- Map summary: press `F1` on map scenes to hear total stars collected and how many more are needed to pass.
+- Context help: press `F11` to hear the available controls for the current screen.
 
 ## Hotkeys
 
-- `F2`: Toggle contextual tutorial/gameplay cue announcements on/off (saved immediately to MelonPreferences).
-- `F3`: Toggle menu position announcements on/off (for example `1 of 4`, saved immediately to MelonPreferences).
-- `F1`: On map scenes only, announce chapter/map star totals and how many more stars are needed to pass.
-- `F11`: Speak context help (`What can I press here?`) for the current screen.
-- `F12`: Toggle debug logging on/off.
-  - State is persisted in MelonPreferences and restored on next launch.
+- `F1`: on map scenes only, speak chapter and map star totals.
+- `F2`: turn contextual cue announcements on or off.
+- `F3`: turn menu position announcements on or off.
+- `F11`: speak context help for the current screen.
+- `F12`: turn debug logging on or off.
 
-## Localization
+`F2`, `F3`, and `F12` save immediately and keep their state after restart.
 
-Mod-generated announcements are localized to the same language selected in-game.
-Supported language set matches the game language menu:
+## Languages
+
+Mod-generated announcements follow the in-game language. Supported languages match the game language menu:
 
 - English
 - Simplified Chinese
@@ -65,37 +68,53 @@ Supported language set matches the game language menu:
 - Spanish
 - Portuguese
 
-## Optional Settings (MelonPreferences)
+## Optional Settings
 
-Settings are stored in `UserData/MelonPreferences.cfg` under category `MelatoninAccess`.
+Settings are stored in `UserData/MelonPreferences.cfg` under the `MelatoninAccess` category.
 
-- `AnnounceMapHotspots` (default `true`): map arrival and teleport destination/star lines.
-- `AnnounceRhythmCues` (default `true`): contextual tutorial/gameplay cues (action, direction, and hold/release guidance).
-  - Note: the config key name is legacy (`RhythmCues`) but it controls contextual cues.
-  - Can be toggled in-game with `F2`.
-- `AnnounceMenuPositions` (default `true`): menu position context (`1 of N`) across supported menus.
-  - Can be toggled in-game with `F3`.
-- `AnnounceTutorialDialog` (default `true`): tutorial and dialog narration.
-- `AnnounceCreditsRoll` (default `true`): credits title and scrolling names.
-- `DebugModeEnabled` (default `false`): debug logging state used by `F12`.
+- `AnnounceMapHotspots`: map arrival and teleport destination speech.
+- `AnnounceRhythmCues`: contextual tutorial and gameplay cues.
+- `AnnounceMenuPositions`: position context such as `1 of 4`.
+- `AnnounceTutorialDialog`: tutorial and dialog narration.
+- `AnnounceCreditsRoll`: credits title and scrolling names.
+- `DebugModeEnabled`: debug logging state used by `F12`.
 
-## Build
+Note:
+- The config key `AnnounceRhythmCues` is a legacy name. It controls contextual cues.
+
+## For Maintainers
+
+### Build And Deploy
+
+Use the wrapper scripts instead of raw `dotnet build`.
+
+Build only:
 
 ```powershell
 pwsh -File .\scripts\Build-Mod.ps1
 ```
 
-`Build-Mod.ps1` compiles the mod without copying files into the game folder. Use `Deploy-Mod.ps1` when you want the DLL, `cutscene-ad`, and `localization` files copied into `Mods`.
+Build and copy the mod into the game `Mods` folder:
 
-## Release Package
+```powershell
+pwsh -File .\scripts\Deploy-Mod.ps1
+```
 
-Create release ZIP (mod + required screen-reader DLLs only):
+The local scripts currently default to:
+
+```text
+L:\SteamLibrary\steamapps\common\Melatonin
+```
+
+If your install is somewhere else, pass `-GamePath`.
+
+### Build A Release ZIP
 
 ```powershell
 pwsh -File .\scripts\Build-ReleasePackage.ps1 -Version "v1.2.0"
 ```
 
-Package contents:
+This creates a copy-paste-ready ZIP with this runtime layout:
 
 - `Mods/MelatoninAccess.dll`
 - `Mods/cutscene-ad/manifest.json`
@@ -103,134 +122,46 @@ Package contents:
 - `Mods/localization/loc.<lang>.json`
 - `Tolk.dll`
 - `nvdaControllerClient32.dll`
-- `UserData/Loader.cfg` (bundled from maintainer install; includes hidden-console setting)
+- `UserData/Loader.cfg`
 
-The release ZIP intentionally excludes development docs/tools (for example changelog files and regression test scripts).
+The release ZIP intentionally leaves out development docs, logs, and regression scripts.
 
-## Install (Release ZIP - Recommended)
+### QA Scripts
 
-1. Install MelonLoader for Melatonin:
-   - https://github.com/LavaGang/MelonLoader.Installer/releases
-2. Download `MelatoninAccess-v1.2.0.zip`.
-3. Open the ZIP, press `Ctrl+A`, press `Ctrl+C`, then paste everything into your Melatonin game folder (the folder with `Melatonin.exe`).
-4. Confirm these files exist:
-     - `<Melatonin folder>/Mods/MelatoninAccess.dll`
-     - `<Melatonin folder>/Mods/cutscene-ad/manifest.json`
-     - `<Melatonin folder>/Mods/localization/loc.en.json`
-     - `<Melatonin folder>/Tolk.dll`
-     - `<Melatonin folder>/nvdaControllerClient32.dll`
-     - `<Melatonin folder>/UserData/Loader.cfg`
-5. Start the game and confirm you hear the mod loaded announcement.
-
-Important:
-
-- `Tolk.dll` and `nvdaControllerClient32.dll` must be in the main game folder, not in `Mods`.
-
-## GitHub Release Packaging
-
-- A GitHub Actions workflow builds and uploads the release ZIP automatically when a tag like `v1.2.0` is pushed.
-- The uploaded ZIP uses the same layout as local packaging (`Mods`, `UserData`, root dependency DLLs, and `Mods/cutscene-ad` timing data).
-
-## Install (From Source Build)
-
-1. Build:
-
-```powershell
-pwsh -File .\scripts\Deploy-Mod.ps1
-```
-
-2. If auto-copy is not configured, copy:
-    - `bin/Debug/net472/MelatoninAccess.dll` to `<Melatonin folder>/Mods/`
-    - `cutscene-ad/` to `<Melatonin folder>/Mods/cutscene-ad/`
-    - `localization/` to `<Melatonin folder>/Mods/localization/`
-    - `libs/x86/Tolk.dll` to `<Melatonin folder>/`
-    - `libs/x86/nvdaControllerClient32.dll` to `<Melatonin folder>/`
-
-## Support
-
-If you like what I do, I would appreciate a coffee:
-https://buymeacoffee.com/potatophones
-
-## Thanks
-
-- Thanks to **luyi** for testing the mod and providing fixed Chinese localization strings.
-- Thanks to **dreamburguer** for providing fixed Spanish localization strings.
-
-## Speech Regression Check (After Playtest)
-
-1. Enable debug logs with `F12` in-game.
-2. Playtest the areas you changed.
-3. Run:
+Speech regression check:
 
 ```powershell
 pwsh -File .\scripts\Test-SpeechRegression.ps1
 ```
 
-Useful options:
-
-```powershell
-pwsh -File .\scripts\Test-SpeechRegression.ps1 -LogPath "L:\SteamLibrary\steamapps\common\Melatonin\MelonLoader\Latest.log"
-pwsh -File .\scripts\Test-SpeechRegression.ps1 -RequiredPattern "Tutorial\. Press .+ to skip\."
-```
-
-## Localization QA Check
-
-Validate that all `localization/loc.<lang>.json` files have complete language coverage and matching placeholders:
+Localization coverage check:
 
 ```powershell
 pwsh -File .\scripts\Test-LocalizationQA.ps1
 ```
 
-This check runs automatically during release packaging (`scripts/Build-ReleasePackage.ps1`) unless you pass `-SkipLocalizationQa`.
-
-## Cutscene AD Pipeline Check
-
-Validate cutscene intro/outro timing script files:
+Cutscene audio-description data check:
 
 ```powershell
 pwsh -File .\scripts\Test-CutsceneAdPipeline.ps1
 ```
 
-Strict/authoring options:
+For cutscene authoring details, see `docs/cutscene-ad-pipeline.md`.
 
-```powershell
-pwsh -File .\scripts\Test-CutsceneAdPipeline.ps1 -StrictCoverage -RequireEntries
-pwsh -File .\scripts\Test-CutsceneAdPipeline.ps1 -ValidateLocKeys -LocalizationDir .\localization
-```
+### Research Tool
 
-This check runs automatically during release packaging (`scripts/Build-ReleasePackage.ps1`) unless you pass `-SkipCutsceneQa`.
-
-Reference format and workflow:
-- `docs/cutscene-ad-pipeline.md`
-
-## Unity Asset Extraction (CLI)
-
-Extract Unity assets directly from `Melatonin_Data` using UnityPy:
+Extract Unity assets from the installed game:
 
 ```powershell
 python .\scripts\extract_unity_assets.py --output-dir .\artifacts\asset-extract
 ```
 
-Useful options:
+## Support
 
-```powershell
-# Fast smoke test (export only a few assets per type)
-python .\scripts\extract_unity_assets.py --output-dir .\artifacts\asset-extract-smoke --max-per-type 5
+If you like the project, you can support it here:
+https://buymeacoffee.com/potatophones
 
-# Metadata only (no binary export)
-python .\scripts\extract_unity_assets.py --output-dir .\artifacts\asset-index-only --metadata-only
+## Thanks
 
-# Include MonoBehaviour typetree exports (partial, build-dependent)
-python .\scripts\extract_unity_assets.py --output-dir .\artifacts\asset-extract-mb --types AudioClip,AnimationClip,Sprite,Texture2D,TextAsset,MonoBehaviour
-```
-
-Outputs:
-- `assets.jsonl`: one record per indexed object (source file, type, path id, exported files, status).
-- `summary.json`: aggregate counts by type and source file.
-- `errors.log`: file-level load issues (if any).
-
-## Requirements
-
-- Melatonin (PC)
-- MelonLoader
-- Tolk screen reader bridge (`Tolk.dll`) available to the mod runtime
+- Thanks to **luyi** for testing and Chinese localization fixes.
+- Thanks to **dreamburguer** for Spanish localization fixes.
