@@ -320,9 +320,29 @@ public class DamagePatch
 - `__result` - Return value (Postfix only)
 - `___fieldName` - Private fields (3 underscores!)
 
+### Common Pitfalls
+
+**Parameter names must match:** Harmony 2.x matches patch parameters by name, not just by type. If the original method has `TakeDamage(int damage, bool ignoreArmor)`, your prefix/postfix parameters must use the same names. A mismatch causes an "IL Compile Error" at runtime with no helpful message.
+
+**Overloaded methods:** When patching a method that has multiple overloads (same name, different parameters), specify the parameter types explicitly — otherwise Harmony may pick the wrong overload:
+
+```csharp
+[HarmonyPatch(typeof(TargetClass), "MethodName", new Type[] { typeof(int), typeof(bool) })]
+```
+
 ---
 
 ## Tolk (Screen Reader)
+
+### Required DLLs in Game Directory
+
+**BOTH files must be present in the game folder (where the .exe is):**
+- `Tolk.dll` — the screen reader bridge
+- `nvdaControllerClient64.dll` (64-bit games) or `nvdaControllerClient32.dll` (32-bit games) — required for NVDA
+
+Without nvdaControllerClient, NVDA users get no output. JAWS works via COM (no extra DLL).
+
+Download: https://github.com/ndarilek/tolk/releases
 
 ### DLL Imports
 

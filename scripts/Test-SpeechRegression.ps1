@@ -1,5 +1,5 @@
 param(
-    [string]$LogPath = "D:\games\steam\steamapps\common\Melatonin\MelonLoader\Latest.log",
+    [string]$LogPath = "L:\SteamLibrary\steamapps\common\Melatonin\MelonLoader\Latest.log",
     [string[]]$RequiredPattern = @(),
     [string[]]$ForbiddenPattern = @(
         "\b1 stars\b",

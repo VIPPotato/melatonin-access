@@ -21,7 +21,7 @@ from typing import Any
 import UnityPy
 
 
-DEFAULT_DATA_DIR = r"D:\games\steam\steamapps\common\Melatonin\Melatonin_Data"
+DEFAULT_DATA_DIR = r"L:\SteamLibrary\steamapps\common\Melatonin\Melatonin_Data"
 DEFAULT_FILE_PATTERN = r"^(level\d+|sharedassets\d+\.assets|resources\.assets|globalgamemanagers)$"
 DEFAULT_TYPES = ("AudioClip", "AnimationClip", "Sprite", "Texture2D", "TextAsset")
 SAFE_NAME_PATTERN = re.compile(r"[^A-Za-z0-9._-]+")

@@ -1,5 +1,5 @@
 param(
-    [string]$Version = "v1.1",
+    [string]$Version = "v1.2.0",
     [string]$Configuration = "Debug",
     [switch]$KeepStage,
     [switch]$SkipLocalizationQa,
@@ -14,10 +14,12 @@ $modDll = Join-Path $projectRoot "bin\$Configuration\net472\MelatoninAccess.dll"
 $tolkDll = Join-Path $projectRoot "libs\x86\Tolk.dll"
 $nvdaDll = Join-Path $projectRoot "libs\x86\nvdaControllerClient32.dll"
 $cutsceneAdDir = Join-Path $projectRoot "cutscene-ad"
+$cutsceneManifestPath = Join-Path $cutsceneAdDir "manifest.json"
+$cutsceneScriptsDir = Join-Path $cutsceneAdDir "scripts"
 $localizationDir = Join-Path $projectRoot "localization"
 $loaderCfgCandidates = @(
-    (Join-Path $projectRoot "UserConfig\Loader.cfg"),
-    (Join-Path $projectRoot "UserData\Loader.cfg")
+    (Join-Path $projectRoot "UserData\Loader.cfg"),
+    (Join-Path $projectRoot "UserConfig\Loader.cfg")
 )
 $loaderCfg = $loaderCfgCandidates | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1
 $locQaScript = Join-Path $projectRoot "scripts\Test-LocalizationQA.ps1"
@@ -25,7 +27,7 @@ $cutsceneQaScript = Join-Path $projectRoot "scripts\Test-CutsceneAdPipeline.ps1"
 
 if (-not (Test-Path -LiteralPath $modDll)) {
     Write-Host "ERROR: Mod DLL not found: $modDll"
-    Write-Host "Build first with: dotnet build MelatoninAccess.csproj"
+    Write-Host "Build first with: pwsh -File .\\scripts\\Build-Mod.ps1"
     exit 1
 }
 
@@ -41,6 +43,16 @@ if (-not (Test-Path -LiteralPath $nvdaDll)) {
 
 if (-not (Test-Path -LiteralPath $cutsceneAdDir)) {
     Write-Host "ERROR: Cutscene AD folder not found: $cutsceneAdDir"
+    exit 1
+}
+
+if (-not (Test-Path -LiteralPath $cutsceneManifestPath)) {
+    Write-Host "ERROR: Cutscene AD manifest not found: $cutsceneManifestPath"
+    exit 1
+}
+
+if (-not (Test-Path -LiteralPath $cutsceneScriptsDir)) {
+    Write-Host "ERROR: Cutscene AD scripts folder not found: $cutsceneScriptsDir"
     exit 1
 }
 
@@ -93,7 +105,7 @@ if (-not $SkipCutsceneQa.IsPresent) {
 $releaseDir = Join-Path $projectRoot "release"
 $stageDir = Join-Path $releaseDir "MelatoninAccess-$Version"
 $modsDir = Join-Path $stageDir "Mods"
-$userConfigDir = Join-Path $stageDir "UserConfig"
+$userDataDir = Join-Path $stageDir "UserData"
 $zipPath = Join-Path $releaseDir "MelatoninAccess-$Version.zip"
 
 if (Test-Path -LiteralPath $stageDir) {
@@ -101,14 +113,16 @@ if (Test-Path -LiteralPath $stageDir) {
 }
 
 New-Item -ItemType Directory -Path $modsDir -Force | Out-Null
-New-Item -ItemType Directory -Path $userConfigDir -Force | Out-Null
+New-Item -ItemType Directory -Path $userDataDir -Force | Out-Null
+New-Item -ItemType Directory -Path (Join-Path $modsDir "cutscene-ad") -Force | Out-Null
 
 Copy-Item -LiteralPath $modDll -Destination (Join-Path $modsDir "MelatoninAccess.dll") -Force
-Copy-Item -LiteralPath $cutsceneAdDir -Destination (Join-Path $modsDir "cutscene-ad") -Recurse -Force
+Copy-Item -LiteralPath $cutsceneManifestPath -Destination (Join-Path $modsDir "cutscene-ad\manifest.json") -Force
+Copy-Item -LiteralPath $cutsceneScriptsDir -Destination (Join-Path $modsDir "cutscene-ad\scripts") -Recurse -Force
 Copy-Item -LiteralPath $localizationDir -Destination (Join-Path $modsDir "localization") -Recurse -Force
 Copy-Item -LiteralPath $tolkDll -Destination (Join-Path $stageDir "Tolk.dll") -Force
 Copy-Item -LiteralPath $nvdaDll -Destination (Join-Path $stageDir "nvdaControllerClient32.dll") -Force
-Copy-Item -LiteralPath $loaderCfg -Destination (Join-Path $userConfigDir "Loader.cfg") -Force
+Copy-Item -LiteralPath $loaderCfg -Destination (Join-Path $userDataDir "Loader.cfg") -Force
 
 if (Test-Path -LiteralPath $zipPath) {
     Remove-Item -LiteralPath $zipPath -Force

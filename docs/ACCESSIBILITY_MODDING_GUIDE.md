@@ -4,13 +4,14 @@ A guide for creating game accessibility mods that enable blind players to play u
 
 ## Core Accessibility Goals
 
-### Core Principle: Playability, Not Simplification
+### Core Principle: Work WITH the Game, Not Against It
 
 **The goal is to make the game playable for blind players in the same way sighted players experience it.** Accessibility means equal access to the gameplay - not a simplified version.
 
-- **No cheats without asking:** Only suggest cheats or simplifications when there is absolutely no other way to make a game mechanic accessible.
-- **Never add automatically:** Never implement cheats or shortcuts without explicitly asking first.
-- **Full game experience:** All game mechanics, challenges, and decisions should be preserved.
+- **Use existing game mechanics:** Always prefer the game's own menus, navigation, HUD, and controls over building custom replacements. Hook into game events rather than reimplementing logic.
+- **Only build custom when necessary:** Create custom UI or mechanics only when the game provides no usable equivalent (e.g., a purely visual mini-game with no text data to read).
+- **No cheats without asking:** Only suggest cheats or simplifications when there is absolutely no other way to make a game mechanic accessible. Never implement them without explicitly asking first.
+- **Full game experience:** All game mechanics, challenges, and decisions should be preserved. Blind players should experience the real game, not a parallel system.
 
 ### Technical Goals
 
@@ -292,7 +293,7 @@ var inventory = GameObject.Find("InventoryPanel");
 ### Core Principles
 - **Modular** - Separate concerns: input handling, UI extraction, announcement, game state
 - **Maintainable** - Clear structure, consistent patterns, easy to extend and debug
-- **Efficient** - Avoid unnecessary processing, cache where appropriate, minimize performance impact on the game
+- **Efficient** - Avoid unnecessary processing, minimize performance impact on the game. Cache object *references* only — always read *values* live. Never silently fall back to stale cached data
 - **Game-Integrated** - Always use original game methods for actions; never bypass game logic
 
 ### Essential Utility Classes to Build
@@ -338,7 +339,7 @@ if (Input.GetKeyDown(KeyCode.F2))
 
 **Rule of thumb:** One handler per screen/feature. Split when a handler exceeds 200-300 lines.
 
-**For 3+ handlers sharing keys (Enter, Escape, arrows):** Use `AccessStateManager` to coordinate which handler is active. See `templates/AccessStateManager.cs.template` for the full implementation with Context tracking, events, and Escape handling. See `docs/state-management-guide.md` for details.
+**For 3+ handlers sharing keys (Enter, Escape, arrows):** Use `AccessStateManager` to coordinate which handler is active. See `templates/shared/AccessStateManager.cs.template` for the full implementation with Context tracking, events, and Escape handling. See `docs/state-management-guide.md` for details.
 
 ### State Change Detection
 
@@ -415,7 +416,11 @@ void Update()
 }
 ```
 
-#### Caching: Search once, reuse forever
+#### Caching: References only, never values
+
+Cache **object references** (the GameObject itself) to avoid expensive lookups every frame. But always read **values** (text, health, item counts) live from the source — never cache and return stale values.
+
+**Why this matters for accessibility:** A sighted player sees when the screen updates. A blind player trusts whatever the screen reader says. If you show a cached value when the live lookup fails, the player gets wrong information with no way to notice. This is silent degradation — the worst outcome for an accessibility mod.
 
 ```csharp
 // BAD: Searches the scene every frame
@@ -423,11 +428,38 @@ void Update() {
     var panel = GameObject.Find("InventoryPanel"); // Slow!
 }
 
-// GOOD: Cache the reference, only search again if lost
+// GOOD: Cache the reference, re-find if lost, LOG if re-find fails
 private GameObject _cachedPanel;
 void Update() {
     if (_cachedPanel == null)
+    {
         _cachedPanel = GameObject.Find("InventoryPanel");
+        if (_cachedPanel == null)
+        {
+            DebugLogger.Log("InventoryPanel not found");
+            return; // Don't silently use old data
+        }
+    }
+}
+
+// BAD: Caching a value and returning it as fallback
+private string _lastItemName;
+string GetItemName() {
+    var name = GetLiveItemName();
+    if (name != null) _lastItemName = name;
+    return _lastItemName; // Silent degradation!
+}
+
+// GOOD: Live read, explicit failure
+string GetItemName() {
+    var name = GetLiveItemName();
+    if (name == null)
+    {
+        DebugLogger.Log("Could not read item name");
+        ScreenReader.Say("Item not readable");
+        return null;
+    }
+    return name;
 }
 ```
 
@@ -569,7 +601,7 @@ public void AnnounceInventory()
 ### DO
 - Use Tolk (or equivalent) for screen reader output
 - Keep announcements short and informative
-- Cache frequently used game objects
+- Cache object references (not values) to avoid repeated lookups
 - Add a `GetHelpText()` method to handlers for F1 help
 - Test with an active screen reader
 
@@ -578,7 +610,8 @@ public void AnnounceInventory()
 - No tables or ASCII art in output
 - No redundant announcements (same info repeated)
 - **NEVER override game keys** - check game keybindings first!
-- No expensive search operations in Update loops (cache instead!)
+- No expensive search operations in Update loops (cache references, not values!)
+- **NEVER silently fall back to cached values** when a live read fails — log it, announce it, fail visibly
 - **NEVER bypass game methods** - use original pickup/buy/sell methods so the game stays in sync
 
 ## Common Pitfalls
@@ -635,7 +668,7 @@ string text = textComponent?.text ?? "";
 
 **Finding GameObjects:**
 ```csharp
-var obj = GameObject.Find("Name");  // Slow - cache result!
+var obj = GameObject.Find("Name");  // Slow - cache the reference!
 var all = GameObject.FindObjectsOfType<Button>();
 ```
 
