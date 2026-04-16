@@ -9,14 +9,14 @@ $ErrorActionPreference = "Stop"
 
 $projectRoot = Split-Path -Parent $PSScriptRoot
 $releaseDir = Join-Path $projectRoot "release"
-$version = "v1.2"
+$version = "v1.2.0"
 $releaseScript = Join-Path $projectRoot "scripts\Build-ReleasePackage.ps1"
 
 if (-not (Test-Path -LiteralPath $releaseDir)) {
     New-Item -ItemType Directory -Path $releaseDir -Force | Out-Null
 }
 
-# Keep local beta artifacts clean by replacing prior v1.2 test outputs.
+# Keep local beta artifacts clean by replacing prior v1.2.x test outputs.
 Get-ChildItem -LiteralPath $releaseDir -File -Filter "MelatoninAccess-v1.2*.zip" -ErrorAction SilentlyContinue |
     Remove-Item -Force -ErrorAction Stop
 

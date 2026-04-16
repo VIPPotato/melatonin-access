@@ -82,17 +82,17 @@ Settings are stored in `UserData/MelonPreferences.cfg` under category `Melatonin
 ## Build
 
 ```powershell
-dotnet build MelatoninAccess.csproj
+pwsh -File .\scripts\Build-Mod.ps1
 ```
 
-The project is configured to auto-copy `MelatoninAccess.dll`, the `cutscene-ad` data folder, and the `localization` JSON folder to your game `Mods` folder after build when `ModsPath` is valid in `MelatoninAccess.csproj`.
+`Build-Mod.ps1` compiles the mod without copying files into the game folder. Use `Deploy-Mod.ps1` when you want the DLL, `cutscene-ad`, and `localization` files copied into `Mods`.
 
 ## Release Package
 
 Create release ZIP (mod + required screen-reader DLLs only):
 
 ```powershell
-pwsh -File .\scripts\Build-ReleasePackage.ps1 -Version "v1.1"
+pwsh -File .\scripts\Build-ReleasePackage.ps1 -Version "v1.2.0"
 ```
 
 Package contents:
@@ -103,7 +103,7 @@ Package contents:
 - `Mods/localization/loc.<lang>.json`
 - `Tolk.dll`
 - `nvdaControllerClient32.dll`
-- `UserConfig/Loader.cfg` (bundled from maintainer install; includes hidden-console setting)
+- `UserData/Loader.cfg` (bundled from maintainer install; includes hidden-console setting)
 
 The release ZIP intentionally excludes development docs/tools (for example changelog files and regression test scripts).
 
@@ -111,15 +111,15 @@ The release ZIP intentionally excludes development docs/tools (for example chang
 
 1. Install MelonLoader for Melatonin:
    - https://github.com/LavaGang/MelonLoader.Installer/releases
-2. Download `MelatoninAccess-v1.1.zip`.
-3. Extract/copy all files from the ZIP into your Melatonin game folder (the folder with `Melatonin.exe`).
+2. Download `MelatoninAccess-v1.2.0.zip`.
+3. Open the ZIP, press `Ctrl+A`, press `Ctrl+C`, then paste everything into your Melatonin game folder (the folder with `Melatonin.exe`).
 4. Confirm these files exist:
      - `<Melatonin folder>/Mods/MelatoninAccess.dll`
      - `<Melatonin folder>/Mods/cutscene-ad/manifest.json`
      - `<Melatonin folder>/Mods/localization/loc.en.json`
      - `<Melatonin folder>/Tolk.dll`
      - `<Melatonin folder>/nvdaControllerClient32.dll`
-     - `<Melatonin folder>/UserConfig/Loader.cfg`
+     - `<Melatonin folder>/UserData/Loader.cfg`
 5. Start the game and confirm you hear the mod loaded announcement.
 
 Important:
@@ -128,15 +128,15 @@ Important:
 
 ## GitHub Release Packaging
 
-- A GitHub Actions workflow builds and uploads the release ZIP automatically when a tag like `v1.2` is pushed.
-- The uploaded ZIP uses the same layout as local packaging (`Mods`, `UserConfig`, root dependency DLLs, and `Mods/cutscene-ad` timing data).
+- A GitHub Actions workflow builds and uploads the release ZIP automatically when a tag like `v1.2.0` is pushed.
+- The uploaded ZIP uses the same layout as local packaging (`Mods`, `UserData`, root dependency DLLs, and `Mods/cutscene-ad` timing data).
 
 ## Install (From Source Build)
 
 1. Build:
 
 ```powershell
-dotnet build MelatoninAccess.csproj
+pwsh -File .\scripts\Deploy-Mod.ps1
 ```
 
 2. If auto-copy is not configured, copy:
@@ -169,7 +169,7 @@ pwsh -File .\scripts\Test-SpeechRegression.ps1
 Useful options:
 
 ```powershell
-pwsh -File .\scripts\Test-SpeechRegression.ps1 -LogPath "D:\games\steam\steamapps\common\Melatonin\MelonLoader\Latest.log"
+pwsh -File .\scripts\Test-SpeechRegression.ps1 -LogPath "L:\SteamLibrary\steamapps\common\Melatonin\MelonLoader\Latest.log"
 pwsh -File .\scripts\Test-SpeechRegression.ps1 -RequiredPattern "Tutorial\. Press .+ to skip\."
 ```
 

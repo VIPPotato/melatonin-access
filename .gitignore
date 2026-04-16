@@ -1,10 +1,11 @@
-# Local assistant settings
+# Codex local settings
 .Codex/
-.claude/
 
 # Build output
 bin/
 obj/
+release/
+artifacts/
 
 # Decompiled game code (large, user-specific)
 decompiled/
@@ -18,18 +19,14 @@ Desktop.ini
 # IDE
 .vs/
 .vscode/
+.idea/
 *.user
 *.suo
-.idea/
 
 # MelonLoader output (don't commit game DLLs)
 *.dll
 !templates/**
 !libs/**/*.dll
-
-# Generated artifacts
-release/
-artifacts/
 
 # Internal notes (not part of template)
 docs/Codex-md-improvements.md

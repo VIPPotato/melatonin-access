@@ -1,7 +1,7 @@
 # Project Status
 
 **Current Phase**: Testing & Polish
-**Last Update**: 2026-03-04
+**Last Update**: 2026-04-16
 
 ## Completed
 - [x] **Core System**: `ScreenReader` (Tolk), `MelatoninAccess` (MelonLoader Mod).
@@ -12,6 +12,9 @@
 - [x] **Level Editor**: `EditorHandler` announces cursor position, tools, and placement.
 - [x] **Achievements**: `AchievementsHandler` reads the achievement list.
 - [x] **Build & Install**: Successfully compiled and deployed to Game Mods folder.
+- [x] **v1.2.0 Release Prep (2026-04-16)**: Bumped version metadata to `1.2.0`, added a short nontechnical changelog entry, aligned README/install wording with the wrapper scripts, and updated release packaging to preserve a copy-paste-ready layout with `Mods\cutscene-ad`, `Mods\localization`, root `Tolk.dll`, root `nvdaControllerClient32.dll`, and `UserData\Loader.cfg`.
+- [x] **Environment Path Refresh (2026-04-16)**: Updated checked-in local defaults from the old `D:\games\steam\steamapps\common\Melatonin` install path to `L:\SteamLibrary\steamapps\common\Melatonin` across `AGENTS.md`, the project file, and helper scripts.
+- [x] **Template Refresh Migration Completion + Re-Decompile (2026-04-08)**: Restored Melatonin-specific `AGENTS.md` values after the refreshed template update, re-applied repo-specific `.gitignore` safeguards, added `scripts/Build-Mod.ps1` and `scripts/Deploy-Mod.ps1` as the required build entry points, validated both wrapper scripts, and regenerated local ignored `decompiled/` from the current `Assembly-CSharp.dll` with `ilspycmd` (249 `.cs` files).
 - [x] **Template Refresh Migration Start (2026-03-04)**: Created branch `migration-to-an-updated-template`, merged legacy `.gitignore` protections into the refreshed template version (`[Ll]atest.log`, `release/`, `artifacts/`, MelonLoader DLL ignore with template/libs allowlist), and re-filled `AGENTS.md` project-specific setup/build values (Melatonin game path, x86 architecture, MelonLoader, concrete build/deploy paths) after template replacement.
 - [x] **Setup Refresh (2026-02-09)**: Re-ran setup checks, filled environment placeholders in `AGENTS.md`, and added `CopyToMods` auto-deploy target to `MelatoninAccess.csproj` (validator: 16 OK, 0 warnings, 0 errors).
 - [x] **Template Setup Sync (2026-02-23)**: Applied updated setup-template additions in `AGENTS.md` and filled project-specific environment/build values (game path, x86 architecture, MelonLoader, concrete build/deploy paths).
@@ -176,6 +179,9 @@
 - **Post-Release Validation**: Monitor issues/feedback from `v1.0.4` and collect any remaining edge cases from real-world play sessions.
 
 ## Session Notes
+- [2026-04-16] Prepared the `1.2.0` release: updated version metadata and changelog, aligned README examples to `scripts\Build-Mod.ps1` / `scripts\Deploy-Mod.ps1`, and corrected release packaging to keep `UserData\Loader.cfg` in the ZIP so users can copy the full archive contents straight into the Melatonin folder.
+- [2026-04-16] Refreshed local path defaults to the current Melatonin install on `L:\SteamLibrary\steamapps\common\Melatonin` so the build, deploy, log-check, and asset-extraction helpers use the right game folder out of the box.
+- [2026-04-08] Completed the refreshed template migration: filled `AGENTS.md` placeholders with Melatonin-specific values, added `scripts/Build-Mod.ps1` and `scripts/Deploy-Mod.ps1`, restored `.gitignore` protections for logs/artifacts/game DLLs, validated both wrapper scripts (including a local smoke deploy to `artifacts\deploy-smoke\Mods`), and re-decompiled the current game `Assembly-CSharp.dll` into local ignored `decompiled/` via `ilspycmd` (249 `.cs` files).
 - [2026-03-04] Started template migration on branch `migration-to-an-updated-template`; preserved prior ignore safeguards by merging old `.gitignore` entries into the new template file and restored project-specific `AGENTS.md` setup/build values while removing setup-only placeholders/reminder section.
 - [2026-03-02] Legal/risk cleanup: confirmed `decompiled/` and historical game DLL/build outputs were committed in early history; rewrote all branch/tag history, removed `refs/original` backups, expired reflogs, ran aggressive `git gc --prune=now`, force-pushed cleaned `master`/`cutscene-audiodescription-experiments` plus release tags, and removed temporary remote tag `pre-scrub-2026-03-02`.
 - [2026-02-23] Cleaned `todo.md` backlog: removed stale v1.1-era items and archived notes, keeping only current active and deferred tasks.

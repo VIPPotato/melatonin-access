@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.2.0 - 2026-04-16
+
+- Refreshed the project templates and helper scripts used to maintain the mod.
+- Added simple build and deploy wrapper scripts for local development.
+- Tightened repo safety rules so generated files like decompiled code, build artifacts, and release folders stay out of git.
+- Kept the release ZIP as a copy-paste install: the mod DLL, cutscene descriptions, localization files, screen-reader DLLs, and `UserData/Loader.cfg` all ship in the right folder structure.
+
 ## 1.1 - 2026-02-14
 
 - Added the full v1.1 contextual-cue pass across targeted dreams, including scene-specific directional prompts and hold/release timing guidance.
