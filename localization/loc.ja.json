@@ -496,7 +496,7 @@
     },
     {
       "key": "help_map",
-      "value": "マップヘルプ。[ と ] または F9 と F10 でレベル間を移動。{0} で選択レベルを開く。F1 またはコントローラーのViewでマップスター。"
+      "value": "マップヘルプ。[ と ] または F9 と F10 でレベル間を移動します。{0} で選択したレベルを開きます。F1 またはコントローラーの View ボタンでマップ進行状況を確認できます。"
     },
     {
       "key": "help_mode_menu",
@@ -861,6 +861,38 @@
     {
       "key": "locked_requires_two_stars_each_dream",
       "value": "ロック中。この夜の各夢で少なくとも2つ星を獲得すると解放されます。"
+    },
+    {
+      "key": "progress_one_star",
+      "value": "{0}スター"
+    },
+    {
+      "key": "progress_stars",
+      "value": "{0}スター"
+    },
+    {
+      "key": "progress_one_ring",
+      "value": "{0}リング"
+    },
+    {
+      "key": "progress_rings",
+      "value": "{0}リング"
+    },
+    {
+      "key": "progress_one_perfect",
+      "value": "{0}回パーフェクトクリア"
+    },
+    {
+      "key": "progress_perfects",
+      "value": "{0}回パーフェクトクリア"
+    },
+    {
+      "key": "map_progress_heading",
+      "value": "マップ進行状況"
+    },
+    {
+      "key": "map_progress_need_stars_to_pass",
+      "value": "クリアまであと{0}スター必要です"
     }
   ]
 }

@@ -5,6 +5,7 @@ using TMPro;
 using System;
 using System.Linq;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.InputSystem; 
 
 namespace MelatoninAccess
@@ -41,9 +42,10 @@ namespace MelatoninAccess
                 if (!ModConfig.AnnounceMapHotspots) return;
                 if (MapTeleporter.IsTeleporting) return;
 
-                string name = FormatDreamName(__instance.dreamName);
-                if (ShouldSkipLandmarkAnnouncement(name)) return;
-                ScreenReader.Say(Loc.Get("arrived_at", name), true);
+                string announcement = BuildLandmarkAnnouncement(__instance, includeArrivalPrefix: true);
+                if (string.IsNullOrWhiteSpace(announcement)) return;
+                if (ShouldSkipLandmarkAnnouncement(announcement)) return;
+                ScreenReader.Say(announcement, true);
             }
         }
 
@@ -113,6 +115,12 @@ namespace MelatoninAccess
                 if (tmp != null && !string.IsNullOrWhiteSpace(tmp.text))
                 {
                     string modeText = tmp.text.Trim();
+                    string progressText = GetModeProgressText(menu, activeItemNum);
+                    if (!string.IsNullOrWhiteSpace(progressText))
+                    {
+                        modeText = $"{modeText}. {progressText}";
+                    }
+
                     string lockReason = GetModeLockReason(menu, activeItemNum);
                     if (!string.IsNullOrWhiteSpace(lockReason))
                     {
@@ -256,11 +264,10 @@ namespace MelatoninAccess
             int chapterNum = Chapter.GetActiveChapterNum();
             if (chapterNum <= 0) return;
 
-            int starsCollected = Mathf.Max(0, SaveManager.mgr.GetChapterEarnedStars(chapterNum));
-            int starsRequired = GetChapterStarsRequiredToPass(chapterNum);
-            int starsNeeded = Mathf.Max(0, starsRequired - starsCollected);
+            string announcement = BuildMapProgressAnnouncement(chapterNum);
+            if (string.IsNullOrWhiteSpace(announcement)) return;
 
-            ScreenReader.Say(Loc.Get("map_progress_status", starsCollected, starsNeeded), true);
+            ScreenReader.Say(announcement, true);
         }
 
         public static class MapTeleporter
@@ -306,14 +313,21 @@ namespace MelatoninAccess
                 }
 
                 string name = FormatDreamName(target.dreamName);
-                int stars = SaveManager.mgr.GetScore("Dream_" + target.dreamName);
                 if (ModConfig.AnnounceMapHotspots)
                 {
-                    string starKey = stars == 1 ? "teleport_arrived_one_star" : "teleport_arrived_stars";
-                    string line = Loc.Get(starKey, name, stars);
+                    string line = BuildLandmarkAnnouncement(target, includeArrivalPrefix: false);
+                    if (string.IsNullOrWhiteSpace(line))
+                    {
+                        line = name;
+                    }
+
                     if (IsLockedRemixLandmark(target))
                     {
-                        line = $"{line} {Loc.Get("locked_requires_two_stars_each_dream")}";
+                        line = JoinAnnouncementParts(new[]
+                        {
+                            line,
+                            Loc.Get("locked_requires_two_stars_each_dream")
+                        });
                     }
 
                     ScreenReader.Say(line, true);
@@ -357,6 +371,137 @@ namespace MelatoninAccess
             bool isRemix = Traverse.Create(landmark).Field("isRemix").GetValue<bool>();
             bool isDisabled = Traverse.Create(landmark).Field("isDisabled").GetValue<bool>();
             return isRemix && isDisabled;
+        }
+
+        private static string BuildLandmarkAnnouncement(Landmark landmark, bool includeArrivalPrefix)
+        {
+            if (landmark == null || string.IsNullOrWhiteSpace(landmark.dreamName))
+            {
+                return "";
+            }
+
+            string name = FormatDreamName(landmark.dreamName);
+            int stars = GetDreamScore(landmark.dreamName, isRingScore: false);
+            int rings = GetDreamScore(landmark.dreamName, isRingScore: true);
+            string progress = BuildDreamProgressSummary(stars, rings);
+
+            var parts = new List<string>();
+            if (includeArrivalPrefix)
+            {
+                parts.Add(Loc.Get("arrived_at", name));
+            }
+            else
+            {
+                parts.Add(name);
+            }
+
+            if (!string.IsNullOrWhiteSpace(progress))
+            {
+                parts.Add(progress);
+            }
+
+            return JoinAnnouncementParts(parts);
+        }
+
+        private static string BuildMapProgressAnnouncement(int chapterNum)
+        {
+            if (SaveManager.mgr == null) return "";
+
+            int starsCollected = Mathf.Max(0, SaveManager.mgr.GetChapterEarnedStars(chapterNum));
+            int ringsCollected = Mathf.Max(0, SaveManager.mgr.GetChapterEarnedRings(chapterNum));
+            int perfectsCollected = Mathf.Max(0, SaveManager.mgr.GetChapterEarnedPerfects(chapterNum));
+            int starsRequired = GetChapterStarsRequiredToPass(chapterNum);
+            int starsNeeded = Mathf.Max(0, starsRequired - starsCollected);
+
+            var parts = new List<string>
+            {
+                Loc.Get("map_progress_heading"),
+                GetStarsPhrase(starsCollected),
+                GetRingsPhrase(ringsCollected),
+                GetPerfectsPhrase(perfectsCollected)
+            };
+
+            if (starsRequired > 0)
+            {
+                parts.Add(Loc.Get("map_progress_need_stars_to_pass", starsNeeded));
+            }
+
+            return JoinAnnouncementParts(parts);
+        }
+
+        private static string BuildDreamProgressSummary(int stars, int rings)
+        {
+            if (stars <= 0 && rings <= 0)
+            {
+                return "";
+            }
+
+            return JoinAnnouncementParts(new[]
+            {
+                GetStarsPhrase(stars),
+                GetRingsPhrase(rings)
+            });
+        }
+
+        private static string GetModeProgressText(ModeMenu menu, int activeItemNum)
+        {
+            if (menu == null) return "";
+
+            int starScore = Traverse.Create(menu).Field("starScore").GetValue<int>();
+            int ringScore = Traverse.Create(menu).Field("ringScore").GetValue<int>();
+            bool isRemix = Traverse.Create(menu).Field("isRemix").GetValue<bool>();
+
+            return activeItemNum switch
+            {
+                1 when starScore > 0 || isRemix => GetStarsPhrase(starScore),
+                2 when starScore >= 2 => GetRingsPhrase(ringScore),
+                _ => ""
+            };
+        }
+
+        private static int GetDreamScore(string dreamName, bool isRingScore)
+        {
+            if (SaveManager.mgr == null || string.IsNullOrWhiteSpace(dreamName))
+            {
+                return 0;
+            }
+
+            string scoreKey = isRingScore
+                ? "Dream_" + dreamName + "Alt"
+                : "Dream_" + dreamName;
+
+            return Mathf.Max(0, SaveManager.mgr.GetScore(scoreKey));
+        }
+
+        private static string GetStarsPhrase(int stars)
+        {
+            return stars == 1
+                ? Loc.Get("progress_one_star", stars)
+                : Loc.Get("progress_stars", stars);
+        }
+
+        private static string GetRingsPhrase(int rings)
+        {
+            return rings == 1
+                ? Loc.Get("progress_one_ring", rings)
+                : Loc.Get("progress_rings", rings);
+        }
+
+        private static string GetPerfectsPhrase(int perfects)
+        {
+            return perfects == 1
+                ? Loc.Get("progress_one_perfect", perfects)
+                : Loc.Get("progress_perfects", perfects);
+        }
+
+        private static string JoinAnnouncementParts(IEnumerable<string> parts)
+        {
+            if (parts == null)
+            {
+                return "";
+            }
+
+            return string.Join(". ", parts.Where(part => !string.IsNullOrWhiteSpace(part)));
         }
 
         private static string FormatDreamName(string rawName)
@@ -452,15 +597,15 @@ namespace MelatoninAccess
             ScreenReader.Say(Loc.Get("teleport_conflict_hint"), true);
         }
 
-        private static bool ShouldSkipLandmarkAnnouncement(string name)
+        private static bool ShouldSkipLandmarkAnnouncement(string text)
         {
             float now = Time.unscaledTime;
-            if (name == _lastLandmarkAnnouncement && now - _lastLandmarkAnnouncementTime < LandmarkRepeatCooldown)
+            if (text == _lastLandmarkAnnouncement && now - _lastLandmarkAnnouncementTime < LandmarkRepeatCooldown)
             {
                 return true;
             }
 
-            _lastLandmarkAnnouncement = name;
+            _lastLandmarkAnnouncement = text;
             _lastLandmarkAnnouncementTime = now;
             return false;
         }

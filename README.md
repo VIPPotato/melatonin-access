@@ -6,7 +6,7 @@ Screen-reader accessibility mod for **Melatonin** using **MelonLoader**.
 
 1. Install MelonLoader for Melatonin:
    https://github.com/LavaGang/MelonLoader.Installer/releases
-2. Download the latest release ZIP, for example `MelatoninAccess-v1.2.0.zip`.
+2. Download the latest release ZIP, for example `MelatoninAccess-v1.3.0.zip`.
 3. Open the ZIP, press `Ctrl+A`, press `Ctrl+C`, then paste everything into your Melatonin folder, the folder that contains `Melatonin.exe`.
 4. Confirm these files exist after pasting:
    - `Mods/MelatoninAccess.dll`
@@ -40,12 +40,12 @@ Important:
 - Map: `[` and `]` jump between landmarks.
 - Map fallback: if Action is bound to `[` or `]`, use `F9` for previous and `F10` for next.
 - Gamepad map jump: use `Action Left` and `Action Right`, commonly `LB` and `RB`.
-- Map summary: press `F1` on map scenes to hear total stars collected and how many more are needed to pass.
+- Map summary: press `F1` on map scenes to hear total stars, rings, and perfect runs. On chapters 1-4 it also says how many more stars are needed to pass.
 - Context help: press `F11` to hear the available controls for the current screen.
 
 ## Hotkeys
 
-- `F1`: on map scenes only, speak chapter and map star totals.
+- `F1`: on map scenes only, speak chapter progress totals for stars, rings, and perfect runs.
 - `F2`: turn contextual cue announcements on or off.
 - `F3`: turn menu position announcements on or off.
 - `F11`: speak context help for the current screen.
@@ -111,7 +111,7 @@ If your install is somewhere else, pass `-GamePath`.
 ### Build A Release ZIP
 
 ```powershell
-pwsh -File .\scripts\Build-ReleasePackage.ps1 -Version "v1.2.0"
+pwsh -File .\scripts\Build-ReleasePackage.ps1 -Version "v1.3.0"
 ```
 
 This creates a copy-paste-ready ZIP with this runtime layout:

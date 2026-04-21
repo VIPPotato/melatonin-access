@@ -496,7 +496,7 @@
     },
     {
       "key": "help_map",
-      "value": "Karten-Hilfe. Nutze [ und ] oder F9 und F10 zum Wechseln zwischen Levels. Druecke {0}, um das ausgewaehlte Level zu oeffnen. Druecke F1 oder View am Controller fuer Kartensterne."
+      "value": "Kartenhilfe. Mit [ und ] oder F9 und F10 wechseln Sie zwischen den Levels. Drücken Sie {0}, um das ausgewählte Level zu öffnen. Drücken Sie F1 oder View am Controller, um den Kartenfortschritt anzuhören."
     },
     {
       "key": "help_mode_menu",
@@ -861,6 +861,38 @@
     {
       "key": "locked_requires_two_stars_each_dream",
       "value": "Gesperrt. Hole in jedem Traum dieser Nacht mindestens 2 Sterne, um zu bestehen."
+    },
+    {
+      "key": "progress_one_star",
+      "value": "{0} Stern"
+    },
+    {
+      "key": "progress_stars",
+      "value": "{0} Sterne"
+    },
+    {
+      "key": "progress_one_ring",
+      "value": "{0} Ring"
+    },
+    {
+      "key": "progress_rings",
+      "value": "{0} Ringe"
+    },
+    {
+      "key": "progress_one_perfect",
+      "value": "{0} perfekter Lauf"
+    },
+    {
+      "key": "progress_perfects",
+      "value": "{0} perfekte Läufe"
+    },
+    {
+      "key": "map_progress_heading",
+      "value": "Kartenfortschritt"
+    },
+    {
+      "key": "map_progress_need_stars_to_pass",
+      "value": "Noch {0} Sterne zum Bestehen nötig"
     }
   ]
 }

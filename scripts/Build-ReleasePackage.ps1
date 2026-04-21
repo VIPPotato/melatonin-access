@@ -1,5 +1,5 @@
 param(
-    [string]$Version = "v1.2.0",
+    [string]$Version = "v1.3.0",
     [string]$Configuration = "Debug",
     [switch]$KeepStage,
     [switch]$SkipLocalizationQa,

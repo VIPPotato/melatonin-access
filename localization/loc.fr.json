@@ -496,7 +496,7 @@
     },
     {
       "key": "help_map",
-      "value": "Aide carte. Utilisez [ et ] ou F9 et F10 pour changer de niveau. Appuyez sur {0} pour ouvrir le niveau choisi. Appuyez sur F1 ou View sur la manette pour les etoiles de la carte."
+      "value": "Aide de la carte. Utilisez [ et ] ou F9 et F10 pour vous déplacer entre les niveaux. Appuyez sur {0} pour ouvrir le niveau sélectionné. Appuyez sur F1 ou sur View de la manette pour entendre la progression de la carte."
     },
     {
       "key": "help_mode_menu",
@@ -861,6 +861,38 @@
     {
       "key": "locked_requires_two_stars_each_dream",
       "value": "Verrouille. Obtenez au moins 2 etoiles dans chaque reve de cette nuit pour valider."
+    },
+    {
+      "key": "progress_one_star",
+      "value": "{0} étoile"
+    },
+    {
+      "key": "progress_stars",
+      "value": "{0} étoiles"
+    },
+    {
+      "key": "progress_one_ring",
+      "value": "{0} anneau"
+    },
+    {
+      "key": "progress_rings",
+      "value": "{0} anneaux"
+    },
+    {
+      "key": "progress_one_perfect",
+      "value": "{0} partie parfaite"
+    },
+    {
+      "key": "progress_perfects",
+      "value": "{0} parties parfaites"
+    },
+    {
+      "key": "map_progress_heading",
+      "value": "Progression de la carte"
+    },
+    {
+      "key": "map_progress_need_stars_to_pass",
+      "value": "Il faut encore {0} étoiles pour valider"
     }
   ]
 }

@@ -496,7 +496,7 @@
     },
     {
       "key": "help_map",
-      "value": "Ajuda do mapa. Use [ e ] ou F9 e F10 para mover entre niveis. Pressione {0} para abrir o nivel selecionado. Pressione F1 ou View no controle para as estrelas do mapa."
+      "value": "Ajuda do mapa. Use [ e ] ou F9 e F10 para se mover entre os níveis. Pressione {0} para abrir o nível selecionado. Pressione F1 ou o botão View no controle para ouvir o progresso do mapa."
     },
     {
       "key": "help_mode_menu",
@@ -861,6 +861,38 @@
     {
       "key": "locked_requires_two_stars_each_dream",
       "value": "Bloqueado. Consiga pelo menos 2 estrelas em cada sonho desta noite para passar."
+    },
+    {
+      "key": "progress_one_star",
+      "value": "{0} estrela"
+    },
+    {
+      "key": "progress_stars",
+      "value": "{0} estrelas"
+    },
+    {
+      "key": "progress_one_ring",
+      "value": "{0} anel"
+    },
+    {
+      "key": "progress_rings",
+      "value": "{0} anéis"
+    },
+    {
+      "key": "progress_one_perfect",
+      "value": "{0} partida perfeita"
+    },
+    {
+      "key": "progress_perfects",
+      "value": "{0} partidas perfeitas"
+    },
+    {
+      "key": "map_progress_heading",
+      "value": "Progresso do mapa"
+    },
+    {
+      "key": "map_progress_need_stars_to_pass",
+      "value": "Faltam {0} estrelas para passar"
     }
   ]
 }

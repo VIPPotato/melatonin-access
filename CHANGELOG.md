@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.0 - 2026-04-21
+
+- Added full ring-progress speech parity on the map: landmark arrival, bracket teleport, and mode-menu announcements now include rings anywhere the sighted UI already shows them.
+- Expanded the map summary hotkey so `F1` and controller `View` read chapter totals for stars, rings, and perfect runs, while still reporting remaining stars needed to pass on chapters 1-4.
+- Polished the related map-help wording and localization coverage in all supported game languages for the final feature build.
+
 ## 1.2.0 - 2026-04-16
 
 - Refreshed the project templates and helper scripts used to maintain the mod.

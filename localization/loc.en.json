@@ -496,7 +496,7 @@
     },
     {
       "key": "help_map",
-      "value": "Map help. Use [ and ] or F9 and F10 to move between levels. Press {0} to open the selected level. Press F1 or View on controller for map stars."
+      "value": "Map help. Use [ and ] or F9 and F10 to move between levels. Press {0} to open the selected level. Press F1 or View on controller for map progress."
     },
     {
       "key": "help_mode_menu",
@@ -861,6 +861,38 @@
     {
       "key": "locked_requires_two_stars_each_dream",
       "value": "Locked. Get at least 2 stars in each dream on this night to pass."
+    },
+    {
+      "key": "progress_one_star",
+      "value": "{0} star"
+    },
+    {
+      "key": "progress_stars",
+      "value": "{0} stars"
+    },
+    {
+      "key": "progress_one_ring",
+      "value": "{0} ring"
+    },
+    {
+      "key": "progress_rings",
+      "value": "{0} rings"
+    },
+    {
+      "key": "progress_one_perfect",
+      "value": "{0} perfect run"
+    },
+    {
+      "key": "progress_perfects",
+      "value": "{0} perfect runs"
+    },
+    {
+      "key": "map_progress_heading",
+      "value": "Map progress"
+    },
+    {
+      "key": "map_progress_need_stars_to_pass",
+      "value": "Need {0} more stars to pass"
     }
   ]
 }

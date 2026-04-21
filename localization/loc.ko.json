@@ -496,7 +496,7 @@
     },
     {
       "key": "help_map",
-      "value": "맵 도움말. [ 와 ] 또는 F9/F10으로 레벨 사이를 이동합니다. {0} 키로 선택한 레벨을 엽니다. F1 또는 컨트롤러 View 버튼으로 맵 별을 확인합니다."
+      "value": "맵 진행 도움말. [ 와 ] 또는 F9 와 F10 으로 레벨 사이를 이동합니다. {0}을 눌러 선택한 레벨을 엽니다. F1 또는 컨트롤러의 View 버튼으로 맵 진행도를 확인할 수 있습니다."
     },
     {
       "key": "help_mode_menu",
@@ -861,6 +861,38 @@
     {
       "key": "locked_requires_two_stars_each_dream",
       "value": "잠김. 이 밤의 각 꿈에서 별 2개 이상을 얻어야 통과할 수 있습니다."
+    },
+    {
+      "key": "progress_one_star",
+      "value": "{0}스타"
+    },
+    {
+      "key": "progress_stars",
+      "value": "{0}스타"
+    },
+    {
+      "key": "progress_one_ring",
+      "value": "{0}링"
+    },
+    {
+      "key": "progress_rings",
+      "value": "{0}링"
+    },
+    {
+      "key": "progress_one_perfect",
+      "value": "{0}번 퍼펙트 클리어"
+    },
+    {
+      "key": "progress_perfects",
+      "value": "{0}번 퍼펙트 클리어"
+    },
+    {
+      "key": "map_progress_heading",
+      "value": "맵 진행도"
+    },
+    {
+      "key": "map_progress_need_stars_to_pass",
+      "value": "통과하려면 별이 {0}개 더 필요합니다"
     }
   ]
 }

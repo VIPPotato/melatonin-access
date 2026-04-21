@@ -496,7 +496,7 @@
     },
     {
       "key": "help_map",
-      "value": "地圖說明。使用 [ 和 ] 或 F9 與 F10 在關卡間移動。按 {0} 開啟所選關卡。按 F1 或手把 View 鍵播報地圖星星。"
+      "value": "地圖說明。使用 [ 和 ] 或 F9 和 F10 在關卡之間移動。按 {0} 開啟所選關卡。按 F1 或控制器上的 View 鍵可朗讀地圖進度。"
     },
     {
       "key": "help_mode_menu",
@@ -861,6 +861,38 @@
     {
       "key": "locked_requires_two_stars_each_dream",
       "value": "已鎖定。本夜每個夢境至少獲得 2 顆星才能通過。"
+    },
+    {
+      "key": "progress_one_star",
+      "value": "{0} 星"
+    },
+    {
+      "key": "progress_stars",
+      "value": "{0} 星"
+    },
+    {
+      "key": "progress_one_ring",
+      "value": "{0} 環"
+    },
+    {
+      "key": "progress_rings",
+      "value": "{0} 環"
+    },
+    {
+      "key": "progress_one_perfect",
+      "value": "{0} 次完美通關"
+    },
+    {
+      "key": "progress_perfects",
+      "value": "{0} 次完美通關"
+    },
+    {
+      "key": "map_progress_heading",
+      "value": "地圖進度"
+    },
+    {
+      "key": "map_progress_need_stars_to_pass",
+      "value": "還需要 {0} 星才能通過"
     }
   ]
 }

@@ -1,7 +1,7 @@
 # Project Status
 
-**Current Phase**: Testing & Polish
-**Last Update**: 2026-04-16
+**Current Phase**: Maintenance
+**Last Update**: 2026-04-21
 
 ## Completed
 - [x] **Core System**: `ScreenReader` (Tolk), `MelatoninAccess` (MelonLoader Mod).
@@ -12,6 +12,8 @@
 - [x] **Level Editor**: `EditorHandler` announces cursor position, tools, and placement.
 - [x] **Achievements**: `AchievementsHandler` reads the achievement list.
 - [x] **Build & Install**: Successfully compiled and deployed to Game Mods folder.
+- [x] **v1.3.0 Released (2026-04-21)**: Committed the final feature-build changes, pushed `master` and tag `v1.3.0`, and published GitHub release `v1.3.0` as the latest release with the verified `MelatoninAccess-v1.3.0.zip` package.
+- [x] **v1.3.0 Final Feature Release Prep (2026-04-21)**: Bumped runtime/project/package version metadata to `1.3.0`, added the `1.3.0` changelog entry, refreshed README release examples and `F1` wording to mention stars/rings/perfects, built `Release`, verified localization + cutscene QA, rebuilt the release ZIP after catching a stale parallel-packaging DLL issue, confirmed the final package contains `MelatoninAccess.dll` `1.3.0.0` with the expected `Mods`, `UserData`, and root NVDA/Tolk layout, and deployed the matching `Release` build to the game `Mods` folder.
 - [x] **v1.2.0 Release Prep (2026-04-16)**: Bumped version metadata to `1.2.0`, added a short nontechnical changelog entry, aligned README/install wording with the wrapper scripts, and updated release packaging to preserve a copy-paste-ready layout with `Mods\cutscene-ad`, `Mods\localization`, root `Tolk.dll`, root `nvdaControllerClient32.dll`, and `UserData\Loader.cfg`.
 - [x] **Environment Path Refresh (2026-04-16)**: Updated checked-in local defaults from the old `D:\games\steam\steamapps\common\Melatonin` install path to `L:\SteamLibrary\steamapps\common\Melatonin` across `AGENTS.md`, the project file, and helper scripts.
 - [x] **v1.2.0 Released (2026-04-16)**: Built `Release` locally with `scripts\Build-Mod.ps1`, verified the `scripts\Build-ReleasePackage.ps1` ZIP layout (`Mods`, `UserData`, root DLLs), pushed `master` and tag `v1.2.0`, and published the GitHub release with the verified copy-paste package.
@@ -150,10 +152,11 @@
 - **Language Spot Check**: Switch each in-game language and verify key mod-only lines (debug toggles, map lock reasons, teleport conflict hint, results summary) are spoken correctly.
 - **Config Spot Check**: Toggle each new `MelonPreferences` setting and verify the targeted announcement group turns on/off without side effects.
 - **Hotkey Spot Check**: Verify `F2`, `F3`, and `F12` update behavior immediately and remain in the same state after restarting the game.
-- **New Feature Spot Check**: On map scenes, press `F1` and verify it announces chapter/map star totals + remaining stars needed to pass; verify `F1` is silent in non-map scenes.
+- **New Feature Spot Check**: On map scenes, press `F1` and verify it announces chapter/map stars, rings, and perfect-run totals; on chapters 1-4 it should also append the remaining stars needed to pass. Verify `F1` is silent in non-map scenes.
+- **Ring Progress Spot Check**: On map scenes, move onto landmarks normally and with bracket/F9/F10 teleport. Verify dream announcements include both stars and rings whenever the game shows a score bubble, omit counts on untouched dreams, and still append the locked remix requirement when applicable.
 - **Gamepad Resilience Spot Check**: Use map gamepad teleport (`Action Left/Right`), press any keyboard key, then confirm gamepad teleport still works without needing to open/close pause menu.
 - **v1.0.5 Prompt Spot Check**: In tutorial/practice gameplay, rebind Action (for example to `Enter`, `Period`, `Slash`, and a letter key) and verify rhythm cues announce the new action prompt correctly; with controller active, verify prompts use controller action naming.
-- **v1.0.5 Mode Menu Spot Check**: From map navigation, open multiple levels and confirm the opening line says the full dream title before mode menu/options (for example `Dream about Money. Mode menu. Practice...`).
+- **v1.0.5 Mode Menu Spot Check**: From map navigation, open multiple levels and confirm the opening line says the full dream title before mode menu/options (for example `Dream about Money. Mode menu. Practice...`). Verify Score/Hard entries also announce the visible star/ring values when the menu shows them.
 - **Context Help Spot Check**: Press `F11` on title screen, in regular menus, on map, in map mode menu, during gameplay, on results, and in editor; verify each context speaks relevant controls and uses current action/cancel prompts.
 - **Tutorial Intro Spot Check**: Enter tutorial from chapter menu and verify the first instruction block (including multi-line startup warning text) is announced without hardcoded text dependencies.
 - **Community Loader Spot Check**: Start downloaded/community level flow and verify `Level editor ready` is no longer announced before gameplay.
@@ -167,7 +170,7 @@
   - long countdown windows (`Queue*HitWindow(6)`) should say `Swipe left/right after the long cue`
   - prompts should remain directional (not generic `press action`) during dating practice
 - **v1.1 Controller Utility Hotkey Spot Check**:
-  - On map scenes, press controller `View` and confirm it speaks chapter stars summary (same line as `F1`).
+  - On map scenes, press controller `View` and confirm it speaks the same chapter progress summary as `F1` (stars, rings, perfects, plus remaining stars on chapters 1-4).
   - Outside map scenes/menus/gameplay, press controller `View` and confirm no map-stars line is spoken.
   - Press `L3`/`R3` and confirm they toggle rhythm/menu-position announcements exactly like `F2`/`F3`, including persistence after restart.
 - **v1.1 Tech/Followers Cue Spot Check**:
@@ -182,6 +185,11 @@
 - **Release Workflow Follow-up**: Fix or replace the hosted GitHub Actions release build; the current `windows-latest` runner cannot compile this project from a clean checkout because MelonLoader/game reference DLLs are not available there.
 
 ## Session Notes
+- [2026-04-21] Published `v1.3.0` as the latest GitHub release using the verified `release\MelatoninAccess-v1.3.0.zip` package after pushing `master` and tag `v1.3.0`.
+- [2026-04-21] Prepared the final feature-build package as `v1.3.0`: updated `Main.cs`/`MelatoninAccess.csproj` version metadata, added the `CHANGELOG.md` `1.3.0` entry, refreshed README release examples and map-summary wording, built `Release`, passed `scripts\Test-LocalizationQA.ps1` and cutscene AD QA through `scripts\Build-ReleasePackage.ps1`, verified `release\MelatoninAccess-v1.3.0.zip` layout, and deployed the `Release` DLL to `L:\SteamLibrary\steamapps\common\Melatonin\Mods`.
+- [2026-04-21] User-tested the new ring-aware map announcements and reported that they read correctly in-game.
+- [2026-04-21] Implemented ring-aware map progress narration. `F1`/controller `View` now read the visible chapter totals (`stars`, `rings`, `perfects`) and still append remaining stars to pass on chapters 1-4; landmark arrival, bracket/F9/F10 teleport, and mode-menu Score/Hard entries now announce the same star/ring values that sighted players see on the map UI. Added new localization keys in all supported languages and verified both localization QA and `scripts\Build-Mod.ps1`.
+- [2026-04-21] Researched ring progress in the decompiled game code. Rings are not hidden collectibles; they are the hard-mode (`Alt`) score track for each dream, with visible UI on landmarks, the mode menu, the chapter `TotalBox`, hard-mode results (`PlanetRings`), and Steam achievements. Chapter/passage unlocks still depend on stars, not rings. Added the detailed API notes to `docs/game-api.md`.
 - [2026-04-16] Prepared the `1.2.0` release: updated version metadata and changelog, aligned README examples to `scripts\Build-Mod.ps1` / `scripts\Deploy-Mod.ps1`, and corrected release packaging to keep `UserData\Loader.cfg` in the ZIP so users can copy the full archive contents straight into the Melatonin folder.
 - [2026-04-16] Refreshed local path defaults to the current Melatonin install on `L:\SteamLibrary\steamapps\common\Melatonin` so the build, deploy, log-check, and asset-extraction helpers use the right game folder out of the box.
 - [2026-04-16] Local `Release` build and packaging both passed (`Build-Mod.ps1`, localization QA, cutscene AD QA). The tag-triggered GitHub Actions release workflow failed on the hosted runner during compile because the project references MelonLoader/game DLLs from a local install path, so `v1.2.0` was published manually with `gh release create` using the locally verified ZIP.

@@ -496,7 +496,7 @@
     },
     {
       "key": "help_map",
-      "value": "Tro giup ban do. Dung [ va ] hoac F9 va F10 de di giua cac man. Nhan {0} de mo man da chon. Nhan F1 hoac nut View tren tay cam de nghe sao ban do."
+      "value": "Trợ giúp bản đồ. Dùng [ và ] hoặc F9 và F10 để di chuyển giữa các màn. Nhấn {0} để mở màn đã chọn. Nhấn F1 hoặc nút View trên tay cầm để nghe tiến độ bản đồ."
     },
     {
       "key": "help_mode_menu",
@@ -861,6 +861,38 @@
     {
       "key": "locked_requires_two_stars_each_dream",
       "value": "Bi khoa. Dat it nhat 2 sao o moi giac mo trong dem nay de vuot qua."
+    },
+    {
+      "key": "progress_one_star",
+      "value": "{0} sao"
+    },
+    {
+      "key": "progress_stars",
+      "value": "{0} sao"
+    },
+    {
+      "key": "progress_one_ring",
+      "value": "{0} vòng"
+    },
+    {
+      "key": "progress_rings",
+      "value": "{0} vòng"
+    },
+    {
+      "key": "progress_one_perfect",
+      "value": "{0} màn hoàn hảo"
+    },
+    {
+      "key": "progress_perfects",
+      "value": "{0} màn hoàn hảo"
+    },
+    {
+      "key": "map_progress_heading",
+      "value": "Tiến độ bản đồ"
+    },
+    {
+      "key": "map_progress_need_stars_to_pass",
+      "value": "Cần thêm {0} sao để qua"
     }
   ]
 }

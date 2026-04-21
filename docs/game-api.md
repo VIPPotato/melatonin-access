@@ -252,6 +252,31 @@
 - Map activation checks use an 8-star threshold on chapters 1-4 (`GetChapterEarnedStars(chapter) >= 8`) for chapter map progression/remix gating.
 - References: `decompiled/TotalBox.cs:28-30`, `decompiled/Map.cs:66-83`.
 
+## Ring Progress Model
+- Rings are a player-facing parallel score track for hard-mode runs, not hidden/internal counters:
+  - Standard scores are stored in `playerData.<dream>` / `SaveManager.GetScore("Dream_<name>")`.
+  - Hard-mode scores are stored in matching `playerData.<dream>Alt` / `SaveManager.GetScore("Dream_<name>Alt")`.
+  - References: `decompiled/playerData.cs:51-133`, `decompiled/SaveManager.cs:325-457`, `decompiled/SaveManager.cs:1430-1477`.
+- Ring totals use the same score thresholds as stars:
+  - `Dream.GetScore()` returns `0..4`, where `4` is a perfect run.
+  - Chapter/total star and ring counts both pass through `ConvertScoreToEarned`, which converts `4` down to `3`; perfect runs are tracked separately by the perfect counter.
+  - This means the collectible-style totals are effectively `0..3` rings per dream, with perfects shown as a separate stat.
+  - References: `decompiled/Dream.cs:1728-1747`, `decompiled/SaveManager.cs:891-898`, `decompiled/SaveManager.cs:1033-1060`, `decompiled/SaveManager.cs:1246-1258`.
+- The game exposes ring progress in multiple UI surfaces:
+  - Chapter map summary (`TotalBox`) shows stars, rings, and perfects together when the map introduction completes.
+  - Each `Landmark` loads both `starScore` and `ringScore`; its `ScoreBubble` displays both values when either is nonzero.
+  - `ModeMenu.Transition(...)` receives both values; the hard-mode row shows the saved ring count once hard mode is unlocked.
+  - Results screens for hard modes (`gameMode == 2` or `4`) show `PlanetRings` instead of `ScoreStars`.
+  - References: `decompiled/McMap.cs:367-390`, `decompiled/TotalBox.cs:21-31`, `decompiled/Landmark.cs:33-43`, `decompiled/ModeMenu.cs:150-205`, `decompiled/Results.cs:107-115`, `decompiled/PlanetRings.cs:9-13`.
+- Rings are specifically tied to hard modes:
+  - `Dream.TriggerResults()` appends `Alt` to the scene name for `gameMode == 2` or `4`, then saves that score into the ring/Alt slot.
+  - Steam achievements `ring_precision`, `ring_perfectionist`, and `ring_collector` are all driven from those Alt scores.
+  - References: `decompiled/Dream.cs:1219-1244`, `decompiled/Dream.cs:1163-1204`, `decompiled/SaveManager.cs:1787-1971`, `decompiled/AchievementsMenu.cs:151-161`.
+- Ring progress does not drive map/chapter unlocking:
+  - Unlock checks for hard mode and chapter progression read standard star scores (`starScore`, chapter star totals, final-dream star thresholds), not ring totals.
+  - Hard mode availability in the per-dream mode menu still depends on earning `2` stars in standard score mode first.
+  - References: `decompiled/Landmark.cs:72-83`, `decompiled/ModeMenu.cs:199-210`, `decompiled/Map.cs:66-83`, `decompiled/Chapter.cs:529-552`.
+
 ## Intro/Outro Cutscene Entry Points
 - Chapter intro replay path:
   - `Option` case `33` sets `Chapter.ToggleIsEnteringWithIntro(true)` and exits to `Chapter_{chapterNum}`.

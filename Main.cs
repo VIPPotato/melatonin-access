@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem; 
 using MelatoninAccess;
 
-[assembly: MelonInfo(typeof(MelatoninAccess.MelatoninAccessMod), "Melatonin Access", "1.2.0", "Gemini")]
+[assembly: MelonInfo(typeof(MelatoninAccess.MelatoninAccessMod), "Melatonin Access", "1.3.0", "Gemini")]
 [assembly: MelonGame("Half Asleep", "Melatonin")]
 
 namespace MelatoninAccess
