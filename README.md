@@ -60,9 +60,9 @@ the full steps are below.
 
 ### Uninstalling
 
-Open `uninstall-macOS.command` from the same release ZIP. It lists whatever is
-installed -- Melatonin Access, MelonLoader, or both -- and removes what you
-select. MelonLoader ships no uninstaller of its own, which is why it is
+Open `uninstall-macOS.command` from the same release ZIP. It asks about each
+thing that is installed -- Melatonin Access, then MelonLoader -- and removes
+only what you say Remove to, after one confirmation. MelonLoader ships no uninstaller of its own, which is why it is
 offered here.
 
 Your other mods, your settings in `UserData`, and anything you put in

@@ -159,9 +159,9 @@ you, and then lets you pick the downloaded ZIP from a file dialog.
 
 If Finder refuses to run it, right-click it and choose Open, then confirm.
 
-To remove the mod later, open uninstall-macOS.command. It offers Melatonin
-Access and MelonLoader, and you can remove either or both. MelonLoader does
-not come with an uninstaller of its own.
+To remove the mod later, open uninstall-macOS.command. It asks about
+Melatonin Access and MelonLoader in turn, and removes only what you say
+Remove to. MelonLoader does not come with an uninstaller of its own.
 
 If you extracted this archive into Downloads, Desktop or Documents, macOS may
 block the installer from reading the mod files. It will notice and ask you to
