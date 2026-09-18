@@ -35,3 +35,7 @@ docs/Codex-md-improvements.md
 age-of-decadence-analyse.txt
 nul
 *.zip
+
+# Build output
+bin/
+obj/

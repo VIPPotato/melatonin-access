@@ -14,6 +14,17 @@ This file is checked automatically during project setup (Step 4). When the game'
 - **Unity 5.x**: MelonLoader generally does not support Unity 5. Use BepInEx 5.x instead. See `docs/legacy-unity-modding.md`.
 - **Unity 4.x and older**: Neither MelonLoader nor BepInEx work. Only assembly patching is possible. See `docs/legacy-unity-modding.md`.
 
+## MelonLoader On macOS
+
+- **MelonLoader macOS installer (`.dmg`) reports "damaged and can't be opened".** The file is not damaged. The installer app is ad-hoc signed rather than notarized, so macOS blocks it once the download picks up a quarantine flag. **Fix:** download `MelonLoader.macOS.x64.zip` from the main MelonLoader releases page instead of the installer DMG, and install by hand. To use the DMG anyway, clear the flag and re-sign: `xattr -dr com.apple.quarantine "MelonLoader Installer.app"` then `codesign --force --deep --sign - "MelonLoader Installer.app"`.
+- **Steam does not load MelonLoader on macOS.** Injection happens through `DYLD_INSERT_LIBRARIES`, which Steam does not set. **Fix:** set the game's Steam Launch Options to `"<full path>/melonloader-launch.sh" %command%`, using an absolute path — Steam does not expand `~` or `$HOME` there. Setting `DYLD_INSERT_LIBRARIES=... %command%` directly does not work either; Steam does not parse launch options with a shell and fails with "OS Error 260".
+- **Native libraries fail to load with "library load disallowed by system policy".** Anything downloaded through a browser carries `com.apple.quarantine`, and macOS will not `dlopen` a quarantined library. **Fix:** `xattr -dr com.apple.quarantine <game folder>`, or allow the file from System Settings, Privacy & Security.
+- **A macOS game may be a different architecture than its Windows build.** Melatonin is 64-bit on macOS but 32-bit on Windows, so native libraries must be provided per platform. A 64-bit process cannot load a 32-bit library, and dyld aborts the process outright on an architecture mismatch.
+
+## Melatonin Access on macOS
+
+- **The level editor is untested on macOS.** Menus, gameplay, map, dialog, cutscenes and results have been played through and work. The editor loads, but its narration -- cursor, tools, advanced menu, timeline tabs -- has not been exercised. Unverified rather than known-broken.
+
 ## Unity + BepInEx
 
 - **Unity 6000+**: BepInEx 5.x does not support Unity 6. BepInEx 6 (bleeding edge) may work but is not stable. Check the BepInEx GitHub for the latest status before proceeding.

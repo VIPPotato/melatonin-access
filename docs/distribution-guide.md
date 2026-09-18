@@ -17,6 +17,15 @@ Your mod requires these components on the user's machine:
    - `nvdaControllerClient64.dll` or `nvdaControllerClient32.dll` (matching game architecture)
 3. **Your mod DLL** - The actual mod file
 
+On macOS the speech libraries differ. Tolk is Windows only, so a macOS build
+needs a different backend — Melatonin Access uses
+[Prism](https://github.com/ethindp/prism) (`libprism.dylib`), which speaks
+through VoiceOver. Ship it as a universal binary (x86_64 + arm64); a
+single-architecture build fails on other Macs with no useful error. macOS
+users also need MelonLoader installed from the `MelonLoader.macOS.x64.zip`
+rather than the installer DMG, which macOS reports as damaged. See
+`docs/known-issues.md` for the details.
+
 ### Creating a Release Package
 
 Create a ZIP file containing:

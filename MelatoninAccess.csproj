@@ -6,41 +6,56 @@
     <Version>1.3.0</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
-    <MelonLoaderPath>L:\SteamLibrary\steamapps\common\Melatonin\MelonLoader</MelonLoaderPath>
-    <GameManagedPath>L:\SteamLibrary\steamapps\common\Melatonin\Melatonin_Data\Managed</GameManagedPath>
-    <ModsPath>L:\SteamLibrary\steamapps\common\Melatonin\Mods</ModsPath>
+  </PropertyGroup>
+
+  <!-- Game location. Override any of these on the command line, e.g.
+       msbuild /p:GameRoot="/path/to/Melatonin" -->
+  <PropertyGroup Condition="'$(GameRoot)' == '' And '$(OS)' == 'Windows_NT'">
+    <GameRoot>L:\SteamLibrary\steamapps\common\Melatonin</GameRoot>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(GameRoot)' == '' And '$(OS)' != 'Windows_NT'">
+    <GameRoot>$(HOME)/Library/Application Support/Steam/steamapps/common/Melatonin</GameRoot>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <MelonLoaderPath Condition="'$(MelonLoaderPath)' == ''">$(GameRoot)/MelonLoader</MelonLoaderPath>
+    <ModsPath Condition="'$(ModsPath)' == ''">$(GameRoot)/Mods</ModsPath>
+    <!-- Windows keeps the managed assemblies in <Game>_Data; on macOS they
+         live inside the .app bundle. -->
+    <GameManagedPath Condition="'$(GameManagedPath)' == '' And '$(OS)' == 'Windows_NT'">$(GameRoot)/Melatonin_Data/Managed</GameManagedPath>
+    <GameManagedPath Condition="'$(GameManagedPath)' == ''">$(GameRoot)/Melatonin.app/Contents/Resources/Data/Managed</GameManagedPath>
   </PropertyGroup>
 
   <ItemGroup>
     <Reference Include="MelonLoader">
-      <HintPath>$(MelonLoaderPath)\net35\MelonLoader.dll</HintPath>
+      <HintPath>$(MelonLoaderPath)/net35/MelonLoader.dll</HintPath>
     </Reference>
     <Reference Include="0Harmony">
-      <HintPath>$(MelonLoaderPath)\net35\0Harmony.dll</HintPath>
+      <HintPath>$(MelonLoaderPath)/net35/0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>$(GameManagedPath)\UnityEngine.dll</HintPath>
+      <HintPath>$(GameManagedPath)/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>$(GameManagedPath)\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>$(GameManagedPath)/UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>$(GameManagedPath)\UnityEngine.UI.dll</HintPath>
+      <HintPath>$(GameManagedPath)/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.InputLegacyModule">
-      <HintPath>$(GameManagedPath)\UnityEngine.InputLegacyModule.dll</HintPath>
+      <HintPath>$(GameManagedPath)/UnityEngine.InputLegacyModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.JSONSerializeModule">
-      <HintPath>$(GameManagedPath)\UnityEngine.JSONSerializeModule.dll</HintPath>
+      <HintPath>$(GameManagedPath)/UnityEngine.JSONSerializeModule.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InputSystem">
-      <HintPath>$(GameManagedPath)\Unity.InputSystem.dll</HintPath>
+      <HintPath>$(GameManagedPath)/Unity.InputSystem.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>$(GameManagedPath)\Unity.TextMeshPro.dll</HintPath>
+      <HintPath>$(GameManagedPath)/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>$(GameManagedPath)\Assembly-CSharp.dll</HintPath>
+      <HintPath>$(GameManagedPath)/Assembly-CSharp.dll</HintPath>
     </Reference>
   </ItemGroup>
 
@@ -53,23 +68,23 @@
     <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ModsPath)" SkipUnchangedFiles="true" />
   </Target>
 
-  <Target Name="CopyCutsceneAdToMods" AfterTargets="Build" Condition="Exists('$(ModsPath)') and Exists('$(MSBuildProjectDirectory)\cutscene-ad')">
+  <Target Name="CopyCutsceneAdToMods" AfterTargets="Build" Condition="Exists('$(ModsPath)') and Exists('$(MSBuildProjectDirectory)/cutscene-ad')">
     <ItemGroup>
-      <CutsceneAdFiles Include="$(MSBuildProjectDirectory)\cutscene-ad\**\*.*" />
+      <CutsceneAdFiles Include="$(MSBuildProjectDirectory)/cutscene-ad\**\*.*" />
     </ItemGroup>
     <Copy
       SourceFiles="@(CutsceneAdFiles)"
-      DestinationFiles="@(CutsceneAdFiles->'$(ModsPath)\cutscene-ad\%(RecursiveDir)%(Filename)%(Extension)')"
+      DestinationFiles="@(CutsceneAdFiles->'$(ModsPath)/cutscene-ad\%(RecursiveDir)%(Filename)%(Extension)')"
       SkipUnchangedFiles="true" />
   </Target>
 
-  <Target Name="CopyLocalizationToMods" AfterTargets="Build" Condition="Exists('$(ModsPath)') and Exists('$(MSBuildProjectDirectory)\localization')">
+  <Target Name="CopyLocalizationToMods" AfterTargets="Build" Condition="Exists('$(ModsPath)') and Exists('$(MSBuildProjectDirectory)/localization')">
     <ItemGroup>
-      <LocalizationFiles Include="$(MSBuildProjectDirectory)\localization\**\*.*" />
+      <LocalizationFiles Include="$(MSBuildProjectDirectory)/localization\**\*.*" />
     </ItemGroup>
     <Copy
       SourceFiles="@(LocalizationFiles)"
-      DestinationFiles="@(LocalizationFiles->'$(ModsPath)\localization\%(RecursiveDir)%(Filename)%(Extension)')"
+      DestinationFiles="@(LocalizationFiles->'$(ModsPath)/localization\%(RecursiveDir)%(Filename)%(Extension)')"
       SkipUnchangedFiles="true" />
   </Target>
 </Project>
