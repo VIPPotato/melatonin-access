@@ -127,8 +127,8 @@ cp -R "$CUTSCENE_SCRIPTS" "$STAGE/Mods/cutscene-ad/scripts"
 cp -R "$LOCALIZATION" "$STAGE/Mods/localization"
 cp "$LOADER_CFG" "$STAGE/UserData/Loader.cfg"
 
-# Shipped as .command so Finder runs it in Terminal on a double-click; users
-# never have to type or paste a shell command.
+# Shipped as .command so Finder runs it in Terminal when opened; users never
+# have to type or paste a shell command.
 cp "$ROOT/scripts/install-macos.sh" "$STAGE/install-macOS.command"
 chmod +x "$STAGE/install-macOS.command"
 
@@ -140,8 +140,10 @@ cat > "$STAGE/README-macOS.txt" <<'TXT'
 Melatonin Access - macOS
 ========================
 
-Easiest way: double-click install-macOS.command
-------------------------------------------------
+Easiest way: open install-macOS.command
+---------------------------------------
+
+In Finder, select install-macOS.command and press Command-O.
 
 It finds the game, installs the mod, unblocks the files so macOS will load
 them, and copies the Steam launch options line to your clipboard. Then follow

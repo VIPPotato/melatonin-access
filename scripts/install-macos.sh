@@ -2,10 +2,14 @@
 #
 # Melatonin Access - macOS installer.
 #
-# Shipped in the release ZIP as install-macOS.command, which runs on a
-# double-click in Finder. It installs the mod (and MelonLoader, if it can find
-# the download), clears the quarantine flags that stop macOS loading either of
+# Shipped in the release ZIP as install-macOS.command, which Finder opens in
+# Terminal. It installs the mod (offering to fetch MelonLoader if it is
+# missing), clears the quarantine flags that stop macOS loading either of
 # them, and puts the Steam launch options on the clipboard.
+#
+# Progress is printed to Terminal, but everything the user has to act on is
+# also shown in a dialog: Terminal can be configured to close its window the
+# instant a script exits, which would otherwise take the output with it.
 #
 # The one thing it cannot do is set the Steam launch options itself: they live
 # in Steam's own config, which is unsafe to edit behind Steam's back.
@@ -15,9 +19,30 @@
 set -uo pipefail
 
 say() { printf '%s\n' "$*"; }
-fail() { printf 'ERROR: %s\n' "$*" >&2; FAILED=1; }
+
+# Terminal may be set to close its window the moment a script exits cleanly
+# (Settings > Profiles > Shell > "When the shell exits"). With that on, nothing
+# printed here is readable afterwards, so anything the user must actually see
+# goes through a dialog as well.
+dialog() {
+    local title="$1" body="$2"
+    osascript >/dev/null 2>&1 <<AS
+display dialog "$(printf '%s' "$body" | sed 's/\\/\\\\/g; s/"/\\"/g')" ¬
+    buttons {"OK"} default button "OK" with title "$title"
+AS
+}
+
+fail() { printf 'ERROR: %s\n' "$*" >&2; FAILED=1; FAIL_MSG="${FAIL_MSG:-}$*
+"; }
+
+die() {
+    say "$1"
+    dialog "Melatonin Access Installer" "$1"
+    exit "${2:-1}"
+}
 
 FAILED=0
+FAIL_MSG=""
 SRC="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ML_ZIP_ARG="${2:-}"
 
@@ -46,14 +71,13 @@ find_game() {
 
 GAME="$(find_game "${1:-}")"
 if [ -z "$GAME" ]; then
-    say "Could not find Melatonin."
-    say ""
-    say "Looked in the usual Steam folder and in any other Steam libraries."
-    say "If the game is somewhere unusual, run this installer again and pass"
-    say "the folder that contains Melatonin.app, for example:"
-    say ""
-    say "  \"$SRC/install-macOS.command\" \"/Volumes/Games/steamapps/common/Melatonin\""
-    exit 1
+    die "Could not find Melatonin.
+
+Looked in the usual Steam folder and in any other Steam library on this Mac.
+
+If the game is installed somewhere unusual, run this installer from Terminal and pass the folder that contains Melatonin.app, for example:
+
+\"$SRC/install-macOS.command\" \"/Volumes/Games/steamapps/common/Melatonin\""
 fi
 say "Found the game:"
 say "  $GAME"
@@ -134,33 +158,35 @@ if [ -f "$GAME/MelonLoader.Bootstrap.dylib" ] && [ -f "$GAME/melonloader-launch.
     say "MelonLoader is already installed."
 elif [ -n "$ML_ZIP_ARG" ]; then
     say "Installing MelonLoader..."
-    install_melonloader_from "$ML_ZIP_ARG" || exit 1
+    install_melonloader_from "$ML_ZIP_ARG" || die "MelonLoader could not be installed.
+
+$FAIL_MSG"
 else
     ANSWER="$(ask_for_melonloader)"
     case "$ANSWER" in
         "Download It")
             open "$ML_URL"
-            wait_for_download || { say "Cancelled."; exit 1; }
+            wait_for_download || die "Cancelled. Nothing was installed."
             ZIP="$(pick_melonloader_zip)"
             ;;
         "I Have The File")
             ZIP="$(pick_melonloader_zip)"
             ;;
         *)
-            say "Cancelled. MelonLoader is required, so nothing was installed."
-            say ""
-            say "You can download it yourself from:"
-            say "  $ML_URL"
-            exit 1
+            die "Cancelled. MelonLoader is required, so nothing was installed.
+
+You can download it yourself from:
+$ML_URL"
             ;;
     esac
 
     if [ -z "${ZIP:-}" ]; then
-        say "No file chosen, so MelonLoader was not installed."
-        exit 1
+        die "No file was chosen, so MelonLoader was not installed."
     fi
     say "Installing MelonLoader..."
-    install_melonloader_from "$ZIP" || exit 1
+    install_melonloader_from "$ZIP" || die "MelonLoader could not be installed.
+
+$FAIL_MSG"
 fi
 say ""
 
@@ -194,9 +220,9 @@ for f in "Melatonin.app" "MelonLoader.Bootstrap.dylib" "melonloader-launch.sh" \
 done
 
 if [ "$FAILED" != "0" ]; then
-    say ""
-    say "Something went wrong. See the errors above."
-    exit 1
+    die "Something went wrong and the mod is not fully installed.
+
+$FAIL_MSG"
 fi
 
 # --- 6. the one manual step -------------------------------------------------
@@ -206,25 +232,38 @@ printf '%s' "$LAUNCH" | pbcopy 2>/dev/null && COPIED=1 || COPIED=0
 
 say "Installed successfully."
 say ""
-say "One step left, and it has to be done in Steam."
+say "One step left, and it has to be done in Steam:"
 say ""
-say "Steam will not load the mod on its own, so Steam needs to be told to"
-say "start the game through MelonLoader."
-say ""
-say "  1. In Steam, right-click Melatonin and choose Properties."
-say "  2. Go to the General tab and find the Launch Options box."
-say "  3. Paste this line into it:"
+say "  1. In Steam, select Melatonin and open its Properties."
+say "  2. On the General tab, find the Launch Options box."
+say "  3. Put this line in it:"
 say ""
 say "     $LAUNCH"
 say ""
-if [ "$COPIED" = "1" ]; then
-    say "That line has been copied to your clipboard, so you can paste it"
-    say "straight into the box with Command-V."
-    say ""
-fi
-say "  4. Close the Properties window and start the game from Steam."
+say "  4. Close Properties and start the game from Steam."
 say ""
-say "You should hear the mod announce itself. If the game starts but says"
-say "nothing, run this installer again - it will re-clear the file blocks -"
-say "and double-check the Launch Options line."
+
+CLIP_NOTE="The line has already been copied to your clipboard, so you can paste it into the box with Command-V."
+[ "$COPIED" = "1" ] || CLIP_NOTE="Copy the line from the Terminal window."
+
+dialog "Melatonin Access Installer" "The mod is installed.
+
+One step is left, and it has to be done in Steam:
+
+1. In Steam, select Melatonin and open its Properties.
+2. On the General tab, find the Launch Options box.
+3. Put this line in it:
+
+$LAUNCH
+
+4. Close Properties and start the game from Steam.
+
+$CLIP_NOTE
+
+Steam will not load the mod without that line."
+
+# Terminal may be set to close this window on a clean exit, which would take
+# the text above with it. Hold it until the user is done reading.
+say "Press Return to close this window."
+read -r _ || true
 exit 0

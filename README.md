@@ -34,7 +34,8 @@ Your Melatonin folder is:
 ### The easy way
 
 The macOS release ZIP contains an installer. Download and open
-`MelatoninAccess-v1.3.0-macOS.zip`, then **double-click `install-macOS.command`**.
+`MelatoninAccess-v1.3.0-macOS.zip`, then **open `install-macOS.command`**. In
+Finder, select it and press Command-O, or use VoiceOver's Open command.
 
 It finds the game, installs the mod, unblocks everything so macOS will load
 it, and copies the Steam launch options line to your clipboard. Then it tells
