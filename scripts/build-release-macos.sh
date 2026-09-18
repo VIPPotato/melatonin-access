@@ -17,12 +17,12 @@
 #   `-- README-macOS.txt
 #
 # Usage:
-#   scripts/build-release-macos.sh [--version v1.3.0] [--configuration Release]
+#   scripts/build-release-macos.sh [--version v1.4] [--configuration Release]
 #                                  [--no-build] [--keep-stage] [--skip-qa]
 
 set -euo pipefail
 
-VERSION="v1.3.0"
+VERSION="v1.4"
 CONFIGURATION="Release"
 DO_BUILD=1
 KEEP_STAGE=0

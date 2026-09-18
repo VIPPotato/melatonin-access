@@ -1,7 +1,7 @@
 # Project Status
 
 **Current Phase**: Maintenance
-**Last Update**: 2026-04-21
+**Last Update**: 2026-09-18
 
 ## Completed
 - [x] **Core System**: `ScreenReader` (Tolk), `MelatoninAccess` (MelonLoader Mod).
@@ -12,6 +12,7 @@
 - [x] **Level Editor**: `EditorHandler` announces cursor position, tools, and placement.
 - [x] **Achievements**: `AchievementsHandler` reads the achievement list.
 - [x] **Build & Install**: Successfully compiled and deployed to Game Mods folder.
+- [x] **v1.4 Released (2026-09-18)**: Merged PR #4 (updated Portuguese localization) and PR #5 (macOS VoiceOver support via Prism with automated installer/uninstaller scripts), bumped version metadata to 1.4, verified localization and cutscene QA, built both Windows (`MelatoninAccess-v1.4.zip`) and macOS (`MelatoninAccess-v1.4-macOS.zip`) packages, deployed locally, and published GitHub release `v1.4`.
 - [x] **v1.3.0 Released (2026-04-21)**: Committed the final feature-build changes, pushed `master` and tag `v1.3.0`, and published GitHub release `v1.3.0` as the latest release with the verified `MelatoninAccess-v1.3.0.zip` package.
 - [x] **v1.3.0 Final Feature Release Prep (2026-04-21)**: Bumped runtime/project/package version metadata to `1.3.0`, added the `1.3.0` changelog entry, refreshed README release examples and `F1` wording to mention stars/rings/perfects, built `Release`, verified localization + cutscene QA, rebuilt the release ZIP after catching a stale parallel-packaging DLL issue, confirmed the final package contains `MelatoninAccess.dll` `1.3.0.0` with the expected `Mods`, `UserData`, and root NVDA/Tolk layout, and deployed the matching `Release` build to the game `Mods` folder.
 - [x] **v1.2.0 Release Prep (2026-04-16)**: Bumped version metadata to `1.2.0`, added a short nontechnical changelog entry, aligned README/install wording with the wrapper scripts, and updated release packaging to preserve a copy-paste-ready layout with `Mods\cutscene-ad`, `Mods\localization`, root `Tolk.dll`, root `nvdaControllerClient32.dll`, and `UserData\Loader.cfg`.
@@ -185,6 +186,7 @@
 - **Release Workflow Follow-up**: Fix or replace the hosted GitHub Actions release build; the current `windows-latest` runner cannot compile this project from a clean checkout because MelonLoader/game reference DLLs are not available there.
 
 ## Session Notes
+- [2026-09-18] Prepared and published v1.4 GitHub release: merged updated Portuguese localization (PR #4) and macOS VoiceOver support via Prism (PR #5), updated project/assembly metadata to 1.4, updated changelog and README, enhanced release packaging to build both Windows (`MelatoninAccess-v1.4.zip`) and macOS (`MelatoninAccess-v1.4-macOS.zip`) packages with executable permissions for `.command` scripts, passed all localization and cutscene QA checks, deployed to local game Mods folder, and published GitHub release `v1.4` using `gh`.
 - [2026-04-21] Published `v1.3.0` as the latest GitHub release using the verified `release\MelatoninAccess-v1.3.0.zip` package after pushing `master` and tag `v1.3.0`.
 - [2026-04-21] Prepared the final feature-build package as `v1.3.0`: updated `Main.cs`/`MelatoninAccess.csproj` version metadata, added the `CHANGELOG.md` `1.3.0` entry, refreshed README release examples and map-summary wording, built `Release`, passed `scripts\Test-LocalizationQA.ps1` and cutscene AD QA through `scripts\Build-ReleasePackage.ps1`, verified `release\MelatoninAccess-v1.3.0.zip` layout, and deployed the `Release` DLL to `L:\SteamLibrary\steamapps\common\Melatonin\Mods`.
 - [2026-04-21] User-tested the new ring-aware map announcements and reported that they read correctly in-game.

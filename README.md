@@ -6,7 +6,7 @@ Screen-reader accessibility mod for **Melatonin** using **MelonLoader**.
 
 1. Install MelonLoader for Melatonin:
    https://github.com/LavaGang/MelonLoader.Installer/releases
-2. Download the latest release ZIP, for example `MelatoninAccess-v1.3.0.zip`.
+2. Download the latest release ZIP, for example `MelatoninAccess-v1.4.zip`.
 3. Open the ZIP, press `Ctrl+A`, press `Ctrl+C`, then paste everything into your Melatonin folder, the folder that contains `Melatonin.exe`.
 4. Confirm these files exist after pasting:
    - `Mods/MelatoninAccess.dll`
@@ -34,7 +34,7 @@ Your Melatonin folder is:
 ### The easy way
 
 The macOS release ZIP contains an installer. Download and open
-`MelatoninAccess-v1.3.0-macOS.zip`, then **open `install-macOS.command`**. In
+`MelatoninAccess-v1.4-macOS.zip`, then **open `install-macOS.command`**. In
 Finder, select it and press Command-O, or use VoiceOver's Open command.
 
 It finds the game, installs the mod, and unblocks everything so macOS will
@@ -124,7 +124,7 @@ launch script.
 ### Step 3: Install the mod
 
 1. Download the macOS release ZIP, for example
-   `MelatoninAccess-v1.3.0-macOS.zip`.
+   `MelatoninAccess-v1.4-macOS.zip`.
 2. Open the ZIP and copy the `Mods` and `UserData` folders into your
    Melatonin folder.
 3. Confirm these files exist after copying:
@@ -277,7 +277,7 @@ it the script warns and stamps `QA: NOT RUN` on the package.
 ### Build A Release ZIP
 
 ```powershell
-pwsh -File .\scripts\Build-ReleasePackage.ps1 -Version "v1.3.0"
+pwsh -File .\scripts\Build-ReleasePackage.ps1 -Version "v1.4"
 ```
 
 This creates a copy-paste-ready ZIP with this runtime layout:
@@ -295,7 +295,7 @@ The release ZIP intentionally leaves out development docs, logs, and regression 
 #### macOS Release ZIP
 
 ```bash
-./scripts/build-release-macos.sh --version v1.3.0
+./scripts/build-release-macos.sh --version v1.4
 ```
 
 This produces `release/MelatoninAccess-<version>-macOS.zip` with the same

@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.4 - 2026-09-18
+
+- Added macOS support with VoiceOver speech output using Prism (`libprism.dylib`).
+- Added macOS installer and uninstaller command scripts (`install-macOS.command` and `uninstall-macOS.command`) for quick setup.
+- Updated Portuguese localization to bring all translations up to date for the latest mod features (thanks @LamarXP!).
+- Added cross-platform build and release packaging support for both Windows and macOS.
+
 ## 1.3.0 - 2026-04-21
 
 - Added full ring-progress speech parity on the map: landmark arrival, bracket teleport, and mode-menu announcements now include rings anywhere the sighted UI already shows them.
