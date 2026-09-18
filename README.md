@@ -2,7 +2,7 @@
 
 Screen-reader accessibility mod for **Melatonin** using **MelonLoader**.
 
-## Quick Install
+## Install On Windows
 
 1. Install MelonLoader for Melatonin:
    https://github.com/LavaGang/MelonLoader.Installer/releases
@@ -20,6 +20,106 @@ Screen-reader accessibility mod for **Melatonin** using **MelonLoader**.
 Important:
 - `Tolk.dll` and `nvdaControllerClient32.dll` must stay in the main game folder beside `Melatonin.exe`, not inside `Mods`.
 - `cutscene-ad` and `localization` must stay inside the `Mods` folder.
+
+## Install On macOS
+
+Speech goes through VoiceOver. Turn VoiceOver on before you start the game.
+
+Your Melatonin folder is:
+
+```text
+~/Library/Application Support/Steam/steamapps/common/Melatonin
+```
+
+### Step 1: Install MelonLoader
+
+**Download the ZIP, not the DMG.** MelonLoader's macOS installer is a `.dmg`
+file, and macOS refuses to open it with a message saying it is damaged. The
+file is fine. macOS blocks it because the app is not signed by an Apple
+developer account. The ZIP avoids the problem entirely.
+
+1. Go to https://github.com/LavaGang/MelonLoader/releases
+2. Download **`MelonLoader.macOS.x64.zip`**. Do not download
+   `MelonLoader.Installer.MacOS.dmg`.
+
+   This is the correct file on both Intel and Apple Silicon Macs. Steam runs
+   Melatonin in Intel mode on Apple Silicon, so the x64 build is the one that
+   matches. There is no separate Apple Silicon download.
+3. Open the ZIP. Copy these three items into your Melatonin folder, beside
+   `Melatonin.app`:
+   - `MelonLoader.Bootstrap.dylib`
+   - `melonloader-launch.sh`
+   - the `MelonLoader` folder
+4. Open Terminal and run these two commands. The first lets macOS load the
+   files you just copied, the second makes the launch script runnable:
+
+   ```bash
+   xattr -dr com.apple.quarantine ~/Library/Application\ Support/Steam/steamapps/common/Melatonin
+   chmod +x ~/Library/Application\ Support/Steam/steamapps/common/Melatonin/melonloader-launch.sh
+   ```
+
+### Step 2: Tell Steam to use MelonLoader
+
+Steam will not load the mod on its own. You have to point it at MelonLoader's
+launch script.
+
+1. In Steam, right-click **Melatonin**, choose **Properties**, then **General**.
+2. Find the **Launch Options** box and paste this in, replacing `YOURNAME`
+   with your Mac user name:
+
+   ```text
+   "/Users/YOURNAME/Library/Application Support/Steam/steamapps/common/Melatonin/melonloader-launch.sh" %command%
+   ```
+
+   Type the path out in full. Steam does not understand `~` here, and a
+   shortened path will fail.
+3. Close the window.
+
+### Step 3: Install the mod
+
+1. Download the macOS release ZIP, for example
+   `MelatoninAccess-v1.3.0-macOS.zip`.
+2. Open the ZIP and copy the `Mods` and `UserData` folders into your
+   Melatonin folder.
+3. Confirm these files exist after copying:
+   - `Mods/MelatoninAccess.dll`
+   - `Mods/libprism.dylib`
+   - `Mods/cutscene-ad/manifest.json`
+   - `Mods/localization/loc.en.json`
+   - `UserData/Loader.cfg`
+4. Run this command so macOS will load the speech library:
+
+   ```bash
+   xattr -dr com.apple.quarantine ~/Library/Application\ Support/Steam/steamapps/common/Melatonin/Mods
+   ```
+
+5. Start Melatonin from Steam. You should hear the mod loaded announcement.
+
+On macOS the speech library is `Mods/libprism.dylib`, and it goes **inside**
+the `Mods` folder. There is no `Tolk.dll` or `nvdaControllerClient32.dll` on
+macOS; those are Windows only.
+
+### If the game starts but says nothing
+
+Almost always one of two things. Check the MelonLoader log:
+
+```bash
+tail -30 ~/Library/Application\ Support/Steam/steamapps/common/Melatonin/MelonLoader/Latest.log
+```
+
+- **The log has no entry from this launch.** Steam did not use MelonLoader.
+  Re-check the Launch Options in Step 2, especially the quotes, the full
+  path, and the ` %command%` at the end.
+- **The log says the speech library could not be loaded.** macOS is still
+  blocking `libprism.dylib`. Run the `xattr` command from Step 3 again, or
+  open System Settings, go to Privacy & Security, and choose **Allow Anyway**
+  next to the blocked file.
+
+When it is working, the log contains:
+
+```text
+Prism (VoiceOver (macOS)) loaded successfully
+```
 
 ## What It Adds
 
@@ -108,6 +208,20 @@ L:\SteamLibrary\steamapps\common\Melatonin
 
 If your install is somewhere else, pass `-GamePath`.
 
+#### Building on macOS
+
+The PowerShell scripts are Windows only. On macOS, build with Mono's msbuild
+directly. No .NET SDK is needed.
+
+```bash
+msbuild MelatoninAccess.csproj /t:Restore
+msbuild MelatoninAccess.csproj /t:Build /p:Configuration=Release
+```
+
+The project finds the game automatically in the stock Steam location. Point
+it elsewhere with `/p:GameRoot="/path/to/Melatonin"`. The build copies the
+mod into the game's `Mods` folder when that folder exists.
+
 ### Build A Release ZIP
 
 ```powershell
@@ -125,6 +239,31 @@ This creates a copy-paste-ready ZIP with this runtime layout:
 - `UserData/Loader.cfg`
 
 The release ZIP intentionally leaves out development docs, logs, and regression scripts.
+
+#### macOS Release ZIP
+
+```bash
+./scripts/build-release-macos.sh --version v1.3.0
+```
+
+This produces `release/MelatoninAccess-<version>-macOS.zip` with the same
+layout, except that the speech library is `Mods/libprism.dylib` instead of
+the Windows `Tolk.dll` and `nvdaControllerClient32.dll`, and a
+`README-macOS.txt` is included for end users.
+
+Two things the script does deliberately:
+
+- It refuses to package `libprism.dylib` unless it is a universal binary
+  (x86_64 and arm64). A single-architecture build works on the machine that
+  made it and silently fails on other Macs, leaving users with a mod that
+  loads but never speaks.
+- It clears extended attributes before zipping, so a quarantine flag on the
+  build machine is not baked into the published archive.
+
+The localization and cutscene QA checks are PowerShell. They run only if
+`pwsh` is installed; otherwise the script warns and records `QA: NOT RUN` in
+its summary. Those checks cover platform-independent data, so a Windows build
+of the same commit covers them.
 
 ### QA Scripts
 
