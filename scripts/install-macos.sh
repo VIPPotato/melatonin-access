@@ -24,6 +24,8 @@ say() { printf '%s\n' "$*"; }
 # (Settings > Profiles > Shell > "When the shell exits"). With that on, nothing
 # printed here is readable afterwards, so anything the user must actually see
 # goes through a dialog as well.
+# Returns non-zero if the dialog could not be shown, so callers can fall back
+# to holding the Terminal window open instead of vanishing silently.
 dialog() {
     local title="$1" body="$2"
     osascript >/dev/null 2>&1 <<AS
@@ -37,7 +39,11 @@ fail() { printf 'ERROR: %s\n' "$*" >&2; FAILED=1; FAIL_MSG="${FAIL_MSG:-}$*
 
 die() {
     say "$1"
-    dialog "Melatonin Access Installer" "$1"
+    dialog "Melatonin Access Installer" "$1" || {
+        say ""
+        say "Press Return to close this window."
+        read -r _ || true
+    }
     exit "${2:-1}"
 }
 
@@ -311,8 +317,17 @@ AS
 }
 
 NOTE=""
+DIALOGS_WORK=1
+FIRST=1
 while :; do
     BTN="$(launch_dialog "$NOTE")"
+    if [ "$FIRST" = "1" ] && [ -z "$BTN" ]; then
+        # No GUI: the instructions above are the only copy the user gets, so
+        # the window has to stay open.
+        DIALOGS_WORK=0
+        break
+    fi
+    FIRST=0
     case "$BTN" in
         "Copy To Clipboard")
             printf '%s' "$LAUNCH" | pbcopy 2>/dev/null \
@@ -330,8 +345,10 @@ while :; do
     esac
 done
 
-# Terminal may be set to close this window on a clean exit, which would take
-# the text above with it. Hold it until the user is done reading.
-say "Press Return to close this window."
-read -r _ || true
+# Everything the user needs is in the dialog, so let Terminal close on its own.
+# Only when no dialog could be shown does the window have to be held.
+if [ "$DIALOGS_WORK" = "0" ]; then
+    say "Press Return to close this window."
+    read -r _ || true
+fi
 exit 0

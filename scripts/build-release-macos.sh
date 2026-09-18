@@ -13,6 +13,7 @@
 #   |   `-- localization/
 #   |-- UserData/Loader.cfg
 #   |-- install-macOS.command
+#   |-- uninstall-macOS.command
 #   `-- README-macOS.txt
 #
 # Usage:
@@ -76,7 +77,8 @@ fi
 [ -d "$CUTSCENE_SCRIPTS" ]  || fail "Cutscene AD scripts folder not found: $CUTSCENE_SCRIPTS"
 [ -d "$LOCALIZATION" ]      || fail "Localization folder not found: $LOCALIZATION"
 [ -n "$LOADER_CFG" ]        || fail "Loader config not found (checked UserData/ and UserConfig/)"
-[ -f "$ROOT/scripts/install-macos.sh" ] || fail "Installer not found: $ROOT/scripts/install-macos.sh"
+[ -f "$ROOT/scripts/install-macos.sh" ]   || fail "Installer not found: $ROOT/scripts/install-macos.sh"
+[ -f "$ROOT/scripts/uninstall-macos.sh" ] || fail "Uninstaller not found: $ROOT/scripts/uninstall-macos.sh"
 
 # A release without both slices silently breaks one kind of Mac: dyld refuses
 # an architecture mismatch and the mod runs with no speech at all.
@@ -131,6 +133,8 @@ cp "$LOADER_CFG" "$STAGE/UserData/Loader.cfg"
 # have to type or paste a shell command.
 cp "$ROOT/scripts/install-macos.sh" "$STAGE/install-macOS.command"
 chmod +x "$STAGE/install-macOS.command"
+cp "$ROOT/scripts/uninstall-macos.sh" "$STAGE/uninstall-macOS.command"
+chmod +x "$STAGE/uninstall-macOS.command"
 
 # Anything that reached this machine through a browser carries a quarantine
 # flag, and a quarantined dylib cannot be dlopen'd. Don't ship it.
@@ -154,6 +158,10 @@ If MelonLoader is not installed yet, it offers to open the download page for
 you, and then lets you pick the downloaded ZIP from a file dialog.
 
 If Finder refuses to run it, right-click it and choose Open, then confirm.
+
+To remove the mod later, open uninstall-macOS.command. It offers Melatonin
+Access and MelonLoader, and you can remove either or both. MelonLoader does
+not come with an uninstaller of its own.
 
 If you extracted this archive into Downloads, Desktop or Documents, macOS may
 block the installer from reading the mod files. It will notice and ask you to

@@ -58,6 +58,17 @@ somewhere else, such as your home folder, avoids it entirely.
 If you would rather do it by hand, or the installer cannot find something,
 the full steps are below.
 
+### Uninstalling
+
+Open `uninstall-macOS.command` from the same release ZIP. It lists whatever is
+installed -- Melatonin Access, MelonLoader, or both -- and removes what you
+select. MelonLoader ships no uninstaller of its own, which is why it is
+offered here.
+
+Your other mods, your settings in `UserData`, and anything you put in
+`UserLibs` are left alone. If you remove MelonLoader, clear the Steam launch
+options as well, or the game will not start.
+
 ### Step 1: Install MelonLoader
 
 **Download the ZIP, not the DMG.** MelonLoader's macOS installer is a `.dmg`
