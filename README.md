@@ -31,6 +31,22 @@ Your Melatonin folder is:
 ~/Library/Application Support/Steam/steamapps/common/Melatonin
 ```
 
+### The easy way
+
+The macOS release ZIP contains an installer. Download and open
+`MelatoninAccess-v1.3.0-macOS.zip`, then **double-click `install-macOS.command`**.
+
+It finds the game, installs the mod, installs MelonLoader if it finds
+`MelonLoader.macOS.x64.zip` in your Downloads folder, unblocks everything so
+macOS will load it, and copies the Steam launch options line to your
+clipboard. Then it tells you the one remaining step, which has to be done in
+Steam itself.
+
+If Finder refuses to run it, right-click it, choose Open, and confirm.
+
+If you would rather do it by hand, or the installer cannot find something,
+the full steps are below.
+
 ### Step 1: Install MelonLoader
 
 **Download the ZIP, not the DMG.** MelonLoader's macOS installer is a `.dmg`

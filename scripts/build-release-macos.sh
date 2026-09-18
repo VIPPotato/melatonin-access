@@ -12,6 +12,7 @@
 #   |   |-- cutscene-ad/{manifest.json,scripts/}
 #   |   `-- localization/
 #   |-- UserData/Loader.cfg
+#   |-- install-macOS.command
 #   `-- README-macOS.txt
 #
 # Usage:
@@ -75,6 +76,7 @@ fi
 [ -d "$CUTSCENE_SCRIPTS" ]  || fail "Cutscene AD scripts folder not found: $CUTSCENE_SCRIPTS"
 [ -d "$LOCALIZATION" ]      || fail "Localization folder not found: $LOCALIZATION"
 [ -n "$LOADER_CFG" ]        || fail "Loader config not found (checked UserData/ and UserConfig/)"
+[ -f "$ROOT/scripts/install-macos.sh" ] || fail "Installer not found: $ROOT/scripts/install-macos.sh"
 
 # A release without both slices silently breaks one kind of Mac: dyld refuses
 # an architecture mismatch and the mod runs with no speech at all.
@@ -125,6 +127,11 @@ cp -R "$CUTSCENE_SCRIPTS" "$STAGE/Mods/cutscene-ad/scripts"
 cp -R "$LOCALIZATION" "$STAGE/Mods/localization"
 cp "$LOADER_CFG" "$STAGE/UserData/Loader.cfg"
 
+# Shipped as .command so Finder runs it in Terminal on a double-click; users
+# never have to type or paste a shell command.
+cp "$ROOT/scripts/install-macos.sh" "$STAGE/install-macOS.command"
+chmod +x "$STAGE/install-macOS.command"
+
 # Anything that reached this machine through a browser carries a quarantine
 # flag, and a quarantined dylib cannot be dlopen'd. Don't ship it.
 xattr -cr "$STAGE" 2>/dev/null || true
@@ -133,8 +140,23 @@ cat > "$STAGE/README-macOS.txt" <<'TXT'
 Melatonin Access - macOS
 ========================
 
+Easiest way: double-click install-macOS.command
+------------------------------------------------
+
+It finds the game, installs the mod, installs MelonLoader if it finds
+MelonLoader.macOS.x64.zip in your Downloads folder, unblocks the files, and
+copies the Steam launch options line to your clipboard. Then follow the one
+remaining step it prints, which has to be done in Steam itself.
+
+If Finder refuses to run it, right-click it and choose Open, then confirm.
+
+Doing it by hand instead
+------------------------
+
 Requires MelonLoader (https://github.com/LavaGang/MelonLoader) installed into
-the Melatonin game folder.
+the Melatonin game folder. Download MelonLoader.macOS.x64.zip, not the
+installer DMG - macOS reports the DMG as damaged because it is not signed by
+an Apple developer account.
 
 1. Copy the Mods and UserData folders from this archive into the game folder:
 
