@@ -145,9 +145,10 @@ Easiest way: open install-macOS.command
 
 In Finder, select install-macOS.command and press Command-O.
 
-It finds the game, installs the mod, unblocks the files so macOS will load
-them, and copies the Steam launch options line to your clipboard. Then follow
-the one remaining step it prints, which has to be done in Steam itself.
+It finds the game, installs the mod, and unblocks the files so macOS will
+load them. Then follow the one remaining step it shows, which has to be done
+in Steam itself. The launch options line appears in a text field you can read
+and copy from, with a Copy To Clipboard button if you want it there.
 
 If MelonLoader is not installed yet, it offers to open the download page for
 you, and then lets you pick the downloaded ZIP from a file dialog.

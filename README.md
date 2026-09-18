@@ -37,9 +37,11 @@ The macOS release ZIP contains an installer. Download and open
 `MelatoninAccess-v1.3.0-macOS.zip`, then **open `install-macOS.command`**. In
 Finder, select it and press Command-O, or use VoiceOver's Open command.
 
-It finds the game, installs the mod, unblocks everything so macOS will load
-it, and copies the Steam launch options line to your clipboard. Then it tells
-you the one remaining step, which has to be done in Steam itself.
+It finds the game, installs the mod, and unblocks everything so macOS will
+load it. Then it shows you the one remaining step, which has to be done in
+Steam itself: the launch options line appears in a text field you can read
+and copy from, with a Copy To Clipboard button if you want it on the
+clipboard.
 
 If MelonLoader is not installed yet, the installer offers to open the
 download page for you, and then lets you pick the downloaded ZIP from a file

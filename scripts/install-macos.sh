@@ -228,7 +228,6 @@ fi
 # --- 6. the one manual step -------------------------------------------------
 
 LAUNCH="\"$GAME/melonloader-launch.sh\" %command%"
-printf '%s' "$LAUNCH" | pbcopy 2>/dev/null && COPIED=1 || COPIED=0
 
 say "Installed successfully."
 say ""
@@ -238,29 +237,57 @@ say "  1. In Steam, select Melatonin and open its Properties."
 say "  2. On the General tab, find the Launch Options box."
 say "  3. Put this line in it:"
 say ""
-say "     $LAUNCH"
+say "$LAUNCH"
 say ""
 say "  4. Close Properties and start the game from Steam."
 say ""
 
-CLIP_NOTE="The line has already been copied to your clipboard, so you can paste it into the box with Command-V."
-[ "$COPIED" = "1" ] || CLIP_NOTE="Copy the line from the Terminal window."
+# The launch options line goes in the dialog's text field rather than in its
+# message, so VoiceOver reads it as its own element instead of running it on
+# from the surrounding sentence, and it can be selected and copied in place.
+#
+# The clipboard is only touched if the user asks: taking it without asking
+# would throw away whatever they had on it.
+launch_dialog() {
+    local note="$1"
+    osascript 2>/dev/null <<AS
+display dialog "${note}The mod is installed.
 
-dialog "Melatonin Access Installer" "The mod is installed.
-
-One step is left, and it has to be done in Steam:
+One step is left, and it has to be done in Steam.
 
 1. In Steam, select Melatonin and open its Properties.
 2. On the General tab, find the Launch Options box.
-3. Put this line in it:
-
-$LAUNCH
-
+3. Put the line below into that box.
 4. Close Properties and start the game from Steam.
 
-$CLIP_NOTE
+Steam will not load the mod without that line." ¬
+    default answer "$(printf '%s' "$LAUNCH" | sed 's/\\/\\\\/g; s/"/\\"/g')" ¬
+    buttons {"Copy To Clipboard", "Done"} ¬
+    default button "Done" ¬
+    with title "Melatonin Access Installer"
+return button returned of result
+AS
+}
 
-Steam will not load the mod without that line."
+NOTE=""
+while :; do
+    BTN="$(launch_dialog "$NOTE")"
+    case "$BTN" in
+        "Copy To Clipboard")
+            printf '%s' "$LAUNCH" | pbcopy 2>/dev/null \
+                && NOTE="Copied. Paste it into Steam with Command-V.
+
+" \
+                || NOTE="Could not reach the clipboard. Copy the line from the text field instead.
+
+"
+            say "Copied the launch options line to the clipboard."
+            ;;
+        *)
+            break
+            ;;
+    esac
+done
 
 # Terminal may be set to close this window on a clean exit, which would take
 # the text above with it. Hold it until the user is done reading.
