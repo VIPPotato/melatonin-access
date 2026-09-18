@@ -108,6 +108,14 @@ function run() {
       }
     });
   }
+  // osascript is a background process by default, so a raw NSAlert opens
+  // behind everything and never takes focus - VoiceOver then never announces
+  // it, which looks exactly like no window appearing at all. Becoming a
+  // regular foreground app fixes that.
+  var app = \$.NSApplication.sharedApplication;
+  app.setActivationPolicy(\$.NSApplicationActivationPolicyRegular);
+  app.activateIgnoringOtherApps(true);
+
   var handler = \$.UninstallHandler.alloc.init;
   var alert = \$.NSAlert.alloc.init;
   alert.messageText = "Uninstall Melatonin Access and / or MelonLoader";
@@ -134,6 +142,7 @@ function run() {
   okButton = alert.buttons.objectAtIndex(0);
   okButton.enabled = false;
   alert.window.initialFirstResponder = (cbMod ? cbMod : cbML);
+  alert.window.makeKeyAndOrderFront(null);
   var r = alert.runModal;
   if (r !== \$.NSAlertFirstButtonReturn) return "CANCEL";
   var out = [];
@@ -163,9 +172,21 @@ if [ "$CHOICES" = "CANCEL" ]; then
     exit 0
 fi
 
+# Exact tokens only. Substring matching would let any unexpected output from
+# osascript select something for deletion.
 REMOVE_MOD=0; REMOVE_ML=0
-case "$CHOICES" in *MOD*) REMOVE_MOD=1 ;; esac
-case "$CHOICES" in *ML*)  REMOVE_ML=1 ;; esac
+OIFS="$IFS"; IFS=','
+for tok in $CHOICES; do
+    case "$tok" in
+        MOD) REMOVE_MOD=1 ;;
+        ML)  REMOVE_ML=1 ;;
+        *)   say "Ignoring unrecognised selection: $tok" ;;
+    esac
+done
+IFS="$OIFS"
+if [ "$REMOVE_MOD" = "0" ] && [ "$REMOVE_ML" = "0" ]; then
+    die "Nothing was selected, so nothing was removed."
+fi
 
 # --- remove -----------------------------------------------------------------
 
