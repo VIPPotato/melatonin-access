@@ -143,10 +143,12 @@ Melatonin Access - macOS
 Easiest way: double-click install-macOS.command
 ------------------------------------------------
 
-It finds the game, installs the mod, installs MelonLoader if it finds
-MelonLoader.macOS.x64.zip in your Downloads folder, unblocks the files, and
-copies the Steam launch options line to your clipboard. Then follow the one
-remaining step it prints, which has to be done in Steam itself.
+It finds the game, installs the mod, unblocks the files so macOS will load
+them, and copies the Steam launch options line to your clipboard. Then follow
+the one remaining step it prints, which has to be done in Steam itself.
+
+If MelonLoader is not installed yet, it offers to open the download page for
+you, and then lets you pick the downloaded ZIP from a file dialog.
 
 If Finder refuses to run it, right-click it and choose Open, then confirm.
 
