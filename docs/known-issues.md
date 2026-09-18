@@ -21,6 +21,10 @@ This file is checked automatically during project setup (Step 4). When the game'
 - **Native libraries fail to load with "library load disallowed by system policy".** Anything downloaded through a browser carries `com.apple.quarantine`, and macOS will not `dlopen` a quarantined library. **Fix:** `xattr -dr com.apple.quarantine <game folder>`, or allow the file from System Settings, Privacy & Security.
 - **A macOS game may be a different architecture than its Windows build.** Melatonin is 64-bit on macOS but 32-bit on Windows, so native libraries must be provided per platform. A 64-bit process cannot load a 32-bit library, and dyld aborts the process outright on an architecture mismatch.
 
+## Melatonin Access on macOS
+
+- **The level editor is untested on macOS.** Menus, gameplay, map, dialog, cutscenes and results have been played through and work. The editor loads, but its narration -- cursor, tools, advanced menu, timeline tabs -- has not been exercised. Unverified rather than known-broken.
+
 ## Unity + BepInEx
 
 - **Unity 6000+**: BepInEx 5.x does not support Unity 6. BepInEx 6 (bleeding edge) may work but is not stable. Check the BepInEx GitHub for the latest status before proceeding.

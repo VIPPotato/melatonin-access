@@ -194,6 +194,13 @@ an Apple developer account.
 
 3. Launch from Steam. Speech goes through VoiceOver.
 
+Not yet tested on macOS
+-----------------------
+
+The level editor. Everything else has been played through and works. The
+editor loads, but its narration has not been exercised properly, so please
+report anything that misbehaves there.
+
 If the mod is silent
 --------------------
 

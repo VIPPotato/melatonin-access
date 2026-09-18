@@ -58,6 +58,14 @@ somewhere else, such as your home folder, avoids it entirely.
 If you would rather do it by hand, or the installer cannot find something,
 the full steps are below.
 
+### What is not yet tested on macOS
+
+The level editor. Everything else -- menus, gameplay, map, dialog, cutscenes,
+results -- has been played through on macOS and works. The editor loads and
+looks right, but its narration has not been exercised properly, so treat it
+as unverified rather than known-good. Please report anything that misbehaves
+there.
+
 ### Uninstalling
 
 Open `uninstall-macOS.command` from the same release ZIP. It asks about each
