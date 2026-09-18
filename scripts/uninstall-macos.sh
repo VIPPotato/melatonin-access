@@ -131,7 +131,7 @@ if [ "$MOD_PRESENT" = "1" ]; then
 fi
 
 if [ "$DIALOGS_WORK" = "1" ] && [ "$ML_PRESENT" = "1" ]; then
-    ANS="$(ask_remove "MelonLoader" "The mod loader itself. Any other mods you have will stop loading too, and you will need to clear the Steam launch options.")"
+    ANS="$(ask_remove "MelonLoader" "The mod loader itself, as installed for Melatonin. Any other mods you run in Melatonin will stop loading, and you will need to clear this game's Steam launch options. Other games that use MelonLoader are not affected.")"
     [ -z "$ANS" ] && DIALOGS_WORK=0
     [ "$ANS" = "Cancel" ] && { say "Cancelled. Nothing was removed."; exit 0; }
     [ "$ANS" = "Remove" ] && REMOVE_ML=1
@@ -239,9 +239,11 @@ Left alone:$KEPT}"
 if [ "$REMOVE_ML" = "1" ]; then
     dialog "Clear the Steam launch options" "MelonLoader has been removed.
 
-Steam is still set to start the game through melonloader-launch.sh, which no longer exists. Until you clear that setting the game will not start at all.
+Steam is still set to start Melatonin through melonloader-launch.sh, which no longer exists. Until you clear that setting the game will not start at all.
 
-In Steam: select Melatonin, open Properties, go to the General tab, and empty the Launch Options box."
+In Steam: select Melatonin, open Properties, go to the General tab, and empty the Launch Options box.
+
+MelonLoader is installed separately for each game, so this only affects Melatonin. Any other game you run through MelonLoader keeps its own copy and its own launch options."
 fi
 
 if [ "$DIALOGS_WORK" = "0" ]; then

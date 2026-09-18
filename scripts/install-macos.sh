@@ -107,7 +107,9 @@ Melatonin Access needs MelonLoader.macOS.x64.zip.
 
 Do not use the .dmg installer: macOS reports it as damaged. The file is fine, but macOS blocks it because it is not signed by an Apple developer account.
 
-The x64 file is the correct one on Apple Silicon Macs too." ¬
+The x64 file is the correct one on Apple Silicon Macs too.
+
+Choose Download It and this installer will fetch it for you. Choose I Have The File if you have already downloaded it." ¬
     buttons {"Cancel", "I Have The File", "Download It"} ¬
     default button "Download It" ¬
     with title "Melatonin Access Installer"
@@ -125,17 +127,28 @@ return POSIX path of f
 AS
 }
 
-# Shown after the browser has been opened. "tell me to activate" matters
-# here: the browser has just taken focus, and without it this dialog opens
-# behind the browser window where it is easy to miss entirely.
-wait_for_download() {
-    osascript 2>/dev/null <<'AS'
-tell me to activate
-display dialog "Your browser is downloading MelonLoader.macOS.x64.zip.
+# Downloaded here rather than in a browser. Handing focus to another app is
+# the problem: osascript cannot make itself a foreground application, so once
+# focus has gone its dialogs are not real windows -- they only reach VoiceOver
+# through the system dialogs list, and every dialog after that has to be hunted
+# down again. Fetching the file ourselves means focus never leaves.
+download_melonloader() {
+    local dest="$1"
+    say "Downloading MelonLoader (about 25 MB)..."
+    say "  from $ML_URL"
+    curl -fL --progress-bar -o "$dest" "$ML_URL" || return 1
+    [ -s "$dest" ] || return 1
+    say "  download finished."
+    return 0
+}
 
-Press Continue after the file has downloaded to select and install it." ¬
-    buttons {"Set Up Later", "Continue"} ¬
-    default button "Continue" ¬
+offer_manual_download() {
+    osascript 2>/dev/null <<'AS'
+display dialog "The download did not succeed.
+
+You can download MelonLoader.macOS.x64.zip yourself from the MelonLoader releases page, then open this installer again and choose I Have The File." ¬
+    buttons {"Open The Page", "Set Up Later"} ¬
+    default button "Open The Page" ¬
     with title "Melatonin Access Installer"
 return button returned of result
 AS
@@ -178,17 +191,17 @@ else
     ANSWER="$(ask_for_melonloader)"
     case "$ANSWER" in
         "Download It")
-            open "$ML_URL"
-            case "$(wait_for_download)" in
-                "Continue") ZIP="$(pick_melonloader_zip)" ;;
-                *)
-                    say "Set up later. Nothing was installed."
-                    dialog "Melatonin Access Installer" "No problem.
-
-Nothing has been installed. Open this installer again once MelonLoader.macOS.x64.zip has finished downloading, and it will pick up from here."
-                    exit 0
-                    ;;
-            esac
+            DLDIR="$(mktemp -d)"
+            if download_melonloader "$DLDIR/MelonLoader.macOS.x64.zip"; then
+                ZIP="$DLDIR/MelonLoader.macOS.x64.zip"
+            else
+                say "  download failed."
+                if [ "$(offer_manual_download)" = "Open The Page" ]; then
+                    open "https://github.com/LavaGang/MelonLoader/releases"
+                fi
+                say "Nothing was installed."
+                exit 0
+            fi
             ;;
         "I Have The File")
             ZIP="$(pick_melonloader_zip)"
@@ -323,7 +336,7 @@ One step is left, and it has to be done in Steam.
 3. Put the line below into that box.
 4. Close Properties and start the game from Steam.
 
-Steam will not load the mod without that line." ¬
+This is how MelonLoader works on macOS: Steam does not set the variable it needs, so every MelonLoader game is launched through a wrapper script in its own folder. Without that line the game runs unmodded." ¬
     default answer "$(printf '%s' "$LAUNCH" | sed 's/\\/\\\\/g; s/"/\\"/g')" ¬
     buttons {"Copy To Clipboard", "Done"} ¬
     default button "Done" ¬
