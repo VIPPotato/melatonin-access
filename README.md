@@ -50,6 +50,11 @@ would ask Terminal for permission to read it.
 
 If Finder refuses to run it, right-click it, choose Open, and confirm.
 
+If you extracted the ZIP into Downloads, Desktop or Documents, macOS may stop
+the installer reading the mod files out of it. The installer notices and asks
+you to choose the folder yourself, which is what grants permission. Extracting
+somewhere else, such as your home folder, avoids it entirely.
+
 If you would rather do it by hand, or the installer cannot find something,
 the full steps are below.
 

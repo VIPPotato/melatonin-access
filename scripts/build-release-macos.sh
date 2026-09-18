@@ -155,6 +155,11 @@ you, and then lets you pick the downloaded ZIP from a file dialog.
 
 If Finder refuses to run it, right-click it and choose Open, then confirm.
 
+If you extracted this archive into Downloads, Desktop or Documents, macOS may
+block the installer from reading the mod files. It will notice and ask you to
+choose the folder yourself, which is what grants it permission. Extracting to
+your home folder instead avoids the whole thing.
+
 Doing it by hand instead
 ------------------------
 

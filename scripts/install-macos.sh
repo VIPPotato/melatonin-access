@@ -192,15 +192,56 @@ say ""
 
 # --- 3. the mod -------------------------------------------------------------
 
-if [ -d "$SRC/Mods" ]; then
-    say "Installing the mod..."
-    mkdir -p "$GAME/Mods"
-    cp -R "$SRC/Mods/." "$GAME/Mods/" || fail "could not copy the Mods folder"
-    [ -d "$SRC/UserData" ] && { mkdir -p "$GAME/UserData"; cp -R "$SRC/UserData/." "$GAME/UserData/" || fail "could not copy UserData"; }
+copy_payload() {
+    local src="$1"
+    [ -d "$src/Mods" ] || return 1
+    mkdir -p "$GAME/Mods" || return 1
+    cp -R "$src/Mods/." "$GAME/Mods/" 2>/dev/null || return 1
+    if [ -d "$src/UserData" ]; then
+        mkdir -p "$GAME/UserData" || return 1
+        cp -R "$src/UserData/." "$GAME/UserData/" 2>/dev/null || return 1
+    fi
+    return 0
+}
+
+# Downloads, Desktop and Documents are protected by macOS. A script opened
+# from one of them can stat its own folder but not read the files in it, so
+# the copy fails with no prompt the user can act on. A folder the user picks
+# in an open panel is granted to us by Powerbox, which is the way out.
+ask_for_payload_folder() {
+    osascript 2>/dev/null <<'AS'
+display dialog "macOS is not letting this installer read the mod files.
+
+That happens when they are in Downloads, Desktop or Documents, which macOS protects.
+
+Click Choose Folder and select the folder this installer is in, the one containing Mods and UserData. Picking it yourself is what gives macOS permission." ¬
+    buttons {"Cancel", "Choose Folder"} ¬
+    default button "Choose Folder" ¬
+    with title "Melatonin Access Installer"
+set f to choose folder with prompt "Select the folder containing Mods and UserData"
+return POSIX path of f
+AS
+}
+
+say "Installing the mod..."
+if copy_payload "$SRC"; then
     say "  Mod files copied."
 else
-    say "No Mods folder next to this installer, so the mod itself was not copied."
-    say "Run this from the folder you extracted the release ZIP into."
+    say "  Could not read the mod files from $SRC - asking for access..."
+    PICKED="$(ask_for_payload_folder)"
+    PICKED="${PICKED%/}"
+    if [ -n "$PICKED" ] && copy_payload "$PICKED"; then
+        say "  Mod files copied."
+    else
+        die "The mod files could not be copied.
+
+They should sit next to this installer, in folders named Mods and UserData.
+
+If they do, macOS is blocking access to them. Either:
+
+- Move the whole extracted folder out of Downloads, for example into your home folder, and open the installer again, or
+- Allow Terminal to reach the folder in System Settings, under Privacy & Security, Files and Folders."
+    fi
 fi
 say ""
 
