@@ -260,6 +260,12 @@ The project finds the game automatically in the stock Steam location. Point
 it elsewhere with `/p:GameRoot="/path/to/Melatonin"`. The build copies the
 mod into the game's `Mods` folder when that folder exists.
 
+`dotnet build` works too if you have the .NET SDK, and is what CI uses.
+
+The QA scripts are PowerShell. Install it with `brew install powershell` and
+`scripts/build-release-macos.sh` will run them as part of packaging; without
+it the script warns and stamps `QA: NOT RUN` on the package.
+
 ### Build A Release ZIP
 
 ```powershell
