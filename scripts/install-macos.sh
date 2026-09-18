@@ -100,6 +100,7 @@ ML_URL="https://github.com/LavaGang/MelonLoader/releases/latest/download/MelonLo
 # Powerbox instead, with no prompt at all.
 ask_for_melonloader() {
     osascript 2>/dev/null <<'AS'
+tell me to activate
 display dialog "MelonLoader is not installed yet.
 
 Melatonin Access needs MelonLoader.macOS.x64.zip.
@@ -116,6 +117,7 @@ AS
 
 pick_melonloader_zip() {
     osascript 2>/dev/null <<'AS'
+tell me to activate
 set f to choose file with prompt "Select MelonLoader.macOS.x64.zip" ¬
     of type {"zip", "public.zip-archive"} ¬
     default location (path to downloads folder)
@@ -123,14 +125,19 @@ return POSIX path of f
 AS
 }
 
+# Shown after the browser has been opened. "tell me to activate" matters
+# here: the browser has just taken focus, and without it this dialog opens
+# behind the browser window where it is easy to miss entirely.
 wait_for_download() {
-    osascript >/dev/null 2>&1 <<'AS'
+    osascript 2>/dev/null <<'AS'
+tell me to activate
 display dialog "Your browser is downloading MelonLoader.macOS.x64.zip.
 
-When the download has finished, click Choose File and select it." ¬
-    buttons {"Cancel", "Choose File"} ¬
-    default button "Choose File" ¬
+Press Continue after the file has downloaded to select and install it." ¬
+    buttons {"Set Up Later", "Continue"} ¬
+    default button "Continue" ¬
     with title "Melatonin Access Installer"
+return button returned of result
 AS
 }
 
@@ -172,8 +179,16 @@ else
     case "$ANSWER" in
         "Download It")
             open "$ML_URL"
-            wait_for_download || die "Cancelled. Nothing was installed."
-            ZIP="$(pick_melonloader_zip)"
+            case "$(wait_for_download)" in
+                "Continue") ZIP="$(pick_melonloader_zip)" ;;
+                *)
+                    say "Set up later. Nothing was installed."
+                    dialog "Melatonin Access Installer" "No problem.
+
+Nothing has been installed. Open this installer again once MelonLoader.macOS.x64.zip has finished downloading, and it will pick up from here."
+                    exit 0
+                    ;;
+            esac
             ;;
         "I Have The File")
             ZIP="$(pick_melonloader_zip)"
@@ -216,6 +231,7 @@ copy_payload() {
 # in an open panel is granted to us by Powerbox, which is the way out.
 ask_for_payload_folder() {
     osascript 2>/dev/null <<'AS'
+tell me to activate
 display dialog "macOS is not letting this installer read the mod files.
 
 That happens when they are in Downloads, Desktop or Documents, which macOS protects.
