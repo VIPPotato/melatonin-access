@@ -35,6 +35,7 @@ die() {
 hold() { say ""; say "Press Return to close this window."; read -r _ || true; }
 
 SRC="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DIALOGS_WORK=1
 
 say "Melatonin Access - macOS uninstaller"
 say "===================================="
@@ -77,8 +78,8 @@ if [ "$MOD_PRESENT" = "0" ] && [ "$ML_PRESENT" = "0" ]; then
     dialog "Melatonin Access Uninstaller" "Nothing to remove.
 
 Neither Melatonin Access nor MelonLoader is installed in:
-$GAME"
-    hold; exit 0
+$GAME" || hold
+    exit 0
 fi
 
 # --- choose what to remove --------------------------------------------------
@@ -121,7 +122,6 @@ AS
 }
 
 REMOVE_MOD=0; REMOVE_ML=0
-DIALOGS_WORK=1
 
 if [ "$MOD_PRESENT" = "1" ]; then
     ANS="$(ask_remove "Melatonin Access" "The mod, its speech library, and its cutscene and localization data. Your settings are kept.")"
@@ -232,7 +232,19 @@ dialog "Melatonin Access Uninstaller" "Done.
 
 Removed:$REMOVED
 ${KEPT:+
-Left alone:$KEPT}$WARN"
+Left alone:$KEPT}"
 
-[ "$DIALOGS_WORK" = "0" ] && hold
+# Its own dialog, not a paragraph at the end of the summary: this one has to
+# be acted on or the game stops launching entirely.
+if [ "$REMOVE_ML" = "1" ]; then
+    dialog "Clear the Steam launch options" "MelonLoader has been removed.
+
+Steam is still set to start the game through melonloader-launch.sh, which no longer exists. Until you clear that setting the game will not start at all.
+
+In Steam: select Melatonin, open Properties, go to the General tab, and empty the Launch Options box."
+fi
+
+if [ "$DIALOGS_WORK" = "0" ]; then
+    hold
+fi
 exit 0
