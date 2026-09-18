@@ -124,7 +124,7 @@ AS
 REMOVE_MOD=0; REMOVE_ML=0
 
 if [ "$MOD_PRESENT" = "1" ]; then
-    ANS="$(ask_remove "Melatonin Access" "The mod, its speech library, and its cutscene and localization data. Your settings are kept.")"
+    ANS="$(ask_remove "Melatonin Access" "The mod, its speech library, its cutscene and localization data, and your Melatonin Access settings. This cannot be undone.")"
     [ -z "$ANS" ] && DIALOGS_WORK=0
     [ "$ANS" = "Cancel" ] && { say "Cancelled. Nothing was removed."; exit 0; }
     [ "$ANS" = "Remove" ] && REMOVE_MOD=1
@@ -168,6 +168,29 @@ fi
 
 REMOVED=""; KEPT=""
 
+# The mod keeps its settings in one category inside MelonPreferences.cfg,
+# which every MelonLoader mod shares. Strip that category rather than the
+# file, so another mod's settings are not collateral damage, and drop the
+# file only when nothing else is left in it.
+remove_mod_settings() {
+    local cfg="$GAME/UserData/MelonPreferences.cfg"
+    [ -f "$cfg" ] || return 0
+    awk '/^\[/ { inmod = ($0 == "[MelatoninAccess]") } !inmod { print }' "$cfg" > "$cfg.tmp" 2>/dev/null || return 1
+    if [ -n "$(grep -v '^[[:space:]]*$' "$cfg.tmp" 2>/dev/null)" ]; then
+        mv "$cfg.tmp" "$cfg" && {
+            say "  removed the Melatonin Access settings from UserData/MelonPreferences.cfg"
+            REMOVED="$REMOVED
+- Melatonin Access settings (from UserData/MelonPreferences.cfg)"
+        }
+    else
+        rm -f "$cfg" "$cfg.tmp" && {
+            say "  removed UserData/MelonPreferences.cfg"
+            REMOVED="$REMOVED
+- UserData/MelonPreferences.cfg"
+        }
+    fi
+}
+
 if [ "$REMOVE_MOD" = "1" ]; then
     say "Removing Melatonin Access..."
     for p in "${MOD_PARTS[@]}"; do
@@ -175,6 +198,7 @@ if [ "$REMOVE_MOD" = "1" ]; then
         rm -rf "$GAME/$p" && { say "  removed $p"; REMOVED="$REMOVED
 - $p"; }
     done
+    remove_mod_settings
     # Other mods live in Mods/ too, so the folder itself stays.
     KEPT="$KEPT
 - Your other mods in Mods/"
@@ -200,8 +224,20 @@ if [ "$REMOVE_ML" = "1" ]; then
         fi
     done
     # UserData holds MelonPreferences.cfg, which is where mod settings live.
-    [ -d "$GAME/UserData" ] && KEPT="$KEPT
-- UserData/ (your settings)"
+    # Loader.cfg is MelonLoader's own; take it with MelonLoader and drop
+    # UserData when nothing else is using it.
+    [ -f "$GAME/UserData/Loader.cfg" ] && rm -f "$GAME/UserData/Loader.cfg" && {
+        say "  removed UserData/Loader.cfg"; REMOVED="$REMOVED
+- UserData/Loader.cfg"; }
+    if [ -d "$GAME/UserData" ]; then
+        if [ -z "$(ls -A "$GAME/UserData" 2>/dev/null)" ]; then
+            rmdir "$GAME/UserData" 2>/dev/null && { say "  removed UserData (was empty)"; REMOVED="$REMOVED
+- UserData"; }
+        else
+            KEPT="$KEPT
+- UserData/ (other mods' settings)"
+        fi
+    fi
 fi
 
 say ""

@@ -65,9 +65,11 @@ thing that is installed -- Melatonin Access, then MelonLoader -- and removes
 only what you say Remove to, after one confirmation. MelonLoader ships no uninstaller of its own, which is why it is
 offered here.
 
-Your other mods, your settings in `UserData`, and anything you put in
-`UserLibs` are left alone. If you remove MelonLoader, clear the Steam launch
-options as well, or the game will not start.
+Removing Melatonin Access also clears its settings. Your other mods, any
+other mod's settings, and anything you put in `UserLibs` are left alone.
+
+If you remove MelonLoader, clear the Steam launch options as well, or the
+game will not start.
 
 ### Step 1: Install MelonLoader
 
